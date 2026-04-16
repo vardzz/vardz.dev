@@ -28,12 +28,12 @@ function LaptopMockup({ image, onImageClick }) {
   const imageSrc = normalizeProjectImageSrc(image);
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto">
+    <div className="relative w-full max-w-[760px] mx-auto">
       <div className="relative">
-        {/* Display housing */}
-        <div className="relative aspect-[16/10] rounded-t-[1.9rem] bg-gradient-to-b from-zinc-700 via-zinc-900 to-black p-[10px] shadow-[0_30px_70px_-30px_rgba(0,0,0,0.9)] border border-zinc-600/60">
-          {/* Screen */}
-          <div className="relative z-10 h-full w-full overflow-hidden rounded-t-[1.35rem] bg-black border border-zinc-800/80">
+        {/* Display Lid */}
+        <div className="relative w-full aspect-[16/10] rounded-t-[1.8rem] bg-gradient-to-b from-zinc-600 via-zinc-800 to-zinc-950 p-[10px] border border-zinc-500/50 shadow-[0_30px_80px_-35px_rgba(0,0,0,0.95)]">
+          {/* Screen Bezel + Screen */}
+          <div className="relative h-full w-full rounded-t-[1.2rem] bg-black border border-zinc-800 overflow-hidden">
             <Image
               src={imageSrc}
               alt="Project Screenshot"
@@ -44,22 +44,26 @@ function LaptopMockup({ image, onImageClick }) {
               onClick={onImageClick}
             />
 
-            {/* Glass reflection */}
-            <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_26%,transparent_52%,transparent_100%)] mix-blend-screen pointer-events-none" />
-            <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.24)] pointer-events-none" />
+            {/* Glass / anti-glare */}
+            <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.05)_30%,transparent_56%,transparent_100%)] mix-blend-screen pointer-events-none" />
+            <div className="absolute inset-0 shadow-[inset_0_0_34px_rgba(0,0,0,0.28)] pointer-events-none" />
           </div>
 
-          {/* Camera strip */}
-          <div className="absolute top-[8px] left-1/2 -translate-x-1/2 w-[128px] h-[10px] rounded-b-xl bg-black border-x border-b border-zinc-700/70" />
+          {/* Webcam notch */}
+          <div className="absolute top-[7px] left-1/2 -translate-x-1/2 w-[120px] h-[9px] rounded-b-lg bg-black border-x border-b border-zinc-700/80" />
         </div>
 
-        {/* Base / keyboard deck */}
-        <div className="relative -mt-[1px] h-7 rounded-b-[1.4rem] bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-950 border-x border-b border-zinc-700/70 shadow-xl">
-          <div className="absolute left-1/2 top-[6px] -translate-x-1/2 h-2 w-[140px] rounded-full bg-zinc-500/45" />
+        {/* Hinge Bar */}
+        <div className="mx-auto -mt-[1px] h-[5px] w-[86%] rounded-full bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700 border border-zinc-700/70" />
+
+        {/* Keyboard Deck */}
+        <div className="relative w-[112%] -ml-[6%] h-8 rounded-b-[1.4rem] bg-gradient-to-b from-zinc-500 via-zinc-700 to-zinc-900 border border-zinc-600/70 shadow-xl">
+          <div className="absolute left-1/2 top-[7px] -translate-x-1/2 h-[10px] w-[180px] rounded-full bg-zinc-400/35 border border-zinc-600/50" />
+          <div className="absolute inset-x-10 top-[3px] h-[1px] bg-zinc-300/15" />
         </div>
 
-        {/* Bottom lip */}
-        <div className="mx-auto mt-[3px] h-[3px] w-[62%] rounded-full bg-zinc-700/55" />
+        {/* Desk Contact Shadow */}
+        <div className="mx-auto mt-[6px] h-[8px] w-[78%] rounded-full bg-black/45 blur-[3px]" />
       </div>
     </div>
   );
@@ -193,6 +197,7 @@ function ProjectCard({ proj, idx, onOpen }) {
               />
             ) : (
               <motion.div
+                className="w-full"
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: false })}
