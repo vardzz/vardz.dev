@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 import {
@@ -160,64 +160,49 @@ function HandHoldPhones({ firstImage, secondImage, onImageClick }) {
 }
 
 function ProjectCard({ proj, idx, onOpen }) {
-  const [mounted, setMounted] = useState(false);
   const isEven = idx % 2 === 0;
-  const cardRef = React.useRef(null);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const { scrollYProgress: itemScroll } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(itemScroll, [0, 1], [80, -80]);
 
   return (
     <motion.div
-      ref={cardRef}
-      className="w-full"
+      className="w-full max-w-6xl mx-auto"
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Professional Card Container */}
-      <div className="bg-background border border-border rounded-2xl md:rounded-3xl p-8 md:p-12 hover:border-foreground/40 shadow-sm hover:shadow-md transition-all duration-500 backdrop-blur-sm dark:bg-background dark:border-border">
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-          {/* Image Section */}
-          <motion.div
-            style={{ y: mounted ? y : 0 }}
-            className={`order-1 md:${isEven ? "order-1" : "order-2"} w-full flex justify-center`}
-          >
-            {proj.isMobile ? (
-              <HandHoldPhones
-                firstImage={proj.img}
-                secondImage={proj.imgSecondary}
-                onImageClick={onOpen}
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center px-2 md:px-4">
+        {/* Image Section */}
+        <motion.div
+          className={`order-1 md:${isEven ? "order-1" : "order-2"} w-full flex justify-center`}
+        >
+          {proj.isMobile ? (
+            <HandHoldPhones
+              firstImage={proj.img}
+              secondImage={proj.imgSecondary}
+              onImageClick={onOpen}
+            />
+          ) : (
+            <motion.div
+              className="w-full"
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              onClick={() => onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: false })}
+            >
+              <LaptopMockup
+                image={proj.img}
+                onImageClick={() => onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: false })}
               />
-            ) : (
-              <motion.div
-                className="w-full"
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                onClick={() => onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: false })}
-              >
-                <LaptopMockup
-                  image={proj.img}
-                  onImageClick={() => onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: false })}
-                />
-              </motion.div>
-            )}
-          </motion.div>
+            </motion.div>
+          )}
+        </motion.div>
 
-          {/* Text Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className={`order-2 md:${isEven ? "order-2" : "order-1"} flex flex-col justify-center space-y-6`}
-          >
+        {/* Text Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className={`order-2 md:${isEven ? "order-2" : "order-1"} flex flex-col justify-center space-y-6`}
+        >
             {/* ID Badge */}
             <div className="inline-flex items-center gap-2 w-fit">
               <div className="w-8 h-px bg-border" />
@@ -282,8 +267,7 @@ function ProjectCard({ proj, idx, onOpen }) {
                 ))}
               </div>
             )}
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -337,61 +321,122 @@ const projects = [
 
 export default function Projects() {
   const [selectedImg, setSelectedImg] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = React.useRef(null);
+  const wheelLockRef = React.useRef(false);
+  const wheelDeltaRef = React.useRef(0);
+  const lastIndex = projects.length - 1;
+
+  useEffect(() => {
+    const handleWheel = (event) => {
+      if (selectedImg) return;
+
+      const section = containerRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const inFocusRange = rect.top <= 120 && rect.bottom >= window.innerHeight - 120;
+      if (!inFocusRange) return;
+
+      if (wheelLockRef.current) {
+        event.preventDefault();
+        return;
+      }
+
+      const delta = event.deltaY;
+      const canGoNext = delta > 0 && activeIndex < lastIndex;
+      const canGoPrev = delta < 0 && activeIndex > 0;
+
+      // Keep the page pinned while horizontal navigation is still possible.
+      if (canGoNext || canGoPrev) {
+        event.preventDefault();
+      } else {
+        wheelDeltaRef.current = 0;
+        return;
+      }
+
+      wheelDeltaRef.current += delta;
+      const WHEEL_STEP_THRESHOLD = 65;
+      if (Math.abs(wheelDeltaRef.current) < WHEEL_STEP_THRESHOLD) {
+        return;
+      }
+
+      if (wheelDeltaRef.current > 0 && activeIndex < lastIndex) {
+        wheelLockRef.current = true;
+        wheelDeltaRef.current = 0;
+        setActiveIndex((prev) => Math.min(prev + 1, lastIndex));
+      } else if (wheelDeltaRef.current < 0 && activeIndex > 0) {
+        wheelLockRef.current = true;
+        wheelDeltaRef.current = 0;
+        setActiveIndex((prev) => Math.max(prev - 1, 0));
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [activeIndex, lastIndex, selectedImg]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      wheelLockRef.current = false;
+    }, 520);
+
+    return () => clearTimeout(timer);
+  }, [activeIndex]);
+
+  const progressWidth = `${((activeIndex + 1) / projects.length) * 100}%`;
 
   return (
     <section
       id="work"
       ref={containerRef}
-      className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-700 ease-in-out"
+      className="relative bg-background text-foreground overflow-hidden transition-colors duration-700 ease-in-out"
+      style={{ height: "100vh" }}
     >
-      {/* Subtle Background Grid */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_0.5px,transparent_0.5px)] bg-[size:32px_32px] opacity-5 pointer-events-none dark:opacity-5" />
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {/* Subtle Background Grid */}
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_0.5px,transparent_0.5px)] bg-[size:32px_32px] opacity-5 pointer-events-none dark:opacity-5" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-32 md:mb-48"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-2 h-2 rounded-full bg-foreground" />
-            <span className="text-xs font-bold text-muted-foreground tracking-widest uppercase">
-              Selected Works
-            </span>
+        {/* Header */}
+        <div className="relative z-20 max-w-6xl mx-auto px-6 md:px-8 pt-10 md:pt-12">
+          <div className="flex items-center justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-2 h-2 rounded-full bg-foreground" />
+                <span className="text-xs font-bold text-muted-foreground tracking-widest uppercase">
+                  Selected Works
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-foreground tracking-tight leading-tight">
+                Project Showcase
+              </h2>
+            </div>
+            <div className="hidden md:block text-xs tracking-[0.2em] uppercase text-muted-foreground">
+              Scroll to Explore
+            </div>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black text-foreground tracking-tight leading-tight">
-            Project Showcase
-          </h2>
-          <p className="text-lg text-muted-foreground mt-4 max-w-2xl font-light">
-            A curated collection of innovative projects built with cutting-edge technology and meticulous attention to detail.
-          </p>
-        </motion.div>
+        </div>
 
-        {/* Projects Grid */}
-        <div className="space-y-20 md:space-y-32">
+        {/* Horizontal Projects */}
+        <motion.div
+          animate={{ x: `${-activeIndex * 100}%` }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 mt-8 md:mt-12 flex h-[calc(100vh-12rem)] md:h-[calc(100vh-14rem)] will-change-transform"
+        >
           {projects.map((proj, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.8,
-                delay: idx * 0.1,
-                ease: [0.215, 0.61, 0.355, 1],
-              }}
-            >
+            <div key={idx} className="min-w-full px-6 md:px-8 flex items-center">
               <ProjectCard
                 proj={proj}
                 idx={idx}
                 onOpen={(p) => setSelectedImg(p)}
               />
-            </motion.div>
+            </div>
           ))}
+        </motion.div>
+
+        {/* Progress Rail */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[84%] md:w-[60%] h-[2px] bg-border/60 rounded-full overflow-hidden z-20">
+          <motion.div animate={{ width: progressWidth }} transition={{ duration: 0.4 }} className="h-full bg-foreground" />
         </div>
       </div>
 
