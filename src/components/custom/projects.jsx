@@ -1,146 +1,332 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
-function ProjectItem({ proj, idx, onOpen }) {
+function normalizeProjectImageSrc(src) {
+  if (!src) return src;
+  let normalized = src.trim();
+
+  // Support common variants users may type in project data.
+  normalized = normalized.replace(/^\/public\//, "/");
+  normalized = normalized.replace(/^\/pprojects\//, "/projects/");
+  normalized = normalized.replace(/^\/projects\/cour-catcher/, "/projects/court-catcher");
+
+  return normalized;
+}
+
+// Laptop Mockup Component
+function LaptopMockup({ image, onImageClick }) {
+  const imageSrc = normalizeProjectImageSrc(image);
+
+  return (
+    <div className="relative w-full max-w-3xl mx-auto">
+      <div className="relative">
+        {/* Display housing */}
+        <div className="relative aspect-[16/10] rounded-t-[1.9rem] bg-gradient-to-b from-zinc-700 via-zinc-900 to-black p-[10px] shadow-[0_30px_70px_-30px_rgba(0,0,0,0.9)] border border-zinc-600/60">
+          {/* Screen */}
+          <div className="relative z-10 h-full w-full overflow-hidden rounded-t-[1.35rem] bg-black border border-zinc-800/80">
+            <Image
+              src={imageSrc}
+              alt="Project Screenshot"
+              fill
+              unoptimized
+              priority
+              className="object-cover cursor-pointer transition-transform duration-500 hover:scale-105"
+              onClick={onImageClick}
+            />
+
+            {/* Glass reflection */}
+            <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_26%,transparent_52%,transparent_100%)] mix-blend-screen pointer-events-none" />
+            <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.24)] pointer-events-none" />
+          </div>
+
+          {/* Camera strip */}
+          <div className="absolute top-[8px] left-1/2 -translate-x-1/2 w-[128px] h-[10px] rounded-b-xl bg-black border-x border-b border-zinc-700/70" />
+        </div>
+
+        {/* Base / keyboard deck */}
+        <div className="relative -mt-[1px] h-7 rounded-b-[1.4rem] bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-950 border-x border-b border-zinc-700/70 shadow-xl">
+          <div className="absolute left-1/2 top-[6px] -translate-x-1/2 h-2 w-[140px] rounded-full bg-zinc-500/45" />
+        </div>
+
+        {/* Bottom lip */}
+        <div className="mx-auto mt-[3px] h-[3px] w-[62%] rounded-full bg-zinc-700/55" />
+      </div>
+    </div>
+  );
+}
+
+// Phone Mockup Component
+function PhoneMockup({ image, onImageClick, rotate = 0 }) {
+  const imageSrc = normalizeProjectImageSrc(image);
+
+  return (
+    <motion.div
+      whileHover={{ y: -12, scale: 1.03 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      style={{ rotate }}
+      className="relative w-full"
+    >
+      {/* Phone Body */}
+      <div className="relative aspect-[9/19] w-full max-w-xs mx-auto">
+        {/* Outer chassis */}
+        <div className="absolute inset-0 rounded-[2.8rem] bg-gradient-to-b from-zinc-700 via-zinc-900 to-black shadow-[0_26px_55px_-18px_rgba(0,0,0,0.85)]" />
+
+        {/* Metal edge */}
+        <div className="absolute inset-[1.5px] rounded-[2.7rem] border border-zinc-600/70 pointer-events-none" />
+
+        {/* Side buttons */}
+        <div className="absolute -left-[1.5px] top-[22%] h-8 w-[3px] rounded-r bg-zinc-500/70 pointer-events-none" />
+        <div className="absolute -left-[1.5px] top-[31%] h-12 w-[3px] rounded-r bg-zinc-500/60 pointer-events-none" />
+        <div className="absolute -left-[1.5px] top-[40%] h-12 w-[3px] rounded-r bg-zinc-500/60 pointer-events-none" />
+        <div className="absolute -right-[1.5px] top-[33%] h-16 w-[3px] rounded-l bg-zinc-500/70 pointer-events-none" />
+
+        {/* Screen Container */}
+        <div className="absolute inset-[10px] z-10 rounded-[2.25rem] overflow-hidden shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] border border-zinc-800/70 transition-all duration-500 hover:shadow-2xl bg-black">
+          <Image
+            src={imageSrc}
+            alt="Mobile Screenshot"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            unoptimized
+            priority
+            className="object-cover cursor-pointer"
+            onClick={onImageClick}
+          />
+
+          {/* Screen glass highlight */}
+          <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.04)_26%,transparent_48%,transparent_100%)] mix-blend-screen pointer-events-none" />
+
+          {/* Vignette for depth */}
+          <div className="absolute inset-0 shadow-[inset_0_0_44px_rgba(0,0,0,0.2)] pointer-events-none" />
+        </div>
+
+        {/* Inner bezel */}
+        <div className="absolute inset-[7px] z-20 rounded-[2.45rem] border border-zinc-700/60 pointer-events-none" />
+
+        {/* Dynamic island style notch */}
+        <div className="absolute top-[16px] left-1/2 -translate-x-1/2 w-[122px] h-[30px] bg-black rounded-full z-30 border border-zinc-800/90 pointer-events-none" />
+
+        {/* Front camera/sensors */}
+        <div className="absolute top-[26px] left-[calc(50%+34px)] w-[8px] h-[8px] rounded-full bg-zinc-800 border border-zinc-700 z-40 pointer-events-none" />
+        <div className="absolute top-[28px] left-[calc(50%-17px)] w-[26px] h-[4px] rounded-full bg-zinc-800 z-40 pointer-events-none" />
+
+        {/* Bottom speaker slit */}
+        <div className="absolute bottom-[16px] left-1/2 -translate-x-1/2 w-16 h-[2px] bg-zinc-500/60 rounded-full z-30 pointer-events-none" />
+      </div>
+    </motion.div>
+  );
+}
+
+// Hand Holding Phone Effect
+function HandHoldPhones({ firstImage, secondImage, onImageClick }) {
+  return (
+    <div className="relative w-full flex items-center justify-center gap-4 md:gap-8 py-12">
+      {/* Light Glow Background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-foreground/5 dark:from-background/5 via-border/5 to-foreground/5 dark:to-background/5 blur-3xl -z-10 rounded-full" />
+
+      {/* First Phone - Left Tilt */}
+      <div className="flex-1 max-w-xs -rotate-6">
+        <PhoneMockup
+          image={firstImage}
+          onImageClick={() => onImageClick({ url: normalizeProjectImageSrc(firstImage), isMobile: true })}
+          rotate={-6}
+        />
+      </div>
+
+      {/* Second Phone - Right Tilt, Overlapping */}
+      <div className="flex-1 max-w-xs rotate-6 -ml-4 md:-ml-8 md:mt-8">
+        <PhoneMockup
+          image={secondImage}
+          onImageClick={() => onImageClick({ url: normalizeProjectImageSrc(secondImage), isMobile: true })}
+          rotate={6}
+        />
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({ proj, idx, onOpen }) {
   const [mounted, setMounted] = useState(false);
   const isEven = idx % 2 === 0;
-  const itemRef = React.useRef(null);
+  const cardRef = React.useRef(null);
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Individual scroll progress for each item
   const { scrollYProgress: itemScroll } = useScroll({
-    target: itemRef,
-    offset: ["start end", "end start"]
+    target: cardRef,
+    offset: ["start end", "end start"],
   });
 
-  // Sophisticated Parallax & Reveal Transforms
-  const y = useTransform(itemScroll, [0, 1], [100, -100]);
-  const opacity = useTransform(itemScroll, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(itemScroll, [0, 0.2], [0.95, 1]);
-  const blurValue = useTransform(itemScroll, [0, 0.2], [8, 0]);
-  const blurFilter = useTransform(blurValue, (v) => `blur(${v}px)`);
-
+  const y = useTransform(itemScroll, [0, 1], [80, -80]);
 
   return (
-    <motion.div 
-      ref={itemRef}
-      style={{ 
-        opacity: mounted ? opacity : 0, 
-        scale: mounted ? scale : 0.95,
-        filter: mounted ? blurFilter : "blur(8px)"
-      }}
-      className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-20 items-center group"
+    <motion.div
+      ref={cardRef}
+      className="w-full"
     >
-      {/* Image Display with Parallax */}
-      <div className={`md:col-span-8 w-full relative ${isEven ? 'order-1' : 'order-1 md:order-2'}`}>
-        <motion.div style={{ y }} className="relative w-full">
-          {proj.isMobile ? (
-            <div className="flex items-center justify-center gap-6 md:gap-16 py-10 relative">
-              <div className="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
-              
-              <motion.div 
-                whileHover={{ y: -25, scale: 1.05, rotate: -2 }}
-                onClick={() => onOpen({ url: proj.img, isMobile: true })}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-muted rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-muted shadow-[0_30px_60px_-12px_rgba(0,0,0,0.3)] z-10 group/phone cursor-pointer"
+      {/* Professional Card Container */}
+      <div className="bg-background border border-border rounded-2xl md:rounded-3xl p-8 md:p-12 hover:border-foreground/40 shadow-sm hover:shadow-md transition-all duration-500 backdrop-blur-sm dark:bg-background dark:border-border">
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+          {/* Image Section */}
+          <motion.div
+            style={{ y: mounted ? y : 0 }}
+            className={`order-1 md:${isEven ? "order-1" : "order-2"} w-full flex justify-center`}
+          >
+            {proj.isMobile ? (
+              <HandHoldPhones
+                firstImage={proj.img}
+                secondImage={proj.imgSecondary}
+                onImageClick={onOpen}
+              />
+            ) : (
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                onClick={() => onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: false })}
               >
-                <Image src={proj.img} alt={proj.title} fill unoptimized priority className="object-cover grayscale brightness-50 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110" />
+                <LaptopMockup
+                  image={proj.img}
+                  onImageClick={() => onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: false })}
+                />
               </motion.div>
+            )}
+          </motion.div>
 
-              <motion.div 
-                whileHover={{ y: -25, scale: 1.05, rotate: 2 }}
-                onClick={() => onOpen({ url: proj.imgSecondary, isMobile: true })}
-                className="relative w-[45%] md:w-[280px] aspect-[9/19] bg-muted rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-[8px] border-muted shadow-[0_30px_60px_-12px_rgba(0,0,0,0.3)] z-20 group/phone cursor-pointer md:translate-y-20 translate-y-10"
-              >
-                <Image src={proj.imgSecondary} alt={proj.title} fill unoptimized priority className="object-cover grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110" />
-              </motion.div>
+          {/* Text Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className={`order-2 md:${isEven ? "order-2" : "order-1"} flex flex-col justify-center space-y-6`}
+          >
+            {/* ID Badge */}
+            <div className="inline-flex items-center gap-2 w-fit">
+              <div className="w-8 h-px bg-border" />
+              <span className="text-xs font-bold text-muted-foreground tracking-widest uppercase">
+                {proj.id}
+              </span>
             </div>
-          ) : (
-            <motion.div 
-              whileHover={{ y: -15, scale: 1.02 }}
-              onClick={() => onOpen({ url: proj.img, isMobile: false })}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full aspect-video bg-muted overflow-hidden relative cursor-pointer rounded-2xl md:rounded-3xl shadow-2xl group/image"
-            >
-              <Image src={proj.img} alt={proj.title} fill unoptimized priority className="object-cover grayscale brightness-50 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </motion.div>
-          )}
-        </motion.div>
-      </div>
 
-      {/* Text Info */}
-      <div className={`md:col-span-4 flex flex-col justify-center space-y-4 ${isEven ? 'order-2' : 'order-2 md:order-1'}`}>
-        <span className="text-[10px] font-bold text-zinc-500 tracking-[0.2em]">{proj.id}</span>
-        <h3 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.9]">{proj.title}</h3>
-        <p className="text-lg text-zinc-400 font-light leading-relaxed">
-          {proj.desc}
-        </p>
-        <button 
-          onClick={() => {
-            if (proj.link) {
-              window.open(proj.link, "_blank", "noopener,noreferrer");
-            } else {
-              onOpen({ url: proj.img, isMobile: proj.isMobile });
-            }
-          }}
-          className="inline-flex items-center gap-4 text-foreground text-[10px] tracking-[0.2em] font-bold uppercase hover:text-muted-foreground transition-colors pt-6 group/link w-fit cursor-pointer"
-        >
-          View Project <span className="transform group-hover/link:translate-x-2 transition-transform">&rarr;</span>
-        </button>
+            {/* Title */}
+            <h3 className="text-3xl md:text-5xl font-black text-foreground tracking-tight leading-tight">
+              {proj.title}
+            </h3>
+
+            {/* Description */}
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed font-light max-w-sm">
+              {proj.desc}
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              {/* View Project Button */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  if (proj.link) {
+                    window.open(proj.link, "_blank", "noopener,noreferrer");
+                  } else {
+                    onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: proj.isMobile });
+                  }
+                }}
+                className="px-6 py-2.5 bg-foreground text-primary-foreground rounded-full font-semibold text-sm tracking-wide hover:bg-foreground/90 dark:bg-foreground dark:text-primary-foreground transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                View Project
+              </motion.button>
+
+              {/* GitHub Button */}
+              {proj.github && (
+                <motion.a
+                  href={proj.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-6 py-2.5 border border-border text-foreground rounded-full font-semibold text-sm tracking-wide hover:bg-secondary/50 transition-all duration-300"
+                >
+                  GitHub
+                </motion.a>
+              )}
+            </div>
+
+            {/* Tech Stack Preview */}
+            {proj.stack && (
+              <div className="flex flex-wrap gap-2 pt-4">
+                {proj.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 bg-secondary text-xs text-muted-foreground rounded-full font-medium border border-border/50"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   );
 }
 
 const projects = [
-  { 
+  {
     id: "01.",
-    title: "COURT CATCHER", 
-    desc: "Revolutionizing how sports enthusiasts secure their playtime through high-speed cloud infrastructure.",
+    title: "COURT CATCHER",
+    desc: "Revolutionizing how sports enthusiasts secure their playtime through high-speed cloud infrastructure and seamless booking experiences.",
     img: "/projects/court-catcher-mockup.png",
     imgSecondary: "/projects/court-catcher-logo.png",
-    isMobile: true
+    isMobile: true,
+    github: "https://github.com/yourusername/court-catcher",
+    stack: ["React", "Next.js", "TypeScript", "Stripe"]
   },
-  { 
+  {
     id: "02.",
-    title: "HORIZON AI", 
-    desc: "A studio focused on making complex AI data tangible and visually breathtaking for engineers.",
-    img: "/projects/horizon.png"
+    title: "HORIZON AI",
+    desc: "A cutting-edge studio focused on making complex AI data tangible and visually breathtaking for engineers and data scientists.",
+    img: "/projects/horizon.png",
+    github: "https://github.com/yourusername/horizon-ai",
+    stack: ["React", "D3.js", "Python", "TensorFlow"]
   },
-  { 
+  {
     id: "03.",
-    title: "DENTARA", 
-    desc: "Closing the gap between dental practice and technology with a high-integrity patient data ecosystem.",
-    img: "/projects/dentara.png"
+    title: "DENTARA",
+    desc: "Closing the gap between dental practice and technology with a high-integrity patient data ecosystem built for modern clinics.",
+    img: "/projects/dentara.png",
+    github: "https://github.com/yourusername/dentara",
+    stack: ["React", "Node.js", "PostgreSQL", "AWS"]
   },
-  { 
+  {
     id: "04.",
-    title: "ELDERKEY", 
-    desc: "Empathy-driven design meeting rigorous security standards for an inclusive digital safety net.",
-    img: "/projects/elderkey.png"
+    title: "ELDERKEY",
+    desc: "Empathy-driven design meeting rigorous security standards for an inclusive digital safety net protecting vulnerable populations.",
+    img: "/projects/elderkey.png",
+    github: "https://github.com/yourusername/elderkey",
+    stack: ["Vue.js", "Express", "MongoDB", "Firebase"]
   },
-  { 
+  {
     id: "05.",
-    title: "ATTENDANCE CHECK", 
-    desc: "A simple QR scanning for attendance check designed for quick and secure student logging.",
+    title: "ATTENDANCE CHECK",
+    desc: "A simple yet powerful QR scanning system for attendance tracking designed for quick and secure student logging.",
     img: "/projects/attendance-check.jfif",
-    link: "https://check-vardz.vercel.app"
+    link: "https://check-vardz.vercel.app",
+    github: "https://github.com/yourusername/attendance-check",
+    stack: ["React", "QR Code", "Vercel"]
   }
 ];
 
@@ -148,74 +334,94 @@ export default function Projects() {
   const [selectedImg, setSelectedImg] = useState(null);
   const containerRef = React.useRef(null);
 
-
   return (
-    <section id="work" ref={containerRef} className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-300 ease-in-out">
-      {/* Background Dotted Grid */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
+    <section
+      id="work"
+      ref={containerRef}
+      className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-700 ease-in-out"
+    >
+      {/* Subtle Background Grid */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_0.5px,transparent_0.5px)] bg-[size:32px_32px] opacity-5 pointer-events-none dark:opacity-5" />
 
-      <div className="relative z-10 max-w-[1500px] mx-auto px-6 md:px-12">
-        {/* Header */}
-        <motion.div 
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-8">
+        {/* Section Header */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-32 md:mb-48"
+          className="mb-32 md:mb-48"
         >
-           <div>
-             <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground mb-6 block">Selected Works</span>
-             <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter">The Exhibition</h2>
-           </div>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-2 h-2 rounded-full bg-foreground" />
+            <span className="text-xs font-bold text-muted-foreground tracking-widest uppercase">
+              Selected Works
+            </span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black text-foreground tracking-tight leading-tight">
+            Project Showcase
+          </h2>
+          <p className="text-lg text-muted-foreground mt-4 max-w-2xl font-light">
+            A curated collection of innovative projects built with cutting-edge technology and meticulous attention to detail.
+          </p>
         </motion.div>
 
-        {/* Project List */}
-        <div className="space-y-32 md:space-y-64">
+        {/* Projects Grid */}
+        <div className="space-y-20 md:space-y-32">
           {projects.map((proj, idx) => (
             <motion.div
               key={idx}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              variants={{
-                hidden: { opacity: 0, y: 50, scale: 0.98, filter: "blur(4px)" },
-                visible: { 
-                  opacity: 1, 
-                  y: 0, 
-                  scale: 1, 
-                  filter: "blur(0px)",
-                  transition: { 
-                    duration: 1, 
-                    delay: idx * 0.1,
-                    ease: [0.215, 0.61, 0.355, 1] 
-                  }
-                }
+              transition={{
+                duration: 0.8,
+                delay: idx * 0.1,
+                ease: [0.215, 0.61, 0.355, 1],
               }}
             >
-              <ProjectItem proj={proj} idx={idx} onOpen={(p) => setSelectedImg(p)} />
+              <ProjectCard
+                proj={proj}
+                idx={idx}
+                onOpen={(p) => setSelectedImg(p)}
+              />
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Project Dialog */}
+      {/* Image Modal Dialog */}
       <Dialog open={!!selectedImg} onOpenChange={(open) => !open && setSelectedImg(null)}>
-        <DialogContent showCloseButton={false} className="max-w-[95vw] md:max-w-[85vw] border-none bg-transparent p-0 overflow-hidden shadow-none flex items-center justify-center">
+        <DialogContent
+          showCloseButton={false}
+          className="max-w-[95vw] md:max-w-[90vw] border-none bg-foreground/95 p-0 overflow-hidden shadow-2xl flex items-center justify-center dark:bg-background/95"
+        >
           <DialogTitle className="sr-only">Project Image View</DialogTitle>
-          <DialogDescription className="sr-only">Detailed view of the selected project asset.</DialogDescription>
+          <DialogDescription className="sr-only">
+            Detailed view of the selected project asset.
+          </DialogDescription>
           {selectedImg && (
-            <div className={`relative ${selectedImg.isMobile ? 'h-[85vh] aspect-[9/19]' : 'w-full h-auto aspect-video'} flex items-center justify-center`}>
-              <div className="relative w-full h-full rounded-2xl md:rounded-[3rem] overflow-hidden shadow-2xl">
-                <Image 
-                  src={selectedImg.url} 
-                  alt="Project View" 
-                  fill 
-                  className="object-cover" 
-                  priority 
-                  unoptimized 
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className={`relative ${
+                selectedImg.isMobile
+                  ? "h-[85vh] aspect-[9/19]"
+                  : "w-full h-[80vh] aspect-video"
+              } flex items-center justify-center`}
+            >
+              <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
+                <Image
+                  src={selectedImg.url}
+                  alt="Project View"
+                  fill
+                  className="object-contain"
+                  priority
+                  unoptimized
                 />
               </div>
-            </div>
+            </motion.div>
           )}
         </DialogContent>
       </Dialog>
