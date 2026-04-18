@@ -885,7 +885,7 @@ export default function Projects() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className={`order-1 md:order-${isEven ? "1" : "2"} w-full flex items-center justify-center md:${isEven ? "pr-4" : "pl-4"}`}
+                className="order-1 md:order-1 w-full flex items-center justify-center md:pr-4"
               >
                 {proj.isMobile ? (
                   <DualPhones firstImage={proj.img} secondImage={proj.imgSecondary} onOpen={setSelectedImg} />
@@ -907,7 +907,7 @@ export default function Projects() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className={`order-2 md:order-${isEven ? "2" : "1"} flex flex-col justify-center space-y-5 md:space-y-7 md:${isEven ? "pl-4" : "pr-4"}`}
+                className="order-2 md:order-2 flex flex-col justify-center space-y-5 md:space-y-7 md:pl-4"
               >
                 <motion.div
                   initial={{ opacity: 0, x: -16 }}
