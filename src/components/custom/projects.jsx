@@ -459,7 +459,6 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
       <div className="flex-none mt-4 mb-3 flex items-center gap-3 px-1">
         <motion.div
           className="h-px flex-1"
-          style={{ backgroundColor: `${proj.accent}40` }}
           key={`mob-div-${index}`}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -655,6 +654,7 @@ export default function Projects() {
 
   const sectionRef  = useRef(null);
   const lockRef     = useRef(false);
+  const exitLockRef = useRef(false);
   const touchStartY = useRef(null);
 
   const proj   = projects[index];
@@ -680,10 +680,23 @@ export default function Projects() {
     setTimeout(() => { lockRef.current = false; }, 780);
   }, [index]);
 
+  const exitPinnedSection = useCallback((dir) => {
+    if (exitLockRef.current) return;
+    exitLockRef.current = true;
+    window.scrollBy({
+      top: dir * window.innerHeight * 0.96,
+      behavior: "smooth",
+    });
+    setTimeout(() => {
+      exitLockRef.current = false;
+    }, 560);
+  }, []);
+
   // ── Wheel ──────────────────────────────────────────────────────────────────
 
   useEffect(() => {
     const onWheel = (e) => {
+      if (selectedImg) return;
       const section = sectionRef.current;
       if (!section) return;
       const rect   = section.getBoundingClientRect();
@@ -692,8 +705,16 @@ export default function Projects() {
 
       const down = e.deltaY > 0;
       const up   = e.deltaY < 0;
-      if (up   && index === 0) return;
-      if (down && index === projects.length - 1) return;
+      if (up && index === 0) {
+        e.preventDefault();
+        exitPinnedSection(-1);
+        return;
+      }
+      if (down && index === projects.length - 1) {
+        e.preventDefault();
+        exitPinnedSection(1);
+        return;
+      }
 
       e.preventDefault();
       if (lockRef.current) return;
@@ -701,7 +722,7 @@ export default function Projects() {
     };
     window.addEventListener("wheel", onWheel, { passive: false });
     return () => window.removeEventListener("wheel", onWheel);
-  }, [index, goTo]);
+  }, [index, goTo, exitPinnedSection, selectedImg]);
 
   // ── Touch swipe ────────────────────────────────────────────────────────────
 
@@ -710,9 +731,25 @@ export default function Projects() {
     const onEnd   = (e) => {
       if (touchStartY.current === null) return;
       const dy = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(dy) < 42) return;
-      goTo(index + (dy > 0 ? 1 : -1));
       touchStartY.current = null;
+      if (Math.abs(dy) < 42) return;
+
+      const section = sectionRef.current;
+      if (!section) return;
+      const rect   = section.getBoundingClientRect();
+      const pinned = rect.top <= 1 && rect.bottom >= window.innerHeight - 1;
+      if (!pinned) return;
+
+      if (dy < 0 && index === 0) {
+        exitPinnedSection(-1);
+        return;
+      }
+      if (dy > 0 && index === projects.length - 1) {
+        exitPinnedSection(1);
+        return;
+      }
+
+      goTo(index + (dy > 0 ? 1 : -1));
     };
     window.addEventListener("touchstart", onStart, { passive: true });
     window.addEventListener("touchend",   onEnd,   { passive: true });
@@ -720,7 +757,7 @@ export default function Projects() {
       window.removeEventListener("touchstart", onStart);
       window.removeEventListener("touchend",   onEnd);
     };
-  }, [index, goTo]);
+  }, [index, goTo, exitPinnedSection]);
 
   // ── Keyboard ───────────────────────────────────────────────────────────────
 
