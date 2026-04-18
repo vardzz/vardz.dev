@@ -497,23 +497,64 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
             className="text-[2rem] font-black tracking-tight leading-[0.9] text-foreground overflow-hidden"
             style={{ lineHeight: "0.92" }}
           >
-            {proj.title.split("").map((char, i) => (
-              <motion.span
-                key={`${index}-mob-${i}`}
-                initial={{ y: "105%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 16,
-                  delay: 0.14 + i * 0.018,
-                }}
-                className="inline-block"
-                style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-              >
-                {char}
-              </motion.span>
-            ))}
+            {proj.title === "ATTENDANCE CHECK" ? (
+              <>
+                <span className="block whitespace-nowrap">
+                  {"ATTENDANCE".split("").map((char, i) => (
+                    <motion.span
+                      key={`${index}-mob-attendance-${i}`}
+                      initial={{ y: "105%", opacity: 0 }}
+                      animate={{ y: "0%", opacity: 1 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 16,
+                        delay: 0.14 + i * 0.018,
+                      }}
+                      className="inline-block"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+                <span className="block whitespace-nowrap">
+                  {"CHECK".split("").map((char, i) => (
+                    <motion.span
+                      key={`${index}-mob-check-${i}`}
+                      initial={{ y: "105%", opacity: 0 }}
+                      animate={{ y: "0%", opacity: 1 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 16,
+                        delay: 0.34 + i * 0.018,
+                      }}
+                      className="inline-block"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              </>
+            ) : (
+              proj.title.split("").map((char, i) => (
+                <motion.span
+                  key={`${index}-mob-${i}`}
+                  initial={{ y: "105%", opacity: 0 }}
+                  animate={{ y: "0%", opacity: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 16,
+                    delay: 0.14 + i * 0.018,
+                  }}
+                  className="inline-block"
+                  style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+                >
+                  {char}
+                </motion.span>
+              ))
+            )}
           </h3>
 
           {/* Description — max 3 lines */}
@@ -521,7 +562,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[0.8rem] text-muted-foreground leading-relaxed font-light line-clamp-3"
+            className="text-[0.8rem] text-muted-foreground leading-relaxed font-light"
           >
             {proj.desc}
           </motion.p>
@@ -930,18 +971,49 @@ export default function Projects() {
                 </motion.div>
 
                 <h3 className="text-4xl md:text-[3.8rem] font-black text-foreground tracking-tight leading-[0.88] overflow-hidden">
-                  {proj.title.split("").map((char, i) => (
-                    <motion.span
-                      key={`${index}-${i}`}
-                      initial={{ y: "110%", opacity: 0 }}
-                      animate={{ y: "0%", opacity: 1 }}
-                      transition={{ type: "spring", stiffness: 95, damping: 15, delay: 0.16 + i * 0.022 }}
-                      className="inline-block"
-                      style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
+                  {proj.title === "ATTENDANCE CHECK" ? (
+                    <>
+                      <span className="block whitespace-nowrap">
+                        {"ATTENDANCE".split("").map((char, i) => (
+                          <motion.span
+                            key={`${index}-attendance-${i}`}
+                            initial={{ y: "110%", opacity: 0 }}
+                            animate={{ y: "0%", opacity: 1 }}
+                            transition={{ type: "spring", stiffness: 95, damping: 15, delay: 0.16 + i * 0.022 }}
+                            className="inline-block"
+                          >
+                            {char}
+                          </motion.span>
+                        ))}
+                      </span>
+                      <span className="block whitespace-nowrap">
+                        {"CHECK".split("").map((char, i) => (
+                          <motion.span
+                            key={`${index}-check-${i}`}
+                            initial={{ y: "110%", opacity: 0 }}
+                            animate={{ y: "0%", opacity: 1 }}
+                            transition={{ type: "spring", stiffness: 95, damping: 15, delay: 0.42 + i * 0.022 }}
+                            className="inline-block"
+                          >
+                            {char}
+                          </motion.span>
+                        ))}
+                      </span>
+                    </>
+                  ) : (
+                    proj.title.split("").map((char, i) => (
+                      <motion.span
+                        key={`${index}-${i}`}
+                        initial={{ y: "110%", opacity: 0 }}
+                        animate={{ y: "0%", opacity: 1 }}
+                        transition={{ type: "spring", stiffness: 95, damping: 15, delay: 0.16 + i * 0.022 }}
+                        className="inline-block"
+                        style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))
+                  )}
                 </h3>
 
                 <motion.p
