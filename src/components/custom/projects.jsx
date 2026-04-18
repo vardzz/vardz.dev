@@ -695,6 +695,7 @@ export default function Projects() {
   // ── Wheel ──────────────────────────────────────────────────────────────────
 
   useEffect(() => {
+    if (isMobileView) return;
     const onWheel = (e) => {
       if (selectedImg) return;
       const section = sectionRef.current;
@@ -722,11 +723,12 @@ export default function Projects() {
     };
     window.addEventListener("wheel", onWheel, { passive: false });
     return () => window.removeEventListener("wheel", onWheel);
-  }, [index, goTo, exitPinnedSection, selectedImg]);
+  }, [index, goTo, exitPinnedSection, selectedImg, isMobileView]);
 
   // ── Touch swipe ────────────────────────────────────────────────────────────
 
   useEffect(() => {
+    if (isMobileView) return;
     const onStart = (e) => { touchStartY.current = e.touches[0].clientY; };
     const onEnd   = (e) => {
       if (touchStartY.current === null) return;
@@ -757,7 +759,7 @@ export default function Projects() {
       window.removeEventListener("touchstart", onStart);
       window.removeEventListener("touchend",   onEnd);
     };
-  }, [index, goTo, exitPinnedSection]);
+  }, [index, goTo, exitPinnedSection, isMobileView]);
 
   // ── Keyboard ───────────────────────────────────────────────────────────────
 
@@ -776,10 +778,10 @@ export default function Projects() {
     <section
       id="work"
       ref={sectionRef}
-      style={{ height: `${projects.length * 100}vh` }}
+      style={{ height: isMobileView ? "auto" : `${projects.length * 100}vh` }}
       className="relative bg-background"
     >
-      <div className="sticky top-0 h-screen overflow-hidden bg-background">
+      <div className={`${isMobileView ? "relative" : "sticky top-0 h-screen"} overflow-hidden bg-background`}>
 
         {/* Dot grid */}
         <div className="absolute inset-0 bg-[radial-gradient(var(--foreground)_0.5px,transparent_0.5px)] bg-[size:28px_28px] opacity-[0.04] pointer-events-none" />
@@ -802,7 +804,7 @@ export default function Projects() {
         </AnimatePresence>
 
         {/* ─────────────────────── MOBILE VIEW ─────────────────────────── */}
-        <div className="block md:hidden h-full w-full">
+        <div className="block md:hidden w-full">
 
           {/* Shared top bar — sits above everything */}
           <div className="absolute top-0 left-0 right-0 z-40 flex items-center justify-between px-5 pt-5 pb-3">
