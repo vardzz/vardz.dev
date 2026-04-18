@@ -580,7 +580,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
                 if (proj.link) window.open(proj.link, "_blank", "noopener,noreferrer");
                 else onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: proj.isMobile });
               }}
-              className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide text-background"
+              className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide text-background cursor-pointer"
               style={{ backgroundColor: proj.accent }}
             >
               View Project
@@ -591,7 +591,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 border border-border text-foreground rounded-full text-xs font-semibold tracking-wide"
+                className="px-4 py-2 border border-border text-foreground rounded-full text-xs font-semibold tracking-wide cursor-pointer"
               >
                 GitHub ↗
               </motion.a>
@@ -632,7 +632,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
               key={i}
               onClick={() => goTo(i)}
               aria-label={`Project ${i + 1}`}
-              className="flex items-center justify-center p-1"
+              className="flex items-center justify-center p-1 cursor-pointer"
             >
               <motion.span
                 animate={{ width: i === index ? 20 : 5, opacity: i === index ? 1 : 0.3 }}
@@ -667,7 +667,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
             onClick={() => goTo(index - 1)}
             disabled={index === 0}
             whileTap={index > 0 ? { scale: 0.9 } : {}}
-            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 text-sm"
+            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer text-sm"
           >
             ←
           </motion.button>
@@ -675,7 +675,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
             onClick={() => goTo(index + 1)}
             disabled={index === projects.length - 1}
             whileTap={index < projects.length - 1 ? { scale: 0.9 } : {}}
-            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 text-sm"
+            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer text-sm"
           >
             →
           </motion.button>
@@ -1038,7 +1038,7 @@ export default function Projects() {
                       if (proj.link) window.open(proj.link, "_blank", "noopener,noreferrer");
                       else setSelectedImg({ url: normalizeProjectImageSrc(proj.img), isMobile: proj.isMobile });
                     }}
-                    className="px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide text-background shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    className="px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide text-background shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
                     style={{ backgroundColor: proj.accent }}
                   >
                     View Project
@@ -1050,7 +1050,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
-                      className="px-6 py-2.5 border border-border text-foreground rounded-full text-sm font-semibold tracking-wide hover:bg-secondary/40 transition-colors duration-300"
+                      className="px-6 py-2.5 border border-border text-foreground rounded-full text-sm font-semibold tracking-wide hover:bg-secondary/40 transition-colors duration-300 cursor-pointer"
                     >
                       GitHub ↗
                     </motion.a>
@@ -1085,7 +1085,7 @@ export default function Projects() {
           <div className="absolute bottom-0 left-0 right-0 z-30 flex items-center justify-between px-6 md:px-14 pb-6 md:pb-8">
             <div className="flex items-center gap-2">
               {projects.map((_, i) => (
-                <button key={i} onClick={() => goTo(i)} aria-label={`Project ${i + 1}`} className="flex items-center justify-center py-2">
+                <button key={i} onClick={() => goTo(i)} aria-label={`Project ${i + 1}`} className="flex items-center justify-center py-2 cursor-pointer">
                   <motion.span
                     animate={{ width: i === index ? 28 : 6, opacity: i === index ? 1 : 0.3 }}
                     transition={{ type: "spring", stiffness: 220, damping: 22 }}
@@ -1114,14 +1114,14 @@ export default function Projects() {
                 disabled={index === 0}
                 whileHover={index > 0 ? { scale: 1.1, x: -2 } : {}}
                 whileTap={index > 0 ? { scale: 0.93 } : {}}
-                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 transition-colors hover:bg-secondary/50 text-base"
+                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 disabled:cursor-not-allowed transition-colors hover:bg-secondary/50 cursor-pointer text-base"
               >←</motion.button>
               <motion.button
                 onClick={() => goTo(index + 1)}
                 disabled={index === projects.length - 1}
                 whileHover={index < projects.length - 1 ? { scale: 1.1, x: 2 } : {}}
                 whileTap={index < projects.length - 1 ? { scale: 0.93 } : {}}
-                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 transition-colors hover:bg-secondary/50 text-base"
+                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 disabled:cursor-not-allowed transition-colors hover:bg-secondary/50 cursor-pointer text-base"
               >→</motion.button>
             </div>
           </div>
