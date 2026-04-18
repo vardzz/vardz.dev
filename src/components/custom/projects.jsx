@@ -340,9 +340,9 @@ export default function Projects() {
         </AnimatePresence>
 
         {/* ── Header ────────────────────────────────────────────────────── */}
-        <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-6 md:px-14 pt-8 md:pt-10">
+        <div className="absolute top-14 md:top-16 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-14">
           {/* Label */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 rounded-full border border-border/50 bg-background/70 px-4 py-2 backdrop-blur-sm">
             <motion.div
               className="w-1.5 h-1.5 rounded-full"
               style={{ backgroundColor: proj.accent }}
@@ -355,7 +355,7 @@ export default function Projects() {
           </div>
 
           {/* Live counter */}
-          <div className="flex items-baseline gap-1.5">
+          <div className="flex items-baseline gap-1.5 rounded-full border border-border/50 bg-background/70 px-4 py-2 backdrop-blur-sm">
             <AnimatePresence mode="popLayout" custom={direction}>
               <motion.span
                 key={`count-${index}`}
@@ -376,7 +376,7 @@ export default function Projects() {
         </div>
 
         {/* ── Main grid ───────────────────────────────────────────────────── */}
-        <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-14 items-center px-6 md:px-14 pt-24 pb-20">
+        <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-14 items-center px-6 md:px-14 pt-32 md:pt-36 pb-20">
 
           {/* IMAGE */}
           <AnimatePresence mode="popLayout" custom={direction}>
