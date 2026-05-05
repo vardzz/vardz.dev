@@ -14,6 +14,7 @@ import LoadingScreen from "@/components/custom/loadingScreen";
 import TechGrid from "@/components/custom/TechGrid";
 import SmoothScroll from "@/components/custom/SmoothScroll";
 import ScrollReveal from "@/components/custom/ScrollReveal";
+import Certificates from "@/components/custom/certificates";
 
 export default function Portfolio() {
   const [loading, setLoading] = useState(true);
@@ -69,6 +70,10 @@ export default function Portfolio() {
           <ScrollReveal variant="up" distance={60}>
             <Projects />
           </ScrollReveal>
+
+          <ScrollReveal variant="up" distance={40}>
+          <Certificates />
+        </ScrollReveal>
         </main>
         
         <ScrollReveal variant="down" distance={40}>
