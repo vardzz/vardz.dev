@@ -7,7 +7,7 @@ export default function Hero() {
   const navItems = [
     { label: "WORK", href: "#work" },
     { label: "ABOUT", href: "#about" },
-    { label: "EXPERIENCE", href: "#experience" },
+    { label: "Journey", href: "#experience" },
     { label: "CONTACT", href: "#contact" },
   ];
 
