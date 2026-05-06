@@ -95,6 +95,11 @@
     @apply bg-background text-foreground min-h-screen w-full;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
   }
+
+  p {
+    font-family: "Satoshi", "Inter", "Helvetica Neue", Arial, sans-serif;
+  }
+
   html {
     scroll-behavior: smooth;
   }
