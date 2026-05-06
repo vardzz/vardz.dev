@@ -27,7 +27,7 @@ export default function Certificates() {
   };
 
   return (
-    <section className="min-h-[50vh] py-24 px-4 md:px-8 lg:px-12 bg-white dark:bg-black">
+    <section id="certificates" className="min-h-[50vh] py-24 px-4 md:px-8 lg:px-12 bg-white dark:bg-black">
       <div className="mb-12">
         <p className="text-xs font-mono tracking-widest text-zinc-500 dark:text-zinc-600 uppercase">
           RECOGNITION & CERTIFICATIONS

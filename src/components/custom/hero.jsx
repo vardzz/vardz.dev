@@ -6,6 +6,7 @@ import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-mot
 export default function Hero() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const [activeItem, setActiveItem] = React.useState(null);
 
   React.useEffect(() => {
     const handleMouseMove = (e) => {
@@ -18,133 +19,70 @@ export default function Hero() {
 
   const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-  
-  const backgroundGlow = useMotionTemplate`radial-gradient(800px circle at ${smoothX}px ${smoothY}px, rgba(255,255,255,0.04), transparent 80%)`;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.5
-      }
+  const backgroundGlow = useMotionTemplate`radial-gradient(900px circle at ${smoothX}px ${smoothY}px, rgba(0,0,0,0.035), transparent 65%)`;
+
+  const navItems = [
+    { label: "WORK", href: "#work" },
+    { label: "ABOUT", href: "#about" },
+    { label: "EXPERIENCE", href: "#experience" },
+    { label: "CERTIFICATES", href: "#certificates" },
+    { label: "CONTACT", href: "#contact" },
+  ];
+
+  const getOpacity = (label) => {
+    if (!activeItem) {
+      return 0.4;
     }
+
+    return activeItem === label ? 1 : 0.1;
   };
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: [0.2, 1, 0.3, 1] }
-    }
-  };
-
-  const [text, setText] = React.useState("");
-  const [isDeleting, setIsDeleting] = React.useState(false);
-  const [loopNum, setLoopNum] = React.useState(0);
-  const [typingSpeed, setTypingSpeed] = React.useState(150);
-
-  const words = ["Software Engineer", "Cloud Architect", "UI/UX Designer"];
-
-  React.useEffect(() => {
-    // Wait for the container's initial fade-in (2.5s) before starting to type
-    const startTimeout = setTimeout(() => {
-      const handleType = () => {
-        const i = loopNum % words.length;
-        const fullText = words[i];
-        const updatedText = isDeleting 
-          ? fullText.substring(0, text.length - 1) 
-          : fullText.substring(0, text.length + 1);
-
-        setText(updatedText);
-
-        if (!isDeleting && updatedText === fullText) {
-          setTimeout(() => setIsDeleting(true), 2000);
-          setTypingSpeed(100);
-        } else if (isDeleting && updatedText === "") {
-          setIsDeleting(false);
-          setLoopNum(loopNum + 1);
-          setTypingSpeed(150);
-        } else {
-          setTypingSpeed(isDeleting ? 50 : 100);
-        }
-      };
-
-      const timer = setTimeout(handleType, typingSpeed);
-      return () => clearTimeout(timer);
-    }, loopNum === 0 && text === "" ? 3000 : 0); // initial delay of 3s to be safe
-
-    return () => clearTimeout(startTimeout);
-  }, [text, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <section className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-4 bg-background overflow-hidden py-20 transition-colors duration-700 ease-in-out">
-      {/* Background Glow */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{ background: backgroundGlow }}
-      />
-      
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="flex flex-col items-center justify-center text-center relative"
-      >
-        {/* JERICHO - Responsive text-outline (mobile only) */}
-        <div className="flex px-4 py-2 md:py-8">
-          {"JERICHO".split("").map((letter, i) => (
-            <motion.span
-              key={i}
-              variants={letterVariants}
-              className="text-[18vw] md:text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground text-outline"
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </div>
+    <section className="relative z-10 ml-0 min-h-screen w-full overflow-hidden bg-white px-8 py-20 text-black transition-colors duration-700 ease-in-out dark:bg-[#050505] dark:text-white sm:ml-20 md:ml-24 md:px-16">
+      <motion.div className="pointer-events-none absolute inset-0" style={{ background: backgroundGlow }} />
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1.5 }}
-          className="flex flex-col items-center -my-[6vw] md:-my-[4vw] relative z-20"
+      <div className="relative grid min-h-[calc(100vh-5rem)] grid-cols-1 items-center gap-20 lg:grid-cols-[1fr_1.5fr] lg:gap-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="flex max-w-xl flex-col justify-end self-end pb-8 lg:pb-12"
         >
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-black dark:text-white">
+            JERICHO VARDE
+          </p>
+          <p className="max-w-sm text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">
+            Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
+          </p>
         </motion.div>
 
-        {/* VARDE - Responsive text-outline (mobile only) */}
-        <div className="flex px-4 py-2 md:py-8">
-          {"VARDE".split("").map((letter, i) => (
-            <motion.span
-              key={i}
-              variants={letterVariants}
-              className="text-[18vw] md:text-[17vw] leading-[0.8] font-black tracking-[-0.07em] uppercase text-foreground text-outline"
+        <div className="flex w-full flex-col justify-center gap-2 pb-24 lg:pb-12">
+          {navItems.map((item, index) => (
+            <motion.a
+              key={item.label}
+              href={item.href}
+              onHoverStart={() => setActiveItem(item.label)}
+              onHoverEnd={() => setActiveItem(null)}
+              onFocus={() => setActiveItem(item.label)}
+              onBlur={() => setActiveItem(null)}
+              initial={{ opacity: 0, x: -18 }}
+              animate={{
+                opacity: getOpacity(item.label),
+                x: activeItem === item.label ? 30 : 0,
+                skewX: activeItem === item.label ? -5 : 0,
+              }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="origin-left w-fit uppercase leading-[0.85] tracking-tighter text-black dark:text-white"
+              style={{ transitionDelay: `${index * 40}ms` }}
             >
-              {letter}
-            </motion.span>
+              <motion.div className="text-5xl font-black sm:text-6xl md:text-[7vw] lg:text-[8vw] xl:text-[7.5vw]">
+                {item.label}
+              </motion.div>
+            </motion.a>
           ))}
         </div>
-
-        {/* Typewriter Effect */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.5, duration: 1.5 }}
-          className="flex flex-col items-center mt-12 relative z-20"
-        >
-          <span className="text-[3vw] md:text-[1.2vw] uppercase tracking-[0.5em] pl-[0.5em] font-medium text-muted-foreground min-h-[1.5em] flex items-center justify-center cursor-default">
-            {text}
-            <motion.span
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ repeat: Infinity, duration: 0.8 }}
-              className="inline-block w-[2px] h-[1.2em] bg-foreground ml-2"
-            />
-          </span>
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

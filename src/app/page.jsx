@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import Navbar from "@/components/custom/navbar";
+import Sidebar from "@/components/custom/sidebar";
 import Hero from "@/components/custom/hero";
 import About from "@/components/custom/about";
 import TechStack from "@/components/custom/techStack";
@@ -41,7 +41,7 @@ export default function Portfolio() {
       </AnimatePresence>
 
       <div className="relative min-h-screen w-full bg-background text-foreground selection:bg-foreground selection:text-background font-sans transition-colors duration-700 ease-in-out">
-        <Navbar />
+        <Sidebar />
         <main>
           <ScrollReveal delay={0.1}>
             <Hero />

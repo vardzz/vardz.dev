@@ -25,7 +25,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-background text-foreground pt-32 pb-6 md:pb-12 overflow-hidden relative border-t border-foreground/5 transition-colors duration-300 ease-in-out">
+    <footer id="contact" className="w-full bg-background text-foreground pt-32 pb-6 md:pb-12 overflow-hidden relative border-t border-foreground/5 transition-colors duration-300 ease-in-out">
        <motion.div 
          variants={containerVariants}
          initial="hidden"
