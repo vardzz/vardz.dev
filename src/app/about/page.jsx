@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <div className="relative min-h-screen w-full bg-base text-accent font-sans">
       <Sidebar />
-      <main className="bg-base">
+      <main className="bg-base pb-16 sm:pb-0 sm:pl-20 md:pl-24">
         {/* Tech Stack - Icons Only Variant */}
         <TechStack variant="icons" />
         
