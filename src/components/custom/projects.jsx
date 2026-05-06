@@ -495,7 +495,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
         >
           {/* Title */}
           <h3
-            className="text-[2rem] font-black tracking-tight leading-[0.9] text-foreground overflow-hidden"
+            className="text-[2rem] font-black tracking-tight leading-[0.9] text-accent overflow-hidden"
             style={{ lineHeight: "0.92" }}
           >
             {proj.title === "ATTENDANCE CHECK" ? (
@@ -592,7 +592,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 border border-border text-foreground rounded-full text-xs font-semibold tracking-wide cursor-pointer"
+                className="px-4 py-2 border border-accent text-accent rounded-full text-xs font-semibold tracking-wide cursor-pointer"
               >
                 GitHub ↗
               </motion.a>
@@ -654,7 +654,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: direction > 0 ? -12 : 12, opacity: 0 }}
               transition={{ type: "spring", stiffness: 240, damping: 24 }}
-              className="text-xl font-black text-foreground tabular-nums"
+              className="text-xl font-black text-accent tabular-nums"
             >
               {String(index + 1).padStart(2, "0")}
             </motion.span>
@@ -668,7 +668,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
             onClick={() => goTo(index - 1)}
             disabled={index === 0}
             whileTap={index > 0 ? { scale: 0.9 } : {}}
-            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer text-sm"
+            className="w-8 h-8 rounded-full border border-accent flex items-center justify-center text-accent disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer text-sm"
           >
             ←
           </motion.button>
@@ -676,7 +676,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
             onClick={() => goTo(index + 1)}
             disabled={index === projects.length - 1}
             whileTap={index < projects.length - 1 ? { scale: 0.9 } : {}}
-            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer text-sm"
+            className="w-8 h-8 rounded-full border border-accent flex items-center justify-center text-accent disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer text-sm"
           >
             →
           </motion.button>
@@ -821,9 +821,9 @@ export default function Projects() {
       id="work"
       ref={sectionRef}
       style={{ height: isMobileView ? "auto" : `${projects.length * 100}vh` }}
-      className="relative bg-background"
+      className="relative bg-base"
     >
-      <div className={`${isMobileView ? "relative" : "sticky top-0 h-screen"} overflow-hidden bg-background`}>
+      <div className={`${isMobileView ? "relative" : "sticky top-0 h-screen"} overflow-hidden bg-base`}>
 
         {/* Dot grid */}
         <div className="absolute inset-0 bg-[radial-gradient(var(--foreground)_0.5px,transparent_0.5px)] bg-[size:28px_28px] opacity-[0.04] pointer-events-none" />
@@ -886,7 +886,7 @@ export default function Projects() {
 
           {/* Header */}
           <div className="absolute top-14 md:top-16 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-14">
-            <div className="flex items-center gap-3 rounded-full border border-border/50 bg-background/70 px-4 py-2 backdrop-blur-sm">
+            <div className="flex items-center gap-3 rounded-full border border-accent/50 bg-base/70 px-4 py-2 backdrop-blur-sm">
               <motion.div
                 className="w-1.5 h-1.5 rounded-full"
                 style={{ backgroundColor: proj.accent }}
@@ -897,7 +897,7 @@ export default function Projects() {
                 Selected Works
               </span>
             </div>
-            <div className="flex items-baseline gap-1.5 rounded-full border border-border/50 bg-background/70 px-4 py-2 backdrop-blur-sm">
+            <div className="flex items-baseline gap-1.5 rounded-full border border-accent/50 bg-base/70 px-4 py-2 backdrop-blur-sm">
               <AnimatePresence mode="popLayout" custom={direction}>
                 <motion.span
                   key={`count-${index}`}
@@ -906,7 +906,7 @@ export default function Projects() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: direction > 0 ? -20 : 20, opacity: 0 }}
                   transition={{ type: "spring", stiffness: 220, damping: 22 }}
-                  className="text-4xl font-black text-foreground tabular-nums leading-none"
+                  className="text-4xl font-black text-accent tabular-nums leading-none"
                 >
                   {String(index + 1).padStart(2, "0")}
                 </motion.span>
@@ -971,7 +971,7 @@ export default function Projects() {
                   </span>
                 </motion.div>
 
-                <h3 className="text-4xl md:text-[3.8rem] font-black text-foreground tracking-tight leading-[0.88] overflow-hidden">
+                <h3 className="text-4xl md:text-[3.8rem] font-black text-accent tracking-tight leading-[0.88] overflow-hidden">
                   {proj.title === "ATTENDANCE CHECK" ? (
                     <>
                       <span className="block whitespace-nowrap">
@@ -1051,7 +1051,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
-                      className="px-6 py-2.5 border border-border text-foreground rounded-full text-sm font-semibold tracking-wide hover:bg-secondary/40 transition-colors duration-300 cursor-pointer"
+                      className="px-6 py-2.5 border border-accent text-accent rounded-full text-sm font-semibold tracking-wide hover:opacity-70 transition-all duration-300 cursor-pointer"
                     >
                       GitHub ↗
                     </motion.a>
@@ -1115,14 +1115,14 @@ export default function Projects() {
                 disabled={index === 0}
                 whileHover={index > 0 ? { scale: 1.1, x: -2 } : {}}
                 whileTap={index > 0 ? { scale: 0.93 } : {}}
-                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 disabled:cursor-not-allowed transition-colors hover:bg-secondary/50 cursor-pointer text-base"
+                className="w-9 h-9 rounded-full border border-accent flex items-center justify-center text-accent disabled:opacity-20 disabled:cursor-not-allowed transition-all hover:opacity-70 cursor-pointer text-base"
               >←</motion.button>
               <motion.button
                 onClick={() => goTo(index + 1)}
                 disabled={index === projects.length - 1}
                 whileHover={index < projects.length - 1 ? { scale: 1.1, x: 2 } : {}}
                 whileTap={index < projects.length - 1 ? { scale: 0.93 } : {}}
-                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-foreground disabled:opacity-20 disabled:cursor-not-allowed transition-colors hover:bg-secondary/50 cursor-pointer text-base"
+                className="w-9 h-9 rounded-full border border-accent flex items-center justify-center text-accent disabled:opacity-20 disabled:cursor-not-allowed transition-all hover:opacity-70 cursor-pointer text-base"
               >→</motion.button>
             </div>
           </div>
@@ -1133,7 +1133,7 @@ export default function Projects() {
       <Dialog open={!!selectedImg} onOpenChange={(open) => !open && setSelectedImg(null)}>
         <DialogContent
           showCloseButton={false}
-          className="max-w-[95vw] md:max-w-[90vw] border-none bg-foreground/95 dark:bg-background/95 p-0 overflow-hidden shadow-2xl flex items-center justify-center"
+          className="max-w-[95vw] md:max-w-[90vw] border-none bg-accent/95 p-0 overflow-hidden shadow-2xl flex items-center justify-center"
         >
           <DialogTitle className="sr-only">Project Image</DialogTitle>
           <DialogDescription className="sr-only">Full view of the selected project.</DialogDescription>

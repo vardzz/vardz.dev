@@ -60,7 +60,7 @@ export default function About() {
   };
 
   return (
-    <div className="relative w-full bg-background text-foreground transition-colors duration-300 ease-in-out">
+    <div className="relative w-full bg-base text-accent">
       {/* ABOUT ME ("MEET VARDZ") */}
       <section id="about" className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-32 md:py-48 grid grid-cols-1 md:grid-cols-2 gap-20 items-center overflow-hidden">
         {/* Left Column */}
@@ -74,14 +74,14 @@ export default function About() {
           <motion.span variants={itemVariants} className="text-[10px] tracking-[0.2em] uppercase font-bold text-muted-foreground mb-8 block">Identity</motion.span>
           <motion.h2 variants={itemVariants} className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-12">Meet Vardz</motion.h2>
           <motion.p variants={itemVariants} className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mb-16 max-w-2xl">
-            I'm Jericho Varde, a passionate <strong className="font-bold text-foreground">Software Engineer & Cloud Enthusiast</strong> based in the Philippines. I specialize in crafting <strong className="font-bold text-foreground">robust web applications</strong> and <strong className="font-bold text-foreground">scalable cloud architectures</strong>, blending strict technical precision with creative problem-solving to elevate digital experiences.
+            I'm Jericho Varde, a passionate <strong className="font-bold text-accent">Software Engineer & Cloud Enthusiast</strong> based in the Philippines. I specialize in crafting <strong className="font-bold text-accent">robust web applications</strong> and <strong className="font-bold text-accent">scalable cloud architectures</strong>, blending strict technical precision with creative problem-solving to elevate digital experiences.
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-wrap gap-6">
             <button className="bg-foreground text-background py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:opacity-80 transition-all cursor-pointer">
               Download CV
             </button>
-            <button className="bg-transparent text-foreground border border-foreground py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:bg-foreground/5 transition-all cursor-pointer">
+            <button className="bg-transparent text-accent border border-accent py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:opacity-70 transition-all cursor-pointer">
               Contact Me
             </button>
           </motion.div>
@@ -123,9 +123,9 @@ export default function About() {
               style={{
                 transform: "translateZ(100px)",
               }}
-              className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-background border border-foreground/20 flex items-center justify-center p-4 z-20"
+              className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-base border border-accent/20 flex items-center justify-center p-4 z-20"
             >
-              <span className="text-[9px] uppercase tracking-[0.2em] text-foreground leading-tight text-center font-bold">
+              <span className="text-[9px] uppercase tracking-[0.2em] text-accent leading-tight text-center font-bold">
                 Cloud<br/>Engineer<br/>2026
               </span>
             </div>

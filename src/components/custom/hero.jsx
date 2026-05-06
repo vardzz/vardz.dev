@@ -16,7 +16,7 @@ export default function Hero() {
   const isDimmed = (label) => activeItem && activeItem !== label;
 
   return (
-    <section className="relative z-10 ml-0 min-h-screen w-full overflow-hidden bg-white px-12 py-12 text-black transition-colors duration-700 ease-in-out dark:bg-[#050505] dark:text-white sm:ml-20 md:ml-24 lg:px-12">
+    <section className="relative z-10 ml-0 min-h-screen w-full overflow-hidden bg-base px-12 py-12 text-accent sm:ml-20 md:ml-24 lg:px-12">
       <div className="relative grid min-h-screen grid-cols-1 gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,10 +24,10 @@ export default function Hero() {
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
           className="flex max-w-xl flex-col justify-end self-end pb-24 lg:pb-24"
         >
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-black dark:text-white">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
             JERICHO VARDE
           </p>
-          <p className="max-w-sm text-base leading-relaxed text-zinc-400 sm:text-lg">
+          <p className="max-w-sm text-base leading-relaxed text-accent opacity-70 sm:text-lg">
             Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
           </p>
         </motion.div>
@@ -49,7 +49,7 @@ export default function Hero() {
               }}
               whileHover={{ x: 40, color: "#ffffff" }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="origin-left w-fit uppercase leading-[0.85] tracking-tight text-zinc-300"
+              className="origin-left w-fit uppercase leading-[0.85] tracking-tight text-accent"
               style={{ fontFamily: "'Stardom', 'Playfair Display', 'Times New Roman', serif" }}
             >
               <motion.div className="text-6xl font-normal sm:text-7xl lg:text-[8vw]">

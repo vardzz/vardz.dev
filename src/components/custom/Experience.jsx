@@ -53,7 +53,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" ref={containerRef} className="relative bg-background text-foreground py-32 md:py-48 overflow-hidden transition-colors duration-300 ease-in-out">
+    <section id="experience" ref={containerRef} className="relative bg-base text-accent py-32 md:py-48 overflow-hidden">
       {/* Background Dotted Grid */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(var(--foreground)_1px,transparent_1px)] bg-[size:32px_32px] opacity-10 pointer-events-none" />
 

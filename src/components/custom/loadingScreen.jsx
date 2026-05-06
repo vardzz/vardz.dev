@@ -30,11 +30,11 @@ const LoadingScreen = ({ onFinished }) => {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, y: -20, transition: { duration: 0.8, ease: "easeInOut" } }}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-black"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-base"
     >
       <div className="text-center">
         <motion.h1 
-          className="text-5xl md:text-8xl font-black text-black dark:text-white tracking-tighter"
+          className="text-5xl md:text-8xl font-black text-accent tracking-tighter"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >

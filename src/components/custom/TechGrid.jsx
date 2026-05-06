@@ -45,7 +45,7 @@ export default function TechGrid() {
   const activeSpec = SPECIALIZATIONS.find(s => s.id === activeFilter);
 
   return (
-    <section className="bg-background py-16 px-6 md:px-12 lg:px-24">
+    <section className="bg-base py-16 px-6 md:px-12 lg:px-24">
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
         <motion.div 
@@ -55,10 +55,10 @@ export default function TechGrid() {
           transition={{ duration: 0.8, ease: [0.2, 1, 0.3, 1] }}
           className="mb-12 text-center"
         >
-          <p className="tracking-[0.3em] text-[10px] text-zinc-500 font-medium uppercase mb-1">
+          <p className="tracking-[0.3em] text-[10px] text-accent opacity-50 font-medium uppercase mb-1">
             THE ARSENAL
           </p>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-foreground">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-accent">
             TECH STACK
           </h2>
         </motion.div>
@@ -74,8 +74,8 @@ export default function TechGrid() {
                 onClick={() => setActiveFilter(spec.id)}
                 className={`group flex items-center gap-2 px-4 py-2 transition-all duration-300 relative cursor-pointer`}
               >
-                <Icon size={16} className={`${isActive ? "text-foreground" : "text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200"}`} />
-                <span className={`text-[13px] font-bold tracking-[0.2em] uppercase ${isActive ? "text-foreground" : "text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200"}`}>
+                <Icon size={16} className={`${isActive ? "text-accent" : "text-accent opacity-50 group-hover:opacity-70"}`} />
+                <span className={`text-[13px] font-bold tracking-[0.2em] uppercase ${isActive ? "text-accent" : "text-accent opacity-50 group-hover:opacity-70"}`}>
                   {spec.label}
                 </span>
                 {isActive && (
@@ -99,7 +99,7 @@ export default function TechGrid() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: [0.2, 1, 0.3, 1] }}
-              className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed font-medium min-h-[40px]"
+              className="text-accent opacity-70 text-xs leading-relaxed font-medium min-h-[40px]"
             >
               {activeSpec.description}
             </motion.p>
@@ -152,10 +152,10 @@ function TechCard({ tech }) {
       <DialogTrigger asChild>
         <motion.div
           whileHover="hover"
-          className="group relative aspect-square flex flex-col items-center justify-center bg-[#FAFAFA] dark:bg-[#0A0A0A] cursor-pointer overflow-hidden border border-black/40 dark:border-white/40 hover:border-black dark:hover:border-white rounded-2xl transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10"
+          className="group relative aspect-square flex flex-col items-center justify-center bg-base cursor-pointer overflow-hidden border border-accent/40 hover:border-accent rounded-2xl transition-all duration-500"
         >
           {/* Default Monochrome State & Hover Brand Color State */}
-          <motion.div className="flex flex-col items-center justify-center text-black dark:text-zinc-500 h-full w-full">
+          <motion.div className="flex flex-col items-center justify-center text-accent opacity-70 h-full w-full">
             <motion.div 
               variants={{
                 hover: { scale: 1.15 }
@@ -177,7 +177,7 @@ function TechCard({ tech }) {
 
             {/* Tech Name Reveal on Hover */}
             <p 
-              className="absolute bottom-3 text-[10px] font-extrabold tracking-[0.2em] uppercase text-black dark:text-zinc-400 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+              className="absolute bottom-3 text-[10px] font-extrabold tracking-[0.2em] uppercase text-accent opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
             >
               {tech.name}
             </p>
@@ -185,7 +185,7 @@ function TechCard({ tech }) {
         </motion.div>
       </DialogTrigger>
 
-      <DialogContent showCloseButton={false} className="border-black/10 dark:border-white/10 shadow-2xl rounded-[2.5rem] p-0 overflow-hidden">
+      <DialogContent showCloseButton={false} className="border-accent/10 shadow-2xl rounded-[2.5rem] p-0 overflow-hidden bg-base">
         <DialogTitle className="sr-only">Tech Details: {tech.name}</DialogTitle>
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -208,10 +208,10 @@ function TechCard({ tech }) {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="space-y-1"
           >
-            <h3 className="text-4xl font-black tracking-tighter text-foreground">
+            <h3 className="text-4xl font-black tracking-tighter text-accent">
               {tech.name}
             </h3>
-            <p className="text-zinc-500 uppercase tracking-[0.3em] text-[10px] font-bold">
+            <p className="text-accent opacity-50 uppercase tracking-[0.3em] text-[10px] font-bold">
               {tech.category}
             </p>
           </motion.div>
@@ -220,9 +220,9 @@ function TechCard({ tech }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="pt-6 border-t border-black/5 dark:border-white/5 w-full"
+            className="pt-6 border-t border-accent/10 w-full"
           >
-            <p className="text-zinc-500 dark:text-zinc-400 text-xs font-semibold tracking-wide">
+            <p className="text-accent opacity-70 text-xs font-semibold tracking-wide">
               {tech.experience}
             </p>
           </motion.div>
