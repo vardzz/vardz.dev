@@ -36,7 +36,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="fixed left-0 top-0 z-50 hidden h-screen w-20 flex-col border-r border-accent/10 bg-base py-8 sm:flex md:w-24">
+      <aside className="fixed left-0 top-0 z-50 hidden h-screen w-20 flex-col bg-transparent py-8 sm:flex md:w-24">
         <div className="flex flex-1 flex-col items-center">
           <div className="flex flex-col items-center gap-5 pt-2">
             {socialLinks.map(({ label, href, icon: Icon }) => (
@@ -55,8 +55,6 @@ export default function Sidebar() {
               </motion.a>
             ))}
           </div>
-
-          <div className="my-6 h-24 w-px bg-accent opacity-20" />
         </div>
 
         <div className="flex flex-col items-center pb-2">
