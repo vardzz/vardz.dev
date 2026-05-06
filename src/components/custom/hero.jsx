@@ -25,10 +25,16 @@ export default function Hero() {
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
             className="flex w-1/3 flex-col pb-10 pr-8 pl-8 font-sans lg:pl-16"
           >
-            <p className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-[#C9C8C5]">
+            <p 
+              className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-[#C9C8C5]"
+              style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+            >
               JERICHO VARDE
             </p>
-            <p className="max-w-[320px] text-sm leading-[1.8] text-[#C9C8C5] opacity-80 lg:text-base">
+            <p 
+              className="max-w-[320px] text-sm leading-[1.8] text-[#C9C8C5] opacity-80 lg:text-base"
+              style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+            >
               Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
             </p>
           </motion.div>
