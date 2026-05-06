@@ -17,49 +17,51 @@ export default function Hero() {
 
   return (
     <section className="relative z-10 min-h-screen w-full overflow-x-hidden bg-base text-accent pl-20 box-border md:pl-24">
-      <div className="flex min-h-screen w-full box-border">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className="flex w-1/3 flex-col justify-end pb-20 pr-8 pl-8 font-sans lg:pl-16"
-        >
-          <p className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-[#C9C8C5]">
-            JERICHO VARDE
-          </p>
-          <p className="max-w-[320px] text-sm leading-[1.8] text-[#C9C8C5] opacity-80 lg:text-base">
-            Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
-          </p>
-        </motion.div>
+      <div className="flex min-h-screen w-full items-center box-border">
+        <div className="flex w-full items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            className="flex w-1/3 flex-col pb-10 pr-8 pl-8 font-sans lg:pl-16"
+          >
+            <p className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-[#C9C8C5]">
+              JERICHO VARDE
+            </p>
+            <p className="max-w-[320px] text-sm leading-[1.8] text-[#C9C8C5] opacity-80 lg:text-base">
+              Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
+            </p>
+          </motion.div>
 
-        <div className="flex w-2/3 flex-col justify-center overflow-x-hidden pr-8 pl-4 lg:pr-12 lg:pl-8">
-          {navItems.map((item, index) => (
-            <motion.div
-              key={item.label}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
-              initial={{ opacity: 0, x: -12 }}
-              animate={{
-                opacity: isDimmed(index) ? 0.15 : 1,
-                x: hoveredIndex === index ? 24 : 0,
-              }}
-              whileHover={{ x: 24, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 40 }}
-              className="w-fit origin-left cursor-pointer select-none text-left"
-            >
-              <motion.a
-                href={item.href}
+          <div className="flex w-2/3 flex-col overflow-hidden pb-10 pr-8 pl-4 lg:pr-12 lg:pl-8">
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.label}
+                onHoverStart={() => setHoveredIndex(index)}
+                onHoverEnd={() => setHoveredIndex(null)}
+                initial={{ opacity: 0, x: -12 }}
                 animate={{
-                  color: hoveredIndex === index ? "#C9C8C5" : "#3B3B41",
+                  opacity: isDimmed(index) ? 0.15 : 1,
+                  x: hoveredIndex === index ? 24 : 0,
                 }}
+                whileHover={{ x: 24, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                className="block w-fit font-display text-[12vw] leading-[0.8] tracking-[-0.02em] uppercase lg:text-[10vw]"
-                style={{ fontFamily: "'Stardom', 'Playfair Display', 'Times New Roman', serif" }}
+                className="w-fit origin-left cursor-pointer select-none text-left"
               >
-                {item.label}
-              </motion.a>
-            </motion.div>
-          ))}
+                <motion.a
+                  href={item.href}
+                  animate={{
+                    color: hoveredIndex === index ? "#C9C8C5" : "#3B3B41",
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 40 }}
+                  className="block w-fit font-display text-[12vw] leading-[0.9] tracking-[-0.02em] uppercase lg:text-[10vw]"
+                  style={{ fontFamily: "'Stardom', 'Playfair Display', 'Times New Roman', serif" }}
+                >
+                  {item.label}
+                </motion.a>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
