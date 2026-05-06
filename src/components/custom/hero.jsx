@@ -11,51 +11,54 @@ export default function Hero() {
     { label: "CONTACT", href: "#contact" },
   ];
 
-  const [activeItem, setActiveItem] = React.useState(null);
+  const [hoveredIndex, setHoveredIndex] = React.useState(null);
 
-  const isDimmed = (label) => activeItem && activeItem !== label;
+  const isDimmed = (index) => hoveredIndex !== null && hoveredIndex !== index;
 
   return (
-    <section className="relative z-10 ml-0 min-h-screen w-full overflow-hidden bg-base px-12 py-12 text-accent sm:ml-20 md:ml-24 lg:px-12">
-      <div className="relative grid min-h-screen grid-cols-1 gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-12">
+    <section className="relative z-10 min-h-screen w-full overflow-x-hidden bg-base text-accent pl-20 box-border md:pl-24">
+      <div className="flex min-h-screen w-full box-border">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className="flex max-w-xl flex-col justify-end self-end pb-24 lg:pb-24"
+          className="flex w-1/3 flex-col justify-end pb-20 pr-8 pl-8 font-sans lg:pl-16"
         >
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-[#C9C8C5]">
             JERICHO VARDE
           </p>
-          <p className="max-w-sm text-base leading-relaxed text-accent opacity-70 sm:text-lg">
+          <p className="max-w-[320px] text-sm leading-[1.8] text-[#C9C8C5] opacity-80 lg:text-base">
             Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
           </p>
         </motion.div>
 
-        <div className="flex w-full flex-col justify-center gap-1 pb-20 lg:pb-0">
+        <div className="flex w-2/3 flex-col justify-center overflow-x-hidden pr-8 pl-4 lg:pr-12 lg:pl-8">
           {navItems.map((item, index) => (
-            <motion.a
+            <motion.div
               key={item.label}
-              href={item.href}
-              onHoverStart={() => setActiveItem(item.label)}
-              onHoverEnd={() => setActiveItem(null)}
-              onFocus={() => setActiveItem(item.label)}
-              onBlur={() => setActiveItem(null)}
-              initial={{ opacity: 0, x: -14 }}
+              onHoverStart={() => setHoveredIndex(index)}
+              onHoverEnd={() => setHoveredIndex(null)}
+              initial={{ opacity: 0, x: -12 }}
               animate={{
-                opacity: isDimmed(item.label) ? 0.2 : activeItem ? 1 : 0.4,
-                x: activeItem === item.label ? 40 : 0,
-                color: activeItem === item.label ? "#ffffff" : "#d4d4d8",
+                opacity: isDimmed(index) ? 0.15 : 1,
+                x: hoveredIndex === index ? 24 : 0,
               }}
-              whileHover={{ x: 40, color: "#ffffff" }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="origin-left w-fit uppercase leading-[0.85] tracking-tight text-accent"
-              style={{ fontFamily: "'Stardom', 'Playfair Display', 'Times New Roman', serif" }}
+              whileHover={{ x: 24, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 40 }}
+              className="w-fit origin-left cursor-pointer select-none text-left"
             >
-              <motion.div className="text-6xl font-normal sm:text-7xl lg:text-[8vw]">
+              <motion.a
+                href={item.href}
+                animate={{
+                  color: hoveredIndex === index ? "#C9C8C5" : "#3B3B41",
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 40 }}
+                className="block w-fit font-display text-[12vw] leading-[0.8] tracking-[-0.02em] uppercase lg:text-[10vw]"
+                style={{ fontFamily: "'Stardom', 'Playfair Display', 'Times New Roman', serif" }}
+              >
                 {item.label}
-              </motion.div>
-            </motion.a>
+              </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
