@@ -1,63 +1,38 @@
 "use client";
 
 import React from "react";
-import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const [activeItem, setActiveItem] = React.useState(null);
-
-  React.useEffect(() => {
-    const handleMouseMove = (e) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
-
-  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
-  const backgroundGlow = useMotionTemplate`radial-gradient(900px circle at ${smoothX}px ${smoothY}px, rgba(0,0,0,0.035), transparent 65%)`;
-
   const navItems = [
     { label: "WORK", href: "#work" },
     { label: "ABOUT", href: "#about" },
     { label: "EXPERIENCE", href: "#experience" },
-    { label: "CERTIFICATES", href: "#certificates" },
     { label: "CONTACT", href: "#contact" },
   ];
 
-  const getOpacity = (label) => {
-    if (!activeItem) {
-      return 0.4;
-    }
+  const [activeItem, setActiveItem] = React.useState(null);
 
-    return activeItem === label ? 1 : 0.1;
-  };
+  const isDimmed = (label) => activeItem && activeItem !== label;
 
   return (
-    <section className="relative z-10 ml-0 min-h-screen w-full overflow-hidden bg-white px-8 py-20 text-black transition-colors duration-700 ease-in-out dark:bg-[#050505] dark:text-white sm:ml-20 md:ml-24 md:px-16">
-      <motion.div className="pointer-events-none absolute inset-0" style={{ background: backgroundGlow }} />
-
-      <div className="relative grid min-h-[calc(100vh-5rem)] grid-cols-1 items-center gap-20 lg:grid-cols-[1fr_1.5fr] lg:gap-12">
+    <section className="relative z-10 ml-0 min-h-screen w-full overflow-hidden bg-white px-12 py-12 text-black transition-colors duration-700 ease-in-out dark:bg-[#050505] dark:text-white sm:ml-20 md:ml-24 lg:px-12">
+      <div className="relative grid min-h-screen grid-cols-1 gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-12">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="flex max-w-xl flex-col justify-end self-end pb-8 lg:pb-12"
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          className="flex max-w-xl flex-col justify-end self-end pb-24 lg:pb-24"
         >
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-black dark:text-white">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-black dark:text-white">
             JERICHO VARDE
           </p>
-          <p className="max-w-sm text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">
+          <p className="max-w-sm text-base leading-relaxed text-zinc-400 sm:text-lg">
             Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
           </p>
         </motion.div>
 
-        <div className="flex w-full flex-col justify-center gap-2 pb-24 lg:pb-12">
+        <div className="flex w-full flex-col justify-center gap-1 pb-20 lg:pb-0">
           {navItems.map((item, index) => (
             <motion.a
               key={item.label}
@@ -66,17 +41,18 @@ export default function Hero() {
               onHoverEnd={() => setActiveItem(null)}
               onFocus={() => setActiveItem(item.label)}
               onBlur={() => setActiveItem(null)}
-              initial={{ opacity: 0, x: -18 }}
+              initial={{ opacity: 0, x: -14 }}
               animate={{
-                opacity: getOpacity(item.label),
-                x: activeItem === item.label ? 30 : 0,
-                skewX: activeItem === item.label ? -5 : 0,
+                opacity: isDimmed(item.label) ? 0.2 : activeItem ? 1 : 0.4,
+                x: activeItem === item.label ? 40 : 0,
+                color: activeItem === item.label ? "#ffffff" : "#d4d4d8",
               }}
-              transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="origin-left w-fit uppercase leading-[0.85] tracking-tighter text-black dark:text-white"
-              style={{ transitionDelay: `${index * 40}ms` }}
+              whileHover={{ x: 40, color: "#ffffff" }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              className="origin-left w-fit uppercase leading-[0.85] tracking-tight text-zinc-300"
+              style={{ fontFamily: "'Stardom', 'Playfair Display', 'Times New Roman', serif" }}
             >
-              <motion.div className="text-5xl font-black sm:text-6xl md:text-[7vw] lg:text-[8vw] xl:text-[7.5vw]">
+              <motion.div className="text-6xl font-normal sm:text-7xl lg:text-[8vw]">
                 {item.label}
               </motion.div>
             </motion.a>
