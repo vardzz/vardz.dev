@@ -28,10 +28,7 @@ export default function Sidebar() {
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
   const isAboutPage = pathname === "/about";
-
-  const glitchStyle = isAboutPage
-    ? { textShadow: "1.5px 0 0 rgba(255,0,0,0.8), -1.5px 0 0 rgba(0,255,255,0.8)" }
-    : {};
+  
 
   return (
     <>
@@ -39,15 +36,9 @@ export default function Sidebar() {
         <div className="flex flex-1 flex-col items-center justify-start pt-4">
           <div className="flex flex-col items-center gap-8">
             {isAboutPage ? (
-              <Link
-                href="/"
-                className="group flex flex-col items-center gap-12"
-              >
+              <Link href="/" className="group flex flex-col items-center gap-12">
                 <motion.span
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  style={glitchStyle}
-                  className="-rotate-90 whitespace-nowrap font-mono text-sm font-bold tracking-[0.3em] text-accent transition-opacity hover:opacity-100 opacity-80"
+                  className="-rotate-90 whitespace-nowrap font-mono text-sm font-bold tracking-[0.3em] text-accent opacity-80 transition-all duration-150 cursor-pointer group-hover:underline"
                 >
                   HOME
                 </motion.span>
@@ -77,12 +68,7 @@ export default function Sidebar() {
         </div>
 
         <div className="flex flex-col items-center pb-4">
-          <span
-            style={glitchStyle}
-            className="-rotate-90 whitespace-nowrap text-xs tracking-[0.35em] text-accent opacity-50"
-          >
-            © {currentYear}
-          </span>
+          <span className="-rotate-90 whitespace-nowrap text-xs tracking-[0.35em] text-accent opacity-50">© {currentYear}</span>
         </div>
       </aside>
 
@@ -90,12 +76,7 @@ export default function Sidebar() {
         <div className="flex items-center gap-3">
           {isAboutPage ? (
             <Link href="/">
-              <motion.span
-                style={glitchStyle}
-                className="font-mono text-xs font-bold tracking-[0.3em] text-accent"
-              >
-                HOME
-              </motion.span>
+              <motion.span className="font-mono text-xs font-bold tracking-[0.3em] text-accent cursor-pointer hover:underline">HOME</motion.span>
             </Link>
           ) : (
             socialLinks.map(({ label, href, icon: Icon }) => (
@@ -116,12 +97,7 @@ export default function Sidebar() {
           )}
         </div>
 
-        <span
-          style={glitchStyle}
-          className="font-mono text-[10px] tracking-[0.3em] text-accent opacity-50"
-        >
-          @ {currentYear}
-        </span>
+        <span className="font-mono text-[10px] tracking-[0.3em] text-accent opacity-50">@ {currentYear}</span>
       </div>
     </>
   );
