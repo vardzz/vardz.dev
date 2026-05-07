@@ -133,18 +133,6 @@ export default function About() {
                 className="object-cover grayscale brightness-75 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
               />
             </motion.div>
-            
-            {/* Micro-badge */}
-            <div 
-              style={{
-                transform: "translateZ(100px)",
-              }}
-              className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 w-24 h-24 bg-base border border-accent/20 flex items-center justify-center p-4 z-20"
-            >
-              <span className="text-[9px] uppercase tracking-[0.2em] text-accent leading-tight text-center font-bold">
-                Cloud<br/>Engineer<br/>2026
-              </span>
-            </div>
           </motion.div>
         </div>
       </section>
