@@ -61,21 +61,29 @@ export default function About() {
 
   return (
     <div className="relative w-full bg-base text-accent">
-      <section id="about" className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 md:items-start overflow-hidden min-h-screen">
+      {/* REMOVED overflow-hidden so the text doesn't get cut off! */}
+      <section id="about" className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 md:items-start min-h-screen">
         
         {/* Left Column (Waller Protocol Text) */}
         <motion.div 
            variants={containerVariants}
            initial="hidden"
-           animate="visible"
-          className="flex flex-col justify-center md:pt-6 lg:pt-10 max-w-3xl relative z-20"
+           whileInView="visible"
+           viewport={{ once: true, amount: 0.1 }}
+           className="col-span-1 lg:col-span-7 xl:col-span-8 flex flex-col justify-center md:pt-6 lg:pt-10 max-w-4xl relative z-20"
         >
-          <motion.h2 variants={itemVariants} className="text-6xl md:text-8xl font-bold tracking-tight mb-8">
+          <motion.h2 variants={itemVariants} className="text-8xl md:text-9xl font-bold tracking-tighter leading-none mb-4">
             About
           </motion.h2>
           
+          <motion.div variants={itemVariants} className="mb-12">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight text-accent">
+              I'm Vardz. A developer, systems thinker, and aspiring Cloud Engineer.
+            </h3>
+          </motion.div>
+
           <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed mb-6 text-lg">
-            I'm Jericho. A developer, systems thinker, and aspiring Cloud Engineer. The architecture of the web has always fascinated me. I've never been afraid to dismantle and rebuild, whether it's configuring basic layouts, exploring modern React frameworks, or orchestrating multi-agent AI systems. I've been fascinated by digital infrastructure since I wrote my first lines of code.
+            The architecture of the web has always fascinated me. I've never been afraid to dismantle and rebuild, whether it's configuring basic layouts, exploring modern React frameworks, or orchestrating multi-agent AI systems. I've been fascinated by digital infrastructure since I wrote my first lines of code.
           </motion.p>
           
           <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed mb-8 text-lg">
@@ -96,7 +104,7 @@ export default function About() {
         </motion.div>
 
         {/* Right Column (Untouched Image Logic) */}
-        <div className="perspective-[1000px]">
+        <div className="col-span-1 lg:col-span-5 xl:col-span-4 w-full perspective-[1000px] lg:ml-auto lg:max-w-md">
           <motion.div 
              initial={{ opacity: 0, x: 50, scale: 0.95 }}
              whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -109,7 +117,7 @@ export default function About() {
              }}
              onMouseMove={handleMouseMove}
              onMouseLeave={handleMouseLeave}
-             className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-muted overflow-hidden group cursor-pointer rounded-3xl md:rounded-[2.5rem]"
+             className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-muted overflow-hidden group cursor-pointer rounded-3xl md:rounded-[2.5rem] mt-10 lg:mt-0"
           >
             <motion.div 
               style={{
