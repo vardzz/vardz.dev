@@ -44,50 +44,58 @@ export default function About() {
     visible: { 
       opacity: 1, 
       transition: { 
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       } 
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+      transition: { type: "spring", stiffness: 100, damping: 20 } 
     }
   };
 
   return (
     <div className="relative w-full bg-base text-accent">
-      {/* ABOUT ME ("MEET VARDZ") */}
-      <section id="about" className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-32 md:py-48 grid grid-cols-1 md:grid-cols-2 gap-20 items-center overflow-hidden">
-        {/* Left Column */}
+      <section id="about" className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 md:items-start overflow-hidden min-h-screen">
+        
+        {/* Left Column (Waller Protocol Text) */}
         <motion.div 
            variants={containerVariants}
            initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true, amount: 0.2 }}
-           className="flex flex-col flex-start"
+           animate="visible"
+          className="flex flex-col justify-center md:pt-6 lg:pt-10 max-w-3xl relative z-20"
         >
-          <motion.span variants={itemVariants} className="text-[10px] tracking-[0.2em] uppercase font-bold text-muted-foreground mb-8 block">Identity</motion.span>
-          <motion.h2 variants={itemVariants} className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-12">Meet Vardz</motion.h2>
-          <motion.p variants={itemVariants} className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mb-16 max-w-2xl">
-            I'm Jericho Varde, a passionate <strong className="font-bold text-accent">Software Engineer & Cloud Enthusiast</strong> based in the Philippines. I specialize in crafting <strong className="font-bold text-accent">robust web applications</strong> and <strong className="font-bold text-accent">scalable cloud architectures</strong>, blending strict technical precision with creative problem-solving to elevate digital experiences.
+          <motion.h2 variants={itemVariants} className="text-6xl md:text-8xl font-bold tracking-tight mb-8">
+            About
+          </motion.h2>
+          
+          <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed mb-6 text-lg">
+            I'm Jericho. A developer, systems thinker, and aspiring Cloud Engineer. The architecture of the web has always fascinated me. I've never been afraid to dismantle and rebuild, whether it's configuring basic layouts, exploring modern React frameworks, or orchestrating multi-agent AI systems. I've been fascinated by digital infrastructure since I wrote my first lines of code.
           </motion.p>
           
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-6">
-            <button className="bg-foreground text-background py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:opacity-80 transition-all cursor-pointer">
-              Download CV
-            </button>
-            <button className="bg-transparent text-accent border border-accent py-5 px-10 font-bold uppercase tracking-widest text-[11px] hover:opacity-70 transition-all cursor-pointer">
-              Contact Me
-            </button>
-          </motion.div>
+          <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed mb-8 text-lg">
+            Fast forward to today, and my focus has shifted from just building pages to architecting solutions. What excites me most about engineering is the ability to create systems that have purpose and solve real problems within communities. It goes beyond writing clean code; it's about designing resilient infrastructure and intelligent experiences. Leaning into the actual needs of users, finding the right logic to apply, and iterating on that value over time is the key to great software.
+          </motion.p>
+
+          <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed mb-4 text-lg">
+            This is one of my favorite quotes (by Antoine de Saint-Exupéry):
+          </motion.p>
+          
+          <motion.blockquote variants={itemVariants} className="text-2xl md:text-3xl italic border-l-2 border-accent/30 pl-6 py-2 my-6 font-light">
+            “Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.”
+          </motion.blockquote>
+
+          <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed text-lg">
+            This resonates deeply with me because I have no desire to over-engineer for the sake of complexity. I only want to design, build, and deploy systems that are efficient, that matter, and that leave a lasting impact.
+          </motion.p>
         </motion.div>
 
-        {/* Right Column */}
+        {/* Right Column (Untouched Image Logic) */}
         <div className="perspective-[1000px]">
           <motion.div 
              initial={{ opacity: 0, x: 50, scale: 0.95 }}
@@ -111,7 +119,7 @@ export default function About() {
               className="relative w-full h-full"
             >
               <Image 
-                src={mounted && activeTheme === "dark" ? "/assets/Vardz-dark.png" : "/assets/Vardz-light.png"}
+                src={mounted ? (activeTheme === "dark" ? "/assets/Vardz-dark.png" : "/assets/Vardz-light.png") : "/assets/Vardz-dark.png"}
                 alt="VARDZ"
                 fill
                 className="object-cover grayscale brightness-75 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
