@@ -94,7 +94,7 @@ export default function About() {
             This is one of my favorite quotes (by Antoine de Saint-Exupéry):
           </motion.p>
           
-          <motion.blockquote variants={itemVariants} className="text-2xl md:text-3xl italic border-l-2 border-accent/30 pl-6 py-2 my-6 font-light">
+          <motion.blockquote variants={itemVariants} className="font-heading text-2xl md:text-3xl italic border-l-2 border-accent/30 pl-6 py-2 my-6 font-light" style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}>
             “Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.”
           </motion.blockquote>
 
