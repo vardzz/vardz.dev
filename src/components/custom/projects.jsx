@@ -34,7 +34,7 @@ const projects = [
     link: null,
     github: "https://github.com/yourusername/court-catcher",
     stack: ["React", "Next.js", "TypeScript", "Stripe"],
-    accent: "#4ade80",
+    accent: "#F4EDE4",
   },
   {
     id: "02",
@@ -44,7 +44,7 @@ const projects = [
     isMobile: false,
     github: "https://github.com/yourusername/horizon-ai",
     stack: ["React", "D3.js", "Python", "TensorFlow"],
-    accent: "#60a5fa",
+    accent: "#F4EDE4",
   },
   {
     id: "03",
@@ -55,7 +55,7 @@ const projects = [
     link: "https://dentara.vercel.app/",
     github: "https://github.com/vardzz/dentara",
     stack: ["React", "Node.js", "PostgreSQL", "AWS"],
-    accent: "#f472b6",
+    accent: "#F4EDE4",
   },
   {
     id: "04",
@@ -65,7 +65,7 @@ const projects = [
     isMobile: false,
     github: "https://github.com/yourusername/elderkey",
     stack: ["Vue.js", "Express", "MongoDB", "Firebase"],
-    accent: "#fb923c",
+    accent: "#F4EDE4",
   },
   {
     id: "05",
@@ -76,7 +76,7 @@ const projects = [
     link: "https://check-vardz.vercel.app",
     github: "https://github.com/yourusername/attendance-check",
     stack: ["React", "QR Code", "Vercel"],
-    accent: "#a78bfa",
+    accent: "#F4EDE4",
   },
 ];
 
@@ -86,23 +86,23 @@ function LaptopMockup({ image, onImageClick }) {
   const src = normalizeProjectImageSrc(image);
   return (
     <div className="relative w-full max-w-[680px] mx-auto drop-shadow-2xl">
-      <div className="relative w-full aspect-[16/10] rounded-t-[1.6rem] bg-gradient-to-b from-zinc-600 via-zinc-800 to-zinc-950 p-[9px] border border-zinc-500/40">
-        <div className="relative h-full w-full rounded-t-[1rem] bg-black border border-zinc-800 overflow-hidden">
+      <div className="relative w-full aspect-[16/10] rounded-t-[1.6rem] bg-gradient-to-b from-base via-base to-base p-[9px] border border-accent/30">
+        <div className="relative h-full w-full rounded-t-[1rem] bg-base border border-accent/30 overflow-hidden">
           <Image
             src={src} alt="Project" fill unoptimized priority
             className="object-cover cursor-pointer transition-transform duration-700 hover:scale-[1.04]"
             onClick={onImageClick}
           />
-          <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_28%,transparent_52%)] mix-blend-screen pointer-events-none" />
-          <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.3)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(244, 237, 228, 0.22)_0%,rgba(244, 237, 228, 0.22)_28%,transparent_52%)] mix-blend-screen pointer-events-none" />
+          <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(244, 237, 228, 0.22)] pointer-events-none" />
         </div>
-        <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[110px] h-[8px] rounded-b-lg bg-black border-x border-b border-zinc-700/70" />
+        <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[110px] h-[8px] rounded-b-lg bg-base border-x border-b border-accent/30" />
       </div>
-      <div className="mx-auto -mt-px h-[4px] w-[85%] rounded-full bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700" />
-      <div className="relative w-[110%] -ml-[5%] h-7 rounded-b-[1.2rem] bg-gradient-to-b from-zinc-500 via-zinc-700 to-zinc-900 border border-zinc-600/60">
-        <div className="absolute left-1/2 top-[6px] -translate-x-1/2 h-[9px] w-[160px] rounded-full bg-zinc-400/30 border border-zinc-600/40" />
+      <div className="mx-auto -mt-px h-[4px] w-[85%] rounded-full bg-gradient-to-r from-base via-base to-base" />
+      <div className="relative w-[110%] -ml-[5%] h-7 rounded-b-[1.2rem] bg-gradient-to-b from-base via-base to-base border border-accent/30">
+        <div className="absolute left-1/2 top-[6px] -translate-x-1/2 h-[9px] w-[160px] rounded-full bg-base/30 border border-accent/30" />
       </div>
-      <div className="mx-auto mt-[5px] h-[6px] w-[75%] rounded-full bg-black/40 blur-[3px]" />
+      <div className="mx-auto mt-[5px] h-[6px] w-[75%] rounded-full bg-base/40 blur-[3px]" />
     </div>
   );
 }
@@ -138,7 +138,7 @@ function PhoneMockup({ image, onImageClick, rotate = 0, compact = false }) {
         className="relative mx-auto"
         style={{
           maxWidth: compact ? "90px" : "200px",
-          filter: "drop-shadow(0 24px 40px rgba(0,0,0,0.72)) drop-shadow(0 4px 8px rgba(0,0,0,0.40))",
+          filter: "drop-shadow(0 24px 40px rgba(244, 237, 228, 0.22)) drop-shadow(0 4px 8px rgba(244, 237, 228, 0.22))",
         }}
       >
         {/* 9 : 19.5 aspect ratio — iPhone 16 Pro */}
@@ -149,7 +149,7 @@ function PhoneMockup({ image, onImageClick, rotate = 0, compact = false }) {
             className="absolute inset-0"
             style={{
               borderRadius: frameR,
-              background: "linear-gradient(158deg, #3a3a3c 0%, #1c1c1e 45%, #2c2c2e 70%, #111113 100%)",
+              background: "linear-gradient(158deg, #111111 0%, #111111 45%, #111111 70%, #111111 100%)",
             }}
           />
           {/* Polished frame highlight */}
@@ -157,7 +157,7 @@ function PhoneMockup({ image, onImageClick, rotate = 0, compact = false }) {
             className="absolute inset-[1.5px]"
             style={{
               borderRadius: `calc(${frameR} - 1.5px)`,
-              background: "linear-gradient(158deg, #8e8e93 0%, #48484a 25%, #636366 55%, #2c2c2e 100%)",
+              background: "linear-gradient(158deg, #111111 0%, #111111 25%, #111111 55%, #111111 100%)",
             }}
           />
           {/* Inner face */}
@@ -165,7 +165,7 @@ function PhoneMockup({ image, onImageClick, rotate = 0, compact = false }) {
             className="absolute inset-[3px]"
             style={{
               borderRadius: `calc(${frameR} - 3px)`,
-              background: "#0d0d0f",
+              background: "#111111",
             }}
           />
 
@@ -175,8 +175,8 @@ function PhoneMockup({ image, onImageClick, rotate = 0, compact = false }) {
             style={{
               inset: screenInset,
               borderRadius: screenR,
-              background: "#000",
-              border: "0.5px solid rgba(255,255,255,0.06)",
+              background: "#111111",
+              border: "0.5px solid rgba(244, 237, 228, 0.22)",
             }}
           >
             <Image
@@ -192,14 +192,14 @@ function PhoneMockup({ image, onImageClick, rotate = 0, compact = false }) {
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                background: "linear-gradient(118deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 22%, transparent 46%)",
+                background: "linear-gradient(118deg, rgba(244, 237, 228, 0.22) 0%, rgba(244, 237, 228, 0.22) 22%, transparent 46%)",
                 mixBlendMode: "screen",
               }}
             />
             {/* Vignette depth */}
             <div
               className="absolute inset-0 pointer-events-none"
-              style={{ boxShadow: "inset 0 0 26px rgba(0,0,0,0.20)" }}
+              style={{ boxShadow: "inset 0 0 26px rgba(244, 237, 228, 0.22)" }}
             />
           </div>
 
@@ -212,20 +212,20 @@ function PhoneMockup({ image, onImageClick, rotate = 0, compact = false }) {
               height: `${diH}px`,
               transform: "translateX(-50%)",
               borderRadius: `${diH / 2}px`,
-              background: "#000",
-              boxShadow: "0 1px 4px rgba(0,0,0,0.7), inset 0 0 0 0.5px rgba(255,255,255,0.05)",
+              background: "#111111",
+              boxShadow: "0 1px 4px rgba(244, 237, 228, 0.22), inset 0 0 0 0.5px rgba(244, 237, 228, 0.22)",
             }}
           />
 
           {/* ── LEFT: mute toggle ── */}
-          <div className="absolute pointer-events-none" style={{ left: "-2px", top: "17%", width: `${btnW}px`, height: `${muteH}px`, borderRadius: "1.5px 0 0 1.5px", background: "linear-gradient(180deg,#636366 0%,#3a3a3c 100%)" }} />
+          <div className="absolute pointer-events-none" style={{ left: "-2px", top: "17%", width: `${btnW}px`, height: `${muteH}px`, borderRadius: "1.5px 0 0 1.5px", background: "linear-gradient(180deg,#111111 0%,#111111 100%)" }} />
           {/* volume up */}
-          <div className="absolute pointer-events-none" style={{ left: "-2px", top: "26%", width: `${btnW}px`, height: `${volH}px`, borderRadius: "1.5px 0 0 1.5px", background: "linear-gradient(180deg,#636366 0%,#3a3a3c 100%)" }} />
+          <div className="absolute pointer-events-none" style={{ left: "-2px", top: "26%", width: `${btnW}px`, height: `${volH}px`, borderRadius: "1.5px 0 0 1.5px", background: "linear-gradient(180deg,#111111 0%,#111111 100%)" }} />
           {/* volume down */}
-          <div className="absolute pointer-events-none" style={{ left: "-2px", top: "37%", width: `${btnW}px`, height: `${volH}px`, borderRadius: "1.5px 0 0 1.5px", background: "linear-gradient(180deg,#636366 0%,#3a3a3c 100%)" }} />
+          <div className="absolute pointer-events-none" style={{ left: "-2px", top: "37%", width: `${btnW}px`, height: `${volH}px`, borderRadius: "1.5px 0 0 1.5px", background: "linear-gradient(180deg,#111111 0%,#111111 100%)" }} />
 
           {/* ── RIGHT: power ── */}
-          <div className="absolute pointer-events-none" style={{ right: "-2px", top: "29%", width: `${btnW}px`, height: `${powerH}px`, borderRadius: "0 1.5px 1.5px 0", background: "linear-gradient(180deg,#636366 0%,#3a3a3c 100%)" }} />
+          <div className="absolute pointer-events-none" style={{ right: "-2px", top: "29%", width: `${btnW}px`, height: `${powerH}px`, borderRadius: "0 1.5px 1.5px 0", background: "linear-gradient(180deg,#111111 0%,#111111 100%)" }} />
 
           {/* ── BOTTOM SPEAKER GRILLE ── */}
           <div
@@ -239,7 +239,7 @@ function PhoneMockup({ image, onImageClick, rotate = 0, compact = false }) {
                   width: `${speakerDotW}px`,
                   height: `${speakerDotH}px`,
                   borderRadius: "1px",
-                  background: "rgba(130,130,138,0.55)",
+                  background: "rgba(244, 237, 228, 0.22)",
                 }}
               />
             ))}
@@ -433,23 +433,23 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
             ) : (
               // Compact laptop for mobile view
               <div className="w-full max-w-[320px] px-2">
-                <div className="relative w-full aspect-[16/10] rounded-t-[1rem] bg-gradient-to-b from-zinc-600 via-zinc-800 to-zinc-950 p-[6px] border border-zinc-500/40 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
-                  <div className="relative h-full w-full rounded-t-[0.65rem] bg-black border border-zinc-800 overflow-hidden">
+                <div className="relative w-full aspect-[16/10] rounded-t-[1rem] bg-gradient-to-b from-base via-base to-base p-[6px] border border-accent/30 shadow-[0_20px_60px_-20px_rgba(244, 237, 228, 0.22)]">
+                  <div className="relative h-full w-full rounded-t-[0.65rem] bg-base border border-accent/30 overflow-hidden">
                     <Image
                       src={normalizeProjectImageSrc(proj.img)}
                       alt="Project" fill unoptimized priority
                       className="object-cover cursor-pointer"
                       onClick={() => onOpen({ url: normalizeProjectImageSrc(proj.img), isMobile: false })}
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(255,255,255,0.12)_0%,transparent_50%)] mix-blend-screen pointer-events-none" />
+                    <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(244, 237, 228, 0.22)_0%,transparent_50%)] mix-blend-screen pointer-events-none" />
                   </div>
-                  <div className="absolute top-[5px] left-1/2 -translate-x-1/2 w-[70px] h-[5px] rounded-b-md bg-black border-x border-b border-zinc-700/60" />
+                  <div className="absolute top-[5px] left-1/2 -translate-x-1/2 w-[70px] h-[5px] rounded-b-md bg-base border-x border-b border-accent/30" />
                 </div>
-                <div className="mx-auto -mt-px h-[3px] w-[84%] rounded-full bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700" />
-                <div className="relative w-[108%] -ml-[4%] h-5 rounded-b-[0.9rem] bg-gradient-to-b from-zinc-500 via-zinc-700 to-zinc-900 border border-zinc-600/50">
-                  <div className="absolute left-1/2 top-[4px] -translate-x-1/2 h-[7px] w-[100px] rounded-full bg-zinc-400/25" />
+                <div className="mx-auto -mt-px h-[3px] w-[84%] rounded-full bg-gradient-to-r from-base via-base to-base" />
+                <div className="relative w-[108%] -ml-[4%] h-5 rounded-b-[0.9rem] bg-gradient-to-b from-base via-base to-base border border-accent/30">
+                  <div className="absolute left-1/2 top-[4px] -translate-x-1/2 h-[7px] w-[100px] rounded-full bg-base/25" />
                 </div>
-                <div className="mx-auto mt-[3px] h-[4px] w-[72%] rounded-full bg-black/35 blur-[2px]" />
+                <div className="mx-auto mt-[3px] h-[4px] w-[72%] rounded-full bg-base/35 blur-[2px]" />
               </div>
             )}
           </motion.div>
@@ -563,7 +563,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[0.8rem] text-muted-foreground leading-relaxed font-light"
+            className="text-[0.8rem] text-accent/70 leading-relaxed font-light"
           >
             {proj.desc}
           </motion.p>
@@ -614,7 +614,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.46 + i * 0.05, type: "spring", stiffness: 140, damping: 18 }}
-                  className="flex-none px-2.5 py-1 text-[10px] text-muted-foreground rounded-full font-medium border border-border/50 bg-secondary/40 whitespace-nowrap"
+                  className="flex-none px-2.5 py-1 text-[10px] text-accent/70 rounded-full font-medium border border-accent/30 bg-base/40 whitespace-nowrap"
                 >
                   {tech}
                 </motion.span>
@@ -659,7 +659,7 @@ function MobileProjectView({ proj, index, direction, onOpen, goTo }) {
               {String(index + 1).padStart(2, "0")}
             </motion.span>
           </AnimatePresence>
-          <span className="text-xs text-muted-foreground">/{String(projects.length).padStart(2, "0")}</span>
+          <span className="text-xs text-accent/70">/{String(projects.length).padStart(2, "0")}</span>
         </div>
 
         {/* Arrow buttons */}
@@ -857,7 +857,7 @@ export default function Projects() {
                 animate={{ scale: [1, 1.5, 1] }}
                 transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
               />
-              <span className="text-[10px] font-bold text-muted-foreground tracking-[0.25em] uppercase">
+              <span className="text-[10px] font-bold text-accent/70 tracking-[0.25em] uppercase">
                 Selected Works
               </span>
             </div>
@@ -893,7 +893,7 @@ export default function Projects() {
                 animate={{ scale: [1, 1.5, 1] }}
                 transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
               />
-              <span className="text-xs font-bold text-muted-foreground tracking-[0.25em] uppercase">
+              <span className="text-xs font-bold text-accent/70 tracking-[0.25em] uppercase">
                 Selected Works
               </span>
             </div>
@@ -911,7 +911,7 @@ export default function Projects() {
                   {String(index + 1).padStart(2, "0")}
                 </motion.span>
               </AnimatePresence>
-              <span className="text-sm text-muted-foreground font-light">
+              <span className="text-sm text-accent/70 font-light">
                 &nbsp;/ {String(projects.length).padStart(2, "0")}
               </span>
             </div>
@@ -1021,7 +1021,7 @@ export default function Projects() {
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.36, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-sm md:text-base text-muted-foreground leading-relaxed font-light max-w-[360px]"
+                  className="text-sm md:text-base text-accent/70 leading-relaxed font-light max-w-[360px]"
                 >
                   {proj.desc}
                 </motion.p>
@@ -1071,7 +1071,7 @@ export default function Projects() {
                         initial={{ opacity: 0, scale: 0.82 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.52 + i * 0.055, type: "spring", stiffness: 130, damping: 18 }}
-                        className="px-3 py-1 text-xs text-muted-foreground rounded-full font-medium border border-border/50 bg-secondary/40"
+                        className="px-3 py-1 text-xs text-accent/70 rounded-full font-medium border border-accent/30 bg-base/40"
                       >
                         {tech}
                       </motion.span>
@@ -1103,7 +1103,7 @@ export default function Projects() {
                   animate={{ opacity: 0.55, y: 0 }}
                   exit={{ opacity: 0, y: 6 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xs tracking-[0.2em] uppercase text-muted-foreground hidden md:block"
+                  className="text-xs tracking-[0.2em] uppercase text-accent/70 hidden md:block"
                 >
                   Scroll to continue ↓
                 </motion.span>

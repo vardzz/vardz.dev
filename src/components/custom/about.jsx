@@ -117,7 +117,7 @@ export default function About() {
              }}
              onMouseMove={handleMouseMove}
              onMouseLeave={handleMouseLeave}
-             className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-muted overflow-hidden group cursor-pointer rounded-3xl md:rounded-[2.5rem] mt-10 lg:mt-0"
+             className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-base overflow-hidden group cursor-pointer rounded-3xl md:rounded-[2.5rem] mt-10 lg:mt-0"
           >
             <motion.div 
               style={{

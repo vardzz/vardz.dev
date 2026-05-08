@@ -81,7 +81,7 @@ export default function TechGrid() {
                 {isActive && (
                   <motion.div 
                     layoutId="activeFilter"
-                    className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-foreground"
+                    className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-accent"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}

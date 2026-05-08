@@ -42,7 +42,7 @@ export default function Sidebar() {
                 >
                   HOME
                 </motion.span>
-                <div className="h-32 w-px bg-[#C9C8C5]" />
+                <div className="h-32 w-px bg-accent" />
               </Link>
             ) : (
               <>
@@ -58,10 +58,10 @@ export default function Sidebar() {
                     transition={{ type: "spring", stiffness: 300, damping: 18 }}
                     className="group flex h-8 w-8 items-center justify-center rounded-full text-accent transition-colors duration-300 hover:text-accent hover:opacity-100 opacity-70"
                   >
-                    <Icon className="h-4 w-4 transition-transform duration-300 group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.35)] dark:group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.25)]" />
+                    <Icon className="h-4 w-4 transition-transform duration-300 group-hover:drop-shadow-[0_0_10px_rgba(244, 237, 228, 0.22)] dark:group-hover:drop-shadow-[0_0_10px_rgba(244, 237, 228, 0.22)]" />
                   </motion.a>
                 ))}
-                <div className="mt-1 h-32 w-px bg-[#C9C8C5] opacity-100" />
+                <div className="mt-1 h-32 w-px bg-accent opacity-100" />
               </>
             )}
           </div>

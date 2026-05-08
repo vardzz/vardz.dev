@@ -61,7 +61,7 @@ export default function Experience() {
         
         {/* Section Header */}
         <div className="mb-24">
-          <span className="text-[10px] tracking-[0.3em] font-bold uppercase text-muted-foreground mb-4 block opacity-60">Career Journey</span>
+          <span className="text-[10px] tracking-[0.3em] font-bold uppercase text-accent/70 mb-4 block opacity-60">Career Journey</span>
           <h2 className="font-heading text-4xl md:text-7xl font-black uppercase tracking-tighter">The Chronicle</h2>
         </div>
 
@@ -69,10 +69,10 @@ export default function Experience() {
         <div className="space-y-32 md:space-y-48 relative">
           
           {/* Progress Connecting Line */}
-          <div className="absolute top-0 bottom-0 left-[15px] md:left-1/2 w-[1px] bg-foreground/10" />
+          <div className="absolute top-0 bottom-0 left-[15px] md:left-1/2 w-[1px] bg-accent/10" />
           
           <motion.div 
-            className="absolute top-0 left-[15px] md:left-1/2 w-[1px] bg-foreground origin-top z-20"
+            className="absolute top-0 left-[15px] md:left-1/2 w-[1px] bg-accent origin-top z-20"
             style={{ scaleY, height: "100%" }}
           />
 
@@ -138,7 +138,7 @@ function ExperienceItem({ exp, isEven, idx }) {
         <div className={`relative w-full max-w-lg pl-12 md:pl-0 ${isEven ? 'text-left md:text-right' : 'text-left'}`}>
           {/* Animated Square Bullet */}
           <motion.div 
-            className={`absolute top-[10px] md:top-1/2 md:-translate-y-1/2 w-2 h-2 bg-foreground rounded-full z-30 ${isEven ? 'left-[-4px] md:right-[-84px] md:left-auto' : 'left-[-4px] md:left-[-84px]'}`}
+            className={`absolute top-[10px] md:top-1/2 md:-translate-y-1/2 w-2 h-2 bg-accent rounded-full z-30 ${isEven ? 'left-[-4px] md:right-[-84px] md:left-auto' : 'left-[-4px] md:left-[-84px]'}`}
             style={{ 
               scale: useTransform(scrollYProgress, [0.45, 0.5, 0.55], [1, 2, 1]),
               boxShadow: useTransform(scrollYProgress, [0.45, 0.5, 0.55], ["0px 0px 0px var(--foreground)", "0px 0px 20px var(--foreground)", "0px 0px 0px var(--foreground)"])
@@ -148,10 +148,10 @@ function ExperienceItem({ exp, isEven, idx }) {
           <h3 className="font-heading text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">
             {exp.title}
           </h3>
-          <div className="text-[10px] tracking-[0.2em] uppercase font-bold text-muted-foreground mb-6 block">
+          <div className="text-[10px] tracking-[0.2em] uppercase font-bold text-accent/70 mb-6 block">
             {exp.role}
           </div>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+          <p className="text-sm md:text-base text-accent/70 leading-relaxed">
             {exp.desc}
           </p>
         </div>

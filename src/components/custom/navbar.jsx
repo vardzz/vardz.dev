@@ -21,7 +21,7 @@ export default function Navbar() {
         <Link 
           href="/" 
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-black text-foreground text-xl uppercase tracking-tight cursor-pointer"
+          className="font-black text-accent text-xl uppercase tracking-tight cursor-pointer"
         >
           VARDZ
         </Link>
@@ -42,7 +42,7 @@ export default function Navbar() {
       <Link 
         href="/" 
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="font-black text-foreground text-xl uppercase tracking-tight cursor-pointer"
+        className="font-black text-accent text-xl uppercase tracking-tight cursor-pointer"
       >
         VARDZ
       </Link>
@@ -52,7 +52,7 @@ export default function Navbar() {
           <a 
             key={idx} 
             href={`#${link.toLowerCase()}`}
-            className="text-[10px] tracking-[0.2em] uppercase text-foreground hover:text-muted-foreground transition-colors duration-300 font-medium cursor-pointer"
+            className="text-[10px] tracking-[0.2em] uppercase text-accent hover:text-accent/70 transition-colors duration-300 font-medium cursor-pointer"
           >
             {link}
           </a>
@@ -63,19 +63,19 @@ export default function Navbar() {
         <button 
           onClick={() => setTheme(isDark ? "light" : "dark")}
           className={`relative w-14 h-7 rounded-full flex items-center px-1 cursor-pointer transition-colors duration-500 ${
-            isDark ? "bg-black" : "bg-white"
-          } border border-foreground/10`}
+            isDark ? "bg-base" : "bg-base"
+          } border border-accent/10`}
           aria-label="Toggle Theme"
         >
           {/* Icons Container */}
           <div className="absolute inset-0 flex justify-between items-center px-1.5 pointer-events-none">
-            <Sun className={`w-3.5 h-3.5 ${isDark ? "text-white" : "text-black"}`} />
-            <Moon className={`w-3.5 h-3.5 ${isDark ? "text-white" : "text-black"}`} />
+            <Sun className={`w-3.5 h-3.5 ${isDark ? "text-accent" : "text-accent"}`} />
+            <Moon className={`w-3.5 h-3.5 ${isDark ? "text-accent" : "text-accent"}`} />
           </div>
 
           {/* Slider Circle */}
           <motion.div 
-            className={`z-10 w-5 h-5 rounded-full ${isDark ? "bg-white" : "bg-black"}`}
+            className={`z-10 w-5 h-5 rounded-full ${isDark ? "bg-base" : "bg-base"}`}
             initial={false}
             animate={{ 
               x: isDark ? 28 : 0 

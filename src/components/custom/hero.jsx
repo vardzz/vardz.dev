@@ -26,12 +26,12 @@ export default function Hero() {
             className="flex w-1/3 flex-col pb-10 pr-8 pl-8 font-sans lg:pl-16"
           >
             <p 
-              className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-[#C9C8C5]"
+              className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-accent"
             >
               JERICHO VARDE
             </p>
             <p 
-              className="max-w-[320px] text-sm leading-[1.8] text-[#C9C8C5] opacity-80 lg:text-base"
+              className="max-w-[320px] text-sm leading-[1.8] text-accent/80 lg:text-base"
             >
               Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
             </p>
@@ -55,7 +55,7 @@ export default function Hero() {
                 <motion.a
                   href={item.href}
                   animate={{
-                    color: hoveredIndex === index ? "#C9C8C5" : "#3B3B41",
+                    color: hoveredIndex === index ? "#F4EDE4" : "rgba(244, 237, 228, 0.22)",
                   }}
                   transition={{ type: "spring", stiffness: 400, damping: 40 }}
                   className="block w-fit font-heading font-display font-bold text-[12vw] leading-[0.9] tracking-[-0.02em] uppercase lg:text-[10vw]"

@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: "rgb(15 14 13 / <alpha-value>)",
-        accent: "rgb(201 200 197 / <alpha-value>)",
+        base: "#111111",
+        accent: "#F4EDE4",
       },
       fontFamily: {
         // Map the Tailwind classes to the new CSS variables

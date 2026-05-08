@@ -7,29 +7,29 @@ import { FaJava } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
 
 export const TECH_STACK = [
-    { name: "HTML", icon: SiHtml5, color: "text-[#E34F26]", category: "Web Fundamentals", experience: "5+ years of experience", specialization: "Frontend" },
-    { name: "CSS", icon: SiCss3, color: "text-[#1572B6]", category: "Web Styling", experience: "5+ years of experience", specialization: "Frontend" },
-    { name: "JavaScript", icon: SiJavascript, color: "text-[#F7DF1E]", category: "Core Scripting", experience: "5+ years of experience", specialization: "Core" },
-    { name: "Java", icon: FaJava, color: "text-[#007396]", category: "Backend Development", experience: "3 years of experience", specialization: "Backend" },
-    { name: "Python", icon: SiPython, color: "text-[#3776AB]", category: "Data & Scripting", experience: "4 years of experience", specialization: "Backend" },
-    { name: "PHP", icon: SiPhp, color: "text-[#777BB4]", category: "Server-side Development", experience: "4 years of experience", specialization: "Backend" },
-    { name: "Laravel", icon: SiLaravel, color: "text-[#FF2D20]", category: "PHP Framework", experience: "3 years of experience", specialization: "Backend" },
-    { name: "Google Cloud", icon: SiGooglecloud, color: "text-[#4285F4]", category: "Cloud Infrastructure", experience: "2 years of experience", specialization: "Tools" },
-    { name: "React", icon: SiReact, color: "text-[#61DAFB]", category: "Frontend Library", experience: "4 years of experience", specialization: "Core" },
-    { name: "Next.js", icon: SiNextdotjs, color: "text-black dark:text-white", category: "React Framework", experience: "2 years of experience", specialization: "Core" },
-    { name: "TypeScript", icon: SiTypescript, color: "text-[#3178C6]", category: "Typed JavaScript", experience: "3 years of experience", specialization: "Core" },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-[#06B6D4]", category: "Utility CSS", experience: "4 years of experience", specialization: "Core" },
-    { name: "Node.js", icon: SiNodedotjs, color: "text-[#339933]", category: "Runtime Environment", experience: "4 years of experience", specialization: "Core" },
-    { name: "PostgreSQL", icon: SiPostgresql, color: "text-[#4169E1]", category: "Relational Database", experience: "3 years of experience", specialization: "Backend" },
-    { name: "AWS", icon: SiAmazonwebservices, color: "text-[#FF9900]", category: "Cloud Services", experience: "2 years of experience", specialization: "Tools" },
-    { name: "Docker", icon: SiDocker, color: "text-[#2496ED]", category: "Containerization", experience: "2 years of experience", specialization: "Tools" },
-    { name: "Git", icon: SiGit, color: "text-[#F05032]", category: "Version Control", experience: "5+ years of experience", specialization: "Tools" },
-    { name: "Figma", icon: SiFigma, color: "text-[#F24E1E]", category: "Design Tool", experience: "3 years of experience", specialization: "Frontend" },
-    { name: "Vercel", icon: SiVercel, color: "text-black dark:text-white", category: "Deployment Platform", experience: "2 years of experience", specialization: "Tools" },
-    { name: "VS Code", icon: TbBrandVscode, color: "text-[#007ACC]", category: "Code Editor", experience: "5+ years of experience", specialization: "Tools" },
-    { name: "Supabase", icon: SiSupabase, color: "text-[#3ECF8E]", category: "Backend-as-a-Service", experience: "2 years of experience", specialization: "Backend" },
-    { name: "Prisma", icon: SiPrisma, color: "text-black dark:text-white", category: "ORM / Database Tool", experience: "2 years of experience", specialization: "Backend" },
-    { name: "Postman", icon: SiPostman, color: "text-[#FF6C37]", category: "API Development", experience: "1 year of experience", specialization: "Tools" },
+    { name: "HTML", icon: SiHtml5, color: "text-accent", category: "Web Fundamentals", experience: "5+ years of experience", specialization: "Frontend" },
+    { name: "CSS", icon: SiCss3, color: "text-accent", category: "Web Styling", experience: "5+ years of experience", specialization: "Frontend" },
+    { name: "JavaScript", icon: SiJavascript, color: "text-accent", category: "Core Scripting", experience: "5+ years of experience", specialization: "Core" },
+    { name: "Java", icon: FaJava, color: "text-accent", category: "Backend Development", experience: "3 years of experience", specialization: "Backend" },
+    { name: "Python", icon: SiPython, color: "text-accent", category: "Data & Scripting", experience: "4 years of experience", specialization: "Backend" },
+    { name: "PHP", icon: SiPhp, color: "text-accent", category: "Server-side Development", experience: "4 years of experience", specialization: "Backend" },
+    { name: "Laravel", icon: SiLaravel, color: "text-accent", category: "PHP Framework", experience: "3 years of experience", specialization: "Backend" },
+    { name: "Google Cloud", icon: SiGooglecloud, color: "text-accent", category: "Cloud Infrastructure", experience: "2 years of experience", specialization: "Tools" },
+    { name: "React", icon: SiReact, color: "text-accent", category: "Frontend Library", experience: "4 years of experience", specialization: "Core" },
+    { name: "Next.js", icon: SiNextdotjs, color: "text-accent dark:text-accent", category: "React Framework", experience: "2 years of experience", specialization: "Core" },
+    { name: "TypeScript", icon: SiTypescript, color: "text-accent", category: "Typed JavaScript", experience: "3 years of experience", specialization: "Core" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-accent", category: "Utility CSS", experience: "4 years of experience", specialization: "Core" },
+    { name: "Node.js", icon: SiNodedotjs, color: "text-accent", category: "Runtime Environment", experience: "4 years of experience", specialization: "Core" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "text-accent", category: "Relational Database", experience: "3 years of experience", specialization: "Backend" },
+    { name: "AWS", icon: SiAmazonwebservices, color: "text-accent", category: "Cloud Services", experience: "2 years of experience", specialization: "Tools" },
+    { name: "Docker", icon: SiDocker, color: "text-accent", category: "Containerization", experience: "2 years of experience", specialization: "Tools" },
+    { name: "Git", icon: SiGit, color: "text-accent", category: "Version Control", experience: "5+ years of experience", specialization: "Tools" },
+    { name: "Figma", icon: SiFigma, color: "text-accent", category: "Design Tool", experience: "3 years of experience", specialization: "Frontend" },
+    { name: "Vercel", icon: SiVercel, color: "text-accent dark:text-accent", category: "Deployment Platform", experience: "2 years of experience", specialization: "Tools" },
+    { name: "VS Code", icon: TbBrandVscode, color: "text-accent", category: "Code Editor", experience: "5+ years of experience", specialization: "Tools" },
+    { name: "Supabase", icon: SiSupabase, color: "text-accent", category: "Backend-as-a-Service", experience: "2 years of experience", specialization: "Backend" },
+    { name: "Prisma", icon: SiPrisma, color: "text-accent dark:text-accent", category: "ORM / Database Tool", experience: "2 years of experience", specialization: "Backend" },
+    { name: "Postman", icon: SiPostman, color: "text-accent", category: "API Development", experience: "1 year of experience", specialization: "Tools" },
 ];
 
 export default function TechStack({ variant = "icons" }) {
@@ -71,7 +71,7 @@ export default function TechStack({ variant = "icons" }) {
 function TechItem({ tech, variant }) {
   return (
     <div 
-      className={`flex items-center justify-center transition-colors duration-300 cursor-pointer ${variant === "icons" ? `text-foreground hover:${tech.color}` : "text-foreground hover:text-muted-foreground"}`}
+      className={`flex items-center justify-center transition-colors duration-300 cursor-pointer ${variant === "icons" ? `text-accent hover:${tech.color}` : "text-accent hover:text-accent/70"}`}
       title={tech.name}
     >
       {variant === "icons" ? (

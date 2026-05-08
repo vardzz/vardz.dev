@@ -36,10 +36,10 @@ export default function Footer() {
           
           {/* Collaborate */}
           <motion.div variants={itemVariants}>
-            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground mb-6 block">Contact </span>
+            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-accent/70 mb-6 block">Contact </span>
             <a 
               href="mailto:vardz@dev.com" 
-              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-foreground transition-all duration-500 cursor-pointer block"
+              className="text-3xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-b border-transparent hover:border-accent transition-all duration-500 cursor-pointer block"
             >
               VARDZ@DEV.COM
             </a>
@@ -47,7 +47,7 @@ export default function Footer() {
 
           {/* Networks */}
           <motion.div variants={itemVariants} className="flex flex-col md:text-right gap-6">
-            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-muted-foreground block">Networks</span>
+            <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-accent/70 block">Networks</span>
             <div className="flex gap-8 flex-wrap">
                {[
                  { label: "LinkedIn", href: "https://www.linkedin.com/in/vardz/" },
@@ -61,7 +61,7 @@ export default function Footer() {
                    target="_blank"
                    rel="noopener noreferrer"
                    whileHover={{ scale: 1.1, color: "var(--foreground)" }}
-                   className="text-[10px] font-bold text-muted-foreground transition-colors duration-500 uppercase tracking-[0.2em] cursor-pointer"
+                   className="text-[10px] font-bold text-accent/70 transition-colors duration-500 uppercase tracking-[0.2em] cursor-pointer"
                  >
                    {net.label}
                  </motion.a>
@@ -90,7 +90,7 @@ export default function Footer() {
          whileInView={{ opacity: 1 }}
          viewport={{ once: true }}
          transition={{ delay: 1 }}
-         className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[8px] md:text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-bold gap-4"
+         className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[8px] md:text-[10px] text-accent/70 tracking-[0.2em] uppercase font-bold gap-4"
        >
          <span>© 2026 JERICHO VARDE. ALL RIGHTS RESERVED.</span>
          <span>LOCATED IN THE PHILIPPINES</span>
