@@ -32,13 +32,13 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="fixed left-0 top-0 z-50 hidden h-screen w-20 flex-col bg-transparent py-6 sm:flex md:w-24">
+      <aside className="fixed left-0 top-0 z-50 hidden h-screen w-20 flex-col bg-transparent py-6 font-sans sm:flex md:w-24">
         <div className="flex flex-1 flex-col items-center justify-start pt-4">
           <div className="flex flex-col items-center gap-8">
             {isAboutPage ? (
               <Link href="/" className="group flex flex-col items-center gap-12">
                 <motion.span
-                  className="-rotate-90 whitespace-nowrap font-mono text-sm font-bold tracking-[0.3em] text-accent opacity-80 transition-all duration-150 cursor-pointer group-hover:underline"
+                  className="-rotate-90 whitespace-nowrap font-sans text-xs font-bold tracking-[0.3em] text-accent opacity-80 transition-all duration-150 cursor-pointer group-hover:underline"
                 >
                   HOME
                 </motion.span>
@@ -72,11 +72,11 @@ export default function Sidebar() {
         </div>
       </aside>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 flex h-16 items-center justify-between border-t border-accent/10 bg-base/95 px-4 backdrop-blur-md sm:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 flex h-16 items-center justify-between border-t border-accent/10 bg-base/95 px-4 font-sans backdrop-blur-md sm:hidden">
         <div className="flex items-center gap-3">
           {isAboutPage ? (
             <Link href="/">
-              <motion.span className="font-mono text-xs font-bold tracking-[0.3em] text-accent cursor-pointer hover:underline">HOME</motion.span>
+              <motion.span className="font-sans text-[10px] font-bold tracking-[0.3em] text-accent cursor-pointer hover:underline">HOME</motion.span>
             </Link>
           ) : (
             socialLinks.map(({ label, href, icon: Icon }) => (
@@ -97,7 +97,7 @@ export default function Sidebar() {
           )}
         </div>
 
-        <span className="font-mono text-[10px] tracking-[0.3em] text-accent">@ {currentYear}</span>
+        <span className="font-sans text-[10px] tracking-[0.3em] text-accent">@ {currentYear}</span>
       </div>
     </>
   );
