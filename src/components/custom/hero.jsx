@@ -58,7 +58,7 @@ export default function Hero() {
                     color: hoveredIndex === index ? "#C9C8C5" : "#3B3B41",
                   }}
                   transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                  className="block w-fit font-heading font-display text-[12vw] leading-[0.9] tracking-[-0.02em] uppercase lg:text-[10vw]"
+                  className="block w-fit font-heading font-display font-bold text-[12vw] leading-[0.9] tracking-[-0.02em] uppercase lg:text-[10vw]"
                   style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
                 >
                   {item.label}
