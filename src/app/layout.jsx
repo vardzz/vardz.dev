@@ -18,6 +18,8 @@ const nunito = Nunito({
   display: "swap",
 });
 
+// Ensure both the generated classNames and variables are applied to html
+
 export const metadata = {
   title: "Vardz | Cloud Enthusiast",
   description: "Portfolio of Jericho Varde, a passionate Software Engineer & Cloud Enthusiast.",
@@ -28,8 +30,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // 3. Inject BOTH font variables into the HTML tag
-    <html lang="en" suppressHydrationWarning className={`${melodrama.variable} ${nunito.variable}`}>
+    // 3. Inject BOTH font variables and generated classNames into the HTML tag
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${melodrama.variable} ${melodrama.className || ''} ${nunito.variable} ${nunito.className || ''}`}
+    >
       <body className="antialiased bg-base text-accent min-h-screen font-sans">
         <Provider>
           {children}

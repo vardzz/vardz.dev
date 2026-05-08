@@ -27,13 +27,11 @@ export default function Hero() {
           >
             <p 
               className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-[#C9C8C5]"
-              style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
             >
               JERICHO VARDE
             </p>
             <p 
               className="max-w-[320px] text-sm leading-[1.8] text-[#C9C8C5] opacity-80 lg:text-base"
-              style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
             >
               Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
             </p>
@@ -60,8 +58,8 @@ export default function Hero() {
                     color: hoveredIndex === index ? "#C9C8C5" : "#3B3B41",
                   }}
                   transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                  className="block w-fit font-display text-[12vw] leading-[0.9] tracking-[-0.02em] uppercase lg:text-[10vw]"
-                  style={{ fontFamily: "'Stardom', 'Playfair Display', 'Times New Roman', serif" }}
+                  className="block w-fit font-heading font-display text-[12vw] leading-[0.9] tracking-[-0.02em] uppercase lg:text-[10vw]"
+                  style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
                 >
                   {item.label}
                 </motion.a>
