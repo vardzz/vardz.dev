@@ -46,7 +46,7 @@ export default function Certificates() {
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             className="w-full"
           >
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-zinc-300 dark:text-zinc-700 text-center">
+            <h2 className="font-heading text-4xl md:text-5xl font-black tracking-tighter text-zinc-300 dark:text-zinc-700 text-center">
               No Certificates Yet, Stay Tuned!
             </h2>
           </motion.div>
@@ -63,7 +63,7 @@ export default function Certificates() {
               transition={{ duration: 0.4, delay: index * 0.05, ease: 'easeOut' }}
             >
               <motion.div className="flex-1 overflow-hidden" whileHover={{ x: 4 }}>
-                <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-black dark:text-white group-hover:pl-4 transition-all duration-300">
+                <h3 className="font-heading text-3xl md:text-5xl font-bold tracking-tight text-black dark:text-white group-hover:pl-4 transition-all duration-300">
                   {certificate.name}
                 </h3>
               </motion.div>
@@ -104,7 +104,7 @@ function CertificateModal({ certificate, isOpen, onClose }) {
           </div>
 
           <div className="mt-8 space-y-3 border-t border-black/10 dark:border-white/10 pt-8">
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-black dark:text-white">{certificate.name}</h2>
+            <h2 className="font-heading text-2xl md:text-4xl font-bold tracking-tight text-black dark:text-white">{certificate.name}</h2>
             {certificate.year && (
               <p className="text-sm font-mono tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">Earned: {certificate.year}</p>
             )}

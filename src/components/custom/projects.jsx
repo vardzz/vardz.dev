@@ -971,7 +971,7 @@ export default function Projects() {
                   </span>
                 </motion.div>
 
-                <h3 className="text-4xl md:text-[3.8rem] font-black text-accent tracking-tight leading-[0.88] overflow-hidden">
+                <h3 className="font-heading text-4xl md:text-[3.8rem] font-black text-accent tracking-tight leading-[0.88] overflow-hidden">
                   {proj.title === "ATTENDANCE CHECK" ? (
                     <>
                       <span className="block whitespace-nowrap">

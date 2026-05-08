@@ -62,7 +62,7 @@ export default function Experience() {
         {/* Section Header */}
         <div className="mb-24">
           <span className="text-[10px] tracking-[0.3em] font-bold uppercase text-muted-foreground mb-4 block opacity-60">Career Journey</span>
-          <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter">The Chronicle</h2>
+          <h2 className="font-heading text-4xl md:text-7xl font-black uppercase tracking-tighter">The Chronicle</h2>
         </div>
 
         {/* Timeline Items Container */}
@@ -145,7 +145,7 @@ function ExperienceItem({ exp, isEven, idx }) {
             }}
           />
 
-          <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">
+          <h3 className="font-heading text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">
             {exp.title}
           </h3>
           <div className="text-[10px] tracking-[0.2em] uppercase font-bold text-muted-foreground mb-6 block">

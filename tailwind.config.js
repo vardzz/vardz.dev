@@ -12,8 +12,10 @@ export default {
         accent: "rgb(201 200 197 / <alpha-value>)",
       },
       fontFamily: {
-        display: ["var(--font-stardom)", "Playfair Display", "serif"],
-        sans: ["var(--font-satoshi)", "Inter", "sans-serif"],
+        // Map the Tailwind classes to the new CSS variables
+        sans: ["var(--font-nunito)", "Nunito", "sans-serif"],
+        heading: ["var(--font-melodrama)", "Melodrama", "serif"],
+        display: ["var(--font-melodrama)", "Melodrama", "serif"],
       },
     },
   },

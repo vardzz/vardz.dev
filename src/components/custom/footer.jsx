@@ -79,7 +79,7 @@ export default function Footer() {
          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
          className="w-full text-center md:text-left select-none max-w-[100vw] flex justify-center mb-8 px-4 py-8"
        >
-         <h1 className="text-[22vw] leading-[0.85] font-black tracking-[-0.08em] uppercase text-accent w-full text-center">
+         <h1 className="font-heading text-[22vw] leading-[0.85] font-black tracking-[-0.08em] uppercase text-accent w-full text-center">
             @VARDZ
          </h1>
        </motion.div>

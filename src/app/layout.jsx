@@ -1,18 +1,20 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import localFont from "next/font/local";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/components/custom/Provider";
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-stardom",
-  subsets: ["latin"],
-  weight: ["700", "900"],
+// 1. Setup Melodrama as a local font
+const melodrama = localFont({
+  src: "./fonts/Melodrama-Variable.ttf", // Make sure this matches your downloaded file name!
+  variable: "--font-melodrama",
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-satoshi",
+// 2. Setup Nunito from Google Fonts
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -24,12 +26,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}) {
+export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${playfairDisplay.variable} ${inter.variable}`}>
-      <body className="antialiased bg-base text-accent min-h-screen">
+    // 3. Inject BOTH font variables into the HTML tag
+    <html lang="en" suppressHydrationWarning className={`${melodrama.variable} ${nunito.variable}`}>
+      <body className="antialiased bg-base text-accent min-h-screen font-sans">
         <Provider>
           {children}
         </Provider>

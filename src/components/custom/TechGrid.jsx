@@ -58,7 +58,7 @@ export default function TechGrid() {
           <p className="tracking-[0.3em] text-[10px] text-accent opacity-50 font-medium uppercase mb-1">
             THE ARSENAL
           </p>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-accent">
+          <h2 className="font-heading text-4xl md:text-5xl font-black tracking-tighter text-accent">
             TECH STACK
           </h2>
         </motion.div>
@@ -208,7 +208,7 @@ function TechCard({ tech }) {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="space-y-1"
           >
-            <h3 className="text-4xl font-black tracking-tighter text-accent">
+            <h3 className="font-heading text-4xl font-black tracking-tighter text-accent">
               {tech.name}
             </h3>
             <p className="text-accent opacity-50 uppercase tracking-[0.3em] text-[10px] font-bold">

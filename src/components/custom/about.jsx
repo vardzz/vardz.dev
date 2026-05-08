@@ -72,12 +72,12 @@ export default function About() {
            viewport={{ once: true, amount: 0.1 }}
            className="col-span-1 lg:col-span-7 xl:col-span-8 flex flex-col justify-center md:pt-6 lg:pt-10 max-w-4xl relative z-20"
         >
-          <motion.h2 variants={itemVariants} className="text-8xl md:text-9xl font-bold tracking-tighter leading-none mb-4">
+          <motion.h2 variants={itemVariants} className="font-heading font-display text-50xl md:text-9xl font-bold tracking-tighter leading-none mb-4">
             About
           </motion.h2>
           
           <motion.div variants={itemVariants} className="mb-12">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight text-accent">
+            <h3 className="font-heading font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight text-accent">
               I'm Vardz. A developer, systems thinker, and aspiring Cloud Engineer.
             </h3>
           </motion.div>
