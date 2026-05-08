@@ -42,7 +42,7 @@ export default function Sidebar() {
                 >
                   HOME
                 </motion.span>
-                <div className="h-32 w-px bg-accent" />
+                <div className="h-36 w-[2px] rounded-full bg-[#F4EDE4] shadow-[0_0_12px_rgba(244,237,228,0.35)]" />
               </Link>
             ) : (
               <>
@@ -56,12 +56,12 @@ export default function Sidebar() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.96 }}
                     transition={{ type: "spring", stiffness: 300, damping: 18 }}
-                    className="group flex h-8 w-8 items-center justify-center rounded-full text-accent transition-colors duration-300 hover:text-accent hover:opacity-100 opacity-70"
+                    className="group flex h-8 w-8 items-center justify-center rounded-full text-accent transition-colors duration-300 hover:text-accent"
                   >
                     <Icon className="h-4 w-4 transition-transform duration-300 group-hover:drop-shadow-[0_0_10px_rgba(244, 237, 228, 0.22)] dark:group-hover:drop-shadow-[0_0_10px_rgba(244, 237, 228, 0.22)]" />
                   </motion.a>
                 ))}
-                <div className="mt-1 h-32 w-px bg-accent opacity-100" />
+                <div className="mt-2 h-36 w-[2px] rounded-full bg-[#F4EDE4] shadow-[0_0_12px_rgba(244,237,228,0.35)]" />
               </>
             )}
           </div>
@@ -97,7 +97,7 @@ export default function Sidebar() {
           )}
         </div>
 
-        <span className="font-mono text-[10px] tracking-[0.3em] text-accent opacity-50">@ {currentYear}</span>
+        <span className="font-mono text-[10px] tracking-[0.3em] text-accent">@ {currentYear}</span>
       </div>
     </>
   );
