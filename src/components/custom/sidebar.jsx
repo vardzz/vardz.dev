@@ -38,7 +38,7 @@ export default function Sidebar() {
             {isAboutPage ? (
               <Link href="/" className="group flex flex-col items-center gap-12">
                 <motion.span
-                  className="-rotate-90 whitespace-nowrap font-sans text-xs font-bold tracking-[0.3em] text-accent opacity-80 transition-all duration-150 cursor-pointer group-hover:underline"
+                  className="-rotate-90 whitespace-nowrap font-sans text-xs font-bold tracking-[0.3em] text-accent opacity-80 transition-all duration-150 cursor-pointer group-hover:underline decoration-accent decoration-2 group-hover:underline-offset-[6px]"
                 >
                   HOME
                 </motion.span>
@@ -76,7 +76,7 @@ export default function Sidebar() {
         <div className="flex items-center gap-3">
           {isAboutPage ? (
             <Link href="/">
-              <motion.span className="font-sans text-[10px] font-bold tracking-[0.3em] text-accent cursor-pointer hover:underline">HOME</motion.span>
+              <motion.span className="font-sans text-[10px] font-bold tracking-[0.3em] text-accent cursor-pointer hover:underline decoration-accent decoration-2 hover:underline-offset-[4px]">HOME</motion.span>
             </Link>
           ) : (
             socialLinks.map(({ label, href, icon: Icon }) => (
