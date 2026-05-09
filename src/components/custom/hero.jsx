@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   const navItems = [
-    { label: "WORK", href: "#work" },
+    { label: "WORK", href: "/work" },
     { label: "ABOUT", href: "/about" },
     { label: "Journey", href: "/journey" },
     { label: "CONTACT", href: "/contact" },
