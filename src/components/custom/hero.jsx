@@ -8,7 +8,7 @@ export default function Hero() {
     { label: "WORK", href: "#work" },
     { label: "ABOUT", href: "/about" },
     { label: "Journey", href: "/journey" },
-    { label: "CONTACT", href: "#contact" },
+    { label: "CONTACT", href: "/contact" },
   ];
 
   const [hoveredIndex, setHoveredIndex] = React.useState(null);
