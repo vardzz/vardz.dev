@@ -17,23 +17,23 @@ export default function Sidebar() {
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
-  const isInternalPage = pathname === "/about" || pathname === "/journey" || pathname === "/contact" || pathname === "/journey";
-  const isJourney      = pathname === "/journey"; 
+  const isInternalPage = pathname === "/about" || pathname === "/journey" || pathname === "/contact" || pathname === "/work";
+  const isBeigeBackground = pathname === "/journey" || pathname === "/work"; 
 
   // ── Per-route color tokens ───────────────────────────────────────────
-  const textColor        = isJourney ? "text-[#111111]"   : "text-accent";
-  const borderColor      = isJourney ? "border-[#111111]" : "border-accent";
-  const decorationColor  = isJourney ? "decoration-[#111111]" : "decoration-accent";
-  const lineColor        = isJourney
+  const textColor        = isBeigeBackground ? "text-[#111111]"   : "text-accent";
+  const borderColor      = isBeigeBackground ? "border-[#111111]" : "border-accent";
+  const decorationColor  = isBeigeBackground ? "decoration-[#111111]" : "decoration-accent";
+  const lineColor        = isBeigeBackground
     ? "bg-[#111111] shadow-[0_0_12px_rgba(17,17,17,0.25)]"
     : "bg-[#F4EDE4] shadow-[0_0_12px_rgba(244,237,228,0.35)]";
-  const dropShadow       = isJourney
+  const dropShadow       = isBeigeBackground
     ? "hover:drop-shadow-[0_0_10px_rgba(17,17,17,0.22)]"
     : "hover:drop-shadow-[0_0_10px_rgba(244,237,228,0.22)]";
 
-  // ── Sidebar background: beige on /journey, transparent elsewhere ─────
-  const asideBg  = isJourney ? "bg-[#F4EDE4]"      : "bg-transparent";
-  const mobileBg = isJourney ? "bg-[#F4EDE4]/95"   : "bg-base/95";
+  // ── Sidebar background: beige on /journey and /work, transparent elsewhere ─────
+  const asideBg  = isBeigeBackground ? "bg-[#F4EDE4]"      : "bg-transparent";
+  const mobileBg = isBeigeBackground ? "bg-[#F4EDE4]/95"   : "bg-base/95";
 
   return (
     <>
