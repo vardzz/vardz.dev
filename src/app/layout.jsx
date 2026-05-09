@@ -3,7 +3,6 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/components/custom/Provider";
 import Sidebar from "@/components/custom/sidebar";
-import Template from "./template";
 
 // 1. Setup Melodrama as a local font
 const melodrama = localFont({
@@ -38,10 +37,10 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${melodrama.variable} ${melodrama.className || ''} ${nunito.variable} ${nunito.className || ''}`}
     >
-      <body className="antialiased bg-base text-accent min-h-screen font-sans">
+      <body className="antialiased min-h-screen font-sans transition-colors duration-[1100ms] ease-in-out">
         <Provider>
           <Sidebar />
-          <Template>{children}</Template>
+          {children}
         </Provider>
       </body>
     </html>
