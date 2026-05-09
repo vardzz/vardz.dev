@@ -1,10 +1,9 @@
 // src/app/work/page.jsx
-"use client"; // REQUIRED when using hooks like useState
+"use client";
 
 import React, { useState } from "react";
 import PageTransition from "@/components/custom/PageTransition";
-import { motion, AnimatePresence } from "framer-motion"; // Use motion for the blur effect
-import Footer from "@/components/custom/footer";
+import { motion } from "framer-motion";
 
 export default function WorkPage() {
   const projects = [
@@ -15,20 +14,20 @@ export default function WorkPage() {
     { name: "QR ATTENDANCE", role: "- SUPABASE INTEGRATION" },
   ];
 
-  // State to track which project index is being hovered
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
     <div className="bg-[#F4EDE4] selection:bg-[#111111] selection:text-[#F4EDE4]">
       <PageTransition>
-        {/* MAIN WRAPPER */}
+        {/* 1. MASTER WRAPPER: 
+           Locks the actual browser window to prevent double scrollbars. 
+        */}
         <div className="relative h-screen w-full text-[#111111] overflow-hidden pl-20 md:pl-24 flex">
-        
-        {/* 40:60 Flex Container */}
-        <div className="flex w-full h-full">
           
-          {/* LEFT PANEL: Fixed 40% (Vertically Centered) */}
-          <div className="hidden md:flex md:w-5/12 h-full flex-col justify-center px-12 lg:px-20 xl:px-24">
+          {/* 2. BACKGROUND LAYER (LEFT PANEL): 
+             This is fixed in place. 'z-0' keeps it behind the scrollable area.
+          */}
+          <div className="hidden md:flex md:w-[40%] h-full flex-col justify-center px-12 lg:px-20 xl:px-24 z-0">
             <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-10 opacity-60">
               Selected Works
             </p>
@@ -44,49 +43,54 @@ export default function WorkPage() {
             </div>
           </div>
 
-          {/* RIGHT PANEL: The Scrollable 60% */}
-          <div className="w-full md:w-7/12 h-full overflow-y-auto no-scrollbar pt-32 md:pt-48 flex flex-col justify-between">
+          {/* 3. SCROLLABLE LAYER (THE CONTROLLER):
+             This covers 100% of the screen. Scrolling anywhere here moves the projects.
+             'no-scrollbar' is removed so you can see the progress.
+          */}
+          <div className="absolute inset-0 h-full overflow-y-auto overscroll-contain pl-20 md:pl-24 flex justify-end z-10">
             
-            {/* Project List Container: Reduced bottom padding to align the end */}
-            <div className="flex flex-col gap-10 md:gap-14 px-6 md:px-12 mb-32 pb-[11vh]">
-              {projects.map((project, idx) => {
-                const isHovered = idx === hoveredIndex;
-                const isOtherItemHovered = hoveredIndex !== null && !isHovered;
+            {/* Project Container: 60% Width 
+                'pointer-events-none' on this spacer allows you to click the bio 
+                on the left, while 'pointer-events-auto' on the list keeps it interactive.
+            */}
+            <div className="w-full md:w-[60%] flex flex-col pt-32 md:pt-[45vh] pointer-events-none">
+              <div className="flex flex-col gap-10 md:gap-14 px-6 md:px-12 pb-[45vh] pointer-events-auto">
+                {projects.map((project, idx) => {
+                  const isHovered = idx === hoveredIndex;
+                  const isOtherItemHovered = hoveredIndex !== null && !isHovered;
 
-                return (
-                  <motion.div 
-                    key={idx} 
-                    className="group cursor-pointer select-none origin-left" // Added origin-left for clean scale
-                    onMouseEnter={() => setHoveredIndex(idx)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    // Dynamic Framer Motion styles:
-                    animate={{
-                      // 1. Highlight: Scale the hovered text slightly (1.05 = 5% increase)
-                      scale: isHovered ? 1.05 : 1,
-                      // 2. Dim/Blur: Fade and blur other items when one is hovered
-                      opacity: isOtherItemHovered ? 0.3 : 1,
-                      filter: isOtherItemHovered ? "blur(3px)" : "blur(0px)",
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.16, 1, 0.3, 1], // Custom sophisticated ease-out
-                    }}
-                  >
-                    <h1 className="font-heading font-display text-5xl md:text-6xl lg:text-[7vw] font-black uppercase tracking-tighter leading-[0.8] transition-all duration-700">
-                      {project.name}
-                    </h1>
-                    
-                    <div className="mt-4">
-                      <span className="text-[9px] md:text-[10px] tracking-[0.25em] font-bold uppercase opacity-40">
-                        {project.role}
-                      </span>
-                    </div>
-                  </motion.div>
-                );
-              })}
+                  return (
+                    <motion.div 
+                      key={idx} 
+                      className="group cursor-pointer select-none origin-left"
+                      onMouseEnter={() => setHoveredIndex(idx)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      animate={{
+                        scale: isHovered ? 1.05 : 1,
+                        opacity: isOtherItemHovered ? 0.3 : 1,
+                        filter: isOtherItemHovered ? "blur(4px)" : "blur(0px)",
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                    >
+                      <h1 className="font-heading font-display text-5xl md:text-6xl lg:text-[7.5vw] font-black uppercase tracking-tighter leading-[0.8] transition-all duration-700">
+                        {project.name}
+                      </h1>
+                      
+                      <div className="mt-4">
+                        <span className="text-[10px] tracking-[0.25em] font-bold uppercase opacity-40">
+                          {project.role}
+                        </span>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
+
           </div>
-        </div>
         </div>
       </PageTransition>
     </div>
