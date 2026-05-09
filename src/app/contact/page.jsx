@@ -22,8 +22,8 @@ export default function ContactPage() {
             <span className="text-[10px] tracking-[0.3em] font-bold uppercase text-accent/50 mb-4 block">
               Let's Connect
             </span>
-            <h1 className="font-heading font-display text-5xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9]">
-              Greetings.
+            <h1 className="font-heading font-display text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+              Hello.
             </h1>
           </div>
 

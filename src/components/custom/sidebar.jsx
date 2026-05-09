@@ -17,8 +17,8 @@ export default function Sidebar() {
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
-  const isInternalPage = pathname === "/about" || pathname === "/journey";
-  const isJourney      = pathname === "/journey";
+  const isInternalPage = pathname === "/about" || pathname === "/journey" || pathname === "/contact";
+  const isJourney      = pathname === "/journey"; 
 
   // ── Per-route color tokens ───────────────────────────────────────────
   const textColor        = isJourney ? "text-[#111111]"   : "text-accent";
