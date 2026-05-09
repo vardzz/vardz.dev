@@ -2,6 +2,8 @@ import localFont from "next/font/local";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/components/custom/Provider";
+import Sidebar from "@/components/custom/sidebar";
+import Template from "./template";
 
 // 1. Setup Melodrama as a local font
 const melodrama = localFont({
@@ -38,7 +40,8 @@ export default function RootLayout({ children }) {
     >
       <body className="antialiased bg-base text-accent min-h-screen font-sans">
         <Provider>
-          {children}
+          <Sidebar />
+          <Template>{children}</Template>
         </Provider>
       </body>
     </html>
