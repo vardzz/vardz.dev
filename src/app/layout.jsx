@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/components/custom/Provider";
 import Sidebar from "@/components/custom/sidebar";
+import PageTransition from "@/components/custom/PageTransition";
 
 // 1. Setup Melodrama as a local font
 const melodrama = localFont({
@@ -40,7 +41,9 @@ export default function RootLayout({ children }) {
       <body className="antialiased min-h-screen font-sans transition-colors duration-[1100ms] ease-in-out">
         <Provider>
           <Sidebar />
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </Provider>
       </body>
     </html>
