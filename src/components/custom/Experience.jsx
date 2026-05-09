@@ -1,4 +1,3 @@
-// src/components/custom/Experience.jsx
 "use client";
 
 import React, { useRef } from "react";
@@ -145,8 +144,7 @@ function ExperienceItem({ exp, isEven }) {
     offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0, 0.07, 0.07, 0]);
-  const y       = useTransform(scrollYProgress, [0, 1], [-80, 80]);
+  const y = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   // Bullet pulse at midpoint
   const bulletScale = useTransform(scrollYProgress, [0.4, 0.5, 0.6], [1, 1.8, 1]);
@@ -171,8 +169,8 @@ function ExperienceItem({ exp, isEven }) {
     >
       {/* Watermark year */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap pointer-events-none select-none z-0"
-        style={{ opacity, y, color: "#111111" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap pointer-events-none select-none z-0 opacity-10"
+        style={{ y, color: "#111111" }}
       >
         {exp.year}
       </motion.div>
