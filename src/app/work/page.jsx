@@ -19,9 +19,10 @@ export default function WorkPage() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <PageTransition>
-      {/* MAIN WRAPPER */}
-      <div className="relative h-screen w-full bg-[#F4EDE4] text-[#111111] overflow-hidden pl-20 md:pl-24 flex selection:bg-[#111111] selection:text-[#F4EDE4]">
+    <div className="bg-[#F4EDE4] selection:bg-[#111111] selection:text-[#F4EDE4]">
+      <PageTransition>
+        {/* MAIN WRAPPER */}
+        <div className="relative h-screen w-full text-[#111111] overflow-hidden pl-20 md:pl-24 flex">
         
         {/* 40:60 Flex Container */}
         <div className="flex w-full h-full">
@@ -86,7 +87,8 @@ export default function WorkPage() {
             </div>
           </div>
         </div>
-      </div>
-    </PageTransition>
+        </div>
+      </PageTransition>
+    </div>
   );
 }

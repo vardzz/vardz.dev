@@ -9,6 +9,9 @@ export default function PageTransition({ children }) {
   const isBlackRoute = pathname.includes("/about") || pathname.includes("/contact");
   const overlayColor = isBlackRoute ? "#111111" : "#F4EDE4";
 
+  // Check if current route requires the blur entrance
+  const isBlurRoute = pathname === "/work" || pathname === "/contact" || pathname.includes("/about") || pathname.includes("/journey");
+
   return (
     <AnimatePresence mode="wait">
       <div key={pathname} className="relative w-full min-h-screen">
@@ -23,12 +26,17 @@ export default function PageTransition({ children }) {
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
         />
 
-        {/* Content Wrapper - Synced Reveal */}
+        {/* Content Wrapper - Blur & Synced Reveal */}
         <motion.div
-          // We remove the opacity/blur from initial/animate so it mounts instantly beneath the curtain.
-          // We only keep the exit animation to melt the OLD page away.
+          className="will-change-filter"
+          initial={isBlurRoute ? { filter: "blur(20px)", opacity: 0 } : {}}
+          animate={isBlurRoute ? { filter: "blur(0px)", opacity: 1 } : {}}
           exit={{ opacity: 0, filter: "blur(12px)", y: -20 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
+          transition={{ 
+            duration: isBlurRoute ? 1.2 : 0.4, 
+            ease: isBlurRoute ? [0.16, 1, 0.3, 1] : "easeInOut",
+            staggerChildren: 0.1
+          }}
         >
           {children}
         </motion.div>
