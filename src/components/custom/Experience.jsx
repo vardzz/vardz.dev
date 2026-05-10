@@ -84,10 +84,11 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, ease: [0.2, 1, 0.3, 1] }}
-          className="mb-24"
+         
+          className="mb-24 flex flex-col items-center text-center"
         >
           <span
-            className="text-[10px] tracking-[0.3em] font-bold uppercase mb-4 block"
+            className="text-[10px] tracking-[0.3em] font-bold uppercase mb-4 inline-block"
             style={{ color: "rgba(17,17,17,0.5)" }}
           >
             Career Journey

@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Sidebar from "@/components/custom/sidebar";
 import About from "@/components/custom/about";
 import TechStack from "@/components/custom/techStack";
 import TechGrid from "@/components/custom/TechGrid";
@@ -12,16 +11,13 @@ const LW_EASE = [0.2, 1, 0.3, 1];
 
 export default function AboutPage() {
   return (
-    // Page-level fade-in: the whole page slides up on first load
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: LW_EASE }}
-      className="relative min-h-screen w-full bg-base text-accent font-sans"
+      className="relative min-h-screen w-full overflow-x-hidden bg-base font-sans text-accent"
     >
-      <Sidebar />
-
-      <main className="bg-base pb-16 sm:pb-0 sm:pl-20 md:pl-24">
+      <main className="relative z-10 flex min-h-screen w-full flex-col bg-base pb-16 pl-20 md:pl-24">
         {/* Icons marquee — entrance stagger handled inside TechStack */}
         <TechStack variant="icons" />
 

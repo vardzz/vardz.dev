@@ -1,6 +1,3 @@
-// src/app/contact/page.jsx
-import React from "react";
-import PageTransition from "@/components/custom/PageTransition";
 import Footer from "@/components/custom/footer";
 
 export const metadata = {
@@ -10,37 +7,44 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    // Wrap the background color outside PageTransition to prevent blur flicker on the background
-    <div className="bg-base selection:bg-accent selection:text-base">
-      <PageTransition>
-        {/* 1. The Absolute Foundation (Full width & full height, bg removed to prevent edge blur) */}
-        <div className="relative min-h-screen w-full text-accent overflow-x-hidden pl-20 md:pl-24 flex flex-col">
-          
-          {/* 2. Main Content Canvas (Max width 1400px) */}
-          <div className="flex-grow max-w-[1400px] w-full mx-auto px-6 md:px-12 py-32 md:py-48 flex flex-col justify-center">
-            
-            {/* Header Typography */}
-            <div className="mb-20">
-              <span className="text-[10px] tracking-[0.3em] font-bold uppercase text-accent/50 mb-4 block">
-                Let's Connect
-              </span>
-              <h1 className="font-heading font-display text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
-                Hello.
-              </h1>
-            </div>
+    <div
+      className="min-h-screen w-full"
+      style={{ backgroundColor: "#111111", color: "#F4EDE4" }}
+    >
+      <div
+        className="relative flex min-h-screen w-full flex-col overflow-x-hidden pl-20 md:pl-24 pb-12"
+        style={{ color: "#F4EDE4" }}
+      >
+        <main className="flex flex-1 flex-col justify-center max-w-[1400px] w-full mx-auto px-6 md:px-12 py-32 md:py-48">
+          <div className="mb-20">
+            <span
+              className="text-[10px] tracking-[0.3em] font-bold uppercase mb-4 block"
+              style={{ color: "rgba(244,237,228,0.5)" }}
+            >
+              Let's Connect
+            </span>
+            <h1 className="font-heading font-display text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+              Hello.
+            </h1>
+          </div>
 
-            {/* Contact Details Wrapper (Max width 576px - THIS is what trapped your footer!) */}
-            <div className="max-w-xl">
-              <p className="text-lg md:text-xl text-accent/70 leading-relaxed mb-12">
-                I am currently open for new opportunities and collaborations. Whether you have a project in mind or just want to say hi, I'll try my best to get back to you.
-              </p>
-            </div> 
+          <div className="max-w-xl">
+            <p
+              className="text-lg md:text-xl leading-relaxed mb-12"
+              style={{ color: "rgba(244,237,228,0.7)" }}
+            >
+              I am currently open for new opportunities and collaborations.
+              Whether you have a project in mind or just want to say hi, I'll
+              try my best to get back to you.
+            </p>
+          </div>
+        </main>
 
-          </div> 
+        {/* Footer also needs hardcoded colors to match */}
+        <div style={{ "--accent": "#F4EDE4", "--base": "#111111" }}>
           <Footer />
-
         </div>
-      </PageTransition>
+      </div>
     </div>
   );
 }
