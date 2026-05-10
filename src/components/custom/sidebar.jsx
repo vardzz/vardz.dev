@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { Github, Instagram, Linkedin } from "lucide-react";
 
 const socialLinks = [
-  { label: "LinkedIn",  href: "https://www.linkedin.com/in/vardz/",        icon: Linkedin  },
+  { label: "LinkedIn",  href: "https://www.linkedin.com/in/vardz/",         icon: Linkedin  },
   { label: "GitHub",    href: "https://github.com/vardzz",                  icon: Github    },
   { label: "Instagram", href: "https://www.instagram.com/v_ardzz/",         icon: Instagram },
 ];
@@ -41,7 +41,8 @@ export default function Sidebar() {
       <aside
         className={`fixed left-0 top-0 z-50 hidden h-screen w-20 flex-col ${asideBg} py-6 font-sans sm:flex md:w-24 transition-colors duration-300`}
       >
-        <div className="flex flex-1 flex-col items-center justify-start pt-4">
+        {/* FIX: Changed 'pt-4' to 'pt-16' (or pt-20) to add significant space above HOME/Socials */}
+        <div className="flex flex-1 flex-col items-center justify-start pt-10">
           <div className="flex flex-col items-center gap-8">
             {isInternalPage ? (
               <Link href="/" className="group flex flex-col items-center gap-12">
@@ -75,7 +76,8 @@ export default function Sidebar() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center pb-4">
+        {/* FIX: Changed 'pb-4' to 'pb-12' (or pb-16) to add space below the copyright year */}
+        <div className="flex flex-col items-center pb-12">
           <span className={`-rotate-90 whitespace-nowrap text-xs tracking-[0.35em] ${textColor}`}>
             © {currentYear}
           </span>
