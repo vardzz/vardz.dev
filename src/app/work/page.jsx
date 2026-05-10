@@ -39,8 +39,12 @@ export default function WorkPage() {
         </div>
 
         {/* ── RIGHT PANEL: the ONLY scrollable element on the page ────── */}
-        <div className="flex-1 h-full overflow-y-auto overscroll-contain">
-          <div className="flex flex-col gap-10 md:gap-14 px-6 md:px-12 pt-32 md:pt-32 md:pt-48">
+        <div className="flex-1 h-full overflow-y-auto overscroll-contain no-scrollbar">
+  
+        <div className="flex flex-col min-h-screen px-6 md:px-12 py-24 justify-center">
+          
+          {/* This inner div contains the actual list */}
+          <div className="flex flex-col gap-10 md:gap-14 py-[15vh]"> 
             {projects.map((project, idx) => {
               const isHovered      = idx === hoveredIndex;
               const isOtherHovered = hoveredIndex !== null && !isHovered;
@@ -70,7 +74,9 @@ export default function WorkPage() {
               );
             })}
           </div>
+          
         </div>
+      </div>`
 
       </div>
     </div>
