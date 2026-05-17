@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import About from "@/components/custom/about";
 import TechStack from "@/components/custom/techStack";
 import TechGrid from "@/components/custom/TechGrid";
+ 
 
 // Lauren Waller easing — used for the page-level entrance
 const LW_EASE = [0.2, 1, 0.3, 1];

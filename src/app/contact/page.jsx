@@ -1,11 +1,52 @@
+"use client";
+
+import { useState } from "react";
 import Footer from "@/components/custom/footer";
 
-export const metadata = {
-  title: "Contact | Vardz",
-  description: "Get in touch for collaborations and inquiries.",
-};
+
 
 export default function ContactPage() {
+  const [emailStatus, setEmailStatus] = useState("vardejericho@gmail.com");
+  const [isSending, setIsSending] = useState(false);
+
+  const handleTriggerEmail = async () => {
+    // Prevent double-clicking
+    if (isSending || emailStatus === "Message Sent!") return;
+
+    setIsSending(true);
+    setEmailStatus("Sending...");
+
+    try {
+      const response = await fetch(process.env.NEXT_PUBLIC_AWS_EMAIL_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "Portfolio Quick-Link",
+          message: "A visitor just clicked the instant email link on your contact page!",
+        }),
+      });
+
+      if (response.ok) {
+        setEmailStatus("Message Sent!");
+        // Revert back to the email address after 3 seconds
+        setTimeout(() => {
+          setEmailStatus("vardejericho@gmail.com");
+        }, 3000);
+      } else {
+        setEmailStatus("Failed to send.");
+        setTimeout(() => setEmailStatus("vardejericho@gmail.com"), 3000);
+      }
+    } catch (error) {
+      console.error("API Routing Error:", error);
+      setEmailStatus("Network Error.");
+      setTimeout(() => setEmailStatus("vardejericho@gmail.com"), 3000);
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <div
       className="min-h-screen w-full"
@@ -30,12 +71,25 @@ export default function ContactPage() {
 
           <div className="max-w-xl">
             <p
-              className="text-lg md:text-xl leading-relaxed mb-12"
+              className="text-lg md:text-xl leading-relaxed mb-8"
               style={{ color: "rgba(244,237,228,0.7)" }}
             >
               I am currently open for new opportunities and collaborations.
               Whether you have a project in mind or just want to say hi, I'll
               try my best to get back to you.
+            </p>
+            
+            {/* The new interactive serverless trigger */}
+            <p className="text-lg md:text-xl flex items-center gap-2">
+              <span style={{ color: "rgba(244,237,228,0.7)" }}>email me:</span>
+              <button
+                onClick={handleTriggerEmail}
+                disabled={isSending}
+                className="underline decoration-1 underline-offset-4 hover:opacity-70 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                style={{ color: "#F4EDE4" }}
+              >
+                {emailStatus}
+              </button>
             </p>
           </div>
         </main>
