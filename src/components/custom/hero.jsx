@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import KineticGrid from "@/components/custom/KineticGrid";
 
 export default function Hero() {
   const navItems = [
@@ -16,8 +17,10 @@ export default function Hero() {
   const isDimmed = (index) => hoveredIndex !== null && hoveredIndex !== index;
 
   return (
-    <section className="relative z-10 min-h-screen w-full overflow-x-hidden bg-base text-accent pl-20 box-border md:pl-24">
-      <div className="flex min-h-screen w-full items-center box-border">
+    <section className="relative z-10 min-h-screen w-full overflow-hidden bg-base text-accent pl-20 box-border md:pl-24">
+      <KineticGrid />
+
+      <div className="relative z-10 flex min-h-screen w-full items-center box-border">
         <div className="flex w-full items-end">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
