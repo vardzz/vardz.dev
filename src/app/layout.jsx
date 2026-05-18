@@ -4,6 +4,7 @@ import "./globals.css";
 import { Provider } from "@/components/custom/Provider";
 import Sidebar from "@/components/custom/sidebar";
 import PageTransition from "@/components/custom/PageTransition";
+import ChatWidget from "@/components/custom/ChatWidget";
 
 // 1. Setup Melodrama as a local font
 const melodrama = localFont({
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
           <PageTransition>
             {children}
           </PageTransition>
+          <ChatWidget />
         </Provider>
       </body>
     </html>
