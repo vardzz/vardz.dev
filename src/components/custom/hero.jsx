@@ -17,14 +17,14 @@ export default function Hero() {
   const isDimmed = (index) => hoveredIndex !== null && hoveredIndex !== index;
 
   return (
-    <section className="relative z-10 min-h-screen w-full overflow-hidden bg-base text-accent md:pl-24">
+    <section className="relative z-10 min-h-screen w-full overflow-hidden bg-base text-accent">
       <KineticGrid 
         backgroundColor="transparent"
         gridColor="rgba(255, 255, 255, 0.09)"
         dotColor="rgba(255, 255, 255, 0.12)"
         hoverColor="rgba(255, 255, 255, 0.6)"
         gridSize={60}
-        dotSize={1.5}
+        dotSize={1}
         baseOpacity={0.08}
         repulsionStrength={-0.65}
         radius={250}
@@ -36,13 +36,13 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 flex min-h-screen w-full items-center box-border px-6 pb-24 pt-24 md:px-0 md:pt-0">
-        <div className="flex w-full flex-col items-start gap-14 md:flex-row md:items-end md:gap-0">
+      <div className="relative z-10 flex min-h-screen w-full items-center justify-center box-border px-6 pb-24 pt-24 md:px-12 md:pt-0">
+        <div className="flex w-full max-w-6xl flex-col items-start gap-14 md:flex-row md:items-end md:gap-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            className="flex w-full flex-col pb-2 font-sans md:w-1/3 md:pb-10 md:pr-8 md:pl-8 lg:pl-16"
+            className="flex w-full flex-col pb-2 font-sans md:w-1/3 md:pb-10 md:pr-16"
           >
             <p 
               className="mb-6 text-xs font-bold uppercase tracking-[0.15em] text-accent"
@@ -56,7 +56,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <div className="flex w-full flex-col overflow-hidden pb-10 md:w-2/3 md:pr-8 md:pl-4 lg:pr-12 lg:pl-8">
+          <div className="flex w-full flex-col overflow-hidden pb-10 md:w-2/3 md:pr-8 md:pl-16">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.label}

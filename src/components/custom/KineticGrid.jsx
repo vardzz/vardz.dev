@@ -383,7 +383,7 @@ export default function KineticGrid(props) {
           dot.y = gy;
           dot.vx = 0;
           dot.vy = 0;
-          dot.size = dot.size * 0.9 + (1 - 0.1);
+          dot.size += (currentDotSize * 0.2 - dot.size) * 0.1;
         } else {
           const cursorPush = getCursorPush(gx, gy);
           const clickPush = getClickPush(gx, gy);
