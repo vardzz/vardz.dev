@@ -31,7 +31,7 @@ export default function KineticGrid(props) {
   const animationRef = useRef(null);
   const resizeRafRef = useRef(null);
   const dotsRef = useRef(new Map());
-  const mousePosRef = useRef(null);
+  const mousePosRef = useRef({ x: 0, y: 0, isPresent: false });
   const trailPointsRef = useRef([]);
   const isMouseDownRef = useRef(false);
   const [mounted, setMounted] = useState(false);
@@ -240,7 +240,7 @@ export default function KineticGrid(props) {
 
     const getHoverIntensity = (x, y) => {
       const mouse = mousePosRef.current;
-      if (!mouse) return 0;
+      if (!mouse.isPresent) return 0;
 
       const hoverRadius = colorsRef.current.radius;
       const dx = x - mouse.x;
@@ -259,7 +259,7 @@ export default function KineticGrid(props) {
       const currentRepulsion = colorsRef.current.repulsionStrength;
       const mappedRepulsion = mapRepulsion(currentRepulsion);
 
-      if (!mouse || mappedRepulsion === 0) return { x: 0, y: 0 };
+      if (!mouse.isPresent || mappedRepulsion === 0) return { x: 0, y: 0 };
 
       const dx = baseX - mouse.x;
       const dy = baseY - mouse.y;
@@ -282,7 +282,7 @@ export default function KineticGrid(props) {
 
       const mouse = mousePosRef.current;
       const force = colorsRef.current.clickForce;
-      if (!mouse || force <= 0) return { x: 0, y: 0 };
+      if (!mouse.isPresent || force <= 0) return { x: 0, y: 0 };
 
       const dx = baseX - mouse.x;
       const dy = baseY - mouse.y;
@@ -371,23 +371,33 @@ export default function KineticGrid(props) {
       });
 
       const { springStiffness, damping } = getSpringParams();
+      const mouse = mousePosRef.current;
 
       dotsRef.current.forEach((dot, key) => {
         const [gxStr, gyStr] = key.split(",");
         const gx = parseInt(gxStr, 10);
         const gy = parseInt(gyStr, 10);
-        const cursorPush = getCursorPush(gx, gy);
-        const clickPush = getClickPush(gx, gy);
 
-        const targetX = gx + cursorPush.x + clickPush.x;
-        const targetY = gy + cursorPush.y + clickPush.y;
-        const forceX = (targetX - dot.x) * springStiffness;
-        const forceY = (targetY - dot.y) * springStiffness;
+        if (!mouse.isPresent) {
+          dot.x = gx;
+          dot.y = gy;
+          dot.vx = 0;
+          dot.vy = 0;
+          dot.size = dot.size * 0.9 + (1 - 0.1);
+        } else {
+          const cursorPush = getCursorPush(gx, gy);
+          const clickPush = getClickPush(gx, gy);
 
-        dot.vx = (dot.vx + forceX) * damping;
-        dot.vy = (dot.vy + forceY) * damping;
-        dot.x += dot.vx;
-        dot.y += dot.vy;
+          const targetX = gx + cursorPush.x + clickPush.x;
+          const targetY = gy + cursorPush.y + clickPush.y;
+          const forceX = (targetX - dot.x) * springStiffness;
+          const forceY = (targetY - dot.y) * springStiffness;
+
+          dot.vx = (dot.vx + forceX) * damping;
+          dot.vy = (dot.vy + forceY) * damping;
+          dot.x += dot.vx;
+          dot.y += dot.vy;
+        }
 
         const hoverIntensity = getHoverIntensity(dot.x, dot.y);
         dot.targetSize = currentDotSize + hoverIntensity * currentDotSize;
@@ -462,7 +472,7 @@ export default function KineticGrid(props) {
       const y = (e.clientY - rect.top) * scaleY;
 
       if (x >= 0 && y >= 0 && x <= canvasWidth && y <= canvasHeight) {
-        mousePosRef.current = { x, y };
+        mousePosRef.current = { x, y, isPresent: true };
 
         const { cursorTrail: ct, trailMode: tm, trailLength: tlen } = colorsRef.current;
         const effectiveLength = Math.max(1, Math.round(tlen * 100));
@@ -477,7 +487,8 @@ export default function KineticGrid(props) {
           }
         }
       } else {
-        mousePosRef.current = null;
+        mousePosRef.current = { x: 0, y: 0, isPresent: false };
+        trailPointsRef.current = [];
       }
     };
 
@@ -492,9 +503,30 @@ export default function KineticGrid(props) {
       isMouseDownRef.current = false;
     };
 
+    const handleMouseLeave = () => {
+      mousePosRef.current = { x: 0, y: 0, isPresent: false };
+      trailPointsRef.current = [];
+      isMouseDownRef.current = false;
+    };
+
+    // ── NEW: Edge Detection for rapid cursor exit ──
+    const handleWindowOut = (e) => {
+      if (
+        e.clientY <= 0 ||
+        e.clientX <= 0 ||
+        e.clientX >= window.innerWidth ||
+        e.clientY >= window.innerHeight
+      ) {
+        handleMouseLeave();
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
+    // ── NEW: Bind tracking directly to the window and HTML node to catch fast escapes ──
+    window.addEventListener("mouseout", handleWindowOut);
+    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
 
     const handleResize = () => {
       const newSize = getCanvasSize();
@@ -524,6 +556,9 @@ export default function KineticGrid(props) {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
+      // ── CLEANUP: Remove new listeners ──
+      window.removeEventListener("mouseout", handleWindowOut);
+      document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("resize", scheduleResize);
       window.removeEventListener("orientationchange", scheduleResize);
       resizeObserver.disconnect();
