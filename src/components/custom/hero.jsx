@@ -18,7 +18,23 @@ export default function Hero() {
 
   return (
     <section className="relative z-10 min-h-screen w-full overflow-hidden bg-base text-accent md:pl-24">
-      <KineticGrid />
+      <KineticGrid 
+        backgroundColor="transparent"
+        gridColor="rgba(255, 255, 255, 0.09)"
+        dotColor="rgba(255, 255, 255, 0.12)"
+        hoverColor="rgba(255, 255, 255, 0.6)"
+        gridSize={60}
+        dotSize={1.5}
+        baseOpacity={0.08}
+        repulsionStrength={-0.65}
+        radius={250}
+        cursorTrail={true}
+        cursorTrailProps={{
+          trailMode: "hover",
+          trailLength: 0.2,
+          trailColor: "#FFFFFF",
+        }}
+      />
 
       <div className="relative z-10 flex min-h-screen w-full items-center box-border px-6 pb-24 pt-24 md:px-0 md:pt-0">
         <div className="flex w-full flex-col items-start gap-14 md:flex-row md:items-end md:gap-0">
