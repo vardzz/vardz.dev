@@ -5,9 +5,9 @@ import Hero from "@/components/custom/hero";
 
 export default function Portfolio() {
   return (
-    <div className="relative h-screen w-full overflow-x-hidden overflow-y-hidden bg-base text-accent font-sans">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-base text-accent font-sans pb-24 md:pb-0">
       <Sidebar />
-      <main className="h-screen overflow-hidden">
+      <main className="min-h-screen overflow-hidden">
         <Hero />
       </main>
     </div>

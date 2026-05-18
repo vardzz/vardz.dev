@@ -45,8 +45,8 @@ export default function TechGrid() {
   const activeSpec = SPECIALIZATIONS.find(s => s.id === activeFilter);
 
   return (
-    <section className="bg-base py-16 px-6 md:px-12 lg:px-24">
-      <div className="max-w-5xl mx-auto">
+    <section className="bg-base px-6 py-16 md:px-12 lg:px-24">
+      <div className="mx-auto max-w-6xl">
         {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ export default function TechGrid() {
         </motion.div>
 
         {/* Filter Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-8">
+        <div className="mb-8 flex flex-wrap justify-center gap-4 md:gap-8">
           {SPECIALIZATIONS.map((spec) => {
             const Icon = spec.icon;
             const isActive = activeFilter === spec.id;
@@ -91,7 +91,7 @@ export default function TechGrid() {
         </div>
 
         {/* Description Section */}
-        <div className="max-w-2xl mx-auto text-center mb-16 px-4">
+        <div className="mx-auto mb-16 max-w-2xl px-4 text-center">
           <AnimatePresence mode="wait">
             <motion.p
               key={activeFilter}
@@ -109,7 +109,7 @@ export default function TechGrid() {
         {/* The Grid with stabilized reveal and filtering */}
         <motion.div 
           layout
-          className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-3 md:gap-4 lg:gap-6"
+          className="grid grid-cols-3 gap-6 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8"
         >
           <AnimatePresence mode="popLayout" initial={false}>
             {filteredStack.map((tech, idx) => (
@@ -152,7 +152,7 @@ function TechCard({ tech }) {
       <DialogTrigger asChild>
         <motion.div
           whileHover="hover"
-          className="group relative aspect-square flex flex-col items-center justify-center bg-base cursor-pointer overflow-hidden border border-accent/40 hover:border-accent rounded-2xl transition-all duration-500"
+          className="group relative flex aspect-square flex-col items-center justify-center overflow-hidden rounded-2xl border border-accent/40 bg-base transition-all duration-500 hover:border-accent"
         >
           {/* Default Monochrome State & Hover Brand Color State */}
           <motion.div className="flex flex-col items-center justify-center text-accent opacity-70 h-full w-full">
@@ -161,23 +161,23 @@ function TechCard({ tech }) {
                 hover: { scale: 1.15 }
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="relative flex items-center justify-center mb-2"
+              className="relative mb-2 flex items-center justify-center"
             >
                 {/* Monochrome Base Icon (Black/Zinc) */}
                 <Icon 
-                    size={32} 
+                    size={28} 
                     className="transition-opacity duration-300 group-hover:opacity-0"
                 />
                 {/* Brand Color Hover Icon (Always Brand color) */}
                 <Icon 
-                    size={32} 
+                    size={28} 
                     className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${tech.color}`}
                 />
             </motion.div>
 
             {/* Tech Name Reveal on Hover */}
             <p 
-              className="absolute bottom-3 text-[10px] font-extrabold tracking-[0.2em] uppercase text-accent opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+              className="absolute bottom-3 translate-y-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-accent opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
             >
               {tech.name}
             </p>
@@ -185,13 +185,13 @@ function TechCard({ tech }) {
         </motion.div>
       </DialogTrigger>
 
-      <DialogContent showCloseButton={false} className="border-accent/10 shadow-2xl rounded-[2.5rem] p-0 overflow-hidden bg-base">
+      <DialogContent showCloseButton={false} className="overflow-hidden rounded-[2.5rem] border-accent/10 bg-base p-0 shadow-2xl">
         <DialogTitle className="sr-only">Tech Details: {tech.name}</DialogTitle>
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.2, 1, 0.3, 1] }}
-          className="p-16 flex flex-col items-center text-center space-y-6"
+          className="flex flex-col items-center space-y-6 p-10 text-center md:p-16"
         >
           <motion.div 
             initial={{ scale: 0.5, opacity: 0 }}

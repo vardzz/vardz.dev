@@ -32,13 +32,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // 3. Inject BOTH font variables and generated classNames into the HTML tag
     <html
       lang="en"
       suppressHydrationWarning
       className={`${melodrama.variable} ${melodrama.className || ''} ${nunito.variable} ${nunito.className || ''}`}
     >
-      <body className="antialiased min-h-screen font-sans transition-colors duration-[1100ms] ease-in-out">
+      <body className="min-h-screen overflow-x-hidden bg-base font-sans antialiased transition-colors duration-[1100ms] ease-in-out">
         <Provider>
           <Sidebar />
           <PageTransition>

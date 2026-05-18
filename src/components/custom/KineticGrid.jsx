@@ -29,6 +29,7 @@ export default function KineticGrid(props) {
 
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
+  const resizeRafRef = useRef(null);
   const dotsRef = useRef(new Map());
   const mousePosRef = useRef(null);
   const trailPointsRef = useRef([]);
@@ -504,14 +505,29 @@ export default function KineticGrid(props) {
       initDots();
     };
 
+    const scheduleResize = () => {
+      if (resizeRafRef.current) {
+        cancelAnimationFrame(resizeRafRef.current);
+      }
+
+      resizeRafRef.current = requestAnimationFrame(() => {
+        handleResize();
+      });
+    };
+
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(canvas);
+    window.addEventListener("resize", scheduleResize);
+    window.addEventListener("orientationchange", scheduleResize);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("resize", scheduleResize);
+      window.removeEventListener("orientationchange", scheduleResize);
       resizeObserver.disconnect();
+      if (resizeRafRef.current) cancelAnimationFrame(resizeRafRef.current);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
   }, [mounted]);
@@ -521,15 +537,8 @@ export default function KineticGrid(props) {
   return (
     <canvas
       ref={canvasRef}
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        pointerEvents: "none",
-        ...props.style,
-      }}
+      className="absolute inset-0 z-0 h-full w-full pointer-events-none"
+      style={props.style}
     />
   );
 }

@@ -39,7 +39,7 @@ export default function Sidebar() {
     <>
       {/* ── Desktop Sidebar ─────────────────────────────────────────── */}
       <aside
-        className={`fixed left-0 top-0 z-50 hidden h-screen w-20 flex-col ${asideBg} py-6 font-sans sm:flex md:w-24 transition-colors duration-300`}
+        className={`fixed left-0 top-0 z-50 hidden h-screen w-20 flex-col ${asideBg} py-6 font-sans transition-colors duration-300 md:flex md:w-24`}
       >
         {/* FIX: Changed 'pt-4' to 'pt-16' (or pt-20) to add significant space above HOME/Socials */}
         <div className="flex flex-1 flex-col items-center justify-start pt-10">
@@ -86,7 +86,7 @@ export default function Sidebar() {
 
       {/* ── Mobile Bottom Bar ────────────────────────────────────────── */}
       <div
-        className={`fixed inset-x-0 bottom-0 z-50 flex h-16 items-center justify-between border-t ${borderColor}/10 ${mobileBg} px-4 font-sans backdrop-blur-md sm:hidden transition-colors duration-300`}
+        className={`fixed inset-x-0 bottom-0 z-50 flex h-16 items-center justify-between border-t ${borderColor}/10 ${mobileBg} px-6 font-sans backdrop-blur-md transition-colors duration-300 md:hidden`}
       >
         <div className="flex items-center gap-3">
           {isInternalPage ? (

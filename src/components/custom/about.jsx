@@ -53,7 +53,7 @@ export default function About() {
     <div className="relative w-full bg-base text-accent">
       <section
         id="about"
-        className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 md:items-start min-h-screen"
+        className="relative z-10 mx-auto grid min-h-screen max-w-[1600px] grid-cols-1 gap-12 px-6 py-16 md:items-start md:gap-20 md:px-12 md:py-32 lg:grid-cols-12"
       >
         {/* ── Left Column — Waterfall Stagger ─────────────────────────── */}
         <motion.div
@@ -61,30 +61,30 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="col-span-1 lg:col-span-7 xl:col-span-8 flex flex-col justify-center md:pt-6 lg:pt-10 max-w-4xl relative z-20"
+          className="relative z-20 col-span-1 flex max-w-prose flex-col justify-center md:pt-6 lg:col-span-7 lg:pt-10 xl:col-span-8"
         >
           <motion.h2
             variants={itemVariants}
-            className="font-heading font-display text-[50px] md:text-9xl font-bold tracking-tighter leading-none mb-4"
+            className="mb-4 font-heading font-display text-[clamp(3.5rem,10vw,7rem)] font-bold leading-none tracking-tighter"
           >
             About
           </motion.h2>
 
           <motion.h3
             variants={itemVariants}
-            className="font-heading font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight text-accent mb-12"
+            className="mb-12 font-heading font-display text-2xl font-bold leading-tight tracking-tight text-accent md:text-3xl lg:text-4xl"
           >
             I'm Vardz. A developer, systems thinker, and aspiring Cloud Engineer.
           </motion.h3>
 
-          <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed mb-6 text-lg">
+          <motion.p variants={itemVariants} className="mb-6 text-lg leading-relaxed text-accent/80">
             The architecture of the web has always fascinated me. I've never been afraid to
             dismantle and rebuild, whether it's configuring basic layouts, exploring modern
             React frameworks, or orchestrating multi-agent AI systems. I've been fascinated
             by digital infrastructure since I wrote my first lines of code.
           </motion.p>
 
-          <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed mb-8 text-lg">
+          <motion.p variants={itemVariants} className="mb-8 text-lg leading-relaxed text-accent/80">
             Fast forward to today, and my focus has shifted from just building pages to
             architecting solutions. What excites me most about engineering is the ability
             to create systems that have purpose and solve real problems within communities.
@@ -93,20 +93,20 @@ export default function About() {
             right logic to apply, and iterating on that value over time is the key to great software.
           </motion.p>
 
-          <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed mb-4 text-lg">
+          <motion.p variants={itemVariants} className="mb-4 text-lg leading-relaxed text-accent/80">
             This is one of my favorite quotes (by Antoine de Saint-Exupéry):
           </motion.p>
 
           <motion.blockquote
             variants={itemVariants}
-            className="font-heading text-2xl md:text-3xl italic border-l-2 border-accent/30 pl-6 py-2 my-6 font-light"
+            className="my-6 border-l-2 border-accent/30 py-2 pl-6 font-heading text-2xl font-light italic md:text-3xl"
             style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
           >
             "Perfection is achieved, not when there is nothing more to add,
             but when there is nothing left to take away."
           </motion.blockquote>
 
-          <motion.p variants={itemVariants} className="text-accent/80 leading-relaxed text-lg">
+          <motion.p variants={itemVariants} className="text-lg leading-relaxed text-accent/80">
             This resonates deeply with me because I have no desire to over-engineer for the
             sake of complexity. I only want to design, build, and deploy systems that are
             efficient, that matter, and that leave a lasting impact.
@@ -114,7 +114,7 @@ export default function About() {
         </motion.div>
 
         {/* ── Right Column — 3D tilt image (untouched) ─────────────────── */}
-        <div className="col-span-1 lg:col-span-5 xl:col-span-4 w-full perspective-[1000px] lg:ml-auto lg:max-w-md">
+        <div className="col-span-1 w-full perspective-[1000px] lg:col-span-5 lg:ml-auto lg:max-w-md xl:col-span-4">
           <motion.div
             initial={{ opacity: 0, x: 50, scale: 0.95 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -123,7 +123,7 @@ export default function About() {
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="relative aspect-[3/4] md:aspect-square lg:aspect-[3/4] bg-base overflow-hidden group cursor-pointer rounded-3xl md:rounded-[2.5rem] mt-10 lg:mt-0"
+            className="group relative mt-10 aspect-[3/4] overflow-hidden rounded-3xl bg-base cursor-pointer md:aspect-square md:rounded-[2.5rem] lg:mt-0 lg:aspect-[3/4]"
           >
             <motion.div
               style={{ transform: "translateZ(75px)", transformStyle: "preserve-3d" }}

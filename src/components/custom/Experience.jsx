@@ -54,7 +54,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={containerRef}
-      className="relative py-32 md:py-48 pl-20 md:pl-24 overflow-hidden"
+      className="relative overflow-hidden px-6 py-32 md:pl-24 md:py-48 md:pr-12 lg:px-0"
       style={{ backgroundColor: "#F4EDE4", color: "#111111" }}
     >
       {/* Subtle noise texture overlay */}
@@ -76,7 +76,7 @@ export default function Experience() {
         }}
       />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-0 md:px-12">
 
         {/* Section Header */}
         <motion.div
@@ -94,7 +94,7 @@ export default function Experience() {
             Career Journey
           </span>
           <h2
-            className="font-heading font-display text-4xl md:text-7xl font-black uppercase tracking-tighter"
+            className="font-heading font-display text-[clamp(2.75rem,7vw,5.5rem)] font-black uppercase tracking-tighter break-words hyphens-auto"
             style={{ color: "#111111" }}
           >
             The Chronicle
@@ -102,23 +102,23 @@ export default function Experience() {
         </motion.div>
 
         {/* Timeline Items Container */}
-        <div className="space-y-32 md:space-y-48 relative">
+        <div className="relative space-y-24 md:space-y-48">
 
           {/* Static background line */}
           <div
-            className="absolute top-0 bottom-0 left-[15px] md:left-1/2 w-[1px] -translate-x-1/2"
+            className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2"
             style={{ backgroundColor: "rgba(17,17,17,0.12)" }}
           />
 
           {/* Growing progress line */}
           <motion.div
-            className="absolute top-0 left-[15px] md:left-1/2 w-[1px] origin-top z-20 -translate-x-1/2"
+            className="absolute left-1/2 top-0 z-20 w-[1px] origin-top -translate-x-1/2"
             style={{ scaleY, height: "100%", backgroundColor: "#111111" }}
           />
 
           {/* Following glow dot */}
           <motion.div
-            className="absolute left-[15px] md:left-1/2 z-30 -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 z-30 -translate-x-1/2 -translate-y-1/2"
             style={{
               top: useTransform(scaleY, (v) => `${v * 100}%`),
               width: "10px",
@@ -166,11 +166,11 @@ function ExperienceItem({ exp, isEven }) {
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 1.1, ease: [0.2, 1, 0.3, 1] }}
-      className="relative flex flex-col md:flex-row items-center w-full"
+      className="relative flex w-full flex-col items-start md:flex-row md:items-center"
     >
       {/* Watermark year */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap pointer-events-none select-none z-0 opacity-10"
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-[20vw] font-black uppercase tracking-tighter opacity-10 sm:text-[16vw] md:text-[18vw]"
         style={{ y, color: "#111111" }}
       >
         {exp.year}
@@ -178,21 +178,21 @@ function ExperienceItem({ exp, isEven }) {
 
       {/* Content side */}
       <div
-        className={`w-full md:w-1/2 relative z-10 flex ${
+        className={`relative z-10 flex w-full md:w-1/2 ${
           isEven ? "md:justify-end md:pr-20" : "md:order-2 md:justify-start md:pl-20"
         }`}
       >
         <div
-          className={`relative w-full max-w-lg pl-12 md:pl-0 ${
+          className={`relative w-full max-w-lg pl-8 md:pl-0 ${
             isEven ? "text-left md:text-right" : "text-left"
           }`}
         >
           {/* Animated bullet on the line */}
           <motion.div
-            className={`absolute top-[10px] md:top-1/2 md:-translate-y-1/2 w-2 h-2 rounded-full z-30 ${
+            className={`absolute left-1/2 top-[10px] z-30 h-2 w-2 -translate-x-1/2 rounded-full md:top-1/2 md:-translate-y-1/2 ${
               isEven
-                ? "left-[-4px] md:right-[-84px] md:left-auto"
-                : "left-[-4px] md:left-[-84px]"
+                ? "md:right-[-84px] md:left-auto"
+                : "md:left-[-84px]"
             }`}
             style={{
               backgroundColor: "#111111",
@@ -214,7 +214,7 @@ function ExperienceItem({ exp, isEven }) {
           </motion.span>
 
           <h3
-            className="font-heading font-display text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2"
+            className="mb-2 break-words font-heading font-display text-3xl font-black uppercase tracking-tighter md:text-4xl"
             style={{ color: "#111111" }}
           >
             {exp.title}
@@ -228,7 +228,7 @@ function ExperienceItem({ exp, isEven }) {
           </div>
 
           <p
-            className="text-sm md:text-base leading-relaxed"
+            className="text-sm leading-relaxed md:text-base"
             style={{ color: "rgba(17,17,17,0.65)" }}
           >
             {exp.desc}

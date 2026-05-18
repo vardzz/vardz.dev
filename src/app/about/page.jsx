@@ -16,9 +16,9 @@ export default function AboutPage() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: LW_EASE }}
-      className="relative min-h-screen w-full overflow-x-hidden bg-base font-sans text-accent"
+      className="relative min-h-screen w-full overflow-x-hidden bg-base font-sans text-accent pb-24 md:pb-0"
     >
-      <main className="relative z-10 flex min-h-screen w-full flex-col bg-base pb-16 pl-20 md:pl-24">
+      <main className="relative z-10 flex min-h-screen w-full flex-col bg-base pb-16 pl-0 md:pl-24">
         {/* Icons marquee — entrance stagger handled inside TechStack */}
         <TechStack variant="icons" />
 

@@ -12,14 +12,14 @@ export default function ProjectLayout({
   children,
 }) {
   return (
-    <div className="min-h-screen w-full bg-[#F4EDE4] text-[#111111] pl-20 md:pl-24 selection:bg-[#111111] selection:text-[#F4EDE4]">
-      <header className="pt-32 pb-20 px-8 md:px-16 lg:px-24">
+    <div className="min-h-screen w-full bg-[#F4EDE4] pb-24 pl-0 text-[#111111] selection:bg-[#111111] selection:text-[#F4EDE4] md:pl-24 md:pb-0">
+      <header className="px-6 pb-20 pt-32 md:px-16 lg:px-24">
         <motion.div
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="font-heading font-display text-6xl md:text-8xl lg:text-[10vw] font-black uppercase tracking-tighter leading-[0.8] mb-6">
+          <h1 className="mb-6 break-words font-heading font-display text-6xl font-black uppercase leading-[0.8] tracking-tighter md:text-8xl lg:text-[10vw]">
             {name}
           </h1>
           <div className="flex items-center gap-4 opacity-50">
@@ -31,9 +31,9 @@ export default function ProjectLayout({
         </motion.div>
       </header>
 
-      <main className="px-8 md:px-16 lg:px-24 pb-40">{children}</main>
+      <main className="px-6 pb-40 md:px-16 lg:px-24">{children}</main>
 
-      <footer className="fixed bottom-0 left-20 md:left-24 right-0 h-24 bg-[#F4EDE4]/85 backdrop-blur-md border-t border-black/5 px-8 md:px-16 flex items-center justify-between z-40">
+      <footer className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-between border-t border-black/5 bg-[#F4EDE4]/85 px-6 backdrop-blur-md md:left-24 md:h-24 md:px-16">
         {launchHref ? (
           <Link
             href={launchHref}

@@ -27,14 +27,14 @@ export default function Footer() {
     // text-accent kept so text color still follows the theme token
     <footer
       id="contact"
-      className="w-full text-accent pt-32 pb-6 md:pb-12 overflow-hidden relative border-t border-accent/10"
+      className="relative w-full overflow-hidden border-t border-accent/10 pb-6 pt-24 text-accent md:pb-12 md:pt-32"
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="w-full max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-16 mb-20 md:mb-32"
+        className="mx-auto mb-16 flex w-full max-w-[1600px] flex-col items-start justify-between gap-16 px-6 md:mb-32 md:flex-row md:items-end md:px-12"
       >
         {/* Collaborate */}
         <motion.div variants={itemVariants}>
@@ -50,11 +50,11 @@ export default function Footer() {
         </motion.div>
 
         {/* Networks */}
-        <motion.div variants={itemVariants} className="flex flex-col md:text-right gap-6">
+        <motion.div variants={itemVariants} className="flex flex-col gap-6 md:text-right">
           <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-accent/70 block">
             Networks
           </span>
-          <div className="flex gap-8 flex-wrap">
+          <div className="flex flex-wrap gap-8">
             {[
               { label: "LinkedIn",  href: "https://www.linkedin.com/in/vardz/" },
               { label: "Instagram", href: "https://www.instagram.com/v_ardzz/" },
@@ -82,9 +82,9 @@ export default function Footer() {
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full overflow-hidden flex justify-center items-center mb-16 py-8"
+        className="mb-16 flex w-full items-center justify-center overflow-hidden py-8"
       >
-        <h1 className="font-heading font-display text-[20vw] leading-[0.8] font-black tracking-tighter uppercase text-accent whitespace-nowrap">
+        <h1 className="font-heading font-display text-[20vw] font-black leading-[0.8] tracking-tighter whitespace-nowrap uppercase text-accent">
           @VARDZ
         </h1>
       </motion.div>
@@ -95,7 +95,7 @@ export default function Footer() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 1 }}
-        className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[8px] md:text-[10px] text-accent/70 tracking-[0.2em] uppercase font-bold gap-4"
+        className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-4 px-6 text-[8px] font-bold uppercase tracking-[0.2em] text-accent/70 md:flex-row md:px-12 md:text-[10px]"
       >
         <span>© 2026 JERICHO VARDE. ALL RIGHTS RESERVED.</span>
         <span>LOCATED IN THE PHILIPPINES</span>

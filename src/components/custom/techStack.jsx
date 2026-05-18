@@ -33,37 +33,57 @@ export const TECH_STACK = [
 ];
 
 export default function TechStack({ variant = "icons" }) {
+  const iconSet = TECH_STACK;
+
   return (
     <motion.section 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, ease: [0.2, 1, 0.3, 1] }}
-      className="bg-background py-12 overflow-hidden flex items-center relative transition-colors duration-300 ease-in-out"
+      className="relative flex items-center overflow-hidden bg-background py-12 transition-colors duration-300 ease-in-out"
     >
-      <div className="absolute inset-x-0 w-[200vw] sm:w-[300vw] pointer-events-none" />
-      
-      {/* Container for Infinite Scroll */}
-      <div className="relative flex overflow-hidden py-4">
-        <motion.div
-          className="flex whitespace-nowrap"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-        >
-          {/* First Set */}
-          <div className="flex gap-16 md:gap-24 pr-16 md:pr-24 items-center">
-            {TECH_STACK.map((tech, idx) => (
-              <TechItem key={`set1-${idx}`} tech={tech} variant={variant} />
-            ))}
-          </div>
-          {/* Second Set (Duplicate for seamless loop) */}
-          <div className="flex gap-16 md:gap-24 pr-16 md:pr-24 items-center">
-            {TECH_STACK.map((tech, idx) => (
-              <TechItem key={`set2-${idx}`} tech={tech} variant={variant} />
-            ))}
-          </div>
-        </motion.div>
-      </div>
+      <div className="absolute inset-x-0 w-[200vw] pointer-events-none sm:w-[300vw]" />
+
+      {variant === "icons" ? (
+        <div className="relative flex w-full overflow-hidden py-4">
+          <motion.div
+            className="flex w-max whitespace-nowrap will-change-transform"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+          >
+            <div className="flex items-center gap-10 px-6 sm:gap-14 md:gap-20 md:px-12 lg:gap-24">
+              {iconSet.map((tech, idx) => (
+                <TechItem key={`set1-${idx}`} tech={tech} variant={variant} />
+              ))}
+            </div>
+            <div className="flex items-center gap-10 px-6 sm:gap-14 md:gap-20 md:px-12 lg:gap-24">
+              {iconSet.map((tech, idx) => (
+                <TechItem key={`set2-${idx}`} tech={tech} variant={variant} />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      ) : (
+        <div className="relative flex overflow-hidden py-4">
+          <motion.div
+            className="flex whitespace-nowrap"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+          >
+            <div className="flex items-center gap-16 pr-16 md:gap-24 md:pr-24">
+              {TECH_STACK.map((tech, idx) => (
+                <TechItem key={`set1-${idx}`} tech={tech} variant={variant} />
+              ))}
+            </div>
+            <div className="flex items-center gap-16 pr-16 md:gap-24 md:pr-24">
+              {TECH_STACK.map((tech, idx) => (
+                <TechItem key={`set2-${idx}`} tech={tech} variant={variant} />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      )}
     </motion.section>
   );
 }
@@ -75,11 +95,11 @@ function TechItem({ tech, variant }) {
       title={tech.name}
     >
       {variant === "icons" ? (
-        <div className="transform hover:scale-110 transition-transform duration-300">
-          <tech.icon size={50} />
+        <div className="transform transition-transform duration-300 hover:scale-110">
+          <tech.icon size={30} className="h-8 w-8 sm:h-10 sm:w-10 md:h-11 md:w-11" />
         </div>
       ) : (
-        <span className="text-4xl md:text-7xl font-black uppercase tracking-tighter">
+        <span className="text-4xl font-black uppercase tracking-tighter md:text-7xl">
           {tech.name}
         </span>
       )}

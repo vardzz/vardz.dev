@@ -10,7 +10,7 @@ export const metadata = {
 export default function JourneyPage() {
   return (
     // 'absolute inset-0' ensures the beige covers the black root layout completely
-    <div className="relative min-h-screen w-full bg-accent text-base overflow-x-hidden selection:bg-base selection:text-accent">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-accent text-base pb-24 md:pb-0 selection:bg-base selection:text-accent">
       <div className="relative z-10 w-full max-w-[1600px] mx-auto">
         <Experience />
       </div>

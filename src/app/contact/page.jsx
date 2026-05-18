@@ -58,26 +58,26 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen w-full" style={{ backgroundColor: "#111111", color: "#F4EDE4" }}>
-      <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden pl-20 md:pl-24 pb-12" style={{ color: "#F4EDE4" }}>
-        <main className="flex flex-1 flex-col justify-center max-w-[1400px] w-full mx-auto px-6 md:px-12 py-32 md:py-48">
-          <div className="mb-20">
-            <span className="text-[10px] tracking-[0.3em] font-bold uppercase mb-4 block" style={{ color: "rgba(244,237,228,0.5)" }}>
+    <div className="min-h-screen w-full bg-[#111111] text-[#F4EDE4]">
+      <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-24 pl-0 text-[#F4EDE4] md:pl-24 md:pb-0">
+        <main className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-between px-6 py-24 md:px-12 md:py-48">
+          <div className="mb-8 md:mb-16">
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.3em] text-[#F4EDE4]/50">
               Let's Connect
             </span>
-            <h1 className="font-heading font-display text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+            <h1 className="font-heading font-display text-5xl font-black leading-[0.9] tracking-tighter break-words hyphens-auto md:text-8xl">
               Hello.
             </h1>
           </div>
 
-          <div className="max-w-xl">
-            <p className="text-lg md:text-xl leading-relaxed mb-12" style={{ color: "rgba(244,237,228,0.7)" }}>
+          <div className="w-full max-w-xl">
+            <p className="mb-8 text-lg leading-relaxed text-[#F4EDE4]/70 md:mb-16 md:text-xl">
               I am currently open for new opportunities and collaborations.
               Whether you have a project in mind or just want to say hi, I'll
               try my best to get back to you.
             </p>
             
-            <form onSubmit={handleTriggerEmail} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <form onSubmit={handleTriggerEmail} className="flex w-full flex-col gap-4 sm:flex-row sm:items-center">
               <input
                 type="email"
                 placeholder="Enter your email address..."
@@ -85,18 +85,16 @@ export default function ContactPage() {
                 onChange={(e) => setVisitorEmail(e.target.value)}
                 disabled={isSending}
                 required
-                className="w-full sm:w-80 appearance-none bg-transparent border-0 border-b border-[#333333] focus:border-[#F4EDE4] focus:outline-none focus:ring-0 shadow-none px-0 py-2 transition-colors disabled:opacity-50"
-                style={{ 
-                  color: "#F4EDE4",
+                className="w-full appearance-none border-0 border-b border-[#333333] bg-transparent px-0 py-2 text-[#F4EDE4] shadow-none transition-colors focus:border-[#F4EDE4] focus:outline-none focus:ring-0 disabled:opacity-50 sm:w-80"
+                style={{
                   WebkitBoxShadow: "0 0 0px 1000px #111111 inset",
-                  WebkitTextFillColor: "#F4EDE4" 
+                  WebkitTextFillColor: "#F4EDE4",
                 }}
               />
               <button
                 type="submit"
                 disabled={isSending}
-                className="underline decoration-1 underline-offset-4 hover:opacity-70 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                style={{ color: "#F4EDE4" }}
+                className="cursor-pointer underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {emailStatus}
               </button>
