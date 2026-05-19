@@ -36,7 +36,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 flex min-h-screen w-full items-center justify-center box-border px-6 pb-24 pt-24 md:px-12 md:pt-0">
+      <div className="relative z-10 flex min-h-screen w-full items-center justify-center box-border px-6 pb-10 pt-50 md:px-12 md:pt-16">
         <div className="flex w-full max-w-6xl flex-col items-start gap-14 md:flex-row md:items-end md:gap-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
