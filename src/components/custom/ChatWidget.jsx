@@ -268,8 +268,22 @@ export default function ChatWidget() {
                                   <RobotIcon className={`h-2.5 w-2.5 ${isLightBg ? 'text-[#F4EDE4]' : 'text-[#F4EDE4]'}`} />
                                 </span>
                               </div>
-                        <div className="rounded-2xl rounded-bl-[9px] border border-white/5 bg-[#2a2a2d] px-4 py-3 text-sm text-[#a0a0a2]">
-                          Thinking...
+                        <div className={`rounded-2xl rounded-bl-[9px] border border-white/5 bg-[#2a2a2d] px-4 py-3 text-sm ${isLightBg ? 'text-[#111111]' : 'text-[#a0a0a2]'}`}>
+                          <span className="flex items-center gap-2">
+                            <span>Thinking</span>
+                            <span className="dots inline-flex items-center">
+                              <span className="dot" style={{ backgroundColor: isLightBg ? '#111111' : '#F4EDE4' }} />
+                              <span className="dot" style={{ backgroundColor: isLightBg ? '#111111' : '#F4EDE4' }} />
+                              <span className="dot" style={{ backgroundColor: isLightBg ? '#111111' : '#F4EDE4' }} />
+                            </span>
+                          </span>
+                          <style>{`
+                            .dots .dot{display:inline-block;width:6px;height:6px;border-radius:9999px;margin-left:6px;animation:dotBounce 900ms infinite ease-in-out}
+                            .dots .dot:nth-child(1){animation-delay:0s}
+                            .dots .dot:nth-child(2){animation-delay:120ms}
+                            .dots .dot:nth-child(3){animation-delay:240ms}
+                            @keyframes dotBounce{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+                          `}</style>
                         </div>
                       </div>
                     </div>
