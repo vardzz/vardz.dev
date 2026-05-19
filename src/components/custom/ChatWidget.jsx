@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, MessageSquareText, MoreVertical, X } from 'lucide-react';
+import { ArrowRight, MessageSquareText, X } from 'lucide-react';
 
 const RobotIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
@@ -218,15 +218,8 @@ export default function ChatWidget() {
               <div className="flex items-center gap-1.5">
                 <button
                   type="button"
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[#8b8b8d] transition-all hover:bg-black/20 hover:text-[#b7b7b9] active:scale-95"
-                  aria-label="Chat options"
-                >
-                  <MoreVertical className="h-3.5 w-3.5" />
-                </button>
-                <button
-                  type="button"
                   onClick={() => setIsOpen(false)}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[#8b8b8d] transition-all hover:bg-black/20 hover:text-[#b7b7b9] active:scale-95"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[#8b8b8d] transition-all hover:bg-black/20 hover:text-[#b7b7b9] active:scale-95 cursor-pointer"
                   aria-label="Close chat"
                 >
                   <X className="h-3.5 w-3.5" />
@@ -311,7 +304,7 @@ export default function ChatWidget() {
                     type="button"
                     onClick={() => handleSendMessage()}
                     disabled={!canSend}
-                    className={`inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm transition-all hover:brightness-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 ${isLightBg ? 'bg-[#111111] text-[#F4EDE4]' : 'bg-[#F4EDE4] text-[#111111]'}`}
+                      className={`inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm transition-all hover:brightness-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer ${isLightBg ? 'bg-[#111111] text-[#F4EDE4]' : 'bg-[#F4EDE4] text-[#111111]'}`}
                     aria-label="Send message"
                   >
                     <ArrowRight className="h-4 w-4" />
@@ -334,7 +327,7 @@ export default function ChatWidget() {
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
             onClick={() => setIsOpen(true)}
-            className={`group ml-auto flex items-center gap-3 rounded-full px-4 py-3 text-[#e9e9ea] shadow-[0_20px_50px_rgba(0,0,0,0.45)] transition-all active:scale-95 ${isLightBg ? 'border border-[#111111]/25 bg-[#F4EDE4] text-[#111111] hover:-translate-y-0.5 hover:border-[#111111]/45' : 'border border-[#F4EDE4]/25 bg-[#1b1b1d] text-[#F4EDE4] hover:-translate-y-0.5 hover:border-[#F4EDE4]/45'}`}
+            className={`group ml-auto flex items-center gap-3 rounded-full px-4 py-3 text-[#e9e9ea] shadow-[0_20px_50px_rgba(0,0,0,0.45)] transition-all active:scale-95 cursor-pointer ${isLightBg ? 'border border-[#111111]/25 bg-[#F4EDE4] text-[#111111] hover:-translate-y-0.5 hover:border-[#111111]/45' : 'border border-[#F4EDE4]/25 bg-[#1b1b1d] text-[#F4EDE4] hover:-translate-y-0.5 hover:border-[#F4EDE4]/45'}`}
           >
             <span className={`flex h-10 w-10 items-center justify-center rounded-full border bg-[#121212] ${isLightBg ? 'border-[#111111]/30 text-[#111111] bg-[#F4EDE4]' : 'border-[#F4EDE4]/30 text-[#F4EDE4]'}`}>
               <MessageSquareText className="h-4 w-4" />
