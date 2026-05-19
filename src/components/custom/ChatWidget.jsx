@@ -2,7 +2,17 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, Bot, Eye, MessageSquareText, MoreVertical, X } from 'lucide-react';
+import { ArrowRight, MessageSquareText, MoreVertical, X } from 'lucide-react';
+
+const RobotIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+    <rect x="3" y="7" width="18" height="10" rx="2" strokeWidth="1.5" />
+    <circle cx="8" cy="12" r="1" fill="currentColor" stroke="none" />
+    <circle cx="16" cy="12" r="1" fill="currentColor" stroke="none" />
+    <path d="M9 17v1a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <rect x="10" y="3" width="4" height="2" rx="1" strokeWidth="1.5" />
+  </svg>
+);
 
 const INITIAL_MESSAGES = [
   {
@@ -30,10 +40,105 @@ export default function ChatWidget() {
   const [isSending, setIsSending] = useState(false);
   const [sessionId, setSessionId] = useState('');
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
+  const [isLightBg, setIsLightBg] = useState(false);
   const endRef = useRef(null);
 
   useEffect(() => {
     setSessionId(createSessionId());
+  }, []);
+
+  useEffect(() => {
+    // Robust palette detection: check --base var, data-theme, and body bg;
+    // observe changes so the widget updates if page theme changes.
+    const getCssBase = () => (getComputedStyle(document.documentElement).getPropertyValue('--base') || '').trim();
+    const parseRgb = (s) => {
+      const m = s.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (!m) return null;
+      return [parseInt(m[1], 10), parseInt(m[2], 10), parseInt(m[3], 10)];
+    };
+
+    const hexToRgb = (hex) => {
+      try {
+        const h = hex.replace(/"|'/g, '').trim();
+        const clean = h.startsWith('#') ? h.slice(1) : h;
+        if (clean.length === 3) {
+          return [parseInt(clean[0] + clean[0], 16), parseInt(clean[1] + clean[1], 16), parseInt(clean[2] + clean[2], 16)];
+        }
+        if (clean.length === 6) {
+          return [parseInt(clean.slice(0, 2), 16), parseInt(clean.slice(2, 4), 16), parseInt(clean.slice(4, 6), 16)];
+        }
+      } catch (e) {
+        return null;
+      }
+      return null;
+    };
+
+    const evaluate = () => {
+      try {
+        // 1) explicit CSS var --base
+        const baseVar = getCssBase();
+        if (baseVar) {
+          // exact-match check for the two required hexes
+          const low = baseVar.replace(/"|'/g, '').toLowerCase();
+          if (low.includes('#f4ede4')) return setIsLightBg(true);
+          if (low.includes('#111111')) return setIsLightBg(false);
+
+          // try parse hex or rgb
+          let rgb = null;
+          if (low.includes('#')) rgb = hexToRgb(low);
+          else rgb = parseRgb(low);
+
+          if (rgb) {
+            const [r, g, b] = rgb.map((v) => v / 255);
+            const L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            return setIsLightBg(L > 0.5);
+          }
+        }
+
+        // 2) data-theme attribute (common pattern)
+        const dt = document.documentElement.getAttribute('data-theme');
+        if (dt) {
+          return setIsLightBg(dt.toLowerCase().includes('light'));
+        }
+
+        // 3) computed body background
+        const bodyBg = getComputedStyle(document.body).backgroundColor || '';
+        if (bodyBg) {
+          const rgb = parseRgb(bodyBg);
+          if (rgb) {
+            const [r, g, b] = rgb.map((v) => v / 255);
+            const L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            return setIsLightBg(L > 0.5);
+          }
+        }
+
+        // 4) fallback to prefers-color-scheme
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          return setIsLightBg(true);
+        }
+
+        // default: dark
+        setIsLightBg(false);
+      } catch (e) {
+        setIsLightBg(false);
+      }
+    };
+
+    evaluate();
+
+    // observe changes to inline styles or attributes that may change palette
+    const obs = new MutationObserver(() => evaluate());
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'data-theme'] });
+    obs.observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] });
+
+    const media = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    const onMedia = () => evaluate();
+    if (media && media.addEventListener) media.addEventListener('change', onMedia);
+
+    return () => {
+      obs.disconnect();
+      if (media && media.removeEventListener) media.removeEventListener('change', onMedia);
+    };
   }, []);
 
   useEffect(() => {
@@ -90,20 +195,21 @@ export default function ChatWidget() {
         {isOpen ? (
           <motion.section
             key="chat-panel"
+            data-palette={isLightBg ? 'light' : 'dark'}
             initial={{ opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="relative ml-auto flex h-[min(74vh,620px)] w-full max-w-[390px] flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#111111] shadow-[0_26px_70px_rgba(0,0,0,0.55)]"
+            className={`relative ml-auto flex h-[min(74vh,620px)] w-full max-w-[390px] flex-col overflow-hidden rounded-2xl shadow-[0_26px_70px_rgba(0,0,0,0.55)] ${isLightBg ? 'bg-[#F4EDE4] text-[#111111] border border-[#111111]/8' : 'bg-[#111111] text-[#F4EDE4] border border-white/5'}`}
           >
-            <div className="relative flex items-center justify-between border-b border-white/5 bg-[#222224] px-4 py-3.5 sm:px-5">
+            <div className={`relative flex items-center justify-between border-b px-4 py-3.5 sm:px-5 ${isLightBg ? 'border-[#111111]/8 bg-[#F4EDE4]/90' : 'border-white/5 bg-[#222224]'}`}>
               <div className="flex items-center gap-2.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[#d7b85d]/25 bg-[#141414]">
-                  <Bot className="h-3.5 w-3.5 text-[#d7b85d]" />
+                <div className={`flex h-8 w-8 items-center justify-center rounded-full ${isLightBg ? 'border-[#111111]/15 bg-[#F4EDE4]' : 'border-white/6 bg-[#141414]'}`}>
+                  <RobotIcon className={`h-3.5 w-3.5 ${isLightBg ? 'text-[#111111]' : 'text-[#F4EDE4]'}`} />
                 </div>
                 <div className="flex items-center gap-2">
-                  <p className="text-[27px] font-semibold leading-none text-[#d7b85d]">Jeje</p>
-                  <span className="rounded-full border border-[#d7b85d]/20 bg-[#5f4d1d]/35 px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em] text-[#d7b85d]">
+                  <p className={`text-[27px] font-semibold leading-none ${isLightBg ? 'text-[#111111]' : 'text-[#F4EDE4]'}`}>Jeje</p>
+                  <span className={`rounded-full px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em] ${isLightBg ? 'border border-[#111111]/12 text-[#111111] bg-transparent' : 'border border-[#F4EDE4]/20 text-[#F4EDE4] bg-transparent'}`}>
                     AI ASSISTANT
                   </span>
                 </div>
@@ -129,7 +235,7 @@ export default function ChatWidget() {
             </div>
 
             <>
-              <div className="relative flex-1 overflow-y-auto bg-[#161616] px-4 py-4 sm:px-5">
+              <div className={`relative flex-1 overflow-y-auto px-4 py-4 sm:px-5 ${isLightBg ? 'bg-[#F4EDE4]/90' : 'bg-[#161616]'}`}>
                 <div className="space-y-4">
                   {messages.map((message) => (
                     <div
@@ -139,19 +245,13 @@ export default function ChatWidget() {
                       <div className={`max-w-[84%] ${message.sender === 'user' ? 'items-end' : 'items-start'} flex flex-col`}>
                         {message.sender === 'bot' ? (
                           <div className="mb-1.5 flex items-center gap-2 pl-0.5">
-                            <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#a88b37]/75">
-                              <Eye className="h-2.5 w-2.5 text-[#f7f2df]" />
+                            <span className={`relative inline-flex h-5 w-5 items-center justify-center rounded-full ${isLightBg ? 'bg-[#111111]/90' : 'bg-[#F4EDE4]/10'}`}>
+                              <RobotIcon className={`h-2.5 w-2.5 ${isLightBg ? 'text-[#F4EDE4]' : 'text-[#F4EDE4]'}`} />
                             </span>
                           </div>
                         ) : null}
 
-                        <div
-                          className={`rounded-2xl px-4 py-3 text-sm font-medium leading-relaxed shadow-[0_8px_22px_rgba(0,0,0,0.22)] ${
-                            message.sender === 'user'
-                              ? 'rounded-br-[9px] border border-white/5 bg-[#2a2a2d] text-[#e8e8e8]'
-                              : 'rounded-bl-[9px] border border-white/5 bg-[#2a2a2d] text-[#e8e8e8]'
-                          }`}
-                        >
+                        <div className={`rounded-2xl px-4 py-3 text-sm font-medium leading-relaxed shadow-[0_8px_22px_rgba(0,0,0,0.22)] ${message.sender === 'user' ? 'rounded-br-[9px] border border-white/6 bg-[#2a2a2d]' : 'rounded-bl-[9px] border border-white/6 bg-[#2a2a2d]'} ${isLightBg ? 'text-[#111111]' : 'text-[#e8e8e8]'}`}>
                           {message.text}
                         </div>
 
@@ -163,11 +263,11 @@ export default function ChatWidget() {
                   {isSending && (
                     <div className="flex justify-start">
                       <div className="flex max-w-[84%] flex-col items-start">
-                        <div className="mb-1.5 flex items-center gap-2 pl-0.5">
-                          <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#a88b37]/75">
-                            <Eye className="h-2.5 w-2.5 text-[#f7f2df]" />
-                          </span>
-                        </div>
+                                <div className="mb-1.5 flex items-center gap-2 pl-0.5">
+                                <span className={`relative inline-flex h-5 w-5 items-center justify-center rounded-full ${isLightBg ? 'bg-[#111111]/90' : 'bg-[#F4EDE4]/10'}`}>
+                                  <RobotIcon className={`h-2.5 w-2.5 ${isLightBg ? 'text-[#F4EDE4]' : 'text-[#F4EDE4]'}`} />
+                                </span>
+                              </div>
                         <div className="rounded-2xl rounded-bl-[9px] border border-white/5 bg-[#2a2a2d] px-4 py-3 text-sm text-[#a0a0a2]">
                           Thinking...
                         </div>
@@ -179,7 +279,7 @@ export default function ChatWidget() {
               </div>
 
               <div className="relative border-t border-white/5 bg-[#131313] px-3 pb-3 pt-3 sm:px-4 sm:pb-4">
-                <div className="flex items-center gap-3 rounded-full border border-white/6 bg-[#242424] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition-all focus-within:border-[#d7b85d]/45">
+                <div className={`flex items-center gap-3 rounded-full border px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition-all ${isLightBg ? 'border-[#111111]/12 bg-[#F4EDE4]/90 focus-within:border-[#111111]/45' : 'border-white/6 bg-[#242424] focus-within:border-[#F4EDE4]/45'}`}>
                   <input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
@@ -190,14 +290,14 @@ export default function ChatWidget() {
                       }
                     }}
                     placeholder="Ask anything about Jericho..."
-                    className="h-9 flex-1 bg-transparent px-3 text-[13px] text-[#d7d7d9] placeholder:text-[#7b7b7d] outline-none"
+                    className={`h-9 flex-1 bg-transparent px-3 text-[13px] placeholder:text-[#7b7b7d] outline-none ${isLightBg ? 'text-[#111111]' : 'text-[#d7d7d9]'}`}
                   />
 
                   <button
                     type="button"
                     onClick={() => handleSendMessage()}
                     disabled={!canSend}
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#d7b85d] text-[#161616] shadow-sm transition-all hover:brightness-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                    className={`inline-flex h-8 w-8 items-center justify-center rounded-md shadow-sm transition-all hover:brightness-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 ${isLightBg ? 'bg-[#111111] text-[#F4EDE4]' : 'bg-[#F4EDE4] text-[#111111]'}`}
                     aria-label="Send message"
                   >
                     <ArrowRight className="h-4 w-4" />
@@ -220,9 +320,9 @@ export default function ChatWidget() {
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
             onClick={() => setIsOpen(true)}
-            className="group ml-auto flex items-center gap-3 rounded-full border border-[#d7b85d]/25 bg-[#1b1b1d] px-4 py-3 text-[#e9e9ea] shadow-[0_20px_50px_rgba(0,0,0,0.45)] transition-all hover:-translate-y-0.5 hover:border-[#d7b85d]/45 active:scale-95"
+            className={`group ml-auto flex items-center gap-3 rounded-full px-4 py-3 text-[#e9e9ea] shadow-[0_20px_50px_rgba(0,0,0,0.45)] transition-all active:scale-95 ${isLightBg ? 'border border-[#111111]/25 bg-[#F4EDE4] text-[#111111] hover:-translate-y-0.5 hover:border-[#111111]/45' : 'border border-[#F4EDE4]/25 bg-[#1b1b1d] text-[#F4EDE4] hover:-translate-y-0.5 hover:border-[#F4EDE4]/45'}`}
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d7b85d]/30 bg-[#121212] text-[#d7b85d]">
+            <span className={`flex h-10 w-10 items-center justify-center rounded-full border bg-[#121212] ${isLightBg ? 'border-[#111111]/30 text-[#111111] bg-[#F4EDE4]' : 'border-[#F4EDE4]/30 text-[#F4EDE4]'}`}>
               <MessageSquareText className="h-4 w-4" />
             </span>
             <span className="text-left">
