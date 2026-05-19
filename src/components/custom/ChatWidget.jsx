@@ -9,7 +9,6 @@ const INITIAL_MESSAGES = [
     id: 'welcome',
     sender: 'bot',
     text: 'Hi there! I am Jeje, Jericho\'s portfolio assistant. Ask about his work, stack, or availability, and I will answer directly.',
-    createdAt: Date.now(),
   },
 ];
 
@@ -22,15 +21,7 @@ function createMessage(sender, text) {
     id: `${Date.now()}-${Math.random()}`,
     sender,
     text,
-    createdAt: Date.now(),
   };
-}
-
-function formatTimestamp(timestamp) {
-  return new Date(timestamp).toLocaleTimeString([], {
-    hour: 'numeric',
-    minute: '2-digit',
-  });
 }
 
 export default function ChatWidget() {
@@ -140,8 +131,6 @@ export default function ChatWidget() {
             <>
               <div className="relative flex-1 overflow-y-auto bg-[#161616] px-4 py-4 sm:px-5">
                 <div className="space-y-4">
-                  <div className="pt-1 text-center text-[8px] uppercase tracking-[0.16em] text-[#555557]">Today</div>
-
                   {messages.map((message) => (
                     <div
                       key={message.id}
@@ -166,9 +155,7 @@ export default function ChatWidget() {
                           {message.text}
                         </div>
 
-                        <span className="mt-1.5 px-1 text-[8px] uppercase tracking-[0.14em] text-[#7a7a7c]">
-                          {formatTimestamp(message.createdAt)}
-                        </span>
+                        
                       </div>
                     </div>
                   ))}
@@ -192,14 +179,8 @@ export default function ChatWidget() {
               </div>
 
               <div className="relative border-t border-white/5 bg-[#131313] px-3 pb-3 pt-3 sm:px-4 sm:pb-4">
-                <div className="mb-2.5 flex items-center justify-center">
-                  <span className="text-[8px] uppercase tracking-[0.28em] text-[#555557]">
-                    POWERED BY AMAZON LEX
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2 rounded-xl border border-white/5 bg-[#2a2a2d] px-2 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition-all focus-within:border-[#d7b85d]/45">
-                  <textarea
+                <div className="flex items-center gap-3 rounded-full border border-white/6 bg-[#242424] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition-all focus-within:border-[#d7b85d]/45">
+                  <input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => {
@@ -209,19 +190,23 @@ export default function ChatWidget() {
                       }
                     }}
                     placeholder="Ask anything about Jericho..."
-                    rows={1}
-                    className="max-h-32 min-h-9 flex-1 resize-none bg-transparent px-2 text-[13px] text-[#dddddf] outline-none placeholder:text-[#7b7b7d]"
+                    className="h-9 flex-1 bg-transparent px-3 text-[13px] text-[#d7d7d9] placeholder:text-[#7b7b7d] outline-none"
                   />
 
                   <button
                     type="button"
                     onClick={() => handleSendMessage()}
                     disabled={!canSend}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#d7b85d] text-[#181818] transition-all hover:brightness-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#d7b85d] text-[#161616] shadow-sm transition-all hover:brightness-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                     aria-label="Send message"
                   >
                     <ArrowRight className="h-4 w-4" />
                   </button>
+                </div>
+                <div className="mt-3 flex items-center justify-center">
+                  <span className="text-[8px] uppercase tracking-[0.28em] text-[#555557]">
+                    POWERED BY AMAZON LEX
+                  </span>
                 </div>
               </div>
             </>
