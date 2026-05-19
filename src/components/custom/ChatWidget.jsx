@@ -190,7 +190,7 @@ export default function ChatWidget() {
   };
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-[60] font-sans text-[#EDEDED] md:inset-x-auto md:bottom-6 md:right-6">
+    <div className="fixed inset-x-4 bottom-20 z-[60] font-sans text-[#EDEDED] md:inset-x-auto md:bottom-6 md:right-6">
       <AnimatePresence mode="wait">
         {isOpen ? (
           <motion.section
@@ -327,12 +327,12 @@ export default function ChatWidget() {
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
             onClick={() => setIsOpen(true)}
-            className={`group ml-auto flex items-center gap-3 rounded-full px-4 py-3 text-[#e9e9ea] shadow-[0_20px_50px_rgba(0,0,0,0.45)] transition-all active:scale-95 cursor-pointer ${isLightBg ? 'border border-[#111111]/25 bg-[#F4EDE4] text-[#111111] hover:-translate-y-0.5 hover:border-[#111111]/45' : 'border border-[#F4EDE4]/25 bg-[#1b1b1d] text-[#F4EDE4] hover:-translate-y-0.5 hover:border-[#F4EDE4]/45'}`}
+            className={`group ml-auto flex items-center gap-3 rounded-full px-4 py-3 md:px-4 md:gap-3 text-[#e9e9ea] shadow-[0_20px_50px_rgba(0,0,0,0.45)] transition-all active:scale-95 cursor-pointer ${isLightBg ? 'border border-[#111111]/25 bg-[#F4EDE4] text-[#111111] hover:-translate-y-0.5 hover:border-[#111111]/45' : 'border border-[#F4EDE4]/25 bg-[#1b1b1d] text-[#F4EDE4] hover:-translate-y-0.5 hover:border-[#F4EDE4]/45'}`}
           >
             <span className={`flex h-10 w-10 items-center justify-center rounded-full border bg-[#121212] ${isLightBg ? 'border-[#111111]/30 text-[#111111] bg-[#F4EDE4]' : 'border-[#F4EDE4]/30 text-[#F4EDE4]'}`}>
               <MessageSquareText className="h-4 w-4" />
             </span>
-            <span className="text-left">
+            <span className="hidden md:flex text-left flex-col">
               <span className="block text-[10px] font-medium uppercase tracking-[0.34em] text-neutral-500">Open assistant</span>
               <span className="block text-sm font-semibold text-[#e9e9ea]">Chat with Jeje</span>
             </span>
