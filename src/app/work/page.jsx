@@ -18,8 +18,8 @@ export default function WorkPage() {
 
   return (
     <>
-      <div className="min-h-screen w-full overflow-x-hidden overflow-y-auto bg-[#F4EDE4] text-[#111111] pb-24 md:pb-0 selection:bg-[#111111] selection:text-[#F4EDE4]">
-        <div className="flex min-h-screen flex-col md:flex-row md:pl-24">
+      <div className="h-screen w-full overflow-hidden bg-[#F4EDE4] text-[#111111] pb-24 md:pb-0 selection:bg-[#111111] selection:text-[#F4EDE4]">
+        <div className="flex h-full flex-col md:flex-row md:pl-24">
 
           <div className="px-6 pt-24 md:hidden">
             <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] opacity-60">
@@ -38,7 +38,7 @@ export default function WorkPage() {
           </div>
 
           {/* ── LEFT PANEL ─────────────────────────────────────────────── */}
-          <div className="sticky top-0 hidden h-screen w-[40%] flex-shrink-0 flex-col justify-center px-12 md:flex lg:px-20 xl:px-24">
+          <div className="hidden h-full w-[40%] flex-shrink-0 flex-col justify-center px-12 md:flex lg:px-20 xl:px-24">
             <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-10 opacity-60">
               Selected Works
             </p>
@@ -55,8 +55,8 @@ export default function WorkPage() {
           </div>
 
           {/* ── RIGHT PANEL ────────────────────────────────────────────── */}
-          <div className="flex-1 overscroll-contain md:pt-0">
-            <div className="flex min-h-screen flex-col justify-start px-6 py-10 md:justify-center md:px-12 md:py-24">
+          <div className="flex-1 min-h-0 overscroll-contain overflow-y-auto md:pt-0">
+            <div className="flex min-h-full flex-col justify-start px-6 py-10 md:justify-center md:px-12 md:py-24">
               <div className="flex flex-col gap-8 md:gap-14 md:py-[15vh]">
                 {projects.map((project, idx) => {
                   const isHovered      = idx === hoveredIndex;
