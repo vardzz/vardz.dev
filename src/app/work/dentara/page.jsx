@@ -46,7 +46,7 @@ export default function DentaraPage() {
                 href="https://dentara.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm opacity-90 underline underline-offset-4 hover:opacity-100 transition-opacity"
+                className="text-sm opacity-90 hover:underline underline-offset-4 hover:opacity-100 transition-opacity"
               >
                 https://dentara.vercel.app/
               </a>
