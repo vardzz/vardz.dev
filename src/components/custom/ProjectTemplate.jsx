@@ -15,6 +15,7 @@ export default function ProjectTemplate({
   imageAlt,
   nextProjectName,
   nextProjectHref,
+  children,
 }) {
   const hasLiveUrl = Boolean(liveUrl);
 
@@ -86,6 +87,8 @@ export default function ProjectTemplate({
           />
         </div>
       </section>
+
+      {children}
 
       <section className="bg-[#111111] px-6 pb-24 md:px-16 lg:px-24 lg:pb-32">
         <div className="mx-auto grid w-full max-w-[1220px] grid-cols-1 items-center gap-6 md:grid-cols-3">
