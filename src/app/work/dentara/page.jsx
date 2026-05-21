@@ -2,6 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function DentaraPage() {
   return (
@@ -52,6 +53,18 @@ export default function DentaraPage() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[#111111] px-6 pb-28 md:px-16 lg:px-24 lg:pb-36">
+        <div className="mx-auto w-full max-w-[1220px] overflow-hidden rounded-[24px] border border-white/10 bg-[#0C0C0C] shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
+          <Image
+            src="/projects/dentara/dentara-landing.png"
+            alt="Dentara showcase thumbnail"
+            width={1600}
+            height={900}
+            className="h-auto w-full object-cover"
+          />
         </div>
       </section>
 
