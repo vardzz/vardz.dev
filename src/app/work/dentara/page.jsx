@@ -3,6 +3,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function DentaraPage() {
   return (
@@ -65,6 +66,27 @@ export default function DentaraPage() {
             height={900}
             className="h-auto w-full object-cover"
           />
+        </div>
+      </section>
+
+      <section className="bg-[#111111] px-6 pb-24 md:px-16 lg:px-24 lg:pb-32">
+        <div className="mx-auto grid w-full max-w-[1220px] grid-cols-1 items-center gap-6 md:grid-cols-3">
+          <Link
+            href="https://dentara.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-bold justify-self-center inline-flex items-center justify-center rounded-full bg-[#F4EDE4] px-8 py-4 text-[#111111] transition-transform duration-300 hover:scale-[1.04] md:col-start-2 md:translate-x-8"
+          >
+            <h1 className="text-bold font-heading text-2xl md:text-3xl leading-none">Check it out</h1>
+            <span className="text-bold ml-4 font-heading text-2xl md:text-3xl leading-none">→</span>
+          </Link>
+
+          <Link
+            href="/work/horizon"
+            className="justify-self-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:justify-self-end md:col-start-3"
+          >
+            Horizon ›
+          </Link>
         </div>
       </section>
 
