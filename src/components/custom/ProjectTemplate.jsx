@@ -32,7 +32,7 @@ export default function ProjectTemplate({
                 opacity: { duration: 0.45, ease: "easeOut" },
                 scale: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
               }}
-              className="font-heading font-display text-[clamp(6rem,16vw,14rem)] font-black uppercase leading-[0.78] tracking-[-0.14em] text-center transform md:translate-x-10"
+              className="font-heading font-display text-[clamp(6rem,16vw,14rem)] font-black uppercase leading-[0.78] tracking-[-0.08em] text-center transform md:translate-x-10"
             >
               {projectName}
             </motion.h1>
