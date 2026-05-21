@@ -24,9 +24,13 @@ export default function ProjectTemplate({
         <div className={`relative flex flex-1 items-center justify-center bg-[#F4EDE4] px-6 md:pl-28 md:pr-24 lg:pl-24 lg:pr-24 text-[#111111] pt-75`}>
           <div className="w-full flex items-center justify-center">
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 72, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                y: { type: "spring", stiffness: 220, damping: 18 },
+                opacity: { duration: 0.45, ease: "easeOut" },
+                scale: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+              }}
               className="font-heading font-display text-[clamp(6rem,16vw,14rem)] font-black uppercase leading-[0.78] tracking-[-0.14em] text-center transform md:translate-x-10"
             >
               {projectName}
