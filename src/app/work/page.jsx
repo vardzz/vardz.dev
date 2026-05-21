@@ -7,6 +7,7 @@ import Link from "next/link";
 
 const projects = [
   { name: "DENTARA",       role: "- HEALTH TECH PWA",             href: "/work/dentara"       },
+   { name: "LUNAS",       role: "- MEDICAL PASSPORT",             href: "/work/lunas"       },
   { name: "HORIZON AI",    role: "- AI RESEARCH SYSTEM",          href: "/work/horizon-ai"    },
   { name: "ELDERKEY",      role: "- ELDERLY FOCUSED APPLICATION", href: "/work/elderkey"      },
   { name: "COURT CATCHER", role: "- BOOKING APPLICATION",         href: "/work/court-catcher" },
