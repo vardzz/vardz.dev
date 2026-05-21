@@ -7,7 +7,7 @@ export default function DentaraPage() {
   return (
     <main className="w-full overflow-x-hidden bg-[#111111] text-[#F4EDE4]">
       <section className="relative flex min-h-screen w-full overflow-hidden">
-        <div className="relative flex flex-1 items-center justify-center bg-[#F4EDE4] px-6 text-[#111111] md:px-16 lg:px-24">
+        <div className={`relative flex flex-1 items-center justify-center bg-[#F4EDE4] px-6 text-[#111111] md:px-16 lg:px-24 pt-75`}>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
