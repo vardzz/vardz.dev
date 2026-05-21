@@ -9,7 +9,7 @@ export default function LunasPage() {
       responsibilities="System architecture using Next.js and PostgreSQL, implementing secure QR-based access protocols, and developing the administrative monitoring dashboard."
       liveUrl="https://lunas.software/"
       liveUrlText="https://lunas.software/"
-      imageSrc="/projects/dentara/dentara-landing.png"
+      imageSrc="/projects/lunas/lunas-landing.png"
       imageAlt="Lunas showcase thumbnail"
       nextProjectName="Horizon"
       nextProjectHref="/work/horizon"
