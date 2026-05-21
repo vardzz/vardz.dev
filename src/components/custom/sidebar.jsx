@@ -17,23 +17,31 @@ export default function Sidebar() {
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
-  const isInternalPage = pathname === "/about" || pathname === "/journey" || pathname === "/contact" || pathname === "/work";
+  const isWorkDetailPage = pathname.startsWith("/work/");
+  const isInternalPage = pathname === "/about" || pathname === "/journey" || pathname === "/contact" || pathname === "/work" || isWorkDetailPage;
   const isBeigeBackground = pathname === "/journey" || pathname === "/work"; 
+  const isDeepBlackBackground = isWorkDetailPage;
 
   // ── Per-route color tokens ───────────────────────────────────────────
-  const textColor        = isBeigeBackground ? "text-[#111111]"   : "text-accent";
-  const borderColor      = isBeigeBackground ? "border-[#111111]" : "border-accent";
-  const decorationColor  = isBeigeBackground ? "decoration-[#111111]" : "decoration-accent";
-  const lineColor        = isBeigeBackground
-    ? "bg-[#111111] shadow-[0_0_12px_rgba(17,17,17,0.25)]"
-    : "bg-[#F4EDE4] shadow-[0_0_12px_rgba(244,237,228,0.35)]";
-  const dropShadow       = isBeigeBackground
-    ? "hover:drop-shadow-[0_0_10px_rgba(17,17,17,0.22)]"
-    : "hover:drop-shadow-[0_0_10px_rgba(244,237,228,0.22)]";
+  const textColor        = isDeepBlackBackground ? "text-[#F4EDE4]" : isBeigeBackground ? "text-[#111111]"   : "text-accent";
+  const borderColor      = isDeepBlackBackground ? "border-[#F4EDE4]" : isBeigeBackground ? "border-[#111111]" : "border-accent";
+  const decorationColor  = isDeepBlackBackground ? "decoration-[#F4EDE4]" : isBeigeBackground ? "decoration-[#111111]" : "decoration-accent";
+  const lineColor        = isDeepBlackBackground
+    ? "bg-[#F4EDE4] shadow-[0_0_12px_rgba(244,237,228,0.35)]"
+    : isBeigeBackground
+      ? "bg-[#111111] shadow-[0_0_12px_rgba(17,17,17,0.25)]"
+      : "bg-[#F4EDE4] shadow-[0_0_12px_rgba(244,237,228,0.35)]";
+  const dropShadow       = isDeepBlackBackground
+    ? "hover:drop-shadow-[0_0_10px_rgba(244,237,228,0.22)]"
+    : isBeigeBackground
+      ? "hover:drop-shadow-[0_0_10px_rgba(17,17,17,0.22)]"
+      : "hover:drop-shadow-[0_0_10px_rgba(244,237,228,0.22)]";
 
-  // ── Sidebar background: beige on /journey and /work, transparent elsewhere ─────
-  const asideBg  = isBeigeBackground ? "bg-[#F4EDE4]"      : "bg-transparent";
-  const mobileBg = isBeigeBackground ? "bg-[#F4EDE4]/95"   : "bg-base/95";
+  // ── Sidebar background: black on project detail pages, beige on /journey and /work, transparent elsewhere ─────
+  const asideBg  = isDeepBlackBackground ? "bg-[#111111]" : isBeigeBackground ? "bg-[#F4EDE4]" : "bg-transparent";
+  const mobileBg = isDeepBlackBackground ? "bg-[#111111]/95" : isBeigeBackground ? "bg-[#F4EDE4]/95" : "bg-base/95";
+  const sidebarLabel = isWorkDetailPage ? "WORK" : "HOME";
+  const sidebarLink = isWorkDetailPage ? "/work" : "/";
 
   return (
     <>
@@ -45,11 +53,11 @@ export default function Sidebar() {
         <div className="flex flex-1 flex-col items-center justify-start pt-10">
           <div className="flex flex-col items-center gap-8">
             {isInternalPage ? (
-              <Link href="/" className="group flex flex-col items-center gap-12">
+              <Link href={sidebarLink} className="group flex flex-col items-center gap-12">
                 <motion.span
                   className={`-rotate-90 whitespace-nowrap font-sans text-xs font-bold tracking-[0.3em] ${textColor} opacity-80 transition-all duration-150 cursor-pointer group-hover:underline ${decorationColor} decoration-2 group-hover:underline-offset-[6px]`}
                 >
-                  HOME
+                  {sidebarLabel}
                 </motion.span>
                 <div className={`h-36 w-[2px] rounded-full ${lineColor}`} />
               </Link>
@@ -90,11 +98,11 @@ export default function Sidebar() {
       >
         <div className="flex items-center gap-3">
           {isInternalPage ? (
-            <Link href="/">
+            <Link href={sidebarLink}>
               <motion.span
                 className={`font-sans text-[10px] font-bold tracking-[0.3em] ${textColor} cursor-pointer hover:underline ${decorationColor} decoration-2 hover:underline-offset-[4px]`}
               >
-                HOME
+                {sidebarLabel}
               </motion.span>
             </Link>
           ) : (
