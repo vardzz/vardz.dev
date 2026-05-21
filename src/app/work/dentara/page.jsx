@@ -25,24 +25,31 @@ export default function DentaraPage() {
 
       <section className="bg-[#111111] text-[#F4EDE4] px-6 md:px-16 lg:px-24 py-24">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="mb-10 text-lg md:text-xl leading-relaxed opacity-90 mx-auto">
-            Dentara is a progressive web application designed to streamline patient-student matching for dental training clinics. It simplifies appointment coordination, patient records, and supervision workflows so trainees can focus on clinical learning.
-          </p>
+          <h1 className={`mb-10 leading-tight opacity-90 mx-auto text-3xl md:text-5xl`}>
+            Dentara is a health-tech PWA that helps dental students and clinics coordinate patients, records, and supervised care in one simple workflow.
+          </h1>
 
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
             <div className="flex flex-col items-center">
-              <h4 className="font-bold text-xs uppercase tracking-widest mb-4 opacity-40">Role</h4>
+              <p className="font-bold text-xs uppercase tracking-widest mb-4 opacity-40">Role</p>
               <div className="text-sm opacity-90">Web Development</div>
             </div>
 
             <div className="flex flex-col items-center">
-              <h4 className="font-bold text-xs uppercase tracking-widest mb-4 opacity-40">Responsibilities</h4>
+              <p className="font-bold text-xs uppercase tracking-widest mb-4 opacity-40">Responsibilities</p>
               <div className="text-sm opacity-90">Consultation, PWA architecture, Supabase integration, UI implementation, and deployment.</div>
             </div>
 
             <div className="flex flex-col items-center">
-              <h4 className="font-bold text-xs uppercase tracking-widest mb-4 opacity-40">URL</h4>
-              <div className="text-sm opacity-90">https://dentara.example</div>
+              <p className="font-bold text-xs uppercase tracking-widest mb-4 opacity-40">URL</p>
+              <a
+                href="https://dentara.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm opacity-90 underline underline-offset-4 hover:opacity-100 transition-opacity"
+              >
+                https://dentara.vercel.app/
+              </a>
             </div>
           </div>
         </div>
