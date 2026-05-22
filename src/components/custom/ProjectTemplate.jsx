@@ -13,11 +13,15 @@ export default function ProjectTemplate({
   liveUrlText,
   imageSrc,
   imageAlt,
+  prevProjectName,
+  prevProjectHref,
   nextProjectName,
   nextProjectHref,
   children,
 }) {
   const hasLiveUrl = Boolean(liveUrl);
+  const hasPrevProject = Boolean(prevProjectHref);
+  const hasNextProject = Boolean(nextProjectHref);
 
   return (
     <main className="w-full overflow-x-hidden bg-[#111111] text-[#F4EDE4]">
@@ -91,26 +95,44 @@ export default function ProjectTemplate({
       {children}
 
       <section className="bg-[#111111] px-6 pb-24 md:px-16 lg:px-24 lg:pb-32">
-        <div className="mx-auto grid w-full max-w-[1220px] grid-cols-1 items-center gap-6 md:grid-cols-3">
-          {hasLiveUrl && (
-            <Link
-              href={liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-bold justify-self-center inline-flex items-center justify-center rounded-full bg-[#F4EDE4] px-8 py-4 text-[#111111] transition-transform duration-300 hover:scale-[1.04] md:col-start-2 md:translate-x-8"
-            >
-              <h1 className="text-bold font-heading text-2xl md:text-3xl leading-none">Check it out</h1>
-              <span className="text-bold ml-4 font-heading text-2xl md:text-3xl leading-none">→</span>
-            </Link>
-          )}
+        <footer className="mx-auto flex w-full max-w-[1220px] items-center gap-4 bg-[#111111] py-8 text-[#F4EDE4]">
+          <div className="flex-1 flex justify-start">
+            {hasPrevProject ? (
+              <Link
+                href={prevProjectHref}
+                className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4"
+              >
+                <span aria-hidden="true">‹</span>
+                <span>{prevProjectName}</span>
+              </Link>
+            ) : null}
+          </div>
 
-          <Link
-            href={nextProjectHref}
-            className="justify-self-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:justify-self-end md:col-start-3"
-          >
-            {nextProjectName} ›
-          </Link>
-        </div>
+          <div className="flex-1 flex justify-center">
+            {hasLiveUrl ? (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-bold inline-flex items-center justify-center rounded-full bg-[#F4EDE4] px-8 py-4 text-[#111111] transition-transform duration-300 hover:scale-[1.04]"
+              >
+                <h1 className="text-bold font-heading text-2xl md:text-3xl leading-none">Check it out</h1>
+                <span className="text-bold ml-4 font-heading text-2xl md:text-3xl leading-none">→</span>
+              </a>
+            ) : null}
+          </div>
+
+          <div className="flex-1 flex justify-end">
+            {hasNextProject ? (
+              <Link
+                href={nextProjectHref}
+                className="justify-self-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:justify-self-end"
+              >
+                {nextProjectName} ›
+              </Link>
+            ) : null}
+          </div>
+        </footer>
       </section>
 
     </main>

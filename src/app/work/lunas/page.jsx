@@ -11,6 +11,8 @@ export default function LunasPage() {
       liveUrlText="https://lunas.software/"
       imageSrc="/projects/lunas/lunas-landing.png"
       imageAlt="Lunas showcase thumbnail"
+      prevProjectName="Dentara"
+      prevProjectHref="/work/dentara"
       nextProjectName="Horizon"
       nextProjectHref="/work/horizon"
     >
