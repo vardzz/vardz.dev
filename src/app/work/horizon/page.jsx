@@ -7,7 +7,7 @@ export default function HorizonPage() {
       projectName="Horizon AI"
       projectDescription="A role-driven multi-agent system designed to optimize the reasoning and workflow automation of Small Language Models (SLMs)."
       role="Frontend Developer"
-      responsibilities="Engineered the frontend architecture using Next.js, TypeScript, and Tailwind CSS. Designed and implemented the system's complex UI/UX, including real-time orchestration panels, skeleton loading states, and persistent thread management to visually translate multi-agent interactions for the user."
+      responsibilities="Engineered the Next.js and Tailwind CSS frontend, designing complex UI/UX for real-time AI orchestration panels and persistent thread management."
       liveUrl="https://github.com/horizon-ai-code"
       liveUrlText="https://github.com/horizon-ai-code"
       imageSrc="/projects/horizon/horizon-landing.png"

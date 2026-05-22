@@ -95,12 +95,12 @@ export default function ProjectTemplate({
       {children}
 
       <section className="bg-[#111111] px-6 pb-24 md:pl-24 md:pr-16 lg:pl-32 lg:pr-24 lg:pb-32">
-        <footer className="mx-auto flex w-full max-w-[1220px] items-center gap-4 bg-[#111111] py-8 text-[#F4EDE4]">
-          <div className="flex-1 flex justify-start">
+        <footer className="mx-auto flex w-full max-w-[1220px] flex-col items-stretch gap-6 bg-[#111111] py-8 text-[#F4EDE4] md:flex-row md:items-center md:gap-4 md:py-8">
+          <div className="flex flex-1 justify-center md:justify-start">
             {hasPrevProject ? (
               <Link
                 href={prevProjectHref}
-                className="justify-self-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:justify-self-end"
+                className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:text-left"
               >
                 <span aria-hidden="true">‹ </span>
                 <span>{prevProjectName}</span>
@@ -108,25 +108,25 @@ export default function ProjectTemplate({
             ) : null}
           </div>
 
-          <div className="flex-1 flex justify-center">
+          <div className="flex flex-1 justify-center pb-4 sm:pb-6 md:pb-0">
             {hasLiveUrl ? (
               <a
                 href={liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="text-bold inline-flex items-center justify-center rounded-full bg-[#F4EDE4] px-8 py-4 text-[#111111] transition-transform duration-300 hover:scale-[1.04]"
+                className="inline-flex w-full items-center justify-center rounded-full bg-[#F4EDE4] px-8 py-4 text-[#111111] transition-transform duration-300 hover:scale-[1.03] sm:w-auto"
               >
-                <h1 className="text-bold font-heading text-2xl md:text-3xl leading-none">Check it out</h1>
-                <span className="text-bold ml-4 font-heading text-2xl md:text-3xl leading-none">→</span>
+                <h1 className="font-heading text-xl leading-none sm:text-2xl md:text-3xl">Check it out</h1>
+                <span className="ml-3 font-heading text-xl leading-none sm:ml-4 sm:text-2xl md:text-3xl">→</span>
               </a>
             ) : null}
           </div>
 
-          <div className="flex-1 flex justify-end">
+          <div className="flex flex-1 justify-center md:justify-end">
             {hasNextProject ? (
               <Link
                 href={nextProjectHref}
-                className="justify-self-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:justify-self-end"
+                className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:text-right"
               >
                 {nextProjectName} ›
               </Link>
