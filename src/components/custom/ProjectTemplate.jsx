@@ -100,9 +100,9 @@ export default function ProjectTemplate({
             {hasPrevProject ? (
               <Link
                 href={prevProjectHref}
-                className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4"
+                className="justify-self-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:justify-self-end"
               >
-                <span aria-hidden="true">‹</span>
+                <span aria-hidden="true">‹ </span>
                 <span>{prevProjectName}</span>
               </Link>
             ) : null}
