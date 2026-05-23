@@ -111,12 +111,59 @@ function createLimitResponse(options: {
   );
 }
 
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
+function extractLexReply(response: unknown): string | null {
+  if (!response || typeof response !== 'object') {
+    return null;
+  }
+
+  const messages = (response as { messages?: unknown }).messages;
+
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return null;
+  }
+
+  for (const message of messages) {
+    if (!message || typeof message !== 'object') {
+      continue;
+    }
+
+    const content = (message as { content?: unknown }).content;
+
+    if (!isNonEmptyString(content)) {
+      continue;
+    }
+
+    const normalizedContent = content.trim();
+    const lowerContent = normalizedContent.toLowerCase();
+
+    if (
+      lowerContent === 'error' ||
+      lowerContent === '[error]' ||
+      lowerContent === '<error>' ||
+      lowerContent.includes('error token')
+    ) {
+      continue;
+    }
+
+    return normalizedContent;
+  }
+
+  return null;
+}
+
 export async function POST(request: Request) {
   try {
-    const { message, sessionId } = (await request.json()) as {
-      message?: string;
-      sessionId?: string;
+    const body = (await request.json()) as {
+      message?: unknown;
+      sessionId?: unknown;
     };
+
+    const message = isNonEmptyString(body?.message) ? body.message : '';
+    const sessionId = isNonEmptyString(body?.sessionId) ? body.sessionId : 'portfolio-guest-session';
 
     const identifier = getClientIp(request);
 
@@ -144,16 +191,16 @@ export async function POST(request: Request) {
       botId: process.env.AWS_LEX_BOT_ID,
       botAliasId: process.env.AWS_LEX_BOT_ALIAS_ID,
       localeId: 'en_US',
-      sessionId: sessionId || 'portfolio-guest-session',
+      sessionId,
       text: message,
     });
 
     const response = await lexClient.send(command);
-    const botReply = response.messages?.[0]?.content || "I'm having trouble connecting right now.";
+    const botReply = extractLexReply(response) ?? "I'm having trouble connecting right now.";
 
     return NextResponse.json({ reply: botReply });
   } catch (error) {
-    console.error('Lex Connection Error:', error);
+    console.error('CRITICAL LEX BACKEND FAILURE:', error);
     return NextResponse.json(
       {
         error: 'The assistant is temporarily unavailable. Please try again in a moment.',
