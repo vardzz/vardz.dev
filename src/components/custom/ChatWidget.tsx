@@ -337,6 +337,11 @@ export default function ChatWidget() {
                           <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
+                              p: ({ children, ...props }) => (
+                                <p {...props} className="mb-4 last:mb-0">
+                                  {children}
+                                </p>
+                              ),
                               a: ({ href, children, ...props }) => (
                                 <a
                                   {...props}
