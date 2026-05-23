@@ -94,7 +94,7 @@ export default function About() {
           </motion.p>
 
           <motion.p variants={itemVariants} className="mb-4 text-lg leading-relaxed text-accent/80">
-            This is one of my favorite quotes (by Antoine de Saint-Exupéry):
+            This is one of my favorite quotes (by Albert Einstein):
           </motion.p>
 
           <motion.blockquote
@@ -102,8 +102,7 @@ export default function About() {
             className="my-6 border-l-2 border-accent/30 py-2 pl-6 font-heading text-2xl font-light italic md:text-3xl"
             style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
           >
-            "Perfection is achieved, not when there is nothing more to add,
-            but when there is nothing left to take away."
+            "I have no special talent. I am only passionately curious." 
           </motion.blockquote>
 
           <motion.p variants={itemVariants} className="text-lg leading-relaxed text-accent/80">
