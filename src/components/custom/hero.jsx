@@ -13,6 +13,20 @@ export default function Hero() {
   ];
 
   const [hoveredIndex, setHoveredIndex] = React.useState(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+    const updateMobileState = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    updateMobileState();
+    mediaQuery.addEventListener("change", updateMobileState);
+
+    return () => mediaQuery.removeEventListener("change", updateMobileState);
+  }, []);
 
   const isDimmed = (index) => hoveredIndex !== null && hoveredIndex !== index;
 
@@ -62,24 +76,24 @@ export default function Hero() {
             {navItems.map((item, index) => (
               <motion.div
                 key={item.label}
-                onHoverStart={() => setHoveredIndex(index)}
-                onHoverEnd={() => setHoveredIndex(null)}
+                onHoverStart={isMobile ? undefined : () => setHoveredIndex(index)}
+                onHoverEnd={isMobile ? undefined : () => setHoveredIndex(null)}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{
-                  opacity: isDimmed(index) ? 0.15 : 1,
-                  x: hoveredIndex === index ? 24 : 0,
+                  opacity: isMobile ? 1 : isDimmed(index) ? 0.15 : 1,
+                  x: isMobile ? 0 : hoveredIndex === index ? 24 : 0,
                 }}
-                whileHover={{ x: 24, opacity: 1 }}
+                whileHover={isMobile ? undefined : { x: 24, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 40 }}
                 className="w-full origin-left cursor-pointer select-none text-left md:w-fit"
               >
                 <motion.a
                   href={item.href}
                   animate={{
-                    color: hoveredIndex === index ? "#F4EDE4" : "rgba(244, 237, 228, 0.22)",
+                    color: isMobile ? "#F4EDE4" : hoveredIndex === index ? "#F4EDE4" : "rgba(244, 237, 228, 0.22)",
                   }}
                   transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                  className="block w-full max-w-full break-words hyphens-auto font-heading font-display font-bold text-5xl leading-[0.8] tracking-[-0.02em] uppercase sm:text-7xl md:text-8xl lg:text-[9vw] md:w-fit"
+                  className="block w-full max-w-full break-words hyphens-auto font-heading font-display font-bold text-5xl leading-[0.8] tracking-[-0.02em] uppercase text-[#F4EDE4] drop-shadow-[0_0_12px_rgba(0,0,0,0.45)] sm:text-7xl md:w-fit md:text-8xl md:text-[rgba(244,237,228,0.22)] md:drop-shadow-none lg:text-[9vw]"
                   style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
                 >
                   {item.label}
