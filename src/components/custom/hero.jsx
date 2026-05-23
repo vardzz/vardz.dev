@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import KineticGrid from "@/components/custom/KineticGrid";
+import Antigravity from "@/components/custom/Antigravity";
 
 export default function Hero() {
   const navItems = [
@@ -18,23 +18,25 @@ export default function Hero() {
 
   return (
     <section className="relative z-10 min-h-screen w-full overflow-hidden bg-base text-accent">
-      <KineticGrid 
-        backgroundColor="transparent"
-        gridColor="rgba(255, 255, 255, 0.09)"
-        dotColor="rgba(255, 255, 255, 0.12)"
-        hoverColor="rgba(255, 255, 255, 0.6)"
-        gridSize={60}
-        dotSize={1}
-        baseOpacity={0.08}
-        repulsionStrength={-0.65}
-        radius={250}
-        cursorTrail={true}
-        cursorTrailProps={{
-          trailMode: "hover",
-          trailLength: 0.2,
-          trailColor: "#FFFFFF",
-        }}
-      />
+      <div className="absolute inset-0 z-0">
+        <Antigravity
+          count={300}
+          magnetRadius={10}
+          ringRadius={7}
+          waveSpeed={0.4}
+          waveAmplitude={1}
+          particleSize={1}
+          lerpSpeed={0.19}
+          color="#F4EDE4"
+          autoAnimate={true}
+          particleVariance={1}
+          rotationSpeed={0}
+          depthFactor={1}
+          pulseSpeed={4.1}
+          particleShape="tetrahedron"
+          fieldStrength={2.6}
+        />
+      </div>
 
       <div className="relative z-10 flex min-h-screen w-full items-center justify-center box-border px-6 pb-10 pt-50 md:px-12 md:pt-16">
         <div className="flex w-full max-w-6xl flex-col items-start gap-14 md:flex-row md:items-end md:gap-0">
