@@ -148,14 +148,14 @@ const AntigravityInner: React.FC<AntigravityProps> = ({
     }
 
     const isIdleAutoAnimate = autoAnimate && now - lastMouseMoveTime.current > 2000;
-    const motionBoost = Math.min(1, mouseSpeed * 0.08);
+    const motionBoost = Math.min(1, mouseSpeed * 0.04);
     const smoothFactor = isIdleAutoAnimate
-      ? 0.10
+      ? 0.03
       : isPointerMoving
-        ? Math.min(0.998, 0.9 + motionBoost * 0.1)
-        : 0.18;
+        ? Math.min(0.93, 0.28 + motionBoost * 0.12)
+        : 0.08;
 
-    if (isPointerMoving && mouseSpeed > 12) {
+    if (isPointerMoving && mouseSpeed > 30) {
       virtualMouse.current.x = destX;
       virtualMouse.current.y = destY;
     } else {

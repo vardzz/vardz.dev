@@ -26,14 +26,14 @@ export default function Hero() {
           waveSpeed={0.4}
           waveAmplitude={1}
           particleSize={1}
-          lerpSpeed={0.19}
+          lerpSpeed={0.07}
           color="#F4EDE4"
           autoAnimate={true}
           particleVariance={1}
           rotationSpeed={0}
           depthFactor={1}
           pulseSpeed={4.1}
-          particleShape="tetrahedron"
+          particleShape="capsule"
           fieldStrength={2.6}
         />
       </div>
