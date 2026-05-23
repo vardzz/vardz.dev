@@ -87,14 +87,10 @@ export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isSending, setIsSending] = useState(false);
-  const [sessionId, setSessionId] = useState('');
+  const [sessionId] = useState(() => createSessionId());
   const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES);
   const [isLightBg, setIsLightBg] = useState(false);
   const endRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    setSessionId(createSessionId());
-  }, []);
 
   useEffect(() => {
     const getCssBase = () => (getComputedStyle(document.documentElement).getPropertyValue('--base') || '').trim();
