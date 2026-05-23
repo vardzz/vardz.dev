@@ -27,7 +27,7 @@ export const metadata = {
   title: "Vardz | Cloud Enthusiast",
   description: "Portfolio of Jericho Varde, a passionate Software Engineer & Cloud Enthusiast.",
   icons: {
-    icon: "/assets/icon.png",
+    icon: "/assets/Vardz-circular-logo.png",
   },
 };
 
