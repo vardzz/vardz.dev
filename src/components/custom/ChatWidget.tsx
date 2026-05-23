@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, MessageSquareText, X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 type ChatSender = 'bot' | 'user';
 type ChatTone = 'normal' | 'limit' | 'error';
@@ -332,7 +334,24 @@ export default function ChatWidget() {
                                 : 'border-white/6 bg-[#2a2a2d]'
                           } ${isLightBg && !isUser ? 'text-[#111111]' : ''}`}
                         >
-                          {message.text}
+                          <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                              a: ({ href, children, ...props }) => (
+                                <a
+                                  {...props}
+                                  href={href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="font-medium text-amber-300 underline decoration-amber-400/40 decoration-1 underline-offset-4 transition-colors duration-200 hover:text-amber-200 hover:decoration-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/40"
+                                >
+                                  {children}
+                                </a>
+                              ),
+                            }}
+                          >
+                            {message.text}
+                          </ReactMarkdown>
 
                           {!isUser && message.meta?.resetAtLabel ? (
                             <div className={`mt-2 text-[11px] uppercase tracking-[0.22em] ${isErrorTone ? 'text-rose-200/70' : 'text-[#9f9f9f]'}`}>
