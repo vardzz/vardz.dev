@@ -72,19 +72,21 @@ export default function TechGrid() {
               <button
                 key={spec.id}
                 onClick={() => setActiveFilter(spec.id)}
-                className={`group flex items-center gap-2 px-4 py-2 transition-all duration-300 relative cursor-pointer`}
+                aria-pressed={isActive}
+                className={`group flex cursor-pointer items-center gap-2 border-b-2 px-4 py-2 pb-3 transition-all duration-300 ${
+                  isActive
+                    ? "border-accent text-accent"
+                    : "border-transparent text-accent/50 hover:border-accent/30 hover:text-accent/70"
+                }`}
               >
                 <Icon size={16} className={`${isActive ? "text-accent" : "text-accent opacity-50 group-hover:opacity-70"}`} />
-                <span className={`text-[13px] font-bold tracking-[0.2em] uppercase ${isActive ? "text-accent" : "text-accent opacity-50 group-hover:opacity-70"}`}>
+                <span
+                  className={`text-[13px] font-bold tracking-[0.2em] uppercase transition-all duration-300 ${
+                    isActive ? "text-accent" : "text-accent opacity-50 group-hover:opacity-70"
+                  }`}
+                >
                   {spec.label}
                 </span>
-                {isActive && (
-                  <motion.div 
-                    layoutId="activeFilter"
-                    className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-accent"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
               </button>
             );
           })}
@@ -109,7 +111,7 @@ export default function TechGrid() {
         {/* The Grid with stabilized reveal and filtering */}
         <motion.div 
           layout
-          className="grid grid-cols-3 gap-6 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8"
+          className="mx-auto grid max-w-[760px] grid-cols-3 gap-6 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6"
         >
           <AnimatePresence mode="popLayout" initial={false}>
             {filteredStack.map((tech, idx) => (
@@ -152,7 +154,7 @@ function TechCard({ tech }) {
       <DialogTrigger asChild>
         <motion.div
           whileHover="hover"
-          className="group relative flex aspect-square flex-col items-center justify-center overflow-hidden rounded-2xl border border-accent/40 bg-base transition-all duration-500 hover:border-accent"
+          className="group relative flex aspect-square cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border border-accent/40 bg-base transition-all duration-500 hover:border-accent"
         >
           {/* Default Monochrome State & Hover Brand Color State */}
           <motion.div className="flex flex-col items-center justify-center text-accent opacity-70 h-full w-full">
