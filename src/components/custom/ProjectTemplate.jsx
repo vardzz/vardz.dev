@@ -94,13 +94,13 @@ export default function ProjectTemplate({
 
       {children}
 
-      <section className="bg-[#111111] px-6 pb-24 md:pl-24 md:pr-16 lg:pl-32 lg:pr-24 lg:pb-32">
+      <section className="bg-[#111111] px-6 pb-40 md:pl-24 md:pr-16 md:pb-32 lg:pl-32 lg:pr-24 lg:pb-32">
         <footer className="mx-auto flex w-full max-w-[1220px] flex-col items-stretch gap-6 bg-[#111111] py-8 text-[#F4EDE4] md:flex-row md:items-center md:gap-4 md:py-8">
           <div className="flex flex-1 justify-center md:justify-start">
             {hasPrevProject ? (
               <Link
                 href={prevProjectHref}
-                className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:text-left"
+                className="relative z-10 inline-flex min-h-11 items-center justify-center px-4 text-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:text-left"
               >
                 <span aria-hidden="true">‹ </span>
                 <span>{prevProjectName}</span>
@@ -108,7 +108,7 @@ export default function ProjectTemplate({
             ) : null}
           </div>
 
-          <div className="flex flex-1 justify-center pb-4 sm:pb-6 md:pb-0">
+          <div className="flex flex-1 justify-center md:pb-0">
             {hasLiveUrl ? (
               <a
                 href={liveUrl}
@@ -126,7 +126,7 @@ export default function ProjectTemplate({
             {hasNextProject ? (
               <Link
                 href={nextProjectHref}
-                className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:text-right"
+                className="relative z-10 inline-flex min-h-11 items-center justify-center px-4 text-center text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4EDE4] transition-opacity duration-300 hover:opacity-80 hover:underline underline-offset-4 md:text-right"
               >
                 {nextProjectName} ›
               </Link>
