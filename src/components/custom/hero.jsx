@@ -52,7 +52,7 @@ export default function Hero() {
             <p 
               className="max-w-prose text-sm leading-[1.8] text-accent/80 lg:text-base"
             >
-              Architecting cloud-native ecosystems and pioneering Multi-Agent SLM orchestration. Lead Full-Stack Engineer behind Dentara and Horizon AI.
+              I build robust digital systems. From minimal frontends to complex cloud architectures, I engineer solutions that scale.
             </p>
           </motion.div>
 
