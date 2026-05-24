@@ -3,8 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, MessageSquareText, X } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 
 type ChatSender = 'bot' | 'user';
 type ChatTone = 'normal' | 'limit' | 'error';
@@ -31,6 +29,18 @@ type RobotIconProps = {
   className?: string;
 };
 
+type MessageSegment =
+  | {
+      type: 'text';
+      value: string;
+      key: string;
+    }
+  | {
+      type: 'link';
+      href: string;
+      key: string;
+    };
+
 const RobotIcon = ({ className }: RobotIconProps) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
     <rect x="3" y="7" width="18" height="10" rx="2" strokeWidth="1.5" />
@@ -48,6 +58,103 @@ const INITIAL_MESSAGES: ChatMessage[] = [
     text: "Hi there! I am Jeje, Jericho's portfolio assistant. Ask about his work, stack, or availability, and I will answer directly.",
   },
 ];
+
+const URL_PATTERN = /(https?:\/\/[^\s<>()"']+)/g;
+
+function trimUrlPunctuation(url: string) {
+  let cleanUrl = url;
+  let trailing = '';
+
+  while (cleanUrl.length > 0 && /[.,!?;:)"]]$/.test(cleanUrl)) {
+    trailing = `${cleanUrl.slice(-1)}${trailing}`;
+    cleanUrl = cleanUrl.slice(0, -1);
+  }
+
+  return {
+    href: cleanUrl,
+    trailing,
+  };
+}
+
+function parseMessageSegments(text: string): MessageSegment[] {
+  const segments: MessageSegment[] = [];
+  let lastIndex = 0;
+
+  for (const match of text.matchAll(URL_PATTERN)) {
+    const url = match[0];
+    const index = match.index ?? 0;
+
+    if (index > lastIndex) {
+      segments.push({
+        type: 'text',
+        value: text.slice(lastIndex, index),
+        key: `text-${lastIndex}-${index}`,
+      });
+    }
+
+    const { href, trailing } = trimUrlPunctuation(url);
+
+    segments.push({
+      type: 'link',
+      href,
+      key: `link-${index}-${href}`,
+    });
+
+    if (trailing) {
+      segments.push({
+        type: 'text',
+        value: trailing,
+        key: `trail-${index}-${trailing}`,
+      });
+    }
+
+    lastIndex = index + url.length;
+  }
+
+  if (lastIndex < text.length) {
+    segments.push({
+      type: 'text',
+      value: text.slice(lastIndex),
+      key: `text-${lastIndex}-${text.length}`,
+    });
+  }
+
+  return segments;
+}
+
+function renderMessageText(text: string) {
+  const paragraphs = text.split(/\n+/);
+
+  return (
+    <div className="whitespace-pre-line">
+      {paragraphs.map((paragraph, paragraphIndex) => {
+        const segments = parseMessageSegments(paragraph);
+
+        return (
+          <p key={`paragraph-${paragraphIndex}`} className={paragraphIndex > 0 ? 'mt-4' : undefined}>
+            {segments.map((segment) => {
+              if (segment.type === 'link') {
+                return (
+                  <a
+                    key={segment.key}
+                    href={segment.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-amber-400 underline decoration-amber-300/40 decoration-1 underline-offset-4 transition-colors duration-200 hover:text-amber-300 hover:decoration-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/35"
+                  >
+                    Click here
+                  </a>
+                );
+              }
+
+              return <span key={segment.key}>{segment.value}</span>;
+            })}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
 
 function createSessionId() {
   return `session-${Math.random().toString(36).slice(2, 10)}`;
@@ -330,29 +437,7 @@ export default function ChatWidget() {
                                 : 'border-white/6 bg-[#2a2a2d]'
                           } ${isLightBg && !isUser ? 'text-[#111111]' : ''}`}
                         >
-                          <ReactMarkdown
-                            remarkPlugins={[remarkGfm]}
-                            components={{
-                              p: ({ children, ...props }) => (
-                                <p {...props} className="mb-4 last:mb-0">
-                                  {children}
-                                </p>
-                              ),
-                              a: ({ href, children, ...props }) => (
-                                <a
-                                  {...props}
-                                  href={href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="font-medium text-amber-300 underline decoration-amber-400/40 decoration-1 underline-offset-4 transition-colors duration-200 hover:text-amber-200 hover:decoration-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/40"
-                                >
-                                  {children}
-                                </a>
-                              ),
-                            }}
-                          >
-                            {message.text}
-                          </ReactMarkdown>
+                          {renderMessageText(message.text)}
 
                           {!isUser && message.meta?.resetAtLabel ? (
                             <div className={`mt-2 text-[11px] uppercase tracking-[0.22em] ${isErrorTone ? 'text-rose-200/70' : 'text-[#9f9f9f]'}`}>
