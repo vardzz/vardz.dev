@@ -34,7 +34,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/work/lunas/page.jsx"  ],
+, "src/app/work/lunas/page.jsx", "src/app/work/ghostnet/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

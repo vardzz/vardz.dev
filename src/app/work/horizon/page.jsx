@@ -14,8 +14,8 @@ export default function HorizonPage() {
       imageAlt="Horizon AI showcase thumbnail"
       prevProjectHref="/work/lunas"
       prevProjectName="Lunas"
-      nextProjectName="Court Catcher"
-      nextProjectHref="/work/court-catcher"
+      nextProjectName="GhostNet AI"
+      nextProjectHref="/work/ghostnet"
     >
       <TeamTemplate
         title="Horizontal Intelligence: Optimizing Small Language Model Reasoning via Role-Driven Multi-Agent Orchestration"
