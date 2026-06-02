@@ -3,6 +3,14 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LayoutGrid, List, Settings2, Star, Trophy } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const CREDENTIAL_CATEGORIES = [
   {
@@ -224,7 +232,7 @@ export default function Certificates() {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setViewMode(mode.id)}
-                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${
+                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer ${
                     isActive
                       ? "bg-[#111111] text-[#F4EDE4] shadow-lg shadow-black/20"
                       : "text-[rgba(17,17,17,0.6)] hover:text-[#111111]"
@@ -326,65 +334,110 @@ function CertificateCard({ certificate, compact = false, listMode = false }) {
   }, [certificate.imgSrc]);
 
   return (
-    <motion.article
-      whileHover={{ scale: 1.015 }}
-      transition={{ duration: 0.35, ease: [0.2, 1, 0.3, 1] }}
-      className={`group relative overflow-hidden rounded-[1.75rem] border border-[rgba(17,17,17,0.12)] bg-[rgba(255,255,255,0.45)] shadow-[0_20px_60px_rgba(17,17,17,0.08)] transition-colors duration-300 hover:border-[rgba(17,17,17,0.22)] ${
-        compact ? "h-full" : listMode ? "h-full w-full" : "h-full"
-      }`}
-    >
-      <div className="flex h-full flex-col p-4 md:p-5">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[rgba(17,17,17,0.1)] bg-[rgba(17,17,17,0.03)]">
-          {!hasFallback ? (
-            <motion.img
-              key={activeSource}
-              initial={{ opacity: 0, scale: 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.45, ease: [0.2, 1, 0.3, 1] }}
-              src={activeSource}
-              alt={certificate.title}
-              className="h-full w-full rounded-sm object-cover"
-              loading="lazy"
-              onError={() => {
-                if (sourceIndex < fallbackSources.length - 1) {
-                  setSourceIndex((currentIndex) => currentIndex + 1);
-                  return;
-                }
+    <Dialog>
+      <DialogTrigger asChild>
+        <motion.article
+          whileHover={{ scale: 1.015 }}
+          transition={{ duration: 0.35, ease: [0.2, 1, 0.3, 1] }}
+          className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] border border-[rgba(17,17,17,0.12)] bg-[rgba(255,255,255,0.45)] shadow-[0_20px_60px_rgba(17,17,17,0.08)] transition-colors duration-300 hover:border-[rgba(17,17,17,0.22)] ${
+            compact ? "h-full" : listMode ? "h-full w-full" : "h-full"
+          }`}
+        >
+          <div className="flex h-full flex-col p-4 md:p-5">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[rgba(17,17,17,0.1)] bg-[rgba(17,17,17,0.03)]">
+              {!hasFallback ? (
+                <motion.img
+                  key={activeSource}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.45, ease: [0.2, 1, 0.3, 1] }}
+                  src={activeSource}
+                  alt={certificate.title}
+                  className="h-full w-full rounded-sm object-cover"
+                  loading="lazy"
+                  onError={() => {
+                    if (sourceIndex < fallbackSources.length - 1) {
+                      setSourceIndex((currentIndex) => currentIndex + 1);
+                      return;
+                    }
 
-                setHasFallback(true);
-              }}
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[rgba(17,17,17,0.08)] via-transparent to-[rgba(17,17,17,0.03)] px-6 text-center">
-              <div className="space-y-3">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[rgba(17,17,17,0.12)] bg-[rgba(255,255,255,0.35)] text-[12px] font-black tracking-[0.25em] text-[#111111]">
-                  {getInitials(certificate.issuer)}
+                    setHasFallback(true);
+                  }}
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[rgba(17,17,17,0.08)] via-transparent to-[rgba(17,17,17,0.03)] px-6 text-center">
+                  <div className="space-y-3">
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[rgba(17,17,17,0.12)] bg-[rgba(255,255,255,0.35)] text-[12px] font-black tracking-[0.25em] text-[#111111]">
+                      {getInitials(certificate.issuer)}
+                    </div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[rgba(17,17,17,0.5)]">
+                      Preview unavailable
+                    </p>
+                  </div>
                 </div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[rgba(17,17,17,0.5)]">
-                  Preview unavailable
-                </p>
-              </div>
+              )}
+
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
-          )}
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        </div>
+            <div className="mt-4 flex items-end justify-between gap-4 border-t border-[rgba(17,17,17,0.1)] pt-4">
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-[9px] font-bold uppercase tracking-[0.28em] text-[rgba(17,17,17,0.45)]">
+                  {certificate.issuer}
+                </p>
+                <h3 className="truncate font-heading font-display text-lg font-black tracking-tighter text-[#111111] md:text-xl">
+                  {certificate.title}
+                </h3>
+              </div>
 
-        <div className="mt-4 flex items-end justify-between gap-4 border-t border-[rgba(17,17,17,0.1)] pt-4">
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-[9px] font-bold uppercase tracking-[0.28em] text-[rgba(17,17,17,0.45)]">
-              {certificate.issuer}
-            </p>
-            <h3 className="truncate font-heading font-display text-lg font-black tracking-tighter text-[#111111] md:text-xl">
-              {certificate.title}
-            </h3>
+              <time className="shrink-0 text-right text-[10px] font-bold uppercase tracking-[0.25em] text-[rgba(17,17,17,0.6)]">
+                {certificate.date}
+              </time>
+            </div>
+          </div>
+        </motion.article>
+      </DialogTrigger>
+
+      <DialogContent
+        showCloseButton
+        className="fixed left-1/2 top-1/2 z-50 w-[min(98vw,1500px)] max-w-none translate-x-[-50%] translate-y-[-50%] rounded-[2rem] border border-[rgba(17,17,17,0.15)] bg-transparent p-0 shadow-none outline-none backdrop-blur-none sm:w-[min(96vw,1400px)]"
+      >
+        <DialogTitle className="sr-only">
+          {certificate.title}
+        </DialogTitle>
+        <DialogDescription className="sr-only">
+          Certificate issued by {certificate.issuer} in {certificate.date}.
+        </DialogDescription>
+
+        <DialogHeader className="sr-only">
+          <DialogTitle>{certificate.title}</DialogTitle>
+        </DialogHeader>
+
+        <div className="relative overflow-hidden rounded-[2rem] border border-[rgba(17,17,17,0.15)] bg-[rgba(244,237,228,0.96)] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.25)] sm:p-5">
+          <div className="overflow-hidden rounded-[1.5rem] border border-[rgba(17,17,17,0.08)] bg-white">
+            <img
+              src={normalizeCertificateSource(certificate.imgSrc)}
+              alt={certificate.title}
+              className="block max-h-[84vh] w-full object-contain"
+            />
           </div>
 
-          <time className="shrink-0 text-right text-[10px] font-bold uppercase tracking-[0.25em] text-[rgba(17,17,17,0.6)]">
-            {certificate.date}
-          </time>
+          <div className="mt-5 flex flex-wrap items-end justify-between gap-4 px-1 pb-1">
+            <div className="min-w-0">
+              <p className="truncate text-[10px] font-bold uppercase tracking-[0.3em] text-[rgba(17,17,17,0.45)]">
+                {certificate.issuer}
+              </p>
+              <h3 className="truncate font-heading font-display text-3xl font-black tracking-tighter text-[#111111] md:text-4xl">
+                {certificate.title}
+              </h3>
+            </div>
+
+            <time className="shrink-0 text-right text-[10px] font-bold uppercase tracking-[0.25em] text-[rgba(17,17,17,0.6)]">
+              {certificate.date}
+            </time>
+          </div>
         </div>
-      </div>
-    </motion.article>
+      </DialogContent>
+    </Dialog>
   );
 }
