@@ -31,12 +31,10 @@ const CREDENTIAL_CATEGORIES = [
 const VIEW_MODES = [
   {
     id: "grid",
-    label: "Grid View",
     icon: LayoutGrid,
   },
   {
     id: "list",
-    label: "List View",
     icon: List,
   },
 ];
@@ -44,9 +42,9 @@ const VIEW_MODES = [
 const initialCertificates = [
   {
     id: 1,
-    title: "Example Core Validation",
+    title: "Thesis and Capstone Ready",
     category: "core",
-    issuer: "Organization Name",
+    issuer: "College of Computing Studies",
     date: "2026",
     imgSrc: "/public/certificates/attendance.png",
   },
@@ -60,9 +58,9 @@ const initialCertificates = [
   },
   {
     id: 3,
-    title: "Hackathon Excellence Award",
+    title: "Top 8 Finalist | Participation",
     category: "hackathons",
-    issuer: "SIKAPTALA / LABLAB.AI",
+    issuer: "DLSU - DASMARINAS | CICSSG",
     date: "2026",
     imgSrc: "/public/certificates/sikaptala.png",
   },
@@ -373,19 +371,13 @@ function CertificateCard({ certificate, compact = false, listMode = false }) {
         </div>
 
         <div className="mt-4 flex items-end justify-between gap-4 border-t border-[rgba(17,17,17,0.1)] pt-4">
-          <div className="min-w-0 flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[rgba(17,17,17,0.12)] bg-[rgba(255,255,255,0.35)] text-[10px] font-black tracking-[0.2em] text-[rgba(17,17,17,0.75)]">
-              {getInitials(certificate.issuer)}
-            </div>
-
-            <div className="min-w-0">
-              <p className="truncate text-[9px] font-bold uppercase tracking-[0.28em] text-[rgba(17,17,17,0.45)]">
-                {certificate.issuer}
-              </p>
-              <h3 className="truncate font-heading font-display text-lg font-black tracking-tighter text-[#111111] md:text-xl">
-                {certificate.title}
-              </h3>
-            </div>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[9px] font-bold uppercase tracking-[0.28em] text-[rgba(17,17,17,0.45)]">
+              {certificate.issuer}
+            </p>
+            <h3 className="truncate font-heading font-display text-lg font-black tracking-tighter text-[#111111] md:text-xl">
+              {certificate.title}
+            </h3>
           </div>
 
           <time className="shrink-0 text-right text-[10px] font-bold uppercase tracking-[0.25em] text-[rgba(17,17,17,0.6)]">
