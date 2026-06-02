@@ -20,7 +20,7 @@ export default function Experience() {
   const experiences = [
     {
       year: "2022/06",
-      title: 'SYSTEM.OUT.PRINTLN("HELLO WORLD")',
+      title: 'print ("HELLO WORLD")',
       role: "LEARNING",
       desc: "Wrote my first line of code, and the rest is history.",
     },
@@ -31,22 +31,22 @@ export default function Experience() {
       desc: "Commenced formal academic training with a rigorous focus on algorithmic logic, data structures, and software architecture.",
     },
     {
-      year: "2024/11",
-      title: "E-COMMERCE PROTOTYPE",
-      role: "WEB DEV",
-      desc: "Engineered a digital storefront utilizing semantic HTML and structural CSS to solidify core web principles.",
-    },
-    {
-      year: "2025/10",
-      title: "FIRST-GENERATION DIGITAL PORTFOLIO",
-      role: "V1.0",
-      desc: "Developed a personal portfolio utilizing React.js to showcase emerging frontend capabilities.",
-    },
-    {
       year: "2026/02",
-      title: "DEVELOPING OUR THESIS SYSTEM | HORIZON AI",
+      title: "HORIZON AI",
       role: "THESIS PROJECT",
       desc: "Developing a specialized Java refactoring studio designed for automated code optimization and architectural analysis.",
+    },
+    {
+      year: "2026/05",
+      title: "FIRST HACKATHON",
+      role: "Lunas | Your medical passport, always with you",
+      desc: "Out of over 70 competing teams nationwide, we secured our ticket to the final round and broke into the Top 8 at SIKAPTALA 2026 with Lunas—a secure, web-based emergency medical passport that grants immediate, QR-code access to critical health data.",
+    },
+    {
+      year: "2026/05",
+      title: "INTERNATIONAL HACKATHON",
+      role: "GhostNet AI | Autonomous Brand Protection & Phishing Detector",
+      desc: "Built at LABLAB.AI's global hackathon among 2,500 developers, GhostNet AI automates phishing and brand threat detection within two minutes. As Technical Lead, I orchestrated the architecture and led a 5-member team. I also engineered the web intelligence pipeline, using Gemini API to analyze scraped DOM payloads.",
     },
   ];
 
