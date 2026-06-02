@@ -202,7 +202,34 @@ export default function Certificates() {
           </AnimatePresence>
         </div>
 
-        <div className="relative z-10 mb-4 flex items-center justify-end gap-4 border-b border-[rgba(17,17,17,0.12)] pb-4">
+        <div className="relative z-10 flex flex-col gap-6 md:hidden">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filteredCertificates.map((certificate, index) => (
+              <motion.div
+                key={certificate.id}
+                layout
+                initial={{ opacity: 0, y: 20, scale: 0.96, filter: "blur(4px)" }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  filter: "blur(0px)",
+                  transition: {
+                    duration: 0.55,
+                    delay: index * 0.04,
+                    ease: [0.215, 0.61, 0.355, 1],
+                  },
+                }}
+                exit={{ opacity: 0, scale: 0.94, filter: "blur(4px)", transition: { duration: 0.25 } }}
+                className="w-full"
+              >
+                <CertificateCard certificate={certificate} listMode />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        <div className="relative z-10 mb-4 hidden items-center justify-end gap-4 border-b border-[rgba(17,17,17,0.12)] pb-4 md:flex">
           <div
             role="tablist"
             aria-label="Certificate view mode"
@@ -233,7 +260,8 @@ export default function Certificates() {
           </div>
         </div>
 
-        <AnimatePresence mode="wait" initial={false}>
+        <div className="hidden md:block">
+          <AnimatePresence mode="wait" initial={false}>
           {viewMode === "grid" ? (
             <motion.div
               key="grid-view"
@@ -302,7 +330,8 @@ export default function Certificates() {
               </AnimatePresence>
             </motion.div>
           )}
-        </AnimatePresence>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
