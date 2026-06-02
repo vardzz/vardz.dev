@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LayoutGrid, ScrollText, Settings2, Star, Trophy } from "lucide-react";
+import { LayoutGrid, List, Settings2, Star, Trophy } from "lucide-react";
 
 const CREDENTIAL_CATEGORIES = [
   {
@@ -35,9 +35,9 @@ const VIEW_MODES = [
     icon: LayoutGrid,
   },
   {
-    id: "scroll",
-    label: "Scroll View",
-    icon: ScrollText,
+    id: "list",
+    label: "List View",
+    icon: List,
   },
 ];
 
@@ -209,11 +209,7 @@ export default function Certificates() {
           </AnimatePresence>
         </div>
 
-        <div className="relative z-10 mb-4 flex items-center justify-between gap-4 border-b border-[rgba(17,17,17,0.12)] pb-4">
-          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[rgba(17,17,17,0.4)]">
-            {filteredCertificates.length} credentials found
-          </p>
-
+        <div className="relative z-10 mb-4 flex items-center justify-end gap-4 border-b border-[rgba(17,17,17,0.12)] pb-4">
           <div
             role="tablist"
             aria-label="Certificate view mode"
@@ -237,7 +233,7 @@ export default function Certificates() {
                   }`}
                 >
                   <Icon size={14} />
-                  <span>{mode.label}</span>
+                  <span className="sr-only">{mode.label}</span>
                 </button>
               );
             })}
@@ -280,12 +276,12 @@ export default function Certificates() {
             </motion.div>
           ) : (
             <motion.div
-              key="scroll-view"
+              key="list-view"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35, ease: [0.2, 1, 0.3, 1] }}
-              className="relative z-10 h-[500px] overflow-y-scroll scroll-smooth snap-y snap-mandatory pr-1"
+              className="relative z-10 flex flex-col gap-6"
             >
               <AnimatePresence mode="popLayout" initial={false}>
                 {filteredCertificates.map((certificate, index) => (
@@ -305,11 +301,9 @@ export default function Certificates() {
                       },
                     }}
                     exit={{ opacity: 0, scale: 0.94, filter: "blur(4px)", transition: { duration: 0.25 } }}
-                    className="h-full snap-start snap-always"
+                    className="w-full"
                   >
-                    <div className="flex h-full items-center justify-center py-2">
-                      <CertificateCard certificate={certificate} scrollMode />
-                    </div>
+                    <CertificateCard certificate={certificate} listMode />
                   </motion.div>
                 ))}
               </AnimatePresence>
@@ -321,7 +315,7 @@ export default function Certificates() {
   );
 }
 
-function CertificateCard({ certificate, compact = false, scrollMode = false }) {
+function CertificateCard({ certificate, compact = false, listMode = false }) {
   const [sourceIndex, setSourceIndex] = useState(0);
   const [hasFallback, setHasFallback] = useState(false);
 
@@ -338,7 +332,7 @@ function CertificateCard({ certificate, compact = false, scrollMode = false }) {
       whileHover={{ scale: 1.015 }}
       transition={{ duration: 0.35, ease: [0.2, 1, 0.3, 1] }}
       className={`group relative overflow-hidden rounded-[1.75rem] border border-[rgba(17,17,17,0.12)] bg-[rgba(255,255,255,0.45)] shadow-[0_20px_60px_rgba(17,17,17,0.08)] transition-colors duration-300 hover:border-[rgba(17,17,17,0.22)] ${
-        compact ? "h-full" : scrollMode ? "h-[calc(500px-1rem)] w-full max-w-4xl" : "h-full"
+        compact ? "h-full" : listMode ? "h-full w-full" : "h-full"
       }`}
     >
       <div className="flex h-full flex-col p-4 md:p-5">
