@@ -125,7 +125,7 @@ export default function Certificates() {
 
   return (
     <section
-      className="relative overflow-hidden px-6 py-32 md:px-12 md:py-48 lg:px-0"
+      className="relative overflow-hidden px-6 py-32 md:pl-24 md:pr-12 md:py-48 lg:pl-40 lg:pr-16"
       style={{ backgroundColor: "#F4EDE4", color: "#111111" }}
     >
       <div
