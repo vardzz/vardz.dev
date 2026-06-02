@@ -151,7 +151,7 @@ export default function Certificates() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.2, 1, 0.3, 1] }}
-          className="relative z-10 mb-24 flex flex-col items-center text-center"
+          className="relative z-10 mb-10 flex flex-col items-center text-center md:mb-16"
         >
           <p className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[rgba(17,17,17,0.5)]">
             CREDENTIALS &amp; VALIDATIONS
@@ -161,7 +161,7 @@ export default function Certificates() {
           </h2>
         </motion.div>
 
-        <div className="relative z-10 mb-8 flex flex-wrap justify-center gap-4 md:gap-8">
+        <div className="relative z-10 mb-3 flex flex-wrap justify-center gap-4 md:mb-8 md:gap-8">
           {CREDENTIAL_CATEGORIES.map((category) => {
             const Icon = category.icon;
             const isActive = activeFilter === category.id;
