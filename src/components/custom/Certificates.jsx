@@ -14,6 +14,13 @@ import {
 
 const CREDENTIAL_CATEGORIES = [
   {
+    id: "all",
+    label: "ALL",
+    icon: List,
+    description:
+      "Comprehensive collection of all certifications, achievements, and credentials across various categories, showcasing a holistic view of professional development and accomplishments.",
+  },
+  {
     id: "core",
     label: "CORE",
     icon: Star,
@@ -57,36 +64,12 @@ const initialCertificates = [
     imgSrc: "/public/certificates/attendance.png",
   },
   {
-    id: 2,
-    title: "Architectural Systems Validation",
-    category: "core",
-    issuer: "Engineering Guild",
-    date: "2026",
-    imgSrc: "/public/certificates/attendance.png",
-  },
-  {
     id: 3,
     title: "Top 8 Finalist | Participation",
     category: "hackathons",
     issuer: "DLSU - DASMARINAS | CICSSG",
     date: "2026",
     imgSrc: "/public/certificates/sikaptala.png",
-  },
-  {
-    id: 4,
-    title: "Rapid Prototype Finalist",
-    category: "hackathons",
-    issuer: "Innovation Sprint",
-    date: "2026",
-    imgSrc: "/public/certificates/sikaptala.png",
-  },
-  {
-    id: 5,
-    title: "Community Workshop Participation",
-    category: "others",
-    issuer: "Learning Collective",
-    date: "2026",
-    imgSrc: "/public/certificates/attendance.png",
   },
 ];
 
