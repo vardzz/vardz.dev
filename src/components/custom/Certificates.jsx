@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LayoutGrid, List, Settings2, Star, Trophy } from "lucide-react";
+import { LayoutGrid, List, Settings2, Star, Trophy, Layers } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -16,7 +16,7 @@ const CREDENTIAL_CATEGORIES = [
   {
     id: "all",
     label: "ALL",
-    icon: List,
+    icon: Layers,
     description:
       "Comprehensive collection of all certifications, achievements, and credentials across various categories, showcasing a holistic view of professional development and accomplishments.",
   },
@@ -64,7 +64,7 @@ const initialCertificates = [
     imgSrc: "/public/certificates/attendance.png",
   },
   {
-    id: 3,
+    id: 2,
     title: "Top 8 Finalist | Participation",
     category: "hackathons",
     issuer: "DLSU - DASMARINAS | CICSSG",
@@ -108,9 +108,13 @@ export default function Certificates() {
     CREDENTIAL_CATEGORIES.find((category) => category.id === activeFilter) ??
     CREDENTIAL_CATEGORIES[0];
 
-  const filteredCertificates = initialCertificates.filter(
-    (certificate) => certificate.category === activeFilter,
-  );
+  const filteredCertificates = initialCertificates.filter((certificate) => {
+    if (activeFilter === "all") {
+      return true;
+    }
+
+    return certificate.category === activeFilter;
+  });
 
   return (
     <section
