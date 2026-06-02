@@ -54,7 +54,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={containerRef}
-      className="relative overflow-hidden px-6 py-32 md:pl-24 md:py-48 md:pr-12 lg:px-0"
+      className="relative overflow-hidden px-6 py-32 md:py-48"
       style={{ backgroundColor: "#F4EDE4", color: "#111111" }}
     >
       {/* Subtle noise texture overlay */}
