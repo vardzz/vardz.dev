@@ -58,7 +58,7 @@ const initialCertificates = [
   {
     id: 1,
     title: "Thesis and Capstone Ready",
-    category: "core",
+    category: "others",
     issuer: "College of Computing Studies",
     date: "2026",
     imgSrc: "/public/certificates/attendance.png",
@@ -70,6 +70,14 @@ const initialCertificates = [
     issuer: "DLSU - DASMARINAS | CICSSG",
     date: "2026",
     imgSrc: "/public/certificates/sikaptala.png",
+  },
+  {
+    id: 3,
+    title: "Introduction to Cloud Computing Certificate",
+    category: "core",
+    issuer: "Simplilearn",
+    date: "2026",
+    imgSrc: "/public/certificates/cloud_computing.png",
   },
 ];
 
