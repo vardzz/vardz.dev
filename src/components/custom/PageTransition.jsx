@@ -1,7 +1,20 @@
 "use client";
 
+import React, { useContext, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
+
+function FrozenRoute({ children }) {
+  const context = useContext(LayoutRouterContext);
+  const frozen = useRef(context);
+
+  return (
+    <LayoutRouterContext.Provider value={frozen.current}>
+      {children}
+    </LayoutRouterContext.Provider>
+  );
+}
 
 export default function PageTransition({ children }) {
   const pathname = usePathname();
@@ -38,7 +51,7 @@ export default function PageTransition({ children }) {
             staggerChildren: 0.1
           }}
         >
-          {children}
+          <FrozenRoute>{children}</FrozenRoute>
         </motion.div>
 
       </div>
