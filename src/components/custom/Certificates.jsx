@@ -95,6 +95,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/cloud_practioner_essentials.png",
   },
+  {
+    id: 6,
+    title: "NextGen - Startup Challenge 2026",
+    category: "hackathons",
+    issuer: "Info-Systems Next-Gen",
+    date: "2026",
+    imgSrc: "/public/certificates/nextgen.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
