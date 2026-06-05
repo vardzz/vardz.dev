@@ -73,11 +73,27 @@ const initialCertificates = [
   },
   {
     id: 3,
-    title: "Introduction to Cloud Computing Certificate",
+    title: "Introduction to Cloud Computing",
     category: "core",
     issuer: "Simplilearn",
     date: "2026",
     imgSrc: "/public/certificates/cloud_computing.png",
+  },
+  {
+    id: 4,
+    title: "AWS Cloud Practitioner Essentials",
+    category: "core",
+    issuer: "Amazon Web Services",
+    date: "2026",
+    imgSrc: "/public/certificates/aws_cloud_essentials.png",
+  },
+  {
+    id: 5,
+    title: "AWS Cloud Practitioner Essentials",
+    category: "core",
+    issuer: "Simplilearn | AWS",
+    date: "2026",
+    imgSrc: "/public/certificates/cloud_practioner_essentials.png",
   },
 ];
 
