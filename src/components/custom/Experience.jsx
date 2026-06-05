@@ -106,19 +106,19 @@ export default function Experience() {
 
           {/* Static background line */}
           <div
-            className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2"
+            className="absolute left-4 top-0 bottom-0 w-[1px] -translate-x-1/2 md:left-1/2"
             style={{ backgroundColor: "rgba(17,17,17,0.12)" }}
           />
 
           {/* Growing progress line */}
           <motion.div
-            className="absolute left-1/2 top-0 z-20 w-[1px] origin-top -translate-x-1/2"
+            className="absolute left-4 top-0 z-20 w-[1px] origin-top -translate-x-1/2 md:left-1/2"
             style={{ scaleY, height: "100%", backgroundColor: "#111111" }}
           />
 
           {/* Following glow dot */}
           <motion.div
-            className="absolute left-1/2 z-30 -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-4 z-30 -translate-x-1/2 -translate-y-1/2 md:left-1/2"
             style={{
               top: useTransform(scaleY, (v) => `${v * 100}%`),
               width: "10px",
@@ -170,7 +170,7 @@ function ExperienceItem({ exp, isEven }) {
     >
       {/* Watermark year */}
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-[20vw] font-black uppercase tracking-tighter opacity-10 sm:text-[16vw] md:text-[18vw]"
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-[20vw] font-heading font-display font-black uppercase tracking-tighter opacity-10 sm:text-[16vw] md:text-[18vw]"
         style={{ y, color: "#111111" }}
       >
         {exp.year}
@@ -183,13 +183,13 @@ function ExperienceItem({ exp, isEven }) {
         }`}
       >
         <div
-          className={`relative w-full max-w-lg pl-8 md:pl-0 ${
+          className={`relative w-full max-w-lg pl-10 md:pl-0 ${
             isEven ? "text-left md:text-right" : "text-left"
           }`}
         >
           {/* Animated bullet on the line */}
           <motion.div
-            className={`absolute left-1/2 top-[10px] z-30 h-2 w-2 -translate-x-1/2 rounded-full md:top-1/2 md:-translate-y-1/2 ${
+            className={`absolute left-4 top-[10px] z-30 h-2 w-2 -translate-x-1/2 rounded-full md:top-1/2 md:-translate-y-1/2 ${
               isEven
                 ? "md:right-[-84px] md:left-auto"
                 : "md:left-[-84px]"
