@@ -90,17 +90,17 @@ export default function Hero() {
                 transition={{ type: "spring", stiffness: 400, damping: 40 }}
                 className="w-full origin-left cursor-pointer select-none text-left md:w-fit transform-gpu will-change-transform"
               >
-                <Link href={item.href} passHref legacyBehavior>
-                  <motion.a
+                <Link href={item.href}>
+                <motion.div
                     animate={{
                       color: isMobile ? "#F4EDE4" : hoveredIndex === index ? "#F4EDE4" : "rgba(244, 237, 228, 0.22)",
                     }}
                     transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                    className="block w-full max-w-full break-words hyphens-auto font-heading font-display font-bold text-5xl leading-[0.8] tracking-[-0.02em] uppercase text-[#F4EDE4] drop-shadow-[0_0_12px_rgba(0,0,0,0.45)] sm:text-7xl md:w-fit md:text-8xl md:text-[rgba(244,237,228,0.22)] md:drop-shadow-none lg:text-[9vw]"
+                    className="block w-full max-w-full break-words hyphens-auto font-heading font-display font-bold text-5xl leading-[0.8] tracking-[-0.02em] uppercase text-[#F4EDE4] drop-shadow-[0_0_12px_rgba(0,0,0,0.45)] sm:text-7xl md:w-fit md:text-8xl md:text-[rgba(244,237,228,0.22)] md:drop-shadow-none lg:text-[9vw] cursor-pointer"
                     style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
-                  >
+                    >
                     {item.label}
-                  </motion.a>
+                    </motion.div>
                 </Link>
               </motion.div>
             ))}
