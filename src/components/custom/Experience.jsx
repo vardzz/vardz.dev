@@ -170,7 +170,7 @@ function ExperienceItem({ exp, isEven }) {
     >
       {/* Watermark year */}
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-[20vw] font-heading font-display font-black uppercase tracking-tighter opacity-10 sm:text-[16vw] md:text-[18vw]"
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-[20vw] font-playful font-black uppercase tracking-normal opacity-10 sm:text-[16vw] md:text-[18vw]"
         style={{ y, color: "#111111" }}
       >
         {exp.year}
