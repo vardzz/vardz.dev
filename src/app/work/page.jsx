@@ -64,7 +64,7 @@ export default function WorkPage() {
                   return (
                     <Link key={idx} href={project.href}>
                     <motion.div
-                      className="group pointer-events-none origin-left select-none"
+                      className="group pointer-events-none origin-left select-none transform-gpu will-change-transform"
                       onMouseEnter={() => setHoveredIndex(idx)}
                       onMouseLeave={() => setHoveredIndex(null)}
                       animate={{

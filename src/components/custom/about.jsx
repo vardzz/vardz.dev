@@ -42,12 +42,25 @@ export default function About() {
   const rotateX = useTransform(mouseYSpring, [0, 1], [15, -15]);
   const rotateY = useTransform(mouseXSpring, [0, 1], [-15, 15]);
 
+  const rectRef = useRef(null);
+
+  const handleMouseEnter = (e) => {
+    rectRef.current = e.currentTarget.getBoundingClientRect();
+  };
+
   const handleMouseMove = (e) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    if (!rectRef.current) {
+      rectRef.current = e.currentTarget.getBoundingClientRect();
+    }
+    const { left, top, width, height } = rectRef.current;
     x.set((e.clientX - left) / width);
     y.set((e.clientY - top) / height);
   };
-  const handleMouseLeave = () => { x.set(0.5); y.set(0.5); };
+  const handleMouseLeave = () => {
+    rectRef.current = null;
+    x.set(0.5);
+    y.set(0.5);
+  };
 
   return (
     <div className="relative w-full bg-base text-accent">
@@ -120,13 +133,14 @@ export default function About() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+            onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="group relative mt-10 aspect-[3/4] overflow-hidden rounded-3xl bg-base cursor-pointer md:aspect-square md:rounded-[2.5rem] lg:mt-0 lg:aspect-[3/4]"
+            className="group relative mt-10 aspect-[3/4] overflow-hidden rounded-3xl bg-base cursor-pointer md:aspect-square md:rounded-[2.5rem] lg:mt-0 lg:aspect-[3/4] transform-gpu will-change-transform"
           >
             <motion.div
               style={{ transform: "translateZ(75px)", transformStyle: "preserve-3d" }}
-              className="relative w-full h-full"
+              className="relative w-full h-full transform-gpu will-change-transform"
             >
               <Image
                 src={

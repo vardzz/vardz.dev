@@ -12,12 +12,7 @@ const LW_EASE = [0.2, 1, 0.3, 1];
 
 export default function AboutPage() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, ease: LW_EASE }}
-      className="relative min-h-screen w-full overflow-x-hidden bg-base font-sans text-accent pb-24 md:pb-0"
-    >
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-base font-sans text-accent pb-24 md:pb-0">
       <main className="relative z-10 flex min-h-screen w-full flex-col bg-base pb-16 pl-0 md:pl-24">
         {/* Icons marquee — entrance stagger handled inside TechStack */}
         <TechStack variant="icons" />
@@ -31,6 +26,6 @@ export default function AboutPage() {
         {/* Filtered tech grid — blur+stagger card entrance */}
         <TechGrid />
       </main>
-    </motion.div>
+    </div>
   );
 }

@@ -48,7 +48,7 @@ export default function TechStack({ variant = "icons" }) {
       {variant === "icons" ? (
         <div className="relative flex w-full overflow-hidden py-4">
           <motion.div
-            className="flex w-max whitespace-nowrap will-change-transform"
+            className="flex w-max whitespace-nowrap will-change-transform transform-gpu"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           >
@@ -67,7 +67,7 @@ export default function TechStack({ variant = "icons" }) {
       ) : (
         <div className="relative flex overflow-hidden py-4">
           <motion.div
-            className="flex whitespace-nowrap"
+            className="flex whitespace-nowrap will-change-transform transform-gpu"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
           >
@@ -88,10 +88,10 @@ export default function TechStack({ variant = "icons" }) {
   );
 }
 
-function TechItem({ tech, variant }) {
+const TechItem = React.memo(function TechItem({ tech, variant }) {
   return (
     <div 
-      className={`flex items-center justify-center transition-colors duration-300 cursor-pointer ${variant === "icons" ? `text-accent hover:${tech.color}` : "text-accent hover:text-accent/70"}`}
+      className={`flex items-center justify-center transition-colors duration-300 cursor-pointer ${variant === "icons" ? `text-accent hover:${tech.color}` : "text-accent hover:text-accent/70"} transform-gpu`}
       title={tech.name}
     >
       {variant === "icons" ? (
@@ -105,4 +105,4 @@ function TechItem({ tech, variant }) {
       )}
     </div>
   );
-}
+});

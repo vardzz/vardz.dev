@@ -2,7 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Antigravity from "@/components/custom/Antigravity";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const Antigravity = dynamic(() => import("@/components/custom/Antigravity"), { ssr: false });
 
 export default function Hero() {
   const navItems = [
@@ -85,19 +88,20 @@ export default function Hero() {
                 }}
                 whileHover={isMobile ? undefined : { x: 24, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                className="w-full origin-left cursor-pointer select-none text-left md:w-fit"
+                className="w-full origin-left cursor-pointer select-none text-left md:w-fit transform-gpu will-change-transform"
               >
-                <motion.a
-                  href={item.href}
-                  animate={{
-                    color: isMobile ? "#F4EDE4" : hoveredIndex === index ? "#F4EDE4" : "rgba(244, 237, 228, 0.22)",
-                  }}
-                  transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                  className="block w-full max-w-full break-words hyphens-auto font-heading font-display font-bold text-5xl leading-[0.8] tracking-[-0.02em] uppercase text-[#F4EDE4] drop-shadow-[0_0_12px_rgba(0,0,0,0.45)] sm:text-7xl md:w-fit md:text-8xl md:text-[rgba(244,237,228,0.22)] md:drop-shadow-none lg:text-[9vw]"
-                  style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
-                >
-                  {item.label}
-                </motion.a>
+                <Link href={item.href} passHref legacyBehavior>
+                  <motion.a
+                    animate={{
+                      color: isMobile ? "#F4EDE4" : hoveredIndex === index ? "#F4EDE4" : "rgba(244, 237, 228, 0.22)",
+                    }}
+                    transition={{ type: "spring", stiffness: 400, damping: 40 }}
+                    className="block w-full max-w-full break-words hyphens-auto font-heading font-display font-bold text-5xl leading-[0.8] tracking-[-0.02em] uppercase text-[#F4EDE4] drop-shadow-[0_0_12px_rgba(0,0,0,0.45)] sm:text-7xl md:w-fit md:text-8xl md:text-[rgba(244,237,228,0.22)] md:drop-shadow-none lg:text-[9vw]"
+                    style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
+                  >
+                    {item.label}
+                  </motion.a>
+                </Link>
               </motion.div>
             ))}
           </div>

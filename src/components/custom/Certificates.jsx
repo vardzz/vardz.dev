@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LayoutGrid, List, Settings2, Star, Trophy, Layers } from "lucide-react";
 import {
@@ -136,17 +136,21 @@ export default function Certificates() {
   const [activeFilter, setActiveFilter] = useState("core");
   const [viewMode, setViewMode] = useState("grid");
 
-  const activeCategory =
-    CREDENTIAL_CATEGORIES.find((category) => category.id === activeFilter) ??
-    CREDENTIAL_CATEGORIES[0];
+  const activeCategory = useMemo(() => {
+    return (
+      CREDENTIAL_CATEGORIES.find((category) => category.id === activeFilter) ??
+      CREDENTIAL_CATEGORIES[0]
+    );
+  }, [activeFilter]);
 
-  const filteredCertificates = initialCertificates.filter((certificate) => {
-    if (activeFilter === "all") {
-      return true;
-    }
-
-    return certificate.category === activeFilter;
-  });
+  const filteredCertificates = useMemo(() => {
+    return initialCertificates.filter((certificate) => {
+      if (activeFilter === "all") {
+        return true;
+      }
+      return certificate.category === activeFilter;
+    });
+  }, [activeFilter]);
 
   return (
     <section
@@ -369,11 +373,11 @@ export default function Certificates() {
   );
 }
 
-function CertificateCard({ certificate, compact = false, listMode = false }) {
+const CertificateCard = React.memo(function CertificateCard({ certificate, compact = false, listMode = false }) {
   const [sourceIndex, setSourceIndex] = useState(0);
   const [hasFallback, setHasFallback] = useState(false);
 
-  const fallbackSources = buildFallbackSources(certificate.imgSrc);
+  const fallbackSources = useMemo(() => buildFallbackSources(certificate.imgSrc), [certificate.imgSrc]);
   const activeSource = fallbackSources[sourceIndex] ?? fallbackSources[0];
 
   useEffect(() => {
@@ -387,7 +391,7 @@ function CertificateCard({ certificate, compact = false, listMode = false }) {
         <motion.article
           whileHover={{ scale: 1.015 }}
           transition={{ duration: 0.35, ease: [0.2, 1, 0.3, 1] }}
-          className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] border border-[rgba(17,17,17,0.12)] bg-[rgba(255,255,255,0.45)] shadow-[0_20px_60px_rgba(17,17,17,0.08)] transition-colors duration-300 hover:border-[rgba(17,17,17,0.22)] ${
+          className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] border border-[rgba(17,17,17,0.12)] bg-[rgba(255,255,255,0.45)] shadow-[0_20px_60px_rgba(17,17,17,0.08)] transition-colors duration-300 hover:border-[rgba(17,17,17,0.22)] transform-gpu will-change-transform ${
             compact ? "h-full" : listMode ? "h-full w-full" : "h-full"
           }`}
         >
@@ -488,4 +492,4 @@ function CertificateCard({ certificate, compact = false, listMode = false }) {
       </DialogContent>
     </Dialog>
   );
-}
+});

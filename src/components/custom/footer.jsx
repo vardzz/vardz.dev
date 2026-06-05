@@ -82,7 +82,7 @@ export default function Footer() {
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-16 flex w-full items-center justify-center overflow-hidden py-8"
+        className="mb-16 flex w-full items-center justify-center overflow-hidden py-8 transform-gpu will-change-transform"
       >
         <h1 className="font-heading font-display text-[20vw] font-black leading-[0.8] tracking-tighter whitespace-nowrap uppercase text-accent">
           @VARDZ

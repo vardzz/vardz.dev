@@ -112,13 +112,13 @@ export default function Experience() {
 
           {/* Growing progress line */}
           <motion.div
-            className="absolute left-4 top-0 z-20 w-[1px] origin-top -translate-x-1/2 md:left-1/2"
+            className="absolute left-4 top-0 z-20 w-[1px] origin-top -translate-x-1/2 md:left-1/2 transform-gpu will-change-transform"
             style={{ scaleY, height: "100%", backgroundColor: "#111111" }}
           />
 
           {/* Following glow dot */}
           <motion.div
-            className="absolute left-4 z-30 -translate-x-1/2 -translate-y-1/2 md:left-1/2"
+            className="absolute left-4 z-30 -translate-x-1/2 -translate-y-1/2 md:left-1/2 transform-gpu will-change-transform"
             style={{
               top: useTransform(scaleY, (v) => `${v * 100}%`),
               width: "10px",
@@ -170,7 +170,7 @@ function ExperienceItem({ exp, isEven }) {
     >
       {/* Watermark year */}
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-[20vw] font-playful font-black uppercase tracking-normal opacity-10 sm:text-[16vw] md:text-[18vw]"
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-[20vw] font-playful font-black uppercase tracking-normal opacity-10 sm:text-[16vw] md:text-[18vw] transform-gpu will-change-transform"
         style={{ y, color: "#111111" }}
       >
         {exp.year}

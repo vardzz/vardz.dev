@@ -191,6 +191,7 @@ function formatResetTimestamp(resetTimestamp?: number) {
 }
 
 export default function ChatWidget() {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isSending, setIsSending] = useState(false);
@@ -198,6 +199,10 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES);
   const [isLightBg, setIsLightBg] = useState(false);
   const endRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const getCssBase = () => (getComputedStyle(document.documentElement).getPropertyValue('--base') || '').trim();
@@ -373,6 +378,10 @@ export default function ChatWidget() {
       setIsSending(false);
     }
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className="fixed inset-x-4 bottom-20 z-[60] font-sans text-[#EDEDED] md:inset-x-auto md:bottom-6 md:right-6">

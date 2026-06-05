@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TECH_STACK } from "@/components/custom/techStack";
 import {
@@ -41,8 +41,8 @@ const SPECIALIZATIONS = [
 export default function TechGrid() {
   const [activeFilter, setActiveFilter] = useState("Core");
 
-  const filteredStack = TECH_STACK.filter(tech => tech.specialization === activeFilter);
-  const activeSpec = SPECIALIZATIONS.find(s => s.id === activeFilter);
+  const filteredStack = useMemo(() => TECH_STACK.filter(tech => tech.specialization === activeFilter), [activeFilter]);
+  const activeSpec = useMemo(() => SPECIALIZATIONS.find(s => s.id === activeFilter), [activeFilter]);
 
   return (
     <section className="bg-base px-6 py-16 md:px-12 lg:px-24">
@@ -146,7 +146,7 @@ export default function TechGrid() {
   );
 }
 
-function TechCard({ tech }) {
+const TechCard = React.memo(function TechCard({ tech }) {
   const Icon = tech.icon;
 
   return (
@@ -154,7 +154,7 @@ function TechCard({ tech }) {
       <DialogTrigger asChild>
         <motion.div
           whileHover="hover"
-          className="group relative flex aspect-square cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border border-accent/40 bg-base transition-all duration-500 hover:border-accent"
+          className="group relative flex aspect-square cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border border-accent/40 bg-base transition-all duration-500 hover:border-accent transform-gpu will-change-transform"
         >
           {/* Default Monochrome State & Hover Brand Color State */}
           <motion.div className="flex flex-col items-center justify-center text-accent opacity-70 h-full w-full">
@@ -232,4 +232,4 @@ function TechCard({ tech }) {
       </DialogContent>
     </Dialog>
   );
-}
+});
