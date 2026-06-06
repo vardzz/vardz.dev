@@ -103,6 +103,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/nextgen.png",
   },
+  {
+    id: 7,
+    title: "AWS Technical Essentials",
+    category: "core",
+    issuer: "Amazon Web Services",
+    date: "2026",
+    imgSrc: "/public/certificates/aws_tech_essentials.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
