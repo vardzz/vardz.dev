@@ -111,6 +111,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/aws_tech_essentials.png",
   },
+  {
+    id: 8,
+    title: "n8n: No Code AI Agent Builder",
+    category: "core",
+    issuer: "Simplilearn",
+    date: "2026",
+    imgSrc: "/public/certificates/n8n-course.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
