@@ -14,8 +14,8 @@ export default function GhostNetPage() {
       imageAlt="GhostNet AI landing page"
       prevProjectHref="/work/horizon"
       prevProjectName="Horizon AI"
-      nextProjectName="Court Catcher"
-      nextProjectHref="/work/court-catcher"
+      nextProjectName="Gridworks"
+      nextProjectHref="/work/gridworks"
     >
       <TeamTemplate
         title="Web Data Unlocked Hackathon — Hosted by LABLAB.AI"
