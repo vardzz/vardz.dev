@@ -7,9 +7,10 @@ import Link from "next/link";
 
 const projects = [
   { name: "DENTARA",       role: "- HEALTH TECH PWA",             href: "/work/dentara"       },
-   { name: "LUNAS",       role: "- MEDICAL PASSPORT",             href: "/work/lunas"       },
+  { name: "LUNAS",       role: "- MEDICAL PASSPORT",             href: "/work/lunas"       },
   { name: "HORIZON AI",    role: "- AI RESEARCH SYSTEM",          href: "/work/horizon"    },
-  { name: "GHOSTNET AI",    role: "- AI RESEARCH SYSTEM",          href: "/work/ghostnet"    },
+  { name: "GHOSTNET AI",    role: "- BRAND PROTECTION",          href: "/work/ghostnet"    },
+  { name: "GRIDWORKS",    role: "- FAST SCHEDULER",          href: "/work/gridworks"    },
 ];
 
 export default function WorkPage() {
