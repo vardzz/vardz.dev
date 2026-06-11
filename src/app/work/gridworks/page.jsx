@@ -11,6 +11,8 @@ export default function GridworksPage() {
       liveUrlText="https://gridworks.vercel.app/"
       imageSrc="/projects/gridworks/gridworks-landing.png"
       imageAlt="Gridworks showcase thumbnail"
+      prevProjectHref="/work/ghostnet"
+      prevProjectName="GhostNet AI"
       nextProjectName="CourtCatcher"
       nextProjectHref="/work/courtcatcher"
     />
