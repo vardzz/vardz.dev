@@ -48,6 +48,12 @@ export default function Experience() {
       role: "GhostNet AI | Autonomous Brand Protection & Phishing Detector",
       desc: "Built at LABLAB.AI's global hackathon among 2,500 developers, GhostNet AI automates phishing and brand threat detection within two minutes. As Technical Lead, I orchestrated the architecture and led a 5-member team. I also engineered the web intelligence pipeline, using Gemini API to analyze scraped DOM payloads.",
     },
+    {
+      year: "2026/06",
+      title: "FlyRank AI Internship",
+      role: "Front-End AI Engineer",
+      desc: "Got accepted for internship in FlyRank AI internship program with the role of Front-End AI Engineer. Cohort starts on July 1, 2026. Super excited to learn and contribute to the team.",
+    },
   ];
 
   return (
