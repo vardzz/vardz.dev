@@ -119,6 +119,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/n8n-course.png",
   },
+  {
+    id: 9,
+    title: "Web Data UNLOCKED",
+    category: "hackathons",
+    issuer: "LABLAB.AI | TEKNO PILIPINAS FOUNDATION INC.",
+    date: "2026",
+    imgSrc: "/public/certificates/web-data.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
