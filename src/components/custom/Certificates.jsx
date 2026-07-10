@@ -127,6 +127,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/web-data.png",
   },
+  {
+    id: 10,
+    title: "Introduction to Python",
+    category: "core",
+    issuer: "DataCamp",
+    date: "2026",
+    imgSrc: "/public/certificates/intro-to-python.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
