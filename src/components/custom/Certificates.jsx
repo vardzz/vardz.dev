@@ -159,6 +159,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/agent-skills.png",
   },
+  {
+    id: 14,
+    title: "Communicating Data Insights",
+    category: "core",
+    issuer: "DataCamp",
+    date: "2026",
+    imgSrc: "/public/certificates/data-insights.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
