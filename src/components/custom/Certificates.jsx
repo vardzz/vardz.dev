@@ -133,7 +133,7 @@ const initialCertificates = [
     category: "core",
     issuer: "DataCamp",
     date: "2026",
-    imgSrc: "/public/certificates/intro-to-python.png",
+    imgSrc: "/public/certificates/Intro-to-python.png",
   },
 ];
 
