@@ -167,6 +167,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/data-insights.png",
   },
+  {
+    id: 10,
+    title: "Claude 101",
+    category: "core",
+    issuer: "Anthropic Academy",
+    date: "2026",
+    imgSrc: "/public/certificates/claude-101.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
