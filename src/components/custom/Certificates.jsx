@@ -183,6 +183,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/acm.png",
   },
+  {
+    id: 17,
+    title: "AI Fluency for Builders",
+    category: "core",
+    issuer: "Anthropic Academy",
+    date: "2026",
+    imgSrc: "/public/certificates/ai-fluency-builders.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
