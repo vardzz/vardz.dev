@@ -168,12 +168,20 @@ const initialCertificates = [
     imgSrc: "/public/certificates/data-insights.png",
   },
   {
-    id: 10,
+    id: 15,
     title: "Claude 101",
     category: "core",
     issuer: "Anthropic Academy",
     date: "2026",
     imgSrc: "/public/certificates/claude-101.png",
+  },
+  {
+    id: 16,
+    title: "ACM Techsprint Hackathon",
+    category: "hackathons",
+    issuer: "FEU",
+    date: "2026",
+    imgSrc: "/public/certificates/acm.png",
   },
 ];
 
