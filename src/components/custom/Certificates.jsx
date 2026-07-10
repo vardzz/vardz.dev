@@ -151,6 +151,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/data.png",
   },
+  {
+    id: 13,
+    title: "Introduction to Agent Skills",
+    category: "core",
+    issuer: "Anthropic Academy",
+    date: "2026",
+    imgSrc: "/public/certificates/agent-skills.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
