@@ -191,6 +191,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/ai-fluency-builders.png",
   },
+  {
+    id: 18,
+    title: "AI Fluency: Frameworks & Foundations",
+    category: "core",
+    issuer: "Anthropic Academy",
+    date: "2026",
+    imgSrc: "/public/certificates/ai-fluency-frameworks.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
