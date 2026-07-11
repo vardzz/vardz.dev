@@ -199,6 +199,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/ai-fluency-frameworks.png",
   },
+  {
+    id: 19,
+    title: "Forming Analytical Questions",
+    category: "core",
+    issuer: "DataCamp",
+    date: "2026",
+    imgSrc: "/public/certificates/analytical.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
