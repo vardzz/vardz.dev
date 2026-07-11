@@ -231,6 +231,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/intro-to-data-culture.png",
   },
+  {
+    id: 23,
+    title: "Introduction to Statistics",
+    category: "core",
+    issuer: "DataCamp",
+    date: "2026",
+    imgSrc: "/public/certificates/intro-to-stats.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
