@@ -207,6 +207,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/analytical.png",
   },
+  {
+    id: 20,
+    title: "Data Literacy Professional Certificate",
+    category: "core",
+    issuer: "DataCamp",
+    date: "2026",
+    imgSrc: "/public/certificates/data-literacy-professional.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
