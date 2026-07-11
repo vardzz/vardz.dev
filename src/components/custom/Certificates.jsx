@@ -215,6 +215,14 @@ const initialCertificates = [
     date: "2026",
     imgSrc: "/public/certificates/data-literacy-professional.png",
   },
+  {
+    id: 21,
+    title: "Data Storytelling Concepts",
+    category: "core",
+    issuer: "DataCamp",
+    date: "2026",
+    imgSrc: "/public/certificates/data-storytelling.png",
+  },
 ];
 
 function normalizeCertificateSource(source) {
