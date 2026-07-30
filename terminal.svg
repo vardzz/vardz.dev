@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1059" height="683" viewBox="0 0 1059 683">
-<rect x="0" y="0" width="1059" height="683" rx="10" fill="#000000"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1059" height="830" viewBox="0 0 1059 830">
+<rect x="0" y="0" width="1059" height="830" rx="10" fill="#000000"/>
 <style>text{font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size:14px;}</style>
 <text x="28" y="42" xml:space="preserve" fill="#808080">                         }]p@#X)cOc1|l                            </text>
 <text x="28" y="61" xml:space="preserve" fill="#808080">                     ]~tw$@@@@@@@@$**Ot!                          </text>
@@ -53,7 +53,13 @@
 <text x="638" y="422" xml:space="preserve" fill="#c8f0cf">Email      vardejericho@gmail.com</text>
 <text x="638" y="441" xml:space="preserve" fill="#c8f0cf">LinkedIn   www.linkedin.com/in/vardz</text>
 <text x="638" y="460" xml:space="preserve" fill="#c8f0cf">Website    www.vardz.dev</text>
-<text x="638" y="498" xml:space="preserve"><tspan fill="#39d353">$ </tspan><tspan fill="#7ee787">echo "thanks for stopping by"</tspan></text>
-<text x="638" y="517" xml:space="preserve" fill="#c8f0cf">thanks for stopping by</text>
-<text x="638" y="555" xml:space="preserve"><tspan fill="#39d353">$ </tspan><tspan fill="#7ee787">_</tspan></text>
+<text x="638" y="498" xml:space="preserve"><tspan fill="#39d353">$ </tspan><tspan fill="#7ee787">cat github.txt</tspan></text>
+<text x="638" y="517" xml:space="preserve" fill="#c8f0cf">Streak         247 days (longest)</text>
+<text x="638" y="536" xml:space="preserve" fill="#c8f0cf">Languages      JS, TS, Java, PHP, Python</text>
+<text x="638" y="555" xml:space="preserve" fill="#c8f0cf">Contributions  3,124</text>
+<text x="638" y="574" xml:space="preserve" fill="#c8f0cf">Commits        2,410</text>
+<text x="638" y="593" xml:space="preserve" fill="#c8f0cf">PRs            187</text>
+<text x="638" y="631" xml:space="preserve"><tspan fill="#39d353">$ </tspan><tspan fill="#7ee787">echo "thanks for stopping by"</tspan></text>
+<text x="638" y="650" xml:space="preserve" fill="#c8f0cf">thanks for stopping by</text>
+<text x="638" y="688" xml:space="preserve"><tspan fill="#39d353">$ </tspan><tspan fill="#7ee787">_</tspan></text>
 </svg>
