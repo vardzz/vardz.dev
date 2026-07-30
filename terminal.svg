@@ -54,11 +54,11 @@
 <text x="638" y="441" xml:space="preserve" fill="#c8f0cf">LinkedIn   www.linkedin.com/in/vardz</text>
 <text x="638" y="460" xml:space="preserve" fill="#c8f0cf">Website    www.vardz.dev</text>
 <text x="638" y="498" xml:space="preserve"><tspan fill="#39d353">$ </tspan><tspan fill="#7ee787">cat github.txt</tspan></text>
-<text x="638" y="517" xml:space="preserve" fill="#c8f0cf">Streak         247 days (longest)</text>
-<text x="638" y="536" xml:space="preserve" fill="#c8f0cf">Languages      JS, TS, Java, PHP, Python</text>
-<text x="638" y="555" xml:space="preserve" fill="#c8f0cf">Contributions  3,124</text>
-<text x="638" y="574" xml:space="preserve" fill="#c8f0cf">Commits        2,410</text>
-<text x="638" y="593" xml:space="preserve" fill="#c8f0cf">PRs            187</text>
+<text x="638" y="517" xml:space="preserve" fill="#c8f0cf">Streak         26 days (longest)</text>
+<text x="638" y="536" xml:space="preserve" fill="#c8f0cf">Languages      JavaScript, TypeScript, Dart</text>
+<text x="638" y="555" xml:space="preserve" fill="#c8f0cf">Contributions  1,337 (last year)</text>
+<text x="638" y="574" xml:space="preserve" fill="#c8f0cf">Commits        1,200</text>
+<text x="638" y="593" xml:space="preserve" fill="#c8f0cf">PRs            29</text>
 <text x="638" y="631" xml:space="preserve"><tspan fill="#39d353">$ </tspan><tspan fill="#7ee787">echo "thanks for stopping by"</tspan></text>
 <text x="638" y="650" xml:space="preserve" fill="#c8f0cf">thanks for stopping by</text>
 <text x="638" y="688" xml:space="preserve"><tspan fill="#39d353">$ </tspan><tspan fill="#7ee787">_</tspan></text>
