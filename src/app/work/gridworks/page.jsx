@@ -30,10 +30,10 @@ export default function GridworksPage() {
           href="https://appbuildersph.com/apps/gridworks" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-6 w-full max-w-[620px] h-[100px] p-5 rounded-[24px] bg-[#F4EDE4] border border-[#111111]/10 select-none transition-all duration-300 hover:scale-[1.02] hover:border-[#111111]/20 hover:shadow-[0_0_20px_rgba(17,17,17,0.05)]"
+          className="flex items-center gap-3 md:gap-6 w-full max-w-[620px] h-[72px] md:h-[100px] p-3 md:p-5 rounded-[18px] md:rounded-[24px] bg-[#F4EDE4] border border-[#111111]/10 select-none transition-all duration-300 hover:scale-[1.02] hover:border-[#111111]/20 hover:shadow-[0_0_20px_rgba(17,17,17,0.05)]"
         >
           {/* Logo */}
-          <div className="relative w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 bg-[#16a34a]">
+          <div className="relative w-11 h-11 md:w-16 md:h-16 rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0 bg-[#16a34a]">
             <img 
               src="https://api.appbuildersph.com/storage/app-images/2c6ce69e-f2f3-4de0-992b-23eed6895f50/7b86cd4c-670a-4c09-a2b3-2eebfdc13dc3.webp?v=1783306546" 
               alt="Gridworks Logo" 
@@ -42,22 +42,22 @@ export default function GridworksPage() {
           </div>
 
           {/* Typography */}
-          <div className="flex flex-col flex-1 min-w-0 text-left leading-tight gap-1.5">
-            <span className="font-bold text-xl tracking-tight text-[#111111]">Gridworks</span>
-            <span className="text-base text-[#111111]/70">
+          <div className="flex flex-col flex-1 min-w-0 text-left leading-tight gap-0.5 md:gap-1.5">
+            <span className="font-bold text-base md:text-xl tracking-tight text-[#111111]">Gridworks</span>
+            <span className="text-xs md:text-base text-[#111111]/70">
               on <strong className="font-bold text-[#111111]">App Builders PH</strong>
             </span>
           </div>
 
           {/* Metric */}
-          <div className="flex flex-col items-center justify-center w-[100px] h-full rounded-2xl bg-[#111111] text-[#F4EDE4] leading-none px-1">
+          <div className="flex flex-col items-center justify-center w-[68px] md:w-[100px] h-full rounded-xl md:rounded-2xl bg-[#111111] text-[#F4EDE4] leading-none px-1">
             <div className="flex items-center justify-center gap-0.5">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="translate-y-[-0.5px]">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 md:w-4.5 md:h-4.5 translate-y-[-0.5px]">
                 <path d="M18.593 15.8051C19.0376 15.4776 19.1326 14.8516 18.8051 14.4069C18.5507 14.0615 18.2963 13.7332 18.0731 13.4472C17.6276 12.8764 17.0143 12.1118 16.3479 11.3444C15.6859 10.5819 14.9518 9.79361 14.2666 9.18811C13.9251 8.88637 13.5721 8.60888 13.2279 8.4014C12.9112 8.21046 12.476 8 11.9999 8C11.5238 8 11.0885 8.21046 10.7718 8.4014C10.4276 8.60888 10.0747 8.88637 9.7332 9.18811C9.04791 9.79361 8.31387 10.5819 7.65183 11.3444C6.98548 12.1118 6.37216 12.8764 5.92664 13.4472C5.70347 13.7332 5.44902 14.0615 5.19463 14.4069C4.86712 14.8516 4.96211 15.4776 5.4068 15.8051C5.58556 15.9368 5.79362 16.0002 5.99982 16L11.9999 16L17.9999 16C18.2061 16.0002 18.4142 15.9368 18.593 15.8051Z" />
               </svg>
-              <strong className="text-[22px] font-extrabold">9</strong>
+              <strong className="text-[15px] md:text-[22px] font-extrabold">9</strong>
             </div>
-            <span className="text-[12px] font-bold mt-2">votes</span>
+            <span className="text-[10px] md:text-[12px] font-bold mt-1.5 md:mt-2">votes</span>
           </div>
         </a>
       </div>
