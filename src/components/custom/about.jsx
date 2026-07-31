@@ -165,7 +165,7 @@ export default function About() {
             className="mt-8 flex justify-center"
           >
             <a
-              href="/resume.pdf"
+              href="https://www.overleaf.com/read/pzbvhvhjqnfx#c6fa02"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-accent/20 px-6 py-3 text-xs font-bold tracking-[0.2em] uppercase text-accent transition-all duration-300 hover:border-accent hover:bg-accent hover:text-base active:scale-95"
