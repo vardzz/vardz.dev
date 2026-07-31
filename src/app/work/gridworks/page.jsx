@@ -16,29 +16,29 @@ export default function GridworksPage() {
       nextProjectName="CourtCatcher"
       nextProjectHref="/work/courtcatcher"
     >
-      <div className="flex justify-center pb-24 md:pb-28">
-        <div className="group relative overflow-hidden rounded-[24px] border border-[#F4EDE4]/10 bg-[#161616] p-6 transition-all duration-300 hover:border-[#F4EDE4]/20 hover:shadow-[0_0_30px_rgba(244,237,228,0.03)]">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#F4EDE4]/2 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          <div className="relative flex flex-col items-center gap-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-[#F4EDE4]/70 text-center">
-              Gridworks is featured on appbuildersph.com
-            </h3>
-            <div className="overflow-hidden rounded-xl bg-[#F4EDE4] p-1">
-              <iframe
-                src="https://appbuildersph.com/embed/apps/gridworks"
-                title="Gridworks votes on App Builders PH"
-                width="320"
-                height="72"
-                style={{
-                  border: 0,
-                  mixBlendMode: "multiply",
-                }}
-                loading="lazy"
-                scrolling="no"
-                className="block"
-              />
-            </div>
-          </div>
+      <div className="flex flex-col items-center text-center px-6 pb-24 md:pb-28">
+        <h2 className="font-heading font-display text-2xl font-bold uppercase tracking-[0.15em] text-[#F4EDE4] mb-3 md:text-3xl">
+          Featured on App Builders PH
+        </h2>
+        <p className="max-w-md text-sm text-[#F4EDE4]/60 leading-relaxed mb-8">
+          Gridworks has been recognized as a featured application on appbuildersph.com, highlighting standout web development projects.
+        </p>
+        <div className="relative w-[304px] h-[56px] overflow-hidden rounded-[14px]">
+          <iframe
+            src="https://appbuildersph.com/embed/apps/gridworks"
+            title="Gridworks votes on App Builders PH"
+            width="320"
+            height="72"
+            style={{
+              border: 0,
+              position: "absolute",
+              left: "-8px",
+              top: "-8px",
+            }}
+            loading="lazy"
+            scrolling="no"
+            className="block"
+          />
         </div>
       </div>
     </ProjectTemplate>
