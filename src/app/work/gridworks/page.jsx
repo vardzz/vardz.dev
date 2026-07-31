@@ -17,7 +17,10 @@ export default function GridworksPage() {
       nextProjectHref="/work/courtcatcher"
     >
       <div className="flex flex-col items-center text-center px-6 pb-24 md:pb-28">
-        <h2 className="font-heading font-display text-2xl font-bold uppercase tracking-[0.15em] text-[#F4EDE4] mb-3 md:text-3xl">
+        <h2 
+          className="font-heading font-display text-4xl text-[#F4EDE4] mb-4 md:text-5xl leading-tight"
+          style={{ fontFamily: "var(--font-melodrama), Melodrama, serif" }}
+        >
           Featured on App Builders PH
         </h2>
         <p className="max-w-md text-sm text-[#F4EDE4]/60 leading-relaxed mb-8">
