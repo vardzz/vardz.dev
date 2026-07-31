@@ -37,6 +37,7 @@ export default function GridworksPage() {
               position: "absolute",
               left: "-8px",
               top: "-8px",
+              filter: "invert(1) sepia(0.8) saturate(0.4) brightness(1.3) contrast(0.95)",
             }}
             loading="lazy"
             scrolling="no"
