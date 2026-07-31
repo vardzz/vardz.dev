@@ -15,6 +15,18 @@ export default function GridworksPage() {
       prevProjectName="GhostNet AI"
       nextProjectName="CourtCatcher"
       nextProjectHref="/work/courtcatcher"
-    />
+    >
+      <div className="flex justify-center pb-24 md:pb-28">
+        <iframe
+          src="https://appbuildersph.com/embed/apps/gridworks"
+          title="Gridworks votes on App Builders PH"
+          width="320"
+          height="72"
+          style={{ border: 0 }}
+          loading="lazy"
+          scrolling="no"
+        />
+      </div>
+    </ProjectTemplate>
   );
 }
