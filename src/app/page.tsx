@@ -82,9 +82,9 @@ export default function Portfolio() {
                 </div>
                 
                 <div className="flex gap-[20px] mt-[36px] text-muted font-mono text-[12px]">
-                  <a href="https://github.com" target="_blank" className="hover:text-accent transition-colors">github ↗</a>
-                  <a href="https://www.linkedin.com" target="_blank" className="hover:text-accent transition-colors">linkedin ↗</a>
-                  <a href="mailto:hello@vardz.dev" className="hover:text-accent transition-colors">email ↗</a>
+                  <a href="https://github.com/vardzz" target="_blank" className="hover:text-accent transition-colors">github ↗</a>
+                  <a href="https://www.linkedin.com/in/vardz/" target="_blank" className="hover:text-accent transition-colors">linkedin ↗</a>
+                  <a href="mailto:vardejericho@gmail.com" className="hover:text-accent transition-colors">email ↗</a>
                 </div>
               </div>
             </div>
