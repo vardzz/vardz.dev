@@ -42,12 +42,12 @@ export default function Navbar() {
 
       document.documentElement.animate(
         {
-          clipPath: isDark ? clipPath : [...clipPath].reverse(),
+          clipPath: clipPath,
         },
         {
           duration: 600,
           easing: "cubic-bezier(0.76, 0, 0.24, 1)",
-          pseudoElement: isDark ? "::view-transition-new(root)" : "::view-transition-old(root)",
+          pseudoElement: "::view-transition-new(root)",
         } as any
       );
     });
