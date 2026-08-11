@@ -98,7 +98,7 @@ export default function Portfolio() {
                       </span>
                     </div>
                     <h3 className="text-[18px] md:text-[20px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Gridworks</h3>
-                    <p className="text-muted text-[13px] leading-[1.5]">Transform raw, messy university schedule PDFs into clean, beautiful, print-ready calendar grids in under 3 seconds.</p>
+                    <p className="text-muted text-[13px] leading-[1.5]">Transform university schedule PDFs into clean, print-ready calendar grids in seconds.</p>
                   </div>
                 </a>
 
