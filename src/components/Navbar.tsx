@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 
+import Image from "next/image";
+
 export default function Navbar() {
   const [theme, setTheme] = useState('dark');
 
@@ -55,7 +57,16 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-40 bg-[var(--color-bg)] max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-10 pb-4 flex justify-between items-center w-full transition-colors duration-300">
-      <div className="font-mono font-medium text-text text-[16px]">Vardz</div>
+      <div className="font-mono font-medium text-text text-[16px] flex items-center gap-[10px]">
+        <Image 
+          src="/assets/vardz-logo-white.png" 
+          alt="Vardz Logo" 
+          width={20} 
+          height={20} 
+          style={{ filter: theme === 'light' ? 'invert(1)' : 'none' }}
+        />
+        Vardz
+      </div>
       <button 
         onClick={toggleTheme}
         className="w-[44px] h-[24px] rounded-full border border-line relative cursor-pointer transition-colors hover:border-text focus:outline-none"
