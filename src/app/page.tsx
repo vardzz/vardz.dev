@@ -86,8 +86,11 @@ export default function Portfolio() {
 
                 {/* Project 2 (Small) */}
                 <a href="https://gridworks.vercel.app/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#1c1c21]/30 to-transparent"></div>
-                  <div className="absolute inset-0 p-[24px] flex flex-col justify-end">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#1c1c21]/30 to-transparent z-10"></div>
+                  <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
+                    <img src="/projects/gridworks-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
+                  </div>
+                  <div className="absolute inset-0 p-[24px] flex flex-col justify-end z-20">
                     <div className="flex justify-between items-start mb-[auto]">
                       <div className="text-muted font-mono text-[10px]">WEB APP / UTILITY</div>
                       <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
@@ -101,8 +104,11 @@ export default function Portfolio() {
 
                 {/* Project 3 (Small) */}
                 <a href="https://lunas.software/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-tl from-[#1c1c21]/30 to-transparent"></div>
-                  <div className="absolute inset-0 p-[24px] flex flex-col justify-end">
+                  <div className="absolute inset-0 bg-gradient-to-tl from-[#1c1c21]/30 to-transparent z-10"></div>
+                  <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
+                    <img src="/projects/lunas-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
+                  </div>
+                  <div className="absolute inset-0 p-[24px] flex flex-col justify-end z-20">
                     <div className="flex justify-between items-start mb-[auto]">
                       <div className="text-muted font-mono text-[10px]">HEALTH-TECH / WEB</div>
                       <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
