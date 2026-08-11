@@ -17,9 +17,12 @@ export default function Navbar() {
       <div className="font-mono font-medium text-text text-[16px]">Vardz</div>
       <button 
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        className="text-muted hover:text-text transition-colors font-mono text-[12px] uppercase cursor-pointer"
+        className="w-[44px] h-[24px] rounded-full border border-line relative cursor-pointer transition-colors hover:border-text focus:outline-none"
+        aria-label="Toggle Theme"
       >
-        {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+        <span 
+          className={`absolute top-[3px] left-[3px] w-[16px] h-[16px] rounded-full bg-text transition-transform duration-300 ${theme === 'light' ? 'translate-x-[20px]' : 'translate-x-0'}`}
+        />
       </button>
     </nav>
   );
