@@ -70,19 +70,19 @@ export default function Portfolio() {
                 <a href="#" className="text-muted hover:text-accent transition-colors text-[14px] font-mono group">view all <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px]">→</span></a>
               </div>
               <div className="flex flex-wrap gap-[9px]">
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">TypeScript</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">React</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Next.js</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Node.js</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Python</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Laravel</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">PostgreSQL</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">AWS</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Docker</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Kubernetes</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">PyTorch</span>
-                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Claude Code</span>
-                <span className="border border-line border-dashed text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">+ more</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">TypeScript</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">React</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Next.js</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Node.js</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Python</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Laravel</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">PostgreSQL</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">AWS</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Docker</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Kubernetes</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">PyTorch</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Claude Code</span>
+                <span className="border border-line border-dashed text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">+ more</span>
               </div>
             </section>
 
