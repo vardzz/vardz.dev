@@ -46,21 +46,47 @@ export default function Portfolio() {
         <div className="block">
           
           {/* Hero Section */}
-          <section className="max-w-[1040px] mx-auto px-[22px] md:px-[9vw] pt-[74px] md:pt-[108px] pb-[80px] md:min-h-[93vh] block md:grid content-center md:grid-cols-[minmax(220px,330px)_1fr] gap-y-[45px] md:gap-[clamp(42px,8vw,110px)]">
-            <div className="aspect-square bg-gradient-to-br from-[#35363b] to-[#17171a] to-62% relative overflow-hidden grid place-items-center w-[min(70vw,300px)] md:w-full mx-auto md:mx-0">
-              <div className="absolute w-[60%] aspect-square rounded-[48%_48%_43%_43%] bg-[#bdbdc1] top-[17%] contrast-75 overflow-hidden">
-                 <Image src="/assets/Vardz-dark.png" alt="Vardz" layout="fill" objectFit="cover" />
+          <section className="max-w-[1040px] mx-auto px-[22px] md:px-[9vw] pt-[74px] md:pt-[108px] pb-[80px]">
+            <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-start">
+              {/* Left: Image */}
+              <div className="w-full max-w-[280px] aspect-square relative bg-[#1c1c21]">
+                 <Image src="/assets/Vardz-dark.png" alt="Jericho Varde" layout="fill" objectFit="cover" className="grayscale" />
               </div>
-              <span className="absolute left-[18px] bottom-[15px] z-[1] text-[#f3f3f3] font-mono text-[10px] tracking-[.08em]">PORTRAIT / 2026</span>
+              
+              {/* Right: Content */}
+              <div className="flex-1 mt-2 md:mt-0">
+                <h1 className="text-[38px] md:text-[44px] font-mono font-medium tracking-tight text-text mb-[24px]">Jericho Varde</h1>
+                
+                <div className="text-soft text-[15px] leading-[1.8] max-w-[480px] space-y-[20px]">
+                  <p>I'm a full-stack engineer and cloud enthusiast. I build robust, scalable digital solutions for the web, and these days I'm focused on cloud architecture.</p>
+                  <p>Right now I'm building cool new stuff every day. I love turning rough ideas into things people actually use.</p>
+                </div>
+                
+                <div className="flex gap-[20px] mt-[36px] text-muted font-mono text-[12px]">
+                  <a href="https://github.com" target="_blank" className="hover:text-accent transition-colors">github ↗</a>
+                  <a href="https://www.linkedin.com" target="_blank" className="hover:text-accent transition-colors">linkedin ↗</a>
+                  <a href="mailto:hello@vardz.dev" className="hover:text-accent transition-colors">email ↗</a>
+                </div>
+              </div>
             </div>
-            <div>
-              <div className="text-accent font-mono text-[11px] tracking-[.1em] uppercase">Software Engineer · Cloud Enthusiast</div>
-              <h1 className="my-[17px] md:mb-[21px] text-[clamp(46px,7vw,94px)] leading-[.92] tracking-[-.075em] font-medium text-text">Jericho<br/>Varde</h1>
-              <p className="max-w-[510px] text-soft text-[clamp(16px,1.6vw,19px)] leading-[1.6]">I build robust, scalable digital solutions for the web. Currently exploring the space where modern cloud architecture meets seamless user experience.</p>
-              <div className="flex gap-[24px] mt-[30px] text-muted font-mono text-[11px]">
-                <a href="https://github.com" target="_blank" className="hover:text-accent transition-colors">github ↗</a>
-                <a href="https://www.linkedin.com" target="_blank" className="hover:text-accent transition-colors">linkedin ↗</a>
-                <a href="mailto:hello@vardz.dev" className="hover:text-accent transition-colors">email ↗</a>
+
+            {/* Stats Grid */}
+            <div className="mt-[70px] md:mt-[90px] grid grid-cols-2 md:grid-cols-4 gap-[30px] md:gap-[40px] border-t border-[rgba(244,237,228,0.15)] pt-[40px]">
+              <div>
+                <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">200K+ <span className="text-muted text-[13px] font-mono">↗</span></div>
+                <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Community</div>
+              </div>
+              <div className="border-l-0 md:border-l border-[rgba(244,237,228,0.15)] md:pl-[40px]">
+                <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">6+ yrs <span className="text-muted text-[13px] font-mono">↗</span></div>
+                <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Shipping</div>
+              </div>
+              <div className="border-l-0 md:border-l border-[rgba(244,237,228,0.15)] md:pl-[40px]">
+                <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">10x <span className="text-muted text-[13px] font-mono">↗</span></div>
+                <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Hackathons</div>
+              </div>
+              <div className="border-l-0 md:border-l border-[rgba(244,237,228,0.15)] md:pl-[40px]">
+                <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">PH100 <span className="text-muted text-[13px] font-mono">↗</span></div>
+                <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">StellarPH</div>
               </div>
             </div>
           </section>
