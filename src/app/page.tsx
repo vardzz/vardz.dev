@@ -21,27 +21,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen md:grid md:grid-cols-[224px_minmax(0,1fr)]">
-      
-      {/* Left Rail */}
-      <aside className="relative md:sticky top-0 h-auto md:h-screen border-b md:border-b-0 md:border-r border-line bg-[rgba(16,16,19,.92)] px-[20px] py-[22px] md:px-[27px] md:py-[29px] flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start z-10">
-        <Link href="#top" className="font-serif text-[17px] tracking-[-.03em] text-text">
-          Vardz <em className="text-accent not-italic">Code</em>
-        </Link>
-        <div className="hidden md:block mt-[86px] text-muted font-mono text-[11px] leading-[1.8]">
-          BUILDING DIGITAL<br/><span className="text-accent">THINGS WITH INTENT</span><br/><br/>
-          MANILA / UTC+8
-        </div>
-        <div className="hidden md:block mt-auto">
-          <div className="flex items-center gap-[9px] text-soft text-[11px]">
-            <i className="w-[7px] h-[7px] rounded-full bg-accent shadow-[0_0_0_5px_var(--color-accent-dim)]"></i>
-            available for select work
-          </div>
-          <a className="block mt-[18px] text-soft font-mono text-[11px] hover:text-accent transition-colors" href="mailto:hello@vardz.dev">
-            ↳ hello@vardz.dev
-          </a>
-        </div>
-      </aside>
+    <div className="min-h-screen">
 
       {/* Main Content */}
       <main id="top" className="min-w-0">
