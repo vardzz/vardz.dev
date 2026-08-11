@@ -62,7 +62,7 @@ export default function Portfolio() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
                 {/* Project 1 (Large) */}
-                <a href="https://horizonai-zeta.vercel.app/" target="_blank" className="group relative block md:col-span-2 aspect-[4/3] md:aspect-[21/9] rounded-[16px] overflow-hidden border border-line bg-[#121214] hover:border-accent/50 transition-all duration-300">
+                <a href="https://horizonai-zeta.vercel.app/" target="_blank" className="group relative block md:col-span-2 aspect-[4/3] md:aspect-[21/9] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#1c1c21]/30 to-transparent z-10"></div>
                   
                   {/* Horizon Logo Background */}
@@ -85,7 +85,7 @@ export default function Portfolio() {
                 </a>
 
                 {/* Project 2 (Small) */}
-                <a href="https://gridworks.vercel.app/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-[#121214] hover:border-accent/50 transition-all duration-300">
+                <a href="https://gridworks.vercel.app/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#1c1c21]/30 to-transparent"></div>
                   <div className="absolute inset-0 p-[24px] flex flex-col justify-end">
                     <div className="flex justify-between items-start mb-[auto]">
@@ -100,7 +100,7 @@ export default function Portfolio() {
                 </a>
 
                 {/* Project 3 (Small) */}
-                <a href="https://lunas.software/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-[#121214] hover:border-accent/50 transition-all duration-300">
+                <a href="https://lunas.software/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
                   <div className="absolute inset-0 bg-gradient-to-tl from-[#1c1c21]/30 to-transparent"></div>
                   <div className="absolute inset-0 p-[24px] flex flex-col justify-end">
                     <div className="flex justify-between items-start mb-[auto]">
