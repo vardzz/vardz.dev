@@ -33,7 +33,7 @@ export default function Hero() {
       <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
         {/* Left: Image */}
         <div className="w-full md:w-1/2 aspect-square relative bg-[#1c1c21]">
-            <Image src="/assets/Vardz-dark.png" alt="Jericho Varde" layout="fill" objectFit="cover" className="grayscale" />
+            <Image src="/assets/vardz-image.png" alt="Jericho Varde" layout="fill" objectFit="cover" className="grayscale" />
         </div>
         
         {/* Right: Content */}
