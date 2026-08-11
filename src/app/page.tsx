@@ -51,7 +51,7 @@ export default function Portfolio() {
     <div className="min-h-screen transition-colors duration-300">
 
       {/* Navbar */}
-      <nav className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-10 pb-4 flex justify-between items-center w-full">
+      <nav className="sticky top-0 z-40 bg-[var(--color-bg)] max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-10 pb-4 flex justify-between items-center w-full transition-colors duration-300">
         <div className="font-mono font-medium text-text text-[16px]">Vardz</div>
         <button 
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
