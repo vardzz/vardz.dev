@@ -8,7 +8,7 @@ export default function Projects() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
         {/* Project 1 (Large) */}
         <a href="https://horizonai-zeta.vercel.app/" target="_blank" className="group relative block md:col-span-2 aspect-[4/3] md:aspect-[21/9] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1c1c21]/30 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-text/5 to-transparent z-10"></div>
           
           {/* Horizon Logo Background */}
           <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
@@ -31,7 +31,7 @@ export default function Projects() {
 
         {/* Project 2 (Small) */}
         <a href="https://gridworks.vercel.app/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#1c1c21]/30 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-text/5 to-transparent z-10"></div>
           <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
             <img src="/projects/gridworks-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
@@ -49,7 +49,7 @@ export default function Projects() {
 
         {/* Project 3 (Small) */}
         <a href="https://lunas.software/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
-          <div className="absolute inset-0 bg-gradient-to-tl from-[#1c1c21]/30 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-tl from-text/5 to-transparent z-10"></div>
           <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
             <img src="/projects/lunas-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
