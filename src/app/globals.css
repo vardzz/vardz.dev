@@ -17,6 +17,18 @@
 }
 
 @layer base {
+  .light {
+    --color-bg: #F4EDE4;
+    --color-rail: #F4EDE4;
+    --color-surface: #F4EDE4;
+    --color-line: rgba(15, 14, 13, 0.15);
+    --color-text: #0F0E0D;
+    --color-muted: rgba(15, 14, 13, 0.5);
+    --color-soft: rgba(15, 14, 13, 0.8);
+    --color-accent: #0F0E0D;
+    --color-accent-dim: rgba(15, 14, 13, 0.12);
+  }
+
   html { scroll-behavior: smooth; }
   
   body {

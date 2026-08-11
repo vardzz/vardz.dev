@@ -5,8 +5,17 @@ import Image from "next/image";
 
 export default function Portfolio() {
   const [hasReachedBottom, setHasReachedBottom] = useState(false);
+  const [theme, setTheme] = useState('dark');
   const bottomRef = useRef<HTMLDivElement>(null);
   
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+  }, [theme]);
+
   useEffect(() => {
     // Basic github heatmap setup
     const heatmap = document.getElementById('heatmap');
@@ -39,7 +48,18 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen transition-colors duration-300">
+
+      {/* Navbar */}
+      <nav className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-10 pb-4 flex justify-between items-center w-full">
+        <div className="font-mono font-medium text-text text-[16px]">Vardz</div>
+        <button 
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="text-muted hover:text-text transition-colors font-mono text-[12px] uppercase cursor-pointer"
+        >
+          {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+        </button>
+      </nav>
 
       {/* Main Content */}
       <main id="top" className="min-w-0">
