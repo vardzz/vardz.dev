@@ -15,8 +15,11 @@ export default function Projects() {
             <img src="/projects/horizon-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
 
-          <div className="absolute inset-0 p-[24px] md:p-[32px] flex flex-col justify-end z-20">
-            <div className="flex justify-between items-end">
+          {/* Protective Gradient for Text on Hover */}
+          <div className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+          <div className="absolute inset-0 p-[24px] md:p-[32px] flex flex-col justify-end z-20 pointer-events-none">
+            <div className="flex justify-between items-end pointer-events-auto">
               <div>
                 <div className="text-accent font-mono text-[11px] mb-[12px]">AI / SYSTEM</div>
                 <h3 className="text-[22px] md:text-[28px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Horizon AI</h3>
@@ -35,8 +38,12 @@ export default function Projects() {
           <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
             <img src="/projects/gridworks-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
-          <div className="absolute inset-0 p-[24px] flex flex-col justify-end z-20">
-            <div className="flex justify-between items-start mb-[auto]">
+          
+          {/* Protective Gradient for Text on Hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          
+          <div className="absolute inset-0 p-[24px] flex flex-col justify-end z-20 pointer-events-none">
+            <div className="flex justify-between items-start mb-[auto] pointer-events-auto">
               <div className="text-muted font-mono text-[10px]">WEB APP / UTILITY</div>
               <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">↗</span>
@@ -53,8 +60,12 @@ export default function Projects() {
           <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
             <img src="/projects/lunas-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
-          <div className="absolute inset-0 p-[24px] flex flex-col justify-end z-20">
-            <div className="flex justify-between items-start mb-[auto]">
+
+          {/* Protective Gradient for Text on Hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+          <div className="absolute inset-0 p-[24px] flex flex-col justify-end z-20 pointer-events-none">
+            <div className="flex justify-between items-start mb-[auto] pointer-events-auto">
               <div className="text-muted font-mono text-[10px]">HEALTH-TECH / WEB</div>
               <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">↗</span>
