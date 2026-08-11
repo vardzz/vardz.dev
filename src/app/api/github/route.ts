@@ -32,7 +32,7 @@ export async function GET() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ query }),
-      next: { revalidate: 3600 }
+      next: { revalidate: 60 }
     });
 
     const data = await response.json();
