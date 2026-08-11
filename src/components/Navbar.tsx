@@ -12,11 +12,52 @@ export default function Navbar() {
     }
   }, [theme]);
 
+  const toggleTheme = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const isDark = theme === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+
+    if (!(document as any).startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    const radius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = (document as any).startViewTransition(() => {
+      setTheme(newTheme);
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${radius}px at ${x}px ${y}px)`
+      ];
+
+      document.documentElement.animate(
+        {
+          clipPath: isDark ? clipPath : [...clipPath].reverse(),
+        },
+        {
+          duration: 600,
+          easing: "cubic-bezier(0.76, 0, 0.24, 1)",
+          pseudoElement: isDark ? "::view-transition-new(root)" : "::view-transition-old(root)",
+        } as any
+      );
+    });
+  };
+
   return (
     <nav className="sticky top-0 z-40 bg-[var(--color-bg)] max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-10 pb-4 flex justify-between items-center w-full transition-colors duration-300">
       <div className="font-mono font-medium text-text text-[16px]">Vardz</div>
       <button 
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        onClick={toggleTheme}
         className="w-[44px] h-[24px] rounded-full border border-line relative cursor-pointer transition-colors hover:border-text focus:outline-none"
         aria-label="Toggle Theme"
       >
