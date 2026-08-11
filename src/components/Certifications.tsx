@@ -28,27 +28,27 @@ export default function Certifications() {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
         {certs.map((cert, i) => (
-          <div key={i} className="group flex flex-col items-center justify-between p-[32px] md:p-[40px] rounded-[16px] border border-line bg-transparent hover:border-accent/50 transition-all duration-500">
+          <div key={i} className="group flex flex-col items-center p-[32px] rounded-[16px] border border-line bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-300">
             {/* Icon Container */}
-            <div className="w-[56px] h-[56px] rounded-[14px] bg-[var(--color-line)] flex items-center justify-center mb-[28px] transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1">
-              <img src={cert.iconUrl} alt={cert.provider} className="w-[28px] h-[28px] object-contain" />
+            <div className="w-[48px] h-[48px] rounded-[12px] bg-accent/[0.04] border border-line/50 flex items-center justify-center mb-[20px] transition-transform duration-500 group-hover:scale-110">
+              <img src={cert.iconUrl} alt={cert.provider} className="w-[24px] h-[24px] object-contain" />
             </div>
             
             {/* Title & Provider */}
             <div className="text-center mb-[auto] flex flex-col items-center">
-              <h3 className="text-[16px] md:text-[18px] font-medium tracking-[-.03em] text-text mb-[8px] leading-[1.4] transition-colors duration-300 group-hover:text-accent">
+              <h3 className="text-[15px] md:text-[16px] font-semibold tracking-tight text-text mb-[6px] leading-[1.3] transition-colors duration-300 group-hover:text-accent">
                 {cert.title}
               </h3>
-              <p className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.05em]">
+              <p className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-widest">
                 {cert.provider}
               </p>
             </div>
 
             {/* Verify Link */}
-            <a href={cert.verifyLink} target="_blank" className="mt-[32px] text-muted font-mono text-[12px] group-hover:text-text transition-colors flex items-center gap-[6px]">
-              <span className="opacity-40 group-hover:opacity-100 transition-opacity duration-300">{"{"}</span>
+            <a href={cert.verifyLink} target="_blank" className="mt-[28px] text-muted font-mono text-[11px] md:text-[12px] tracking-widest hover:text-text transition-colors flex items-center gap-[6px]">
+              <span className="opacity-40">{"{"}</span>
               VERIFY
-              <span className="opacity-40 group-hover:opacity-100 transition-opacity duration-300">{"}"}</span>
+              <span className="opacity-40">{"}"}</span>
             </a>
           </div>
         ))}
