@@ -66,7 +66,7 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#1c1c21]/30 to-transparent z-10"></div>
                   
                   {/* Horizon Logo Background */}
-                  <div className="absolute inset-y-0 left-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-25 transition-all duration-500 flex items-center justify-start p-[24px] md:p-[40px] pointer-events-none">
+                  <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-25 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
                     <img src="/projects/horizon-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
                   </div>
 
