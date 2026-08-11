@@ -15,7 +15,6 @@ export default function Github() {
         if (json.error) {
           setError(json.error);
           setLoading(false);
-          return;
         }
 
         if (json.data && json.data.user) {
@@ -23,29 +22,40 @@ export default function Github() {
           setTotal(calendar.totalContributions);
           
           const weeks = calendar.weeks;
-          const days: number[] = [];
+          const last52Weeks = weeks.slice(-52);
           
-          // Flatten days
-          for (const week of weeks) {
-            for (const day of week.contributionDays) {
-              days.push(day.contributionCount);
-            }
-          }
-
-          // We want the last 52 weeks * 7 days = 364 days to fit our 52x7 grid
-          const last364 = days.slice(-364);
-          const result = [];
-
-          for (const count of last364) {
-            let sizeClass = "w-[2px] h-[2px] bg-white/20"; 
-            if (count > 10) sizeClass = "w-[8px] h-[8px] bg-white opacity-100";
-            else if (count > 5) sizeClass = "w-[6px] h-[6px] bg-white/80";
-            else if (count > 2) sizeClass = "w-[4px] h-[4px] bg-white/60";
-            else if (count > 0) sizeClass = "w-[3px] h-[3px] bg-white/40";
-            result.push(sizeClass);
-          }
+          // Determine relative thresholds based on non-zero contributions
+          const counts: number[] = [];
+          last52Weeks.forEach((week: any) => {
+            week.contributionDays.forEach((day: any) => {
+              if (day.contributionCount > 0) counts.push(day.contributionCount);
+            });
+          });
+          counts.sort((a, b) => a - b);
           
-          setContributions(result);
+          const q1 = counts[Math.floor(counts.length * 0.25)] || 1;
+          const q2 = counts[Math.floor(counts.length * 0.5)] || 2;
+          const q3 = counts[Math.floor(counts.length * 0.75)] || 3;
+
+          const result = Array.from({ length: 52 }, () => Array(7).fill("w-[2px] h-[2px] bg-white/20"));
+
+          last52Weeks.forEach((week: any, colIndex: number) => {
+            week.contributionDays.forEach((day: any) => {
+              const date = new Date(day.date);
+              const rowIndex = date.getUTCDay();
+              const count = day.contributionCount;
+              
+              let sizeClass = "w-[2px] h-[2px] bg-white/20"; 
+              if (count > q3) sizeClass = "w-[8px] h-[8px] bg-white opacity-100";
+              else if (count > q2) sizeClass = "w-[6px] h-[6px] bg-white/80";
+              else if (count > q1) sizeClass = "w-[4px] h-[4px] bg-white/60";
+              else if (count > 0) sizeClass = "w-[3px] h-[3px] bg-white/40";
+              
+              result[colIndex][rowIndex] = sizeClass;
+            });
+          });
+          
+          setContributions(result.flat());
         }
       } catch (err) {
         console.error(err);
