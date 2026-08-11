@@ -66,7 +66,7 @@ export default function Portfolio() {
         <div className="block">
           
           {/* Hero Section */}
-          <section className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-6 pb-[40px]">
+          <section className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-6 pb-[80px]">
             <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
               {/* Left: Image */}
               <div className="w-full md:w-1/2 aspect-square relative bg-[#1c1c21]">
