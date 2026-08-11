@@ -1,9 +1,11 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Portfolio() {
+  const [hasReachedBottom, setHasReachedBottom] = useState(false);
+  const bottomRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     // Basic github heatmap setup
@@ -18,6 +20,22 @@ export default function Portfolio() {
         return `<span class="aspect-square ${bgClass}"></span>`;
       }).join('');
     }
+
+    // Observer for bottom of page
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setHasReachedBottom(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (bottomRef.current) {
+      observer.observe(bottomRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -168,7 +186,7 @@ export default function Portfolio() {
         </div>
         
         {/* Chatbox form */}
-        <form className="sticky bottom-[18px] z-30 w-[min(680px,calc(100%-36px))] mx-auto mt-[-65px] md:mt-[-94px] mb-[18px] bg-[rgba(20,20,25,.96)] border border-[#45454d] shadow-[0_12px_40px_rgba(0,0,0,.35)] p-[9px] flex gap-[10px] transition-[border-color,box-shadow] duration-250 focus-within:border-accent focus-within:shadow-[0_0_0_4px_var(--color-accent-dim),0_12px_40px_rgba(0,0,0,.4)]">
+        <form className={`fixed bottom-[18px] left-1/2 -translate-x-1/2 z-30 w-[min(680px,calc(100%-36px))] bg-[rgba(20,20,25,.96)] border border-[#45454d] shadow-[0_12px_40px_rgba(0,0,0,.35)] p-[9px] flex gap-[10px] transition-all duration-700 ease-out focus-within:border-accent focus-within:shadow-[0_0_0_4px_var(--color-accent-dim),0_12px_40px_rgba(0,0,0,.4)] ${hasReachedBottom ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-[120%] opacity-0 pointer-events-none'}`}>
           <input 
             type="text" 
             autoComplete="off" 
@@ -180,6 +198,9 @@ export default function Portfolio() {
             SEND ↗
           </button>
         </form>
+        
+        {/* Invisible element to trigger the observer */}
+        <div ref={bottomRef} className="h-[10px] w-full mt-[-10px]"></div>
 
       </main>
     </div>
