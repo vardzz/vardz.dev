@@ -46,10 +46,10 @@ export default function Portfolio() {
         <div className="block">
           
           {/* Hero Section */}
-          <section className="max-w-[840px] mx-auto px-[24px] md:px-[12vw] lg:px-0 pt-[74px] md:pt-[108px] pb-[80px]">
-            <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-start">
+          <section className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-[74px] md:pt-[108px] pb-[80px]">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-start">
               {/* Left: Image */}
-              <div className="w-full max-w-[280px] aspect-square relative bg-[#1c1c21]">
+              <div className="w-full max-w-[200px] md:max-w-[220px] aspect-square relative bg-[#1c1c21]">
                  <Image src="/assets/Vardz-dark.png" alt="Jericho Varde" layout="fill" objectFit="cover" className="grayscale" />
               </div>
               
@@ -92,7 +92,7 @@ export default function Portfolio() {
           </section>
 
           {/* Sections Wrap */}
-          <div className="max-w-[840px] mx-auto px-[24px] md:px-[12vw] lg:px-0">
+          <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
             
             {/* 01 Projects */}
             <section className="py-[54px] md:py-[70px] border-t border-line" id="projects">
