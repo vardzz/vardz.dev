@@ -18,6 +18,7 @@ export async function GET() {
               contributionDays {
                 contributionCount
                 date
+                weekday
               }
             }
           }

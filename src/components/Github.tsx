@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 export default function Github() {
   const [contributions, setContributions] = useState<string[]>([]);
+  const [columns, setColumns] = useState<number>(53);
   const [total, setTotal] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -23,11 +24,11 @@ export default function Github() {
           setTotal(calendar.totalContributions);
           
           const weeks = calendar.weeks;
-          const last52Weeks = weeks.slice(-52);
+          setColumns(weeks.length);
           
           // Determine relative thresholds based on non-zero contributions
           const counts: number[] = [];
-          last52Weeks.forEach((week: any) => {
+          weeks.forEach((week: any) => {
             week.contributionDays.forEach((day: any) => {
               if (day.contributionCount > 0) counts.push(day.contributionCount);
             });
@@ -38,12 +39,11 @@ export default function Github() {
           const q2 = counts[Math.floor(counts.length * 0.5)] || 2;
           const q3 = counts[Math.floor(counts.length * 0.75)] || 3;
 
-          const result = Array.from({ length: 52 }, () => Array(7).fill("w-[2px] h-[2px] bg-white/20"));
+          const result = Array.from({ length: weeks.length }, () => Array(7).fill("w-[2px] h-[2px] bg-white/10"));
 
-          last52Weeks.forEach((week: any, colIndex: number) => {
+          weeks.forEach((week: any, colIndex: number) => {
             week.contributionDays.forEach((day: any) => {
-              const date = new Date(day.date);
-              const rowIndex = date.getUTCDay();
+              const rowIndex = day.weekday !== undefined ? day.weekday : new Date(day.date).getUTCDay();
               const count = day.contributionCount;
               
               let sizeClass = "w-[2px] h-[2px] bg-white/10"; 
@@ -87,7 +87,10 @@ export default function Github() {
           ) : error ? (
             <div className="text-muted text-[11px] font-mono uppercase py-4">Waiting for GITHUB_TOKEN in .env.local</div>
           ) : (
-            <div className="grid grid-rows-7 grid-flow-col gap-[2px] sm:gap-[3px] md:gap-[4px] w-full max-w-full">
+            <div 
+              className="grid grid-rows-7 grid-flow-col gap-[2px] sm:gap-[3px] md:gap-[4px] w-full max-w-full"
+              style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
+            >
               {contributions.map((sizeClass, index) => (
                 <div key={index} className="w-full aspect-square flex items-center justify-center">
                   <span className={`rounded-full transition-all duration-300 hover:scale-150 hover:bg-accent ${sizeClass}`}></span>
