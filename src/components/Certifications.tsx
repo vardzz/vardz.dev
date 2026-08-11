@@ -2,14 +2,14 @@ export default function Certifications() {
   const certs = [
     {
       title: "AWS Technical Essentials Course",
-      provider: "Amazon Web Services (AWS)",
-      iconUrl: "https://cdn.simpleicons.org/amazonwebservices/FF9900",
+      provider: "Amazon Web Services",
+      iconUrl: "https://cdn.simpleicons.org/amazonaws/FF9900",
       verifyLink: "#"
     },
     {
       title: "AWS Cloud Practitioner Essentials Course",
-      provider: "Amazon Web Services (AWS)",
-      iconUrl: "https://cdn.simpleicons.org/amazonwebservices/FF9900",
+      provider: "Amazon Web Services",
+      iconUrl: "https://cdn.simpleicons.org/amazonaws/FF9900",
       verifyLink: "#"
     },
     {
@@ -36,7 +36,7 @@ export default function Certifications() {
             
             {/* Title & Provider */}
             <div className="text-center mb-[auto] flex flex-col items-center">
-              <h3 className="text-[15px] md:text-[16px] font-semibold tracking-tight text-text mb-[6px] leading-[1.3] transition-colors duration-300 group-hover:text-accent">
+              <h3 className="text-[13px] md:text-[14px] font-semibold tracking-tight text-text mb-[6px] leading-[1.4] transition-colors duration-300 group-hover:text-accent">
                 {cert.title}
               </h3>
               <p className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-widest">
