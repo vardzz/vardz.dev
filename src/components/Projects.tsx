@@ -25,7 +25,7 @@ export default function Projects() {
                 <h3 className="text-[22px] md:text-[28px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Horizon AI</h3>
                 <p className="text-muted text-[14px] leading-[1.6] max-w-[480px]">A role-driven multi-agent system designed to optimize the reasoning and workflow automation of Small Language Models (SLMs).</p>
               </div>
-              <span className="hidden md:flex items-center justify-center w-[40px] h-[40px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
+              <span className="hidden md:flex items-center justify-center w-[40px] h-[40px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-bg transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
               </span>
             </div>
@@ -45,7 +45,7 @@ export default function Projects() {
           <div className="absolute inset-0 p-[24px] flex flex-col justify-end z-20 pointer-events-none">
             <div className="flex justify-between items-start mb-[auto] pointer-events-auto">
               <div className="text-muted font-mono text-[10px]">WEB APP / UTILITY</div>
-              <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
+              <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-bg transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">↗</span>
               </span>
             </div>
@@ -69,7 +69,7 @@ export default function Projects() {
           <div className="absolute inset-0 p-[24px] flex flex-col justify-end z-20 pointer-events-none">
             <div className="flex justify-between items-start mb-[auto] pointer-events-auto">
               <div className="text-muted font-mono text-[10px]">HEALTH-TECH / WEB</div>
-              <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
+              <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-bg transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">↗</span>
               </span>
             </div>
