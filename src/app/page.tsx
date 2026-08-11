@@ -66,7 +66,7 @@ export default function Portfolio() {
             {/* 03 Stack */}
             <section className="py-[54px] md:py-[70px]" id="stack">
               <div className="flex justify-between items-baseline mb-[24px]">
-                <h2 className="m-0 text-[11px] font-mono text-muted uppercase tracking-[0.1em]">Stack</h2>
+                <h2 className="m-0 text-[11px] font-mono text-muted uppercase tracking-[0.1em]">Tech Stack</h2>
                 <a href="#" className="text-muted hover:text-accent transition-colors text-[11px] font-mono uppercase tracking-[0.1em] group">view all <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px]">→</span></a>
               </div>
               <div className="flex flex-wrap gap-[9px]">
