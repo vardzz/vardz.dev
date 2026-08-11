@@ -73,9 +73,9 @@ export default function Github() {
     <section className="py-[54px] md:py-[70px] w-full overflow-hidden" id="github">
       <div className="flex flex-col max-w-full">
         {/* Header */}
-        <div className="flex justify-between items-baseline mb-[32px]">
-          <h2 className="m-0 text-[11px] font-mono text-muted uppercase tracking-[0.1em]">Github</h2>
-          <a href="https://github.com/vardzz" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors text-[11px] font-mono uppercase tracking-[0.1em] group">
+        <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
+          <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Github</h2>
+          <a href="https://github.com/vardzz" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors text-[14px] font-mono group">
             @VARDZZ <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
           </a>
         </div>
