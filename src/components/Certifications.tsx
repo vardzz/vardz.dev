@@ -43,7 +43,7 @@ export default function Certifications() {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
         {certs.map((cert, i) => (
-          <div key={i} className="group flex flex-col items-center p-[32px] rounded-[16px] border border-line bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-300">
+          <a key={i} href={cert.verifyLink} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center p-[32px] rounded-[16px] border border-line bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-300 cursor-pointer">
             {/* Icon Container */}
             <div className="w-[48px] h-[48px] rounded-[12px] bg-accent/[0.04] border border-line/50 flex items-center justify-center mb-[20px] transition-transform duration-500 group-hover:scale-110">
               {cert.icon}
@@ -51,7 +51,7 @@ export default function Certifications() {
             
             {/* Title & Provider */}
             <div className="text-center mb-[auto] flex flex-col items-center">
-              <h3 className="text-[13px] md:text-[14px] font-semibold tracking-tight text-text mb-[6px] leading-[1.4] transition-colors duration-300 group-hover:text-accent">
+              <h3 className="text-[12px] md:text-[13px] font-semibold tracking-tight text-text mb-[6px] leading-[1.4] transition-colors duration-300 group-hover:text-accent">
                 {cert.title}
               </h3>
               <p className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-widest">
@@ -60,12 +60,12 @@ export default function Certifications() {
             </div>
 
             {/* Verify Link */}
-            <a href={cert.verifyLink} target="_blank" className="mt-[28px] text-muted font-mono text-[11px] md:text-[12px] tracking-widest hover:text-text transition-colors flex items-center gap-[6px]">
+            <div className="mt-[28px] text-muted font-mono text-[11px] md:text-[12px] tracking-widest group-hover:text-text transition-colors flex items-center gap-[6px]">
               <span className="opacity-40">{"{"}</span>
               VERIFY
               <span className="opacity-40">{"}"}</span>
-            </a>
-          </div>
+            </div>
+          </a>
         ))}
       </div>
     </section>
