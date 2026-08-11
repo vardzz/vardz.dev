@@ -85,7 +85,7 @@ export default function Github() {
           {loading ? (
             <div className="text-muted text-[11px] font-mono uppercase py-4">Fetching live data...</div>
           ) : error ? (
-            <div className="text-muted text-[11px] font-mono uppercase py-4">Waiting for GITHUB_TOKEN in .env.local</div>
+            <div className="text-muted text-[11px] font-mono uppercase py-4">Waiting for live data...</div>
           ) : (
             <div 
               className="grid grid-rows-7 grid-flow-col gap-[2px] sm:gap-[3px] md:gap-[4px] w-full max-w-full"
