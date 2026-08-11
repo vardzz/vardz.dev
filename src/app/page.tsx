@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Experience from "../components/Experience";
+import Certifications from "../components/Certifications";
+import Github from "../components/Github";
 
 export default function Portfolio() {
   const [hasReachedBottom, setHasReachedBottom] = useState(false);
@@ -86,40 +88,9 @@ export default function Portfolio() {
               </div>
             </section>
 
-            {/* 04 Certifications */}
-            <section className="py-[54px] md:py-[70px]" id="certifications">
-              <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
-                <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Certifications</h2>
-              </div>
-              <div className="border-t border-line">
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] py-[22px] border-b border-line group cursor-pointer">
-                  <div className="text-[17px] tracking-[-.03em] transition-colors group-hover:text-accent text-text">AWS Certified Developer — Associate</div>
-                  <div className="text-muted font-mono text-[11px] text-left md:text-right whitespace-nowrap">AWS · 2025</div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] py-[22px] border-b border-line group cursor-pointer">
-                  <div className="text-[17px] tracking-[-.03em] transition-colors group-hover:text-accent text-text">AWS Certified Solutions Architect</div>
-                  <div className="text-muted font-mono text-[11px] text-left md:text-right whitespace-nowrap">AWS · 2024</div>
-                </div>
-              </div>
-            </section>
+            <Certifications />
 
-            {/* 05 Github */}
-            <section className="py-[54px] md:py-[70px]" id="github">
-              <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
-                <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Github activity</h2>
-              </div>
-              <div className="block md:grid md:grid-cols-[1.2fr_.8fr] gap-[50px]">
-                <div className="grid grid-cols-[repeat(20,1fr)] md:grid-cols-[repeat(26,1fr)] gap-[4px] content-start" id="heatmap" aria-label="A visual summary of recent Github activity">
-                  {/* Heatmap rendered via JS */}
-                </div>
-                <div className="mt-[28px] md:mt-0 text-soft text-[13px] leading-[1.7]">
-                  <strong className="block text-text text-[36px] font-medium tracking-[-.07em] mb-[3px]">1,204</strong>
-                  contributions in the last year.<br/><br/>
-                  Consistent commits across personal projects, cloud tools, and open source.<br/><br/>
-                  <a className="text-muted font-mono text-[11px] hover:text-accent transition-colors" href="https://github.com" target="_blank">view github ↗</a>
-                </div>
-              </div>
-            </section>
+            <Github />
 
             {/* 06 Chat Zone */}
             <section className="pt-[80px] pb-[150px] md:pt-[110px] md:pb-[150px] min-h-[430px] grid place-items-center text-center" id="chat">
