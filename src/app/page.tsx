@@ -65,19 +65,24 @@ export default function Portfolio() {
 
             {/* 03 Stack */}
             <section className="py-[54px] md:py-[70px]" id="stack">
-              <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
-                <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Tech stack</h2>
+              <div className="flex justify-between items-baseline mb-[24px]">
+                <h2 className="m-0 text-[11px] font-mono text-muted uppercase tracking-[0.1em]">Stack</h2>
+                <a href="#" className="text-muted hover:text-accent transition-colors text-[11px] font-mono uppercase tracking-[0.1em] group">view all <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px]">→</span></a>
               </div>
-              <p className="max-w-[590px] text-soft leading-[1.75] m-0 mb-[36px]">Tools are just tools. These are the ones I reach for when they make the work better.</p>
               <div className="flex flex-wrap gap-[9px]">
-                <span className="border border-[rgba(213,255,97,.45)] text-accent bg-accent-dim px-[12px] py-[9px] font-mono text-[11px]">TypeScript</span>
-                <span className="border border-line text-soft px-[12px] py-[9px] font-mono text-[11px]">React</span>
-                <span className="border border-line text-soft px-[12px] py-[9px] font-mono text-[11px]">Next.js</span>
-                <span className="border border-line text-soft px-[12px] py-[9px] font-mono text-[11px]">Node.js</span>
-                <span className="border border-[rgba(213,255,97,.45)] text-accent bg-accent-dim px-[12px] py-[9px] font-mono text-[11px]">AWS</span>
-                <span className="border border-line text-soft px-[12px] py-[9px] font-mono text-[11px]">PostgreSQL</span>
-                <span className="border border-line text-soft px-[12px] py-[9px] font-mono text-[11px]">Tailwind</span>
-                <span className="border border-line text-soft px-[12px] py-[9px] font-mono text-[11px]">Docker</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">TypeScript</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">React</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Next.js</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Node.js</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Python</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Laravel</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">PostgreSQL</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">AWS</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Docker</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Kubernetes</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">PyTorch</span>
+                <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">Claude Code</span>
+                <span className="border border-line border-dashed text-soft rounded-[6px] px-[12px] py-[9px] font-mono text-[11px]">+ more</span>
               </div>
             </section>
 
