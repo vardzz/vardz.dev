@@ -14,7 +14,11 @@ export default function Hero() {
         if (json.data && (json.data.user || json.data.viewer)) {
           const userObj = json.data.user || json.data.viewer;
           const total = userObj.contributionsCollection.contributionCalendar.totalContributions;
-          setCommits(total.toLocaleString());
+          let formattedCommits = total.toString();
+          if (total >= 1000) {
+            formattedCommits = (total / 1000).toFixed(1) + "K+";
+          }
+          setCommits(formattedCommits);
         }
       } catch (e) {
         console.error("Failed to fetch commits", e);
