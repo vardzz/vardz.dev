@@ -46,11 +46,11 @@ export default function Github() {
               const rowIndex = day.weekday !== undefined ? day.weekday : new Date(day.date).getUTCDay();
               const count = day.contributionCount;
               
-              let sizeClass = "w-[2px] h-[2px] bg-white/10"; 
-              if (count > q3) sizeClass = "w-[8px] h-[8px] bg-white opacity-100";
-              else if (count > q2) sizeClass = "w-[6px] h-[6px] bg-white/90";
-              else if (count > q1) sizeClass = "w-[5px] h-[5px] bg-white/80";
-              else if (count > 0) sizeClass = "w-[4px] h-[4px] bg-white/70";
+              let sizeClass = "w-[2px] h-[2px] bg-text opacity-10 hover:opacity-100"; 
+              if (count > q3) sizeClass = "w-[8px] h-[8px] bg-text opacity-100";
+              else if (count > q2) sizeClass = "w-[6px] h-[6px] bg-text opacity-90 hover:opacity-100";
+              else if (count > q1) sizeClass = "w-[5px] h-[5px] bg-text opacity-80 hover:opacity-100";
+              else if (count > 0) sizeClass = "w-[4px] h-[4px] bg-text opacity-70 hover:opacity-100";
               
               result[colIndex][rowIndex] = sizeClass;
             });
