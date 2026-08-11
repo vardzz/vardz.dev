@@ -58,8 +58,7 @@ export default function Portfolio() {
             {/* 01 Projects */}
             <section className="py-[54px] md:py-[70px]" id="projects">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
-                <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Projects</h2>
-                <span className="text-muted font-mono text-[11px]">01 / 06</span>
+                <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Selected projects</h2>
               </div>
               <p className="max-w-[590px] text-soft leading-[1.75] m-0 mb-[36px]">A selection of applications, systems, and experiments I’ve helped bring from rough idea to production.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
@@ -116,7 +115,6 @@ export default function Portfolio() {
             <section className="py-[54px] md:py-[70px]" id="experience">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Experience</h2>
-                <span className="text-muted font-mono text-[11px]">02 / 06</span>
               </div>
               <div className="border-t border-line">
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] py-[22px] border-b border-line">
@@ -140,7 +138,6 @@ export default function Portfolio() {
             <section className="py-[54px] md:py-[70px]" id="stack">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Tech stack</h2>
-                <span className="text-muted font-mono text-[11px]">03 / 06</span>
               </div>
               <p className="max-w-[590px] text-soft leading-[1.75] m-0 mb-[36px]">Tools are just tools. These are the ones I reach for when they make the work better.</p>
               <div className="flex flex-wrap gap-[9px]">
@@ -159,7 +156,6 @@ export default function Portfolio() {
             <section className="py-[54px] md:py-[70px]" id="certifications">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Certifications</h2>
-                <span className="text-muted font-mono text-[11px]">04 / 06</span>
               </div>
               <div className="border-t border-line">
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] py-[22px] border-b border-line group cursor-pointer">
@@ -177,7 +173,6 @@ export default function Portfolio() {
             <section className="py-[54px] md:py-[70px]" id="github">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Github activity</h2>
-                <span className="text-muted font-mono text-[11px]">05 / 06</span>
               </div>
               <div className="block md:grid md:grid-cols-[1.2fr_.8fr] gap-[50px]">
                 <div className="grid grid-cols-[repeat(20,1fr)] md:grid-cols-[repeat(26,1fr)] gap-[4px] content-start" id="heatmap" aria-label="A visual summary of recent Github activity">
@@ -195,7 +190,7 @@ export default function Portfolio() {
             {/* 06 Chat Zone */}
             <section className="pt-[80px] pb-[150px] md:pt-[110px] md:pb-[150px] min-h-[430px] grid place-items-center text-center" id="chat">
               <div>
-                <div className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">06 / 06 · your move</div>
+                <div className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">your move</div>
                 <div className="text-[clamp(28px,4vw,49px)] tracking-[-.06em] font-serif text-text my-[14px] md:my-[15px]">Ask me where to go.</div>
                 <div className="text-muted text-[13px]">Try “show me the projects” or ask anything else.</div>
               </div>
