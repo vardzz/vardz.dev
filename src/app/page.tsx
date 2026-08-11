@@ -8,6 +8,7 @@ import Experience from "../components/Experience";
 import Certifications from "../components/Certifications";
 import Github from "../components/Github";
 import Stack from "../components/Stack";
+import Chatbox from "../components/Chatbox";
 
 export default function Portfolio() {
   const [hasReachedBottom, setHasReachedBottom] = useState(false);
@@ -74,19 +75,8 @@ export default function Portfolio() {
           </div>
         </div>
         
-        {/* Chatbox form */}
-        <form className={`fixed bottom-[18px] left-1/2 -translate-x-1/2 z-30 w-[min(680px,calc(100%-36px))] bg-[rgba(20,20,25,.96)] border border-[#45454d] shadow-[0_12px_40px_rgba(0,0,0,.35)] p-[9px] flex gap-[10px] transition-all duration-700 ease-out focus-within:border-accent focus-within:shadow-[0_0_0_4px_var(--color-accent-dim),0_12px_40px_rgba(0,0,0,.4)] ${hasReachedBottom ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-[120%] opacity-0 pointer-events-none'}`}>
-          <input 
-            type="text" 
-            autoComplete="off" 
-            aria-label="Ask the portfolio a question" 
-            placeholder="Ask about projects, experience, stack…" 
-            className="min-w-0 flex-1 bg-transparent border-0 outline-0 text-text px-[11px] py-[13px] text-[13px] placeholder-[#6e6e77]"
-          />
-          <button type="submit" className="border-0 bg-accent text-[#111] px-[18px] cursor-pointer font-mono font-semibold text-[11px] hover:brightness-110">
-            SEND ↗
-          </button>
-        </form>
+        {/* Chatbox component */}
+        <Chatbox isVisible={hasReachedBottom} />
         
         {/* Invisible element to trigger the observer */}
         <div ref={bottomRef} className="h-[10px] w-full mt-[-10px]"></div>
