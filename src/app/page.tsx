@@ -62,20 +62,52 @@ export default function Portfolio() {
                 <span className="text-muted font-mono text-[11px]">01 / 06</span>
               </div>
               <p className="max-w-[590px] text-soft leading-[1.75] m-0 mb-[36px]">A selection of applications, systems, and experiments I’ve helped bring from rough idea to production.</p>
-              <div className="border-t border-line">
-                <a className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] py-[22px] border-b border-line group" href="#">
-                  <div>
-                    <div className="text-[17px] tracking-[-.03em] transition-colors group-hover:text-accent text-text">Secret App — Secure messaging</div>
-                    <div className="text-muted text-[13px] leading-[1.6] mt-[8px] max-w-[560px]">A full-stack secure platform designed around privacy and rapid real-time communication.</div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
+                {/* Project 1 (Large) */}
+                <a href="#" className="group relative block md:col-span-2 aspect-[4/3] md:aspect-[21/9] rounded-[16px] overflow-hidden border border-line bg-[#121214] hover:border-accent/50 transition-all duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1c1c21]/30 to-transparent"></div>
+                  <div className="absolute inset-0 p-[24px] md:p-[32px] flex flex-col justify-end">
+                    <div className="flex justify-between items-end">
+                      <div>
+                        <div className="text-accent font-mono text-[11px] mb-[12px]">2026 · FULL-STACK</div>
+                        <h3 className="text-[22px] md:text-[28px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Secret App</h3>
+                        <p className="text-muted text-[14px] leading-[1.6] max-w-[480px]">A full-stack secure platform designed around privacy and rapid real-time communication.</p>
+                      </div>
+                      <span className="hidden md:flex items-center justify-center w-[40px] h-[40px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300">
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-muted font-mono text-[11px] text-left md:text-right whitespace-nowrap">2026 · FULL-STACK</div>
                 </a>
-                <a className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[9px] md:gap-[20px] py-[22px] border-b border-line group" href="#">
-                  <div>
-                    <div className="text-[17px] tracking-[-.03em] transition-colors group-hover:text-accent text-text">Cloud Automator — Infrastructure made simple</div>
-                    <div className="text-muted text-[13px] leading-[1.6] mt-[8px] max-w-[560px]">An orchestrator for provisioning and deploying AWS resources with minimal configuration.</div>
+
+                {/* Project 2 (Small) */}
+                <a href="#" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-[#121214] hover:border-accent/50 transition-all duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#1c1c21]/30 to-transparent"></div>
+                  <div className="absolute inset-0 p-[24px] flex flex-col justify-end">
+                    <div className="flex justify-between items-start mb-[auto]">
+                      <div className="text-muted font-mono text-[10px]">2025 · CLOUD / BACKEND</div>
+                      <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">↗</span>
+                      </span>
+                    </div>
+                    <h3 className="text-[18px] md:text-[20px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Cloud Automator</h3>
+                    <p className="text-muted text-[13px] leading-[1.5]">An orchestrator for provisioning and deploying AWS resources with minimal configuration.</p>
                   </div>
-                  <div className="text-muted font-mono text-[11px] text-left md:text-right whitespace-nowrap">2025 · CLOUD / BACKEND</div>
+                </a>
+
+                {/* Project 3 (Small) */}
+                <a href="#" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-[#121214] hover:border-accent/50 transition-all duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-tl from-[#1c1c21]/30 to-transparent"></div>
+                  <div className="absolute inset-0 p-[24px] flex flex-col justify-end">
+                    <div className="flex justify-between items-start mb-[auto]">
+                      <div className="text-muted font-mono text-[10px]">2024 · AI / EXPERIMENT</div>
+                      <span className="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-line text-text group-hover:bg-accent group-hover:text-[#111] transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-[10px] group-hover:translate-y-0">
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">↗</span>
+                      </span>
+                    </div>
+                    <h3 className="text-[18px] md:text-[20px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Neural Net Visualizer</h3>
+                    <p className="text-muted text-[13px] leading-[1.5]">Interactive web tool to visualize neural networks training in real-time on your browser.</p>
+                  </div>
                 </a>
               </div>
             </section>
