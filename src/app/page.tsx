@@ -67,9 +67,9 @@ export default function Portfolio() {
           
           {/* Hero Section */}
           <section className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-6 pb-[72px]">
-            <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-start">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-start md:items-stretch">
               {/* Left: Image */}
-              <div className="w-full max-w-[200px] md:max-w-[220px] aspect-square relative bg-[#1c1c21]">
+              <div className="w-full max-w-[200px] md:max-w-none md:w-[220px] shrink-0 aspect-square md:aspect-auto relative bg-[#1c1c21]">
                  <Image src="/assets/Vardz-dark.png" alt="Jericho Varde" layout="fill" objectFit="cover" className="grayscale" />
               </div>
               
