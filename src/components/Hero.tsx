@@ -1,6 +1,29 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [commits, setCommits] = useState<string>("...");
+
+  useEffect(() => {
+    async function fetchCommits() {
+      try {
+        const res = await fetch('/api/github?t=' + Date.now());
+        const json = await res.json();
+        if (json.data && (json.data.user || json.data.viewer)) {
+          const userObj = json.data.user || json.data.viewer;
+          const total = userObj.contributionsCollection.contributionCalendar.totalContributions;
+          setCommits(total.toLocaleString());
+        }
+      } catch (e) {
+        console.error("Failed to fetch commits", e);
+        setCommits("1.2K+");
+      }
+    }
+    fetchCommits();
+  }, []);
+
   return (
     <section className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-6 pb-[80px]">
       <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
@@ -34,7 +57,7 @@ export default function Hero() {
       {/* Stats Grid */}
       <div className="mt-[80px] grid grid-cols-2 md:grid-cols-4 border-t border-[rgba(244,237,228,0.15)]">
         <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-[20px]">
-          <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">1.2K+ <span className="text-muted text-[13px] font-mono">↗</span></div>
+          <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">{commits} <span className="text-muted text-[13px] font-mono">↗</span></div>
           <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Commits</div>
         </div>
         <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-l border-[rgba(244,237,228,0.15)]">
