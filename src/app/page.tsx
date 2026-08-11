@@ -56,7 +56,7 @@ export default function Portfolio() {
           <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
             
             {/* 01 Projects */}
-            <section className="py-[54px] md:py-[70px] border-t border-line" id="projects">
+            <section className="py-[54px] md:py-[70px]" id="projects">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Selected projects</h2>
                 <span className="text-muted font-mono text-[11px]">01 / 06</span>
@@ -81,7 +81,7 @@ export default function Portfolio() {
             </section>
 
             {/* 02 Experience */}
-            <section className="py-[54px] md:py-[70px] border-t border-line" id="experience">
+            <section className="py-[54px] md:py-[70px]" id="experience">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Experience</h2>
                 <span className="text-muted font-mono text-[11px]">02 / 06</span>
@@ -105,7 +105,7 @@ export default function Portfolio() {
             </section>
 
             {/* 03 Stack */}
-            <section className="py-[54px] md:py-[70px] border-t border-line" id="stack">
+            <section className="py-[54px] md:py-[70px]" id="stack">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Tech stack</h2>
                 <span className="text-muted font-mono text-[11px]">03 / 06</span>
@@ -124,7 +124,7 @@ export default function Portfolio() {
             </section>
 
             {/* 04 Certifications */}
-            <section className="py-[54px] md:py-[70px] border-t border-line" id="certifications">
+            <section className="py-[54px] md:py-[70px]" id="certifications">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Certifications</h2>
                 <span className="text-muted font-mono text-[11px]">04 / 06</span>
@@ -142,7 +142,7 @@ export default function Portfolio() {
             </section>
 
             {/* 05 Github */}
-            <section className="py-[54px] md:py-[70px] border-t border-line" id="github">
+            <section className="py-[54px] md:py-[70px]" id="github">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
                 <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Github activity</h2>
                 <span className="text-muted font-mono text-[11px]">05 / 06</span>
