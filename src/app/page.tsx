@@ -14,18 +14,7 @@ export default function Portfolio() {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Basic github heatmap setup
-    const heatmap = document.getElementById('heatmap');
-    if (heatmap) {
-      heatmap.innerHTML = Array.from({ length: 130 }, (_, i) => {
-        // Randomize the color distribution to match the reference look
-        let bgClass = "bg-[#1c1c21]";
-        if (i % 5 === 1 || i % 7 === 3) bgClass = "bg-[#4c5c26]";
-        else if (i % 11 === 2) bgClass = "bg-[#849d3d]";
-        else if (i % 17 === 4) bgClass = "bg-accent";
-        return `<span class="aspect-square ${bgClass}"></span>`;
-      }).join('');
-    }
+
 
     // Observer for bottom of page
     const observer = new IntersectionObserver(
