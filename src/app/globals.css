@@ -25,17 +25,7 @@
     @apply min-h-screen w-full font-sans m-0 antialiased;
   }
 
-  /* Background Grid Pattern */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: .23;
-    background-image: radial-gradient(#53535a 1px, transparent 1px);
-    background-size: 17px 17px;
-    mask-image: linear-gradient(120deg, transparent 0 10%, #000 42%, transparent 90%);
-  }
+
 
   a, a:visited {
     color: inherit;
