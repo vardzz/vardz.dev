@@ -20,7 +20,7 @@ export default function Projects() {
 
           <div className="absolute inset-0 p-[24px] md:p-[32px] flex flex-col justify-end z-20 pointer-events-none">
             <div className="flex justify-between items-end pointer-events-auto">
-              <div>
+              <div className="transform transition-transform duration-500 origin-bottom-left group-hover:scale-[1.03]">
                 <div className="text-accent font-mono text-[11px] mb-[12px]">AI / SYSTEM</div>
                 <h3 className="text-[22px] md:text-[28px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Horizon AI</h3>
                 <p className="text-muted text-[14px] leading-[1.6] max-w-[480px]">A role-driven multi-agent system designed to optimize the reasoning and workflow automation of Small Language Models (SLMs).</p>
@@ -49,8 +49,10 @@ export default function Projects() {
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">↗</span>
               </span>
             </div>
-            <h3 className="text-[18px] md:text-[20px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Gridworks</h3>
-            <p className="text-muted text-[13px] leading-[1.5]">Transform university schedule PDFs into clean, print-ready calendar grids in seconds.</p>
+            <div className="transform transition-transform duration-500 origin-bottom-left group-hover:scale-[1.03] pointer-events-auto">
+              <h3 className="text-[18px] md:text-[20px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Gridworks</h3>
+              <p className="text-muted text-[13px] leading-[1.5]">Transform university schedule PDFs into clean, print-ready calendar grids in seconds.</p>
+            </div>
           </div>
         </a>
 
@@ -71,8 +73,10 @@ export default function Projects() {
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">↗</span>
               </span>
             </div>
-            <h3 className="text-[18px] md:text-[20px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Lunas</h3>
-            <p className="text-muted text-[13px] leading-[1.5]">A secure, web-based emergency medical passport for instant access to critical health data via QR code.</p>
+            <div className="transform transition-transform duration-500 origin-bottom-left group-hover:scale-[1.03] pointer-events-auto">
+              <h3 className="text-[18px] md:text-[20px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Lunas</h3>
+              <p className="text-muted text-[13px] leading-[1.5]">A secure, web-based emergency medical passport for instant access to critical health data via QR code.</p>
+            </div>
           </div>
         </a>
       </div>
