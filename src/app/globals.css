@@ -66,3 +66,7 @@
 ::view-transition-new(root) {
   z-index: 2;
 }
+
+.theme-transitioning * {
+  transition: none !important;
+}

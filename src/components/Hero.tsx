@@ -41,7 +41,7 @@ export default function Hero() {
           <h1 className="text-[38px] md:text-[44px] font-mono font-medium tracking-tight text-text mb-[24px]">Jericho Varde</h1>
           
           <div className="text-soft text-[15px] leading-[1.8] max-w-[480px] space-y-[20px]">
-            <p>I'm a full-stack developer and cloud enthusiast, I design and build scalable web applications, modern cloud infrastructure, and intelligent systems. Focused on taking ideas from architectural concept to production-ready software.</p>
+            <p>I'm a full-stack developer and cloud enthusiast. I design and build scalable web applications, modern cloud infrastructure, and intelligent systems. Focused on taking ideas from architectural concept to production-ready software.</p>
           </div>
           
           <div className="flex gap-[20px] mt-[36px] text-muted font-mono text-[12px]">

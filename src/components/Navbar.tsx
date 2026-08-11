@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 
 import Image from "next/image";
 
@@ -32,8 +33,21 @@ export default function Navbar() {
       Math.max(y, window.innerHeight - y)
     );
 
+    document.documentElement.classList.add('theme-transitioning');
+
     const transition = (document as any).startViewTransition(() => {
-      setTheme(newTheme);
+      flushSync(() => {
+        setTheme(newTheme);
+      });
+      if (newTheme === 'light') {
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.remove('light');
+      }
+    });
+
+    transition.finished.then(() => {
+      document.documentElement.classList.remove('theme-transitioning');
     });
 
     transition.ready.then(() => {
