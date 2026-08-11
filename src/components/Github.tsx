@@ -17,8 +17,9 @@ export default function Github() {
           setLoading(false);
         }
 
-        if (json.data && json.data.user) {
-          const calendar = json.data.user.contributionsCollection.contributionCalendar;
+        if (json.data && (json.data.user || json.data.viewer)) {
+          const userObj = json.data.user || json.data.viewer;
+          const calendar = userObj.contributionsCollection.contributionCalendar;
           setTotal(calendar.totalContributions);
           
           const weeks = calendar.weeks;

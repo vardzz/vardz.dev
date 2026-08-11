@@ -8,7 +8,7 @@ export async function GET() {
 
   const query = `
     query {
-      user(login: "vardzz") {
+      viewer {
         contributionsCollection {
           contributionCalendar {
             totalContributions
