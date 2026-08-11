@@ -71,20 +71,20 @@ export default function Portfolio() {
             </div>
 
             {/* Stats Grid */}
-            <div className="mt-[70px] md:mt-[90px] grid grid-cols-2 md:grid-cols-4 gap-[30px] md:gap-[40px] border-t border-[rgba(244,237,228,0.15)] pt-[40px]">
-              <div>
+            <div className="mt-[70px] md:mt-[90px] grid grid-cols-2 md:grid-cols-4 border-t border-[rgba(244,237,228,0.15)]">
+              <div className="py-[30px] md:py-[40px] pr-[20px]">
                 <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">1.2K+ <span className="text-muted text-[13px] font-mono">↗</span></div>
                 <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Commits</div>
               </div>
-              <div className="border-l-0 md:border-l border-[rgba(244,237,228,0.15)] md:pl-[40px]">
+              <div className="py-[30px] md:py-[40px] pl-[20px] md:pl-[40px] border-l border-[rgba(244,237,228,0.15)]">
                 <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">2+ yrs <span className="text-muted text-[13px] font-mono">↗</span></div>
                 <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Experience</div>
               </div>
-              <div className="border-l-0 md:border-l border-[rgba(244,237,228,0.15)] md:pl-[40px]">
+              <div className="py-[30px] md:py-[40px] pr-[20px] md:pl-[40px] border-t md:border-t-0 border-[rgba(244,237,228,0.15)] md:border-l">
                 <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">5x <span className="text-muted text-[13px] font-mono">↗</span></div>
                 <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Hackathons</div>
               </div>
-              <div className="border-l-0 md:border-l border-[rgba(244,237,228,0.15)] md:pl-[40px]">
+              <div className="py-[30px] md:py-[40px] pl-[20px] md:pl-[40px] border-t md:border-t-0 border-[rgba(244,237,228,0.15)] border-l">
                 <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">24/7 <span className="text-muted text-[13px] font-mono">↗</span></div>
                 <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Coffee Powered</div>
               </div>
