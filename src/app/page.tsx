@@ -116,7 +116,7 @@ export default function Portfolio() {
                       </span>
                     </div>
                     <h3 className="text-[18px] md:text-[20px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Lunas</h3>
-                    <p className="text-muted text-[13px] leading-[1.5]">A secure, web-based emergency medical passport that provides PRC-verified professionals with instant, PIN-restricted access to a patient's critical health data via QR code.</p>
+                    <p className="text-muted text-[13px] leading-[1.5]">A secure, web-based emergency medical passport for instant access to critical health data via QR code.</p>
                   </div>
                 </a>
               </div>
