@@ -39,6 +39,9 @@ export default function Certifications() {
     <section className="py-[54px] md:py-[70px]" id="certifications">
       <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
         <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Certifications</h2>
+        <a href="#" className="text-muted font-mono text-[11px] md:text-[12px] hover:text-accent transition-colors group flex items-center gap-[4px]">
+          all certificates <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px]">-&gt;</span>
+        </a>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
