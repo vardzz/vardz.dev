@@ -59,20 +59,20 @@ export default function Hero() {
       </div>
 
       {/* Stats Grid */}
-      <div className="mt-[80px] grid grid-cols-2 md:grid-cols-4 border-t border-[rgba(244,237,228,0.15)]">
+      <div className="mt-[80px] grid grid-cols-2 md:grid-cols-4 border-t border-line">
         <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-[20px]">
           <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">{commits} <span className="text-muted text-[13px] font-mono">↗</span></div>
           <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Commits</div>
         </div>
-        <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-l border-[rgba(244,237,228,0.15)]">
+        <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-l border-line">
           <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">2+ yrs <span className="text-muted text-[13px] font-mono">↗</span></div>
           <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Experience</div>
         </div>
-        <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-0 md:pl-[20px] border-t md:border-t-0 border-l-0 md:border-l border-[rgba(244,237,228,0.15)]">
+        <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-0 md:pl-[20px] border-t md:border-t-0 border-l-0 md:border-l border-line">
           <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">5x <span className="text-muted text-[13px] font-mono">↗</span></div>
           <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Hackathons</div>
         </div>
-        <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-t md:border-t-0 border-l border-[rgba(244,237,228,0.15)]">
+        <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-t md:border-t-0 border-l border-line">
           <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px] flex items-center gap-[6px]">24/7 <span className="text-muted text-[13px] font-mono">↗</span></div>
           <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Coffee Powered</div>
         </div>
