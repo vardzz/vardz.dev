@@ -58,7 +58,7 @@ export default function Portfolio() {
             {/* 01 Projects */}
             <section className="py-[54px] md:py-[70px]" id="projects">
               <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
-                <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Selected projects</h2>
+                <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Projects</h2>
               </div>
               <p className="max-w-[590px] text-soft leading-[1.75] m-0 mb-[36px]">A selection of applications, systems, and experiments I’ve helped bring from rough idea to production.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
