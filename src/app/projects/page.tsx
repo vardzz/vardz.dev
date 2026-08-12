@@ -18,8 +18,8 @@ export default function ProjectsPage() {
           
           {/* Header */}
           <div className="mb-[40px] md:mb-[60px]">
-            <h1 className="text-[32px] md:text-[40px] font-medium tracking-[-.04em] text-text">Projects</h1>
-            <p className="text-muted text-[15px] mt-[12px] max-w-[500px]">A showcase of my recent projects, spanning AI systems, health-tech, and utility applications.</p>
+            <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Projects</h1>
+            <p className="text-muted text-[15px] mt-[12px] max-w-[500px]">This is a showcase of my best work in a variety of fields including Full-Stack Web Development, Artificial Intelligence, and Cloud Engineering.</p>
           </div>
 
           {/* Projects Grid */}
