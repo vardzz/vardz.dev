@@ -19,6 +19,38 @@ const DataCampIcon = ({ className }: { className?: string }) => (
 export default function CertificatesPage() {
   const certificateCategories = [
     {
+      title: "CLOUD",
+      certificates: [
+        {
+          title: "AWS Technical Essentials",
+          provider: "AMAZON WEB SERVICES",
+          icon: <AwsIcon className="w-[28px] h-[28px] text-text" />,
+          verifyLink: "https://drive.google.com/file/d/1uhLjRXghJLVyVC_soSfc3PeYOm5xoEia/view",
+          rotation: "-rotate-2",
+          translateY: "translate-y-2",
+          zIndex: 1
+        },
+        {
+          title: "AWS Cloud Practitioner Essentials",
+          provider: "AMAZON WEB SERVICES",
+          icon: <AwsIcon className="w-[28px] h-[28px] text-text" />,
+          verifyLink: "https://drive.google.com/file/d/1uotVanXocFflbTJtAY_uxoY57Vas_ToP/view",
+          rotation: "rotate-2",
+          translateY: "-translate-y-2",
+          zIndex: 2
+        },
+        {
+          title: "Introduction to Cloud Computing",
+          provider: "SIMPLILEARN",
+          icon: <span className="font-serif font-bold text-[18px]">S</span>,
+          verifyLink: "https://drive.google.com/file/d/1ZaZZb0qA68pYr_hxPzhNTtdXROHWzeTb/view",
+          rotation: "-rotate-1",
+          translateY: "translate-y-1",
+          zIndex: 3
+        }
+      ]
+    },
+    {
       title: "AI",
       certificates: [
         {
@@ -209,7 +241,7 @@ export default function CertificatesPage() {
         {
           title: "Joining Data in SQL",
           provider: "DATACAMP",
-          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          icon: <DataCampIcon className="w-[28px] h-[28px] text-text" />,
           verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/5a9db308461a5134fc7e862e3d45b5be754714cf",
           rotation: "-rotate-2",
           translateY: "translate-y-2",
@@ -218,7 +250,7 @@ export default function CertificatesPage() {
         {
           title: "Intermediate SQL",
           provider: "DATACAMP",
-          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          icon: <DataCampIcon className="w-[28px] h-[28px] text-text" />,
           verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/6936d10c0fcf6ad54026ce29f705129513116feb",
           rotation: "rotate-1",
           translateY: "-translate-y-1",
@@ -304,38 +336,6 @@ export default function CertificatesPage() {
           rotation: "rotate-1",
           translateY: "translate-y-2",
           zIndex: 2
-        }
-      ]
-    },
-    {
-      title: "CLOUD",
-      certificates: [
-        {
-          title: "AWS Technical Essentials",
-          provider: "AMAZON WEB SERVICES",
-          icon: <AwsIcon className="w-[28px] h-[28px] text-text" />,
-          verifyLink: "https://drive.google.com/file/d/1uhLjRXghJLVyVC_soSfc3PeYOm5xoEia/view",
-          rotation: "-rotate-2",
-          translateY: "translate-y-2",
-          zIndex: 1
-        },
-        {
-          title: "AWS Cloud Practitioner Essentials",
-          provider: "AMAZON WEB SERVICES",
-          icon: <AwsIcon className="w-[28px] h-[28px] text-text" />,
-          verifyLink: "https://drive.google.com/file/d/1uotVanXocFflbTJtAY_uxoY57Vas_ToP/view",
-          rotation: "rotate-2",
-          translateY: "-translate-y-2",
-          zIndex: 2
-        },
-        {
-          title: "Introduction to Cloud Computing",
-          provider: "SIMPLILEARN",
-          icon: <span className="font-serif font-bold text-[18px]">S</span>,
-          verifyLink: "https://drive.google.com/file/d/1ZaZZb0qA68pYr_hxPzhNTtdXROHWzeTb/view",
-          rotation: "-rotate-1",
-          translateY: "translate-y-1",
-          zIndex: 3
         }
       ]
     }
