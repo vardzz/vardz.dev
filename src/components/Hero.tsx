@@ -32,7 +32,7 @@ export default function Hero() {
     <section className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-6 pb-[80px]">
       <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
         {/* Left: Image */}
-        <div className="w-full md:w-1/2 aspect-square relative bg-bg">
+        <div className="w-full md:w-1/2 aspect-square relative bg-bg rounded-2xl overflow-hidden">
             <Image src="/assets/vardz-image.png" alt="Jericho Varde" layout="fill" objectFit="cover" className="mix-blend-luminosity opacity-90" />
         </div>
         
