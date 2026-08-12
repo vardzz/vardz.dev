@@ -101,11 +101,7 @@ export default function ChatInterface() {
         
         <form 
           onSubmit={handleSubmit}
-          className={`relative flex items-center transition-all duration-300 group ${
-            isChatActive 
-              ? 'bg-transparent border border-line/20 rounded-full px-6 py-4' 
-              : 'bg-surface border border-line shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.35)] rounded-[24px] p-[8px] pl-[16px]'
-          }`}
+          className="relative flex items-center transition-all duration-300 group bg-surface border border-line shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.35)] rounded-[24px] p-[8px] pl-[16px] focus-within:border-accent focus-within:ring-[3px] focus-within:ring-accent-dim"
         >
           <input 
             type="text" 
@@ -114,22 +110,18 @@ export default function ChatInterface() {
             placeholder={isChatActive ? "Communicate..." : displayPlaceholder}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className={`w-full bg-transparent border-0 outline-0 text-text font-mono placeholder-muted ${
-              isChatActive ? 'py-[4px] text-[14px]' : 'py-[12px] md:py-[14px] text-[14px] md:text-[15px]'
-            }`}
+            className="w-full bg-transparent border-0 outline-0 text-text font-mono placeholder-muted py-[12px] md:py-[14px] text-[14px] md:text-[15px]"
           />
-          {!isChatActive && (
-            <button 
-              type="submit" 
-              className="shrink-0 ml-[8px] w-[36px] h-[36px] md:w-[40px] md:h-[40px] flex items-center justify-center rounded-full md:rounded-[16px] bg-text text-bg hover:scale-105 transition-transform duration-300 shadow-md"
-              aria-label="Send message"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[-1px]">
-                <line x1="12" y1="19" x2="12" y2="5"></line>
-                <polyline points="5 12 12 5 19 12"></polyline>
-              </svg>
-            </button>
-          )}
+          <button 
+            type="submit" 
+            className="shrink-0 ml-[8px] w-[36px] h-[36px] md:w-[40px] md:h-[40px] flex items-center justify-center rounded-full md:rounded-[16px] bg-text text-bg hover:scale-105 transition-transform duration-300 shadow-md"
+            aria-label="Send message"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[-1px]">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
         </form>
       </div>
       
