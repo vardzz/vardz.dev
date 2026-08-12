@@ -106,7 +106,7 @@ export default function ProjectsPage() {
             </div>
 
             {/* Other Projects (Simple Cards) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] mt-[40px]">
               {/* Dentara */}
               <a href="#" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
                 <div className="flex justify-between items-start mb-[16px]">
