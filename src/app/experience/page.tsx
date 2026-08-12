@@ -15,7 +15,7 @@ export default function ExperiencePage() {
             <header className="mb-[38px]">
               <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[12px]">Experience</h1>
               <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
-                Six years building across AI engineering and full-stack development — from internal GenAI platforms at global enterprises to 60+ products shipped for startups.
+                Bridging the gap between AI-driven frontend engineering and impactful data analytics to build scalable, user-centric solutions and drive community growth.
               </p>
             </header>
 
