@@ -46,13 +46,13 @@ export default function Hero() {
           
           <div className="flex gap-[20px] mt-[36px] text-muted font-mono text-[12px]">
             <a href="https://github.com/vardzz" target="_blank" className="group hover:text-accent transition-colors">
-              github
+              github <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
             </a>
             <a href="https://www.linkedin.com/in/vardz/" target="_blank" className="group hover:text-accent transition-colors">
-              linkedin
+              linkedin <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
             </a>
             <a href="mailto:vardejericho@gmail.com" className="group hover:text-accent transition-colors">
-              email
+              email <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
             </a>
           </div>
         </div>
