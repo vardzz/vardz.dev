@@ -7,49 +7,288 @@ export default function CertificatesPage() {
       title: "AI",
       certificates: [
         {
-          title: "Generative AI Leader",
-          provider: "GOOGLE",
-          icon: <img src="https://cdn.simpleicons.org/google/4285F4" alt="Google" className="w-[28px] h-[28px] object-contain" />,
-          verifyLink: "#",
+          title: "Claude with Google Cloud's Vertex AI",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/efnafnbyoraa",
           rotation: "-rotate-2",
-          translateY: "translate-y-4",
+          translateY: "translate-y-2",
           zIndex: 1
         },
         {
-          title: "Gemini Certified Educator",
-          provider: "GOOGLE",
-          icon: <img src="https://cdn.simpleicons.org/google/4285F4" alt="Google" className="w-[28px] h-[28px] object-contain" />,
-          verifyLink: "#",
+          title: "Claude with Amazon Bedrock",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/perhpfj7subh",
           rotation: "rotate-1",
-          translateY: "-translate-y-2",
+          translateY: "-translate-y-1",
           zIndex: 2
         },
         {
-          title: "Generative AI Certified Professional",
-          provider: "ORACLE",
-          icon: <img src="https://cdn.simpleicons.org/oracle/F80000" alt="Oracle" className="w-[28px] h-[28px] object-contain" />,
-          verifyLink: "#",
+          title: "Model Context Protocol - Advanced Topics",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/wtpozbpxsr2q",
           rotation: "-rotate-1",
+          translateY: "translate-y-1",
+          zIndex: 3
+        },
+        {
+          title: "Introduction to Subagents",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/rve88ywv5ybq",
+          rotation: "rotate-2",
+          translateY: "-translate-y-2",
+          zIndex: 1
+        },
+        {
+          title: "Introduction to Model Context Protocol",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/ov2pxutmxd3c",
+          rotation: "-rotate-2",
+          translateY: "translate-y-1",
+          zIndex: 2
+        },
+        {
+          title: "Claude Platform 101",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/fy55hzgu8k4z",
+          rotation: "rotate-1",
           translateY: "translate-y-2",
           zIndex: 3
         },
         {
-          title: "Neo4j & Generative AI Certification",
-          provider: "NEO4J",
-          icon: <img src="https://cdn.simpleicons.org/neo4j/008CC1" alt="Neo4j" className="w-[28px] h-[28px] object-contain" />,
-          verifyLink: "#",
-          rotation: "rotate-2",
-          translateY: "translate-y-6",
-          zIndex: 4
+          title: "Claude Code in Actions",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/rkz2xyj4u3mb",
+          rotation: "rotate-0",
+          translateY: "-translate-y-1",
+          zIndex: 1
         },
         {
-          title: "Building RAG Apps Using MongoDB",
-          provider: "MONGODB",
-          icon: <img src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB" className="w-[28px] h-[28px] object-contain" />,
-          verifyLink: "#",
-          rotation: "-rotate-3",
-          translateY: "translate-y-10",
+          title: "Claude Code 101",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/x7fxuqrhyod2",
+          rotation: "-rotate-1",
+          translateY: "translate-y-2",
+          zIndex: 2
+        },
+        {
+          title: "AI Fluency for Non-Profits",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/buciuhdsnr36",
+          rotation: "rotate-2",
+          translateY: "-translate-y-2",
+          zIndex: 3
+        },
+        {
+          title: "Teaching AI Fluency Framework",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/jdftukb9wcen",
+          rotation: "-rotate-2",
+          translateY: "translate-y-1",
           zIndex: 1
+        },
+        {
+          title: "AI Fluency for Educators",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/ed2oxacnms2g",
+          rotation: "rotate-1",
+          translateY: "translate-y-2",
+          zIndex: 2
+        },
+        {
+          title: "AI Fluency for Small Businesses",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/mv3vxtjd77c2",
+          rotation: "-rotate-1",
+          translateY: "-translate-y-1",
+          zIndex: 3
+        },
+        {
+          title: "AI Fluency for Students",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/j7eo4kmdum38",
+          rotation: "rotate-2",
+          translateY: "translate-y-1",
+          zIndex: 1
+        },
+        {
+          title: "AI Capabilities and Limitations",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/ir4i7rf6u7cz",
+          rotation: "-rotate-2",
+          translateY: "translate-y-2",
+          zIndex: 2
+        },
+        {
+          title: "Introduction to Claude Cowork",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/opsr3h8ug9sb",
+          rotation: "rotate-1",
+          translateY: "-translate-y-2",
+          zIndex: 3
+        },
+        {
+          title: "Claude with the Anthropic API",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/f8pxrg3mhed6",
+          rotation: "-rotate-1",
+          translateY: "translate-y-1",
+          zIndex: 1
+        },
+        {
+          title: "Introduction to Agent Skills",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/sqjv7aif3zun",
+          rotation: "rotate-2",
+          translateY: "-translate-y-1",
+          zIndex: 2
+        },
+        {
+          title: "AI Fluency for Builders",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/pn8uvprn69zp",
+          rotation: "-rotate-2",
+          translateY: "translate-y-2",
+          zIndex: 3
+        },
+        {
+          title: "Claude 101",
+          provider: "ANTHROPIC",
+          icon: <span className="font-serif font-bold text-[18px]">A</span>,
+          verifyLink: "https://verify.skilljar.com/c/o8n8vk9cdeer",
+          rotation: "rotate-1",
+          translateY: "-translate-y-2",
+          zIndex: 1
+        },
+        {
+          title: "No Code AI Agent Builder",
+          provider: "SIMPLILEARN",
+          icon: <span className="font-serif font-bold text-[18px]">S</span>,
+          verifyLink: "https://drive.google.com/file/d/1fAVuEK8TDT1cE00tMUozlRrbzFdcNRbV/view",
+          rotation: "-rotate-1",
+          translateY: "translate-y-1",
+          zIndex: 2
+        }
+      ]
+    },
+    {
+      title: "DATA",
+      certificates: [
+        {
+          title: "Joining Data in SQL",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/5a9db308461a5134fc7e862e3d45b5be754714cf",
+          rotation: "-rotate-2",
+          translateY: "translate-y-2",
+          zIndex: 1
+        },
+        {
+          title: "Intermediate SQL",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/6936d10c0fcf6ad54026ce29f705129513116feb",
+          rotation: "rotate-1",
+          translateY: "-translate-y-1",
+          zIndex: 2
+        },
+        {
+          title: "Introduction to SQL",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/367c158d5f053538d7bae1da37460dc98cfe0ad5",
+          rotation: "-rotate-1",
+          translateY: "translate-y-1",
+          zIndex: 3
+        },
+        {
+          title: "Data Literacy Professional",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2e3174f67f220a1e145b2ed0063b28c495bb09c7",
+          rotation: "rotate-2",
+          translateY: "-translate-y-2",
+          zIndex: 1
+        },
+        {
+          title: "Data Story Telling Concepts",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/4d0bef953a786cd9ee69889d9a79dd113fd1edc4",
+          rotation: "-rotate-2",
+          translateY: "translate-y-1",
+          zIndex: 2
+        },
+        {
+          title: "Forming Analytical Questions",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/03b6d2b5447c6c1b677a696590f3e86ee44f7a85",
+          rotation: "rotate-1",
+          translateY: "translate-y-2",
+          zIndex: 3
+        },
+        {
+          title: "Introduction to Data Culture",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/4a65b7025acf9b30a1527b7674b6fb97a4023c28",
+          rotation: "rotate-0",
+          translateY: "-translate-y-1",
+          zIndex: 1
+        },
+        {
+          title: "Introduction to Statistics",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/b8d881ebcb566aa579ac2185ce224378ca9a545c",
+          rotation: "-rotate-1",
+          translateY: "translate-y-2",
+          zIndex: 2
+        },
+        {
+          title: "Communicating Data Insights",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/afb24cd6086e13dc10bacdbced3bd02c38146019",
+          rotation: "rotate-2",
+          translateY: "-translate-y-2",
+          zIndex: 3
+        },
+        {
+          title: "Introduction to Data",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/0a87c8f2e69236b61036d54a703566477fb3ab09",
+          rotation: "-rotate-2",
+          translateY: "translate-y-1",
+          zIndex: 1
+        },
+        {
+          title: "Introduction to Python",
+          provider: "DATACAMP",
+          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
+          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/course/ae8bdb64fd561f3640b248fd455ee19ade17c986",
+          rotation: "rotate-1",
+          translateY: "translate-y-2",
+          zIndex: 2
         }
       ]
     },
@@ -73,20 +312,15 @@ export default function CertificatesPage() {
           rotation: "rotate-2",
           translateY: "-translate-y-2",
           zIndex: 2
-        }
-      ]
-    },
-    {
-      title: "DATA",
-      certificates: [
+        },
         {
-          title: "Data Literacy Professional",
-          provider: "DATACAMP",
-          icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[28px] h-[28px] object-contain" />,
-          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2e3174f67f220a1e145b2ed0063b28c495bb09c7",
-          rotation: "rotate-0",
-          translateY: "translate-y-0",
-          zIndex: 1
+          title: "Introduction to Cloud Computing",
+          provider: "SIMPLILEARN",
+          icon: <span className="font-serif font-bold text-[18px]">S</span>,
+          verifyLink: "https://drive.google.com/file/d/1ZaZZb0qA68pYr_hxPzhNTtdXROHWzeTb/view",
+          rotation: "-rotate-1",
+          translateY: "translate-y-1",
+          zIndex: 3
         }
       ]
     }
@@ -112,12 +346,12 @@ export default function CertificatesPage() {
                 {category.title}
               </h2>
               
-              {/* Staggered Cards Container */}
-              <div className="flex flex-wrap items-center justify-center gap-[-40px] md:gap-[-20px]">
+              {/* Flex Container instead of negative margins for large collections */}
+              <div className="flex flex-wrap items-center gap-[20px]">
                 {category.certificates.map((cert, certIdx) => (
                   <div 
                     key={certIdx} 
-                    className="-ml-[20px] sm:-ml-[40px] md:-ml-[60px] first:ml-0 transition-transform duration-500 hover:z-50"
+                    className="transition-transform duration-500 hover:z-50"
                   >
                     <CertificateCard
                       title={cert.title}
