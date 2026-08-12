@@ -11,7 +11,7 @@ export default function ProjectsPage() {
     <div className="min-h-screen transition-colors duration-300">
 
       {/* Main Content */}
-      <main className="min-w-0 pt-[40px] md:pt-[60px] pb-[100px]">
+      <main className="min-w-0 pb-[100px]">
         <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
           
           {/* Header */}

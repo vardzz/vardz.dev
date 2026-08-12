@@ -5,7 +5,7 @@ export default function ExperiencePage() {
     <div className="min-h-screen transition-colors duration-300">
       
       <main className="min-w-0">
-        <div className="block pt-[54px] md:pt-[70px] pb-24">
+        <div className="block pb-24">
           <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
             
             {/* Header section matching minimalist style */}

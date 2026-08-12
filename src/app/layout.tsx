@@ -17,7 +17,9 @@ export default function RootLayout({
       <body>
         <div className="min-h-screen transition-colors duration-300">
           <Navbar />
-          {children}
+          <div className="pt-6">
+            {children}
+          </div>
         </div>
       </body>
     </html>
