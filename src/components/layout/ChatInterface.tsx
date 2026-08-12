@@ -144,7 +144,7 @@ export default function ChatInterface() {
             type="text" 
             autoComplete="off" 
             aria-label="Ask the AI a question" 
-            placeholder={placeholder}
+            placeholder={displayPlaceholder}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             className="w-full bg-transparent border-0 outline-0 text-text py-[12px] md:py-[14px] text-[14px] md:text-[15px] placeholder-muted"
