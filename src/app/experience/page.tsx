@@ -1,11 +1,8 @@
 "use client";
 import React from 'react';
-import Navbar from '../../components/Navbar';
-
 export default function ExperiencePage() {
   return (
     <div className="min-h-screen transition-colors duration-300">
-      <Navbar />
       
       <main className="min-w-0">
         <div className="block pt-[54px] md:pt-[70px] pb-24">

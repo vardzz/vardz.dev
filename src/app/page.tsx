@@ -36,10 +36,6 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen transition-colors duration-300">
-
-      {/* Navbar */}
-      <Navbar />
-
       {/* Main Content */}
       <main id="top" className="min-w-0">
         <div className="block">
