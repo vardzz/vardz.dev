@@ -4,7 +4,7 @@ import CertificateCard from '../../components/CertificateCard';
 export default function CertificatesPage() {
   const certificateCategories = [
     {
-      title: "A I",
+      title: "AI",
       certificates: [
         {
           title: "Generative AI Leader",
@@ -54,7 +54,7 @@ export default function CertificatesPage() {
       ]
     },
     {
-      title: "C L O U D",
+      title: "CLOUD",
       certificates: [
         {
           title: "AWS Technical Essentials",
@@ -77,7 +77,7 @@ export default function CertificatesPage() {
       ]
     },
     {
-      title: "D A T A",
+      title: "DATA",
       certificates: [
         {
           title: "Data Literacy Professional",
