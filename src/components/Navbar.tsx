@@ -4,8 +4,21 @@ import { flushSync } from "react-dom";
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // Disable smooth scrolling temporarily for instant snap to top
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    // Restore smooth scrolling behavior
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = '';
+    }, 10);
+  }, [pathname]);
+
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') || (document.documentElement.classList.contains('light') ? 'light' : 'dark');
