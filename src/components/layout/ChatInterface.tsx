@@ -74,6 +74,20 @@ export default function ChatInterface() {
       }`}
     >
       
+      {/* Close Button (Visible only when active) */}
+      {isChatActive && (
+        <button
+          onClick={() => setIsChatActive(false)}
+          className="absolute top-12 right-12 text-muted hover:text-text transition-colors p-2 pointer-events-auto"
+          aria-label="Close Chat"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      )}
+
       {/* Chat History Container */}
       <div className={`w-full max-w-[640px] flex-1 overflow-y-auto px-8 pt-24 pb-12 flex flex-col gap-12 transition-all duration-700 delay-100 ${isChatActive ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 hidden translate-y-10'}`}>
         
