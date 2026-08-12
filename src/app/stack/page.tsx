@@ -35,7 +35,7 @@ export default function StackPage() {
             <header className="mb-[38px] md:mb-[48px]">
               <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[12px]">Tech Stack</h1>
               <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
-                The tools, frameworks, and platforms I reach for — across the front end, back end, infrastructure, and AI.
+                The technologies I leverage to build scalable cloud architectures, engineer seamless AI-driven interfaces, and drive impactful data analytics.
               </p>
             </header>
 
