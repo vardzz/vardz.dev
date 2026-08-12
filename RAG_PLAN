@@ -1,0 +1,58 @@
+# AI Chatbot UI/UX Strategy & RAG Planning
+
+The goal is to create a seamless, interactive portfolio where the user converses with an AI on the left panel, and the portfolio dynamically reacts and navigates on the right panel. This transforms a static portfolio into a highly premium, guided "copilot" experience.
+
+## Open Questions
+> [!WARNING]
+> - Do you want the chatbot to be a full split-screen (50/50 layout) across the entire site, or an overlay/sidebar that slides in when requested?
+> - Should the AI's tone be formal and professional, or more conversational and witty?
+
+---
+
+## Part 1: Creative UI/UX for Teaching the User
+
+To make the chatbot experience intuitive and entertaining without forcing the user to read a manual, we will use **Progressive Disclosure** and **Visual Cues**. Here are the best UX principles to implement:
+
+### 1. The "Ghost Typist" (Zero-Click Onboarding)
+When the user first opens the chat interface, they shouldn't just see a static placeholder. Instead, use a "ghost typing" animation inside the input box that cycles through highly specific, intriguing prompts before settling on a generic placeholder.
+- *Animates:* `"What projects did Vardz build with AWS?"` -> *(backspaces)* -> `"Does Vardz have experience with Next.js?"` -> *(backspaces)*
+- **Why it works:** It subconsciously teaches the user that they can use natural, conversational language rather than just clicking buttons or typing generic keywords.
+
+### 2. Contextual "Magic" Suggestion Chips
+Instead of generic "Ask me anything" buttons, provide 2-3 dynamic suggestion chips that float above the input box. These chips should change based on the user's current context.
+- If they are on the home page: `[Tell me about your background]` `[Show me your top skills]`
+- If the AI just navigated them to the `/projects` page: `[Which of these is your favorite?]` `[What tech did you use for the first one?]`
+- **Why it works:** It lowers the barrier to entry. If a user doesn't know what to ask, a single click gets the conversation flowing and demonstrates the AI's power.
+
+### 3. The "Canvas Highlight" (Bridging Text and UI)
+Since your AI will control the right panel (the "Canvas"), you need to visually connect the AI's text to the UI changes so the user understands the relationship.
+- When the user asks "What is your best project?", the AI responds on the left: *"I'd highly recommend checking out Horizon AI."*
+- Simultaneously, on the right panel, the portfolio navigates to `/projects`, and the specific "Horizon AI" card emits a subtle **holographic glow** or pulses briefly. 
+- **Why it works:** It makes the portfolio feel "alive" and directly teaches the user that the AI is physically manipulating the website for them.
+
+### 4. The "Command + Converse" Hybrid
+Make the input box feel like a developer tool. Support slash commands for instant action, mixed with natural language.
+- Placeholder text: `Ask a question, or type '/' for commands...`
+- Typing `/` pops up a sleek menu (`/projects`, `/stack`, `/contact`).
+- **Why it works:** Developers love command palettes. It gives them the option for instant navigation while keeping the conversational AI available.
+
+---
+
+## Part 2: High-Level RAG Architecture (Phase 2 Preview)
+
+When we are ready to build the backend logic for the chatbot, we will use a **Retrieval-Augmented Generation (RAG)** approach. 
+
+### The Workflow:
+1. **The Knowledge Base**: We will store all your information (resume, project details, tech stack, personal background) in a central Markdown or JSON file.
+2. **Vector Database**: We'll parse that file, chunk it, and convert it into vector embeddings (using something like Supabase/pgvector or a lightweight vector store).
+3. **The Routing Engine**: When the user asks a question, the backend will:
+   - Search the vector database for the most relevant facts about you.
+   - Send those facts + the user's question to the LLM (e.g., OpenAI or Anthropic).
+   - **Crucial Step**: The LLM will be instructed to return a JSON response containing two things:
+     1. `message`: The conversational text to show the user.
+     2. `action`: A routing command (e.g., `NAVIGATE_TO_PROJECTS`, `HIGHLIGHT_SKILL_REACT`).
+4. **The Frontend Reaction**: Your React frontend receives this JSON. It displays the `message` in the chat, and uses the `action` to trigger the Next.js router to switch the right panel to the correct page!
+
+## User Review Required
+> [!IMPORTANT]
+> How does this UI/UX strategy sound? Should we start by designing the split-screen layout (Left: Chatbot, Right: Portfolio Pages), or would you prefer a different layout style? Let me know your thoughts on the "Ghost Typist" and "Suggestion Chips"!
