@@ -98,7 +98,7 @@ export default function CertificatesPage() {
         
         {/* Header Section */}
         <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 mb-[60px]">
-          <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[16px]">certifications</h1>
+          <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[16px]">Certifications</h1>
           <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
             Credentials across AI, cloud, engineering, and project management — each verifiable at its source.
           </p>
