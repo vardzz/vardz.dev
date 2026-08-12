@@ -4,6 +4,8 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface ChatContextType {
   isChatActive: boolean;
   setIsChatActive: (value: boolean) => void;
+  isAtBottom: boolean;
+  setIsAtBottom: (value: boolean) => void;
   chatHistory: { role: 'user' | 'ai', content: string }[];
   addMessage: (role: 'user' | 'ai', content: string) => void;
 }
@@ -12,6 +14,7 @@ const ChatContext = createContext<ChatContextType | undefined>(undefined);
 
 export function ChatProvider({ children }: { children: ReactNode }) {
   const [isChatActive, setIsChatActive] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
   const [chatHistory, setChatHistory] = useState<{ role: 'user' | 'ai', content: string }[]>([]);
 
   const addMessage = (role: 'user' | 'ai', content: string) => {
@@ -19,7 +22,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <ChatContext.Provider value={{ isChatActive, setIsChatActive, chatHistory, addMessage }}>
+    <ChatContext.Provider value={{ isChatActive, setIsChatActive, isAtBottom, setIsAtBottom, chatHistory, addMessage }}>
       {children}
     </ChatContext.Provider>
   );

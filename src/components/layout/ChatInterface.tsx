@@ -10,7 +10,7 @@ const GHOST_TEXTS = [
 ];
 
 export default function ChatInterface() {
-  const { isChatActive, setIsChatActive, chatHistory, addMessage } = useChat();
+  const { isChatActive, setIsChatActive, isAtBottom, chatHistory, addMessage } = useChat();
   const [placeholder, setPlaceholder] = useState("");
   const [ghostIndex, setGhostIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -117,7 +117,13 @@ export default function ChatInterface() {
       </div>
 
       {/* Input Area */}
-      <div className={`w-[min(720px,calc(100%-32px))] transition-all duration-700 pointer-events-auto ${isChatActive ? 'max-w-[640px]' : ''}`}>
+      <div className={`w-[min(720px,calc(100%-32px))] transition-all duration-700 ${
+        isChatActive 
+          ? 'max-w-[640px] opacity-100 pointer-events-auto translate-y-0' 
+          : isAtBottom
+            ? 'opacity-100 pointer-events-auto translate-y-0'
+            : 'opacity-0 pointer-events-none translate-y-12'
+      }`}>
         
         <form 
           onSubmit={handleSubmit}
