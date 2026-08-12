@@ -19,12 +19,15 @@ export default function ExperiencePage() {
               </p>
             </header>
 
-            <div className="relative border-l border-line ml-[24px] md:ml-[28px] space-y-[64px] pb-[32px] mt-[48px]">
+            <div className="ml-[24px] md:ml-[28px] mt-[48px]">
               
               {/* Flyrank AI */}
-              <div className="relative pl-[40px] md:pl-[48px] group">
+              <div className="relative pl-[40px] md:pl-[48px] group pb-[64px]">
+                {/* Timeline Line */}
+                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-line transition-all duration-300 group-hover:bg-text group-hover:shadow-[0_0_15px_var(--color-muted)] z-0"></div>
+
                 {/* Timeline Node */}
-                <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px]">
+                <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px] z-10">
                   <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px] transition-all duration-300 group-hover:border-text group-hover:shadow-[0_0_15px_var(--color-muted)]">
                     FA
                   </div>
@@ -81,9 +84,12 @@ export default function ExperiencePage() {
               </div>
 
               {/* DEVCON Laguna */}
-              <div className="relative pl-[40px] md:pl-[48px] group">
+              <div className="relative pl-[40px] md:pl-[48px] group pb-[32px]">
+                {/* Timeline Line */}
+                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-line transition-all duration-300 group-hover:bg-text group-hover:shadow-[0_0_15px_var(--color-muted)] z-0"></div>
+
                 {/* Timeline Node */}
-                <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px]">
+                <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px] z-10">
                   <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px] transition-all duration-300 group-hover:border-text group-hover:shadow-[0_0_15px_var(--color-muted)]">
                     DL
                   </div>
