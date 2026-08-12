@@ -22,10 +22,10 @@ export default function ExperiencePage() {
             <div className="relative border-l border-line ml-[24px] md:ml-[28px] space-y-[64px] pb-[32px] mt-[48px]">
               
               {/* Flyrank AI */}
-              <div className="relative pl-[40px] md:pl-[48px]">
+              <div className="relative pl-[40px] md:pl-[48px] group">
                 {/* Timeline Node */}
                 <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px]">
-                  <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px]">
+                  <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px] transition-all duration-300 group-hover:border-text group-hover:shadow-[0_0_15px_var(--color-muted)]">
                     FA
                   </div>
                 </div>
@@ -81,10 +81,10 @@ export default function ExperiencePage() {
               </div>
 
               {/* DEVCON Laguna */}
-              <div className="relative pl-[40px] md:pl-[48px]">
+              <div className="relative pl-[40px] md:pl-[48px] group">
                 {/* Timeline Node */}
                 <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px]">
-                  <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px]">
+                  <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px] transition-all duration-300 group-hover:border-text group-hover:shadow-[0_0_15px_var(--color-muted)]">
                     DL
                   </div>
                 </div>
