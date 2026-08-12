@@ -1,5 +1,10 @@
 import React from 'react';
+import { Metadata } from 'next';
 import CertificateCard from '../../components/certificates/CertificateCard';
+
+export const metadata: Metadata = {
+  title: "Certificates — Vardz",
+};
 import { AwsIcon } from '../../components/root/Certifications';
 
 const AnthropicIcon = ({ className }: { className?: string }) => (

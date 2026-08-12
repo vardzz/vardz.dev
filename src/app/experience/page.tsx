@@ -1,5 +1,9 @@
-"use client";
 import React from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Experience — Vardz",
+};
 export default function ExperiencePage() {
   return (
     <div className="min-h-screen transition-colors duration-300">

@@ -1,5 +1,9 @@
-"use client";
 import React from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Stack — Vardz",
+};
 
 export default function StackPage() {
   const stackSections = [
