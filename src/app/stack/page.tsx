@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Stack — Vardz",
+  title: "Tech Stack — Vardz",
 };
 
 export default function StackPage() {
