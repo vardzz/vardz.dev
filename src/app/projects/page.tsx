@@ -21,13 +21,14 @@ export default function ProjectsPage() {
             <Link href="/" className="text-muted hover:text-accent transition-colors text-[14px] font-mono group inline-flex items-center gap-[6px] mb-[20px]">
               <span className="inline-block transition-transform duration-300 group-hover:-translate-x-[2px]">←</span> back home
             </Link>
-            <h1 className="text-[32px] md:text-[40px] font-medium tracking-[-.04em] text-text">Live Works</h1>
+            <h1 className="text-[32px] md:text-[40px] font-medium tracking-[-.04em] text-text">Projects</h1>
             <p className="text-muted text-[15px] mt-[12px] max-w-[500px]">A showcase of my recent projects, spanning AI systems, health-tech, and utility applications.</p>
           </div>
 
-          {/* Featured Projects (Bento Box) */}
-          <div className="mb-[60px]">
-            <h2 className="text-[18px] font-medium text-text mb-[20px] tracking-[-.02em]">Featured Projects</h2>
+          {/* Projects Grid */}
+          <div className="flex flex-col gap-[16px]">
+            
+            {/* Featured Projects (Bento Box) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
               {/* Project 1 (Large) */}
               <a href="https://horizonai-zeta.vercel.app/" target="_blank" className="group relative block md:col-span-2 aspect-[4/3] md:aspect-[21/9] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
@@ -103,11 +104,8 @@ export default function ProjectsPage() {
                 </div>
               </a>
             </div>
-          </div>
 
-          {/* Other Projects (Simple Cards) */}
-          <div>
-            <h2 className="text-[18px] font-medium text-text mb-[20px] tracking-[-.02em]">Other Live Works</h2>
+            {/* Other Projects (Simple Cards) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
               {/* Dentara */}
               <a href="#" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
