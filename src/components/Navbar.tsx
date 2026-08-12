@@ -6,13 +6,20 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || (document.documentElement.classList.contains('light') ? 'light' : 'dark');
+    }
+    return 'dark';
+  });
 
   useEffect(() => {
     if (theme === 'light') {
       document.documentElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
     } else {
       document.documentElement.classList.remove('light');
+      localStorage.setItem('theme', 'dark');
     }
   }, [theme]);
 
