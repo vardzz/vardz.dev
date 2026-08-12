@@ -8,7 +8,6 @@ import Experience from "../components/root/Experience";
 import Certifications from "../components/root/Certifications";
 import Github from "../components/root/Github";
 import Stack from "../components/root/Stack";
-import Chatbox from "../components/layout/Chatbox";
 
 export default function Portfolio() {
   const [hasReachedBottom, setHasReachedBottom] = useState(false);
@@ -70,9 +69,6 @@ export default function Portfolio() {
 
           </div>
         </div>
-        
-        {/* Chatbox component */}
-        <Chatbox isVisible={hasReachedBottom} />
         
         {/* Invisible element to trigger the observer */}
         <div ref={bottomRef} className="h-[10px] w-full mt-[-10px]"></div>
