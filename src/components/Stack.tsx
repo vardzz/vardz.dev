@@ -3,7 +3,7 @@ export default function Stack() {
     <section className="py-[54px] md:py-[70px]" id="stack">
       <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
         <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Tech stack</h2>
-        <a href="#" className="text-muted hover:text-accent transition-colors text-[14px] font-mono group">view all <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px]">→</span></a>
+        <a href="/stack" className="text-muted hover:text-accent transition-colors text-[14px] font-mono group">view all <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px]">→</span></a>
       </div>
       <div className="flex flex-wrap gap-[9px]">
         <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">TypeScript</span>
