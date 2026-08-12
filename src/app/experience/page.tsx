@@ -19,10 +19,17 @@ export default function ExperiencePage() {
               </p>
             </header>
 
-            <div className="border-t border-line">
+            <div className="relative border-l border-line ml-[24px] md:ml-[28px] space-y-[64px] pb-[32px] mt-[48px]">
               
               {/* Flyrank AI */}
-              <div className="py-[32px] border-b border-line">
+              <div className="relative pl-[40px] md:pl-[48px]">
+                {/* Timeline Node */}
+                <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px]">
+                  <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px]">
+                    FA
+                  </div>
+                </div>
+
                 <div className="flex flex-col md:flex-row justify-between gap-[9px] md:gap-[20px] mb-[16px]">
                   <div>
                     <div className="text-[17px] font-medium tracking-[-.03em] text-text">Flyrank AI</div>
@@ -74,7 +81,14 @@ export default function ExperiencePage() {
               </div>
 
               {/* DEVCON Laguna */}
-              <div className="py-[32px] border-b border-line">
+              <div className="relative pl-[40px] md:pl-[48px]">
+                {/* Timeline Node */}
+                <div className="absolute -left-[24px] top-[-8px] bg-bg py-[8px]">
+                  <div className="w-[48px] h-[48px] rounded-[14px] border border-line bg-bg flex items-center justify-center text-text font-medium text-[13px]">
+                    DL
+                  </div>
+                </div>
+
                 <div className="flex flex-col md:flex-row justify-between gap-[9px] md:gap-[20px] mb-[16px]">
                   <div>
                     <div className="text-[17px] font-medium tracking-[-.03em] text-text">DEVCON Laguna</div>
