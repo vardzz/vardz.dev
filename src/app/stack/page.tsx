@@ -5,23 +5,27 @@ export default function StackPage() {
   const stackSections = [
     {
       title: "FRONTEND",
-      skills: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS']
+      skills: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS', 'Vite']
     },
     {
-      title: "BACKEND",
-      skills: ['Node.js', 'Python']
+      title: "BACKEND & APIs",
+      skills: ['Node.js', 'Python', 'Java', 'PHP', 'Laravel', 'GraphQL', 'REST API', 'AWS Lambda']
+    },
+    {
+      title: "DATABASES & ORM",
+      skills: ['PostgreSQL', 'MySQL', 'DynamoDB', 'Supabase', 'Prisma']
     },
     {
       title: "DEVOPS & CLOUD",
-      skills: ['Docker', 'Kubernetes', 'AWS', 'GCP']
+      skills: ['AWS', 'GCP', 'Docker', 'Vercel']
     },
     {
-      title: "AI & MACHINE LEARNING",
-      skills: ['TensorFlow', 'PyTorch', 'OpenAI API', 'LangChain']
+      title: "AI & AUTOMATION",
+      skills: ['OpenAI', 'Anthropic', 'Claude', 'Claude Code', 'Gemini', 'Codex', 'n8n']
     },
     {
       title: "DEVELOPER TOOLS",
-      skills: ['Git', 'VS Code', 'Postman', 'Figma']
+      skills: ['Git', 'VS Code', 'Postman', 'Figma', 'Zod']
     }
   ];
 
