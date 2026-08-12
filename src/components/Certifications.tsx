@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const AwsIcon = ({ className }: { className?: string }) => (
+export const AwsIcon = ({ className }: { className?: string }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 16 16" 
