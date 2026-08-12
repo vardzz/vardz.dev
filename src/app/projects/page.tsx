@@ -9,8 +9,6 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen transition-colors duration-300">
-      {/* Navbar */}
-      <Navbar />
 
       {/* Main Content */}
       <main className="min-w-0 pt-[40px] md:pt-[60px] pb-[100px]">
