@@ -17,6 +17,18 @@ export default function ChatInterface() {
   const [ghostIndex, setGhostIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const messagesEndRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (isChatActive) {
+      // slight delay to ensure render is complete before scrolling
+      setTimeout(scrollToBottom, 100);
+    }
+  }, [chatHistory, isChatActive]);
 
   // Ghost Typist Effect (only when not active)
   useEffect(() => {
@@ -43,7 +55,7 @@ export default function ChatInterface() {
     return () => clearTimeout(timeout);
   }, [placeholder, isDeleting, ghostIndex, isChatActive]);
 
-  const displayPlaceholder = isChatActive ? "Ask a follow up..." : placeholder;
+  const displayPlaceholder = isChatActive ? "Communicate..." : placeholder;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,6 +65,12 @@ export default function ChatInterface() {
     addMessage('user', inputValue);
     setInputValue("");
     
+    // Auto-scroll the root page to top
+    const portfolioCanvas = document.getElementById('portfolio-canvas');
+    if (portfolioCanvas) {
+      portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     // Mock AI response for UI demonstration
     setTimeout(() => {
       addMessage('ai', "I'm navigating you to that section now. Let me know if you need anything else!");
@@ -115,7 +133,7 @@ export default function ChatInterface() {
             )}
           </div>
         ))}
-
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Input Area */}
