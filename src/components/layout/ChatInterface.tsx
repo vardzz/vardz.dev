@@ -76,12 +76,13 @@ export default function ChatInterface() {
       
       {/* Close Button (Visible only when active) */}
       {isChatActive && (
-        <div className="absolute top-12 w-full max-w-[640px] px-8 flex justify-start pointer-events-none z-10">
+        <div className="absolute top-12 w-full max-w-[640px] px-8 flex justify-start z-[100] pointer-events-auto">
           <button
+            type="button"
             onClick={() => {
               setIsChatActive(false);
             }}
-            className="text-muted hover:text-text transition-colors p-2 -ml-2 pointer-events-auto flex items-center gap-2 group"
+            className="text-muted hover:text-text transition-colors p-2 -ml-2 flex items-center gap-2 group cursor-pointer"
             aria-label="Close Chat"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform">
