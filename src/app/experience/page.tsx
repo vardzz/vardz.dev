@@ -49,27 +49,14 @@ export default function ExperiencePage() {
                   </div>
                 </div>
 
-                <div className="text-muted text-[13px] leading-[1.6] max-w-[600px] mb-[20px]">
-                  Leveraged AI-assisted development workflows and modern web technologies to design, build, and optimize high-performance, client-ready frontend interfaces within FlyRank’s organic growth and SEO automation platform. Combined robust engineering principles with AI fluency to accelerate the product delivery lifecycle.
+                <div className="text-muted text-[13px] leading-[1.7] max-w-[600px] mb-[24px] space-y-[16px]">
+                  <p>
+                    During my time at Flyrank AI, I spearheaded the development of client-ready frontend interfaces for their organic growth and SEO automation platform. My workflow was heavily integrated with advanced LLMs, utilizing them as pair-programming partners to rapidly scaffold, refactor, and deploy highly responsive web pages and personalized storefront components. This AI-first approach allowed me to combine traditional frontend engineering using React, TypeScript, and Tailwind CSS with modern AI orchestration to drastically accelerate the product delivery lifecycle.
+                  </p>
+                  <p>
+                    I placed a strong emphasis on modern web performance and SEO, ensuring all UI workflows were strictly optimized for Core Web Vitals and high organic search visibility. Ultimately, this culminated in the successful end-to-end delivery of a production-ready capstone project from scratch, proving that rapid prototyping can still adhere to strict component architecture, pixel-perfect execution, and absolute cross-browser reliability.
+                  </p>
                 </div>
-
-                <ul className="space-y-[12px] text-[13px] text-muted leading-[1.6] max-w-[600px] list-none pl-0 mb-[24px]">
-                  <li className="relative pl-[14px] before:absolute before:left-0 before:top-[8px] before:w-[4px] before:h-[4px] before:bg-line before:rounded-full">
-                    <strong className="text-soft font-medium">AI-Powered Pair Programming:</strong> Utilized advanced LLMs and AI coding tools as pair-programmers to rapidly scaffold, refactor, and deploy responsive web pages, storefront interfaces, and personalized user components.
-                  </li>
-                  <li className="relative pl-[14px] before:absolute before:left-0 before:top-[8px] before:w-[4px] before:h-[4px] before:bg-line before:rounded-full">
-                    <strong className="text-soft font-medium">Modern Frontend Engineering:</strong> Developed scalable, clean, and highly interactive user interfaces using modern tech stacks (including React, Tailwind CSS, and TypeScript), ensuring pixel-perfect execution and layout integrity.
-                  </li>
-                  <li className="relative pl-[14px] before:absolute before:left-0 before:top-[8px] before:w-[4px] before:h-[4px] before:bg-line before:rounded-full">
-                    <strong className="text-soft font-medium">Performance & SEO Optimization:</strong> Collaborated on UI workflows emphasizing web performance metrics, Core Web Vitals, and seamless user experiences tailored for modern organic search visibility.
-                  </li>
-                  <li className="relative pl-[14px] before:absolute before:left-0 before:top-[8px] before:w-[4px] before:h-[4px] before:bg-line before:rounded-full">
-                    <strong className="text-soft font-medium">Rapid Prototyping & Delivery:</strong> Successfully built and delivered a production-ready capstone project from scratch, demonstrating strict adherence to component architecture, speed, and cross-browser reliability.
-                  </li>
-                  <li className="relative pl-[14px] before:absolute before:left-0 before:top-[8px] before:w-[4px] before:h-[4px] before:bg-line before:rounded-full">
-                    <strong className="text-soft font-medium">Core Fluency:</strong> Participated in specialized tracks focusing on AI fluency, prompt engineering for developers, and production-level UI/UX implementation.
-                  </li>
-                </ul>
 
                 <div className="flex flex-wrap gap-[8px]">
                   {['Next.js', 'React.js', 'Typescript', 'Tailwind CSS', 'Frontend Development', 'Prompt Engineering', 'AI Orchestration'].map(skill => (
@@ -111,21 +98,14 @@ export default function ExperiencePage() {
                   </div>
                 </div>
 
-                <div className="text-muted text-[13px] leading-[1.6] max-w-[600px] mb-[20px]">
-                  As the Membership Data Analyst for DEVCON Laguna, I manage the data pipelines that drive community growth and event execution for one of the premier tech organizations in the region.
+                <div className="text-muted text-[13px] leading-[1.7] max-w-[600px] mb-[24px] space-y-[16px]">
+                  <p>
+                    As the Membership Data Analyst for DEVCON Laguna, I took ownership of the data pipelines critical to driving community growth and orchestrating seamless event execution for one of the region's premier tech organizations. By tracking and analyzing demographic trends, I translated raw registration metrics into actionable operational insights that directly shaped our localized engagement strategies.
+                  </p>
+                  <p>
+                    Beyond just analysis, I acted as a data steward across multiple major event cycles—overseeing registration pipelines, monitoring attendee turnouts, and ensuring strict data integrity for all workshops and hackathons. This hands-on experience in exploratory data analysis and project management empowered the organization to continuously optimize its operations and deliver a highly tailored, impactful experience to its members.
+                  </p>
                 </div>
-
-                <ul className="space-y-[12px] text-[13px] text-muted leading-[1.6] max-w-[600px] list-none pl-0 mb-[24px]">
-                  <li className="relative pl-[14px] before:absolute before:left-0 before:top-[8px] before:w-[4px] before:h-[4px] before:bg-line before:rounded-full">
-                    <strong className="text-soft font-medium">Membership Analytics:</strong> Track, analyze, and report on community growth and demographic trends to help shape localized engagement strategies.
-                  </li>
-                  <li className="relative pl-[14px] before:absolute before:left-0 before:top-[8px] before:w-[4px] before:h-[4px] before:bg-line before:rounded-full">
-                    <strong className="text-soft font-medium">Event Data Stewardship:</strong> Oversee registration pipelines, monitor attendee turnouts, and manage data integrity for all DEVCON Laguna events, workshops, and hackathons.
-                  </li>
-                  <li className="relative pl-[14px] before:absolute before:left-0 before:top-[8px] before:w-[4px] before:h-[4px] before:bg-line before:rounded-full">
-                    <strong className="text-soft font-medium">Operational Insights:</strong> Translate raw registration and membership metrics into actionable insights to optimize event operations and enhance the overall community experience.
-                  </li>
-                </ul>
 
                 <div className="flex flex-wrap gap-[8px]">
                   {['Project Management', 'Data Analysis', 'Data Visualization', 'Data Cleaning', 'Data Management', 'Statistical Data Analysis', 'Exploratory Data Analysis', 'Critical Thinking'].map(skill => (
