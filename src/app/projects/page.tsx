@@ -13,14 +13,11 @@ export default function ProjectsPage() {
       <Navbar />
 
       {/* Main Content */}
-      <main className="min-w-0 pt-[100px] md:pt-[120px] pb-[100px]">
+      <main className="min-w-0 pt-[40px] md:pt-[60px] pb-[100px]">
         <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
           
           {/* Header */}
           <div className="mb-[40px] md:mb-[60px]">
-            <Link href="/" className="text-muted hover:text-accent transition-colors text-[14px] font-mono group inline-flex items-center gap-[6px] mb-[20px]">
-              <span className="inline-block transition-transform duration-300 group-hover:-translate-x-[2px]">←</span> back home
-            </Link>
             <h1 className="text-[32px] md:text-[40px] font-medium tracking-[-.04em] text-text">Projects</h1>
             <p className="text-muted text-[15px] mt-[12px] max-w-[500px]">A showcase of my recent projects, spanning AI systems, health-tech, and utility applications.</p>
           </div>
