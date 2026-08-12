@@ -69,96 +69,67 @@ export default function ChatInterface() {
     <div 
       className={`fixed top-0 left-0 h-screen z-50 flex flex-col items-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         isChatActive 
-          ? 'w-full md:w-1/2 bg-surface/40 backdrop-blur-2xl border-r border-line/20 shadow-2xl justify-end pb-8' 
+          ? 'w-full md:w-1/2 bg-transparent justify-end pb-12' 
           : 'w-full bg-transparent pointer-events-none justify-end pb-[24px]'
       }`}
     >
       
-      {/* Top Header for Chat (Only visible when active) */}
-      <div className={`absolute top-0 left-0 w-full p-8 flex items-center justify-between transition-opacity duration-700 delay-200 pointer-events-auto ${isChatActive ? 'opacity-100' : 'opacity-0 hidden'}`}>
-        <div className="flex items-center gap-3">
-           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-           <span className="font-mono text-[11px] tracking-widest text-muted uppercase">Vardz AI Core</span>
-        </div>
-        <button 
-          onClick={() => setIsChatActive(false)}
-          className="text-muted hover:text-text transition-colors text-[12px] font-mono border border-line rounded-full px-4 py-2 bg-bg/50 backdrop-blur-md"
-        >
-          Close [Esc]
-        </button>
-      </div>
-
       {/* Chat History Container */}
-      <div className={`w-full max-w-[600px] flex-1 overflow-y-auto px-6 pt-24 pb-4 flex flex-col gap-6 transition-all duration-700 delay-100 no-scrollbar ${isChatActive ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 hidden translate-y-10'}`}>
+      <div className={`w-full max-w-[640px] flex-1 overflow-y-auto px-8 pt-24 pb-12 flex flex-col gap-12 transition-all duration-700 delay-100 no-scrollbar ${isChatActive ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 hidden translate-y-10'}`}>
         
-        {chatHistory.length === 0 && (
-          <div className="flex-1 flex flex-col items-center justify-center text-center opacity-50">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="mb-4 text-muted">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <p className="font-mono text-sm text-muted uppercase tracking-widest">Awaiting Prompt</p>
-          </div>
-        )}
-
         {chatHistory.map((msg, idx) => (
           <div 
             key={idx} 
-            className={`px-5 py-4 text-[14px] leading-relaxed max-w-[85%] rounded-[24px] ${
-              msg.role === 'user' 
-                ? 'self-end bg-text text-bg rounded-br-sm shadow-md' 
-                : 'self-start bg-bg/60 backdrop-blur-md border border-line/20 text-text rounded-bl-sm shadow-sm'
-            }`}
+            className={`w-full flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
-            {msg.content}
+            {msg.role === 'user' ? (
+              <h2 className="text-[32px] md:text-[40px] font-bold tracking-tight text-text">
+                {msg.content}
+              </h2>
+            ) : (
+              <p className="text-[15px] md:text-[16px] leading-relaxed text-muted max-w-[90%] md:max-w-[85%]">
+                {msg.content}
+              </p>
+            )}
           </div>
         ))}
 
       </div>
 
       {/* Input Area */}
-      <div className={`w-[min(720px,calc(100%-32px))] transition-all duration-700 pointer-events-auto ${isChatActive ? 'max-w-[600px]' : ''}`}>
+      <div className={`w-[min(720px,calc(100%-32px))] transition-all duration-700 pointer-events-auto ${isChatActive ? 'max-w-[640px]' : ''}`}>
         
-        {/* Suggestion Chips */}
-        <div className={`flex justify-center gap-2 mb-4 overflow-x-auto no-scrollbar pb-1 px-1 transition-all duration-500 ${isChatActive ? 'opacity-0 hidden' : 'opacity-90 hover:opacity-100'}`}>
-          <button 
-            type="button"
-            onClick={() => handleChipClick("Show me the projects")}
-            className="text-[12px] bg-bg/80 backdrop-blur-md border border-line text-muted rounded-full px-4 py-2 whitespace-nowrap hover:border-accent hover:text-accent transition-colors shadow-sm"
-          >
-            Show me the projects
-          </button>
-          <button 
-            type="button"
-            onClick={() => handleChipClick("Tell me about your background")}
-            className="text-[12px] bg-bg/80 backdrop-blur-md border border-line text-muted rounded-full px-4 py-2 whitespace-nowrap hover:border-accent hover:text-accent transition-colors shadow-sm"
-          >
-            Tell me about your background
-          </button>
-        </div>
-
         <form 
           onSubmit={handleSubmit}
-          className={`relative flex items-center bg-surface border shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.35)] rounded-[24px] p-[8px] pl-[16px] focus-within:border-accent focus-within:ring-[3px] focus-within:ring-accent-dim transition-all duration-300 group ${isChatActive ? 'border-line/20 bg-bg/80 backdrop-blur-xl' : 'border-line'}`}
+          className={`relative flex items-center transition-all duration-300 group ${
+            isChatActive 
+              ? 'bg-transparent border border-line/20 rounded-full px-6 py-4' 
+              : 'bg-surface border border-line shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.35)] rounded-[24px] p-[8px] pl-[16px]'
+          }`}
         >
           <input 
             type="text" 
             autoComplete="off" 
             aria-label="Ask the AI a question" 
-            placeholder={displayPlaceholder}
+            placeholder={isChatActive ? "Communicate..." : displayPlaceholder}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className="w-full bg-transparent border-0 outline-0 text-text py-[12px] md:py-[14px] text-[14px] md:text-[15px] placeholder-muted"
+            className={`w-full bg-transparent border-0 outline-0 text-text placeholder-muted ${
+              isChatActive ? 'py-[4px] text-[15px]' : 'py-[12px] md:py-[14px] text-[14px] md:text-[15px]'
+            }`}
           />
-          <button 
-            type="submit" 
-            className="shrink-0 ml-[8px] w-[36px] h-[36px] md:w-[40px] md:h-[40px] flex items-center justify-center rounded-full md:rounded-[16px] bg-text text-bg hover:scale-105 transition-transform duration-300 shadow-md"
-            aria-label="Send message"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[-1px]">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
+          {!isChatActive && (
+            <button 
+              type="submit" 
+              className="shrink-0 ml-[8px] w-[36px] h-[36px] md:w-[40px] md:h-[40px] flex items-center justify-center rounded-full md:rounded-[16px] bg-text text-bg hover:scale-105 transition-transform duration-300 shadow-md"
+              aria-label="Send message"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[-1px]">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+            </button>
+          )}
         </form>
       </div>
       
