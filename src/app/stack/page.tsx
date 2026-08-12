@@ -36,8 +36,9 @@ export default function StackPage() {
           <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
             
             {/* Header section */}
-            <header className="mb-[64px]">
-              <p className="text-text text-[15px] leading-[1.6] max-w-[560px]">
+            <header className="mb-[38px] md:mb-[48px]">
+              <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[12px]">Tech Stack</h1>
+              <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
                 The tools, frameworks, and platforms I reach for — across the front end, back end, infrastructure, and AI.
               </p>
             </header>
