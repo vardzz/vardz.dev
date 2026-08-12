@@ -8,7 +8,7 @@ import Experience from "../components/root/Experience";
 import Certifications from "../components/root/Certifications";
 import Github from "../components/root/Github";
 import Stack from "../components/root/Stack";
-import Chatbox from "../components/Chatbox";
+import Chatbox from "../components/layout/Chatbox";
 
 export default function Portfolio() {
   const [hasReachedBottom, setHasReachedBottom] = useState(false);
