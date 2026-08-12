@@ -69,7 +69,7 @@ export default function ChatInterface() {
     <div 
       className={`fixed top-0 left-0 h-screen z-50 flex flex-col items-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         isChatActive 
-          ? 'w-full md:w-1/2 bg-transparent justify-end pb-12' 
+          ? 'w-full md:w-[30%] bg-transparent justify-end pb-12' 
           : 'w-full bg-transparent pointer-events-none justify-end pb-[24px]'
       }`}
     >
@@ -83,11 +83,11 @@ export default function ChatInterface() {
             className={`w-full flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             {msg.role === 'user' ? (
-              <h2 className="text-[32px] md:text-[40px] font-bold tracking-tight text-text">
+              <h2 className="text-[28px] md:text-[32px] font-bold font-mono tracking-tight text-text">
                 {msg.content}
               </h2>
             ) : (
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-muted max-w-[90%] md:max-w-[85%]">
+              <p className="text-[14px] md:text-[15px] leading-relaxed font-mono text-muted max-w-[90%] md:max-w-[85%]">
                 {msg.content}
               </p>
             )}
@@ -114,8 +114,8 @@ export default function ChatInterface() {
             placeholder={isChatActive ? "Communicate..." : displayPlaceholder}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className={`w-full bg-transparent border-0 outline-0 text-text placeholder-muted ${
-              isChatActive ? 'py-[4px] text-[15px]' : 'py-[12px] md:py-[14px] text-[14px] md:text-[15px]'
+            className={`w-full bg-transparent border-0 outline-0 text-text font-mono placeholder-muted ${
+              isChatActive ? 'py-[4px] text-[14px]' : 'py-[12px] md:py-[14px] text-[14px] md:text-[15px]'
             }`}
           />
           {!isChatActive && (

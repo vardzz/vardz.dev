@@ -13,7 +13,7 @@ export default function ClientLayoutWrapper({ children }: { children: React.Reac
       {/* Left Panel Placeholder for Flex Layout */}
       <div 
         className={`h-full flex-shrink-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          isChatActive ? 'w-1/2 md:w-1/2 border-r border-line/10 shadow-[4px_0_24px_rgba(0,0,0,0.2)] z-10' : 'w-0 border-r-0'
+          isChatActive ? 'w-full md:w-[30%] border-r border-line/5 shadow-[4px_0_24px_rgba(0,0,0,0.1)] z-10' : 'w-0 border-r-0'
         }`}
       >
         {/* We leave this empty because the actual ChatInterface floats on top and positions itself here */}
@@ -22,8 +22,8 @@ export default function ClientLayoutWrapper({ children }: { children: React.Reac
       {/* Right Panel - Portfolio */}
       <div 
         id="portfolio-canvas"
-        className={`h-full flex-shrink-0 overflow-y-auto overflow-x-hidden transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          isChatActive ? 'w-1/2 md:w-1/2 bg-bg/50' : 'w-full bg-bg'
+        className={`h-full flex-shrink-0 bg-bg overflow-y-auto overflow-x-hidden transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          isChatActive ? 'w-full md:w-[70%]' : 'w-full'
         }`}
       >
         <div className="w-full min-h-full transition-transform duration-700">
