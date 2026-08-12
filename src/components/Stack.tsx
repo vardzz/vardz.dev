@@ -20,7 +20,7 @@ export default function Stack() {
         <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Docker</span>
         <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Claude Code</span>
         <span className="border border-line text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">Supabase</span>
-        <span className="border border-line border-dashed text-soft rounded-[6px] px-[12px] py-[9px] text-[13px]">+ more</span>
+        <Link href="/stack" className="border border-line border-dashed text-soft hover:text-accent hover:border-accent transition-colors rounded-[6px] px-[12px] py-[9px] text-[13px] block">+ more</Link>
       </div>
     </section>
   );
