@@ -26,7 +26,7 @@ export default function ExperiencePage() {
                 <div className="flex flex-col md:flex-row justify-between gap-[9px] md:gap-[20px] mb-[16px]">
                   <div>
                     <div className="text-[17px] font-medium tracking-[-.03em] text-text">Flyrank AI</div>
-                    <div className="text-muted text-[13px] mt-[4px] font-mono">Full-time</div>
+                    <div className="text-muted text-[13px] mt-[4px] font-mono">Internship</div>
                   </div>
                 </div>
 
@@ -78,7 +78,7 @@ export default function ExperiencePage() {
                 <div className="flex flex-col md:flex-row justify-between gap-[9px] md:gap-[20px] mb-[16px]">
                   <div>
                     <div className="text-[17px] font-medium tracking-[-.03em] text-text">DEVCON Laguna</div>
-                    <div className="text-muted text-[13px] mt-[4px] font-mono">Part-time</div>
+                    <div className="text-muted text-[13px] mt-[4px] font-mono">Full-time</div>
                   </div>
                 </div>
 
