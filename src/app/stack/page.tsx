@@ -12,12 +12,8 @@ export default function StackPage() {
       skills: ['Node.js', 'Python']
     },
     {
-      title: "DEVOPS",
-      skills: ['Docker', 'Kubernetes']
-    },
-    {
-      title: "CLOUD",
-      skills: ['AWS', 'GCP']
+      title: "DEVOPS & CLOUD",
+      skills: ['Docker', 'Kubernetes', 'AWS', 'GCP']
     },
     {
       title: "AI & MACHINE LEARNING",
