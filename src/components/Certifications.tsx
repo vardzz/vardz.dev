@@ -16,13 +16,13 @@ const AwsIcon = ({ className }: { className?: string }) => (
 export default function Certifications() {
   const certs = [
     {
-      title: "AWS Technical Essentials Course",
+      title: "AWS Technical Essentials",
       provider: "Amazon Web Services",
       icon: <AwsIcon className="w-[24px] h-[24px] text-text" />,
       verifyLink: "https://drive.google.com/file/d/1uhLjRXghJLVyVC_soSfc3PeYOm5xoEia/view"
     },
     {
-      title: "AWS Cloud Practitioner Essentials Course",
+      title: "AWS Cloud Practitioner Essentials",
       provider: "Amazon Web Services",
       icon: <AwsIcon className="w-[24px] h-[24px] text-text" />,
       verifyLink: "https://drive.google.com/file/d/1uotVanXocFflbTJtAY_uxoY57Vas_ToP/view"
