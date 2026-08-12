@@ -1,6 +1,10 @@
-"use client";
+import { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
+
+export const metadata: Metadata = {
+  title: "Projects — Vardz",
+};
 
 export default function ProjectsPage() {
   return (
