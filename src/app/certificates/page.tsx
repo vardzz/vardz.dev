@@ -362,7 +362,7 @@ export default function CertificatesPage() {
               </h2>
               
               {/* Flex Container instead of negative margins for large collections */}
-              <div className="flex flex-wrap items-center gap-[20px]">
+              <div className="flex flex-wrap items-center justify-center gap-[20px]">
                 {category.certificates.map((cert, certIdx) => (
                   <div 
                     key={certIdx} 
