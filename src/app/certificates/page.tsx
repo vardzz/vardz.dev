@@ -105,15 +105,15 @@ export default function CertificatesPage() {
         </div>
 
         {/* Categories Section */}
-        <div className="max-w-[800px] mx-auto px-[24px] md:px-[5vw] lg:px-0 flex flex-col gap-[80px]">
+        <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 flex flex-col gap-[80px]">
           {certificateCategories.map((category, idx) => (
             <section key={idx} className="relative">
-              <h2 className="text-muted font-mono text-[11px] tracking-[.2em] uppercase mb-[40px] pl-[20px]">
+              <h2 className="text-muted font-mono text-[11px] tracking-[.2em] uppercase mb-[40px]">
                 {category.title}
               </h2>
               
               {/* Staggered Cards Container */}
-              <div className="flex flex-wrap items-center justify-center gap-[-40px] md:gap-[-20px] px-[20px]">
+              <div className="flex flex-wrap items-center justify-center gap-[-40px] md:gap-[-20px]">
                 {category.certificates.map((cert, certIdx) => (
                   <div 
                     key={certIdx} 
