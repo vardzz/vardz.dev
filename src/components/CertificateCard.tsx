@@ -61,7 +61,7 @@ export default function CertificateCard({
       rel="noopener noreferrer" 
       className={`group relative flex flex-col items-center p-[24px] rounded-[16px] border border-line bg-surface transition-all duration-300 w-[190px] h-[230px] flex-shrink-0 cursor-pointer shadow-lg hover:shadow-2xl hover:border-text/20 ${!isHovered ? `${rotation} ${translateY}` : ''}`}
       style={{
-        zIndex: isHovered ? 50 : zIndex,
+        zIndex: isHovered ? 30 : zIndex,
         transform: isHovered ? `perspective(800px) rotateX(${rotationState.x}deg) rotateY(${rotationState.y}deg) scale3d(1.02, 1.02, 1.02)` : undefined,
         transformStyle: 'preserve-3d',
         willChange: 'transform'

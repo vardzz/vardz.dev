@@ -366,7 +366,7 @@ export default function CertificatesPage() {
                 {category.certificates.map((cert, certIdx) => (
                   <div 
                     key={certIdx} 
-                    className="transition-transform duration-500 hover:z-50"
+                    className="transition-transform duration-500 hover:z-30"
                   >
                     <CertificateCard
                       title={cert.title}
