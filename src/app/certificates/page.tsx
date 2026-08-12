@@ -1,6 +1,6 @@
 import React from 'react';
-import CertificateCard from '../../components/CertificateCard';
-import { AwsIcon } from '../../components/Certifications';
+import CertificateCard from '../../components/certificates/CertificateCard';
+import { AwsIcon } from '../../components/root/Certifications';
 
 const AnthropicIcon = ({ className }: { className?: string }) => (
   <svg role="img" viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">

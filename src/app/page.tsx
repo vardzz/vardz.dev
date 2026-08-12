@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Projects from "../components/Projects";
-import Experience from "../components/Experience";
-import Certifications from "../components/Certifications";
-import Github from "../components/Github";
-import Stack from "../components/Stack";
+import Navbar from "../components/layout/Navbar";
+import Hero from "../components/root/Hero";
+import Projects from "../components/root/Projects";
+import Experience from "../components/root/Experience";
+import Certifications from "../components/root/Certifications";
+import Github from "../components/root/Github";
+import Stack from "../components/root/Stack";
 import Chatbox from "../components/Chatbox";
 
 export default function Portfolio() {
