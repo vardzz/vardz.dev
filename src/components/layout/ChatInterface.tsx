@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useChat } from './ChatProvider';
+import { usePathname } from 'next/navigation';
 
 const GHOST_TEXTS = [
   "Ask about projects, experience, stack...",
@@ -11,6 +12,7 @@ const GHOST_TEXTS = [
 
 export default function ChatInterface() {
   const { isChatActive, setIsChatActive, isAtBottom, chatHistory, addMessage } = useChat();
+  const pathname = usePathname();
   const [placeholder, setPlaceholder] = useState("");
   const [ghostIndex, setGhostIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -120,7 +122,7 @@ export default function ChatInterface() {
       <div className={`w-[min(720px,calc(100%-32px))] transition-all duration-700 ${
         isChatActive 
           ? 'max-w-[640px] opacity-100 pointer-events-auto translate-y-0' 
-          : isAtBottom
+          : (isAtBottom && pathname === '/')
             ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none translate-y-12'
       }`}>
