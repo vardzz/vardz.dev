@@ -186,11 +186,22 @@ export default function ChatInterface() {
       });
 
     return sentenceBlocks.map((paragraph, paragraphIndex) => {
+      const highlightMatch = paragraph.match(/\b(Horizon AI|Lunas|Gridworks|GabaySr|GhostNet AI|Dentara|Jericho|Vardz|AI|Next\.js|React|Tailwind CSS)\b/i);
+      const highlightText = highlightMatch ? highlightMatch[0] : null;
       const segments = paragraph.split(/(https?:\/\/[^\s]+)/g).filter(Boolean);
 
-      return (
-        <p key={paragraphIndex} className="leading-relaxed text-[14px] md:text-[15px] text-muted whitespace-normal">
-          {segments.map((segment, segmentIndex) => {
+      const renderedContent = highlightText
+        ? paragraph.split(new RegExp(`(${highlightText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i')).map((part, index) => {
+            if (part.toLowerCase() === highlightText.toLowerCase()) {
+              return (
+                <span key={`${paragraphIndex}-${index}`} className="text-text font-medium bg-accent/10 px-1 py-0.5 rounded-md border border-accent/20">
+                  {part}
+                </span>
+              );
+            }
+            return <React.Fragment key={`${paragraphIndex}-${index}`}>{part}</React.Fragment>;
+          })
+        : segments.map((segment, segmentIndex) => {
             if (/^https?:\/\//.test(segment)) {
               const cleanUrl = segment.replace(/[.,!?]+$/, '');
               return (
@@ -207,7 +218,11 @@ export default function ChatInterface() {
             }
 
             return <React.Fragment key={`${paragraphIndex}-${segmentIndex}`}>{segment}</React.Fragment>;
-          })}
+          });
+
+      return (
+        <p key={paragraphIndex} className="leading-relaxed text-[14px] md:text-[15px] text-muted whitespace-normal">
+          {renderedContent}
         </p>
       );
     });
