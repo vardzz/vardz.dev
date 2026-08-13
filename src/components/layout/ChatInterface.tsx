@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useChat } from './ChatProvider';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useChat as useAIChat } from '@ai-sdk/react';
 
 const GHOST_TEXTS = [
   "Ask about projects, experience, stack...",
@@ -11,13 +12,31 @@ const GHOST_TEXTS = [
 ];
 
 export default function ChatInterface() {
-  const { isChatActive, setIsChatActive, isAtBottom, chatHistory, addMessage } = useChat();
+  const { isChatActive, setIsChatActive, isAtBottom } = useChat();
   const pathname = usePathname();
+  const router = useRouter();
+  
   const [placeholder, setPlaceholder] = useState("");
   const [ghostIndex, setGhostIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = React.useRef<HTMLDivElement>(null);
+
+  const { messages, sendMessage, status } = useAIChat({
+    onToolCall: ({ toolCall }: { toolCall: any }) => {
+      if (toolCall.toolName === "navigateUI") {
+        const route = (toolCall.args as { route: string }).route;
+        if (route) {
+          router.push(route);
+          // Auto-scroll the root page to top
+          const portfolioCanvas = document.getElementById('portfolio-canvas');
+          if (portfolioCanvas) {
+            portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }
+      }
+    },
+  });
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -25,12 +44,11 @@ export default function ChatInterface() {
 
   useEffect(() => {
     if (isChatActive) {
-      // slight delay to ensure render is complete before scrolling
       setTimeout(scrollToBottom, 100);
     }
-  }, [chatHistory, isChatActive]);
+  }, [messages, isChatActive]);
 
-  // Ghost Typist Effect (only when not active)
+  // Ghost Typist Effect
   useEffect(() => {
     if (isChatActive) return;
     
@@ -57,13 +75,11 @@ export default function ChatInterface() {
 
   const displayPlaceholder = isChatActive ? "Communicate..." : placeholder;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
     
     if (!isChatActive) setIsChatActive(true);
-    addMessage('user', inputValue);
-    setInputValue("");
     
     // Auto-scroll the root page to top
     const portfolioCanvas = document.getElementById('portfolio-canvas');
@@ -71,18 +87,9 @@ export default function ChatInterface() {
       portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Mock AI response for UI demonstration
-    setTimeout(() => {
-      addMessage('ai', "I'm navigating you to that section now. Let me know if you need anything else!");
-    }, 1000);
-  };
-
-  const handleChipClick = (text: string) => {
-    if (!isChatActive) setIsChatActive(true);
-    addMessage('user', text);
-    setTimeout(() => {
-      addMessage('ai', "Here is what you asked for! I've updated the panel on the right.");
-    }, 1000);
+    // Call AI SDK submit
+    sendMessage({ text: inputValue });
+    setInputValue("");
   };
 
   return (
@@ -94,14 +101,12 @@ export default function ChatInterface() {
       }`}
     >
       
-      {/* Close Button (Visible only when active) */}
+      {/* Close Button */}
       {isChatActive && (
         <div className="absolute top-12 w-full max-w-[640px] px-8 flex justify-start z-[100] pointer-events-auto">
           <button
             type="button"
-            onClick={() => {
-              setIsChatActive(false);
-            }}
+            onClick={() => setIsChatActive(false)}
             className="text-muted hover:text-text transition-colors p-2 -ml-2 flex items-center gap-2 group cursor-pointer"
             aria-label="Close Chat"
           >
@@ -114,25 +119,45 @@ export default function ChatInterface() {
         </div>
       )}
 
-      {/* Chat History Container */}
+      {/* Chat History */}
       <div className={`w-full max-w-[640px] flex-1 overflow-y-auto px-8 pt-24 pb-12 flex flex-col gap-12 transition-all duration-700 delay-100 no-scrollbar ${isChatActive ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 hidden translate-y-10'}`}>
         
-        {chatHistory.map((msg, idx) => (
+        {messages.map((msg: any) => (
           <div 
-            key={idx} 
-            className={`w-full flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            key={msg.id} 
+            className={`w-full flex flex-col ${msg.role === 'user' ? 'items-end text-right' : 'items-start text-left'}`}
           >
             {msg.role === 'user' ? (
               <h2 className="text-[28px] md:text-[32px] font-bold font-mono tracking-tight text-text">
                 {msg.content}
               </h2>
             ) : (
-              <p className="text-[14px] md:text-[15px] leading-relaxed font-mono text-muted max-w-[90%] md:max-w-[85%]">
+              <div className="text-[14px] md:text-[15px] leading-relaxed font-mono text-muted max-w-[90%] md:max-w-[85%] whitespace-pre-wrap">
                 {msg.content}
-              </p>
+                {msg.toolInvocations?.map((tool: any) => (
+                  <div key={tool.toolCallId} className="mt-4 text-xs font-mono text-accent opacity-70">
+                    {tool.toolName === 'navigateUI' && (
+                      <span className="flex items-center gap-2">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                        Navigating to {(tool.args as any).route}...
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         ))}
+        {status === 'submitted' && (
+          <div className="w-full flex justify-start">
+            <p className="text-[14px] md:text-[15px] font-mono text-muted opacity-50 animate-pulse">
+              thinking...
+            </p>
+          </div>
+        )}
         <div ref={messagesEndRef} />
       </div>
 
@@ -146,7 +171,7 @@ export default function ChatInterface() {
       }`}>
         
         <form 
-          onSubmit={handleSubmit}
+          onSubmit={onFormSubmit}
           className="relative flex items-center transition-all duration-300 group bg-surface border border-line shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.35)] rounded-[24px] p-[8px] pl-[16px] focus-within:border-accent focus-within:ring-[3px] focus-within:ring-accent-dim"
         >
           <input 
@@ -160,7 +185,8 @@ export default function ChatInterface() {
           />
           <button 
             type="submit" 
-            className="shrink-0 ml-[8px] w-[36px] h-[36px] md:w-[40px] md:h-[40px] flex items-center justify-center rounded-full md:rounded-[16px] bg-text text-bg hover:scale-105 transition-transform duration-300 shadow-md"
+            disabled={status === 'submitted'}
+            className="shrink-0 ml-[8px] w-[36px] h-[36px] md:w-[40px] md:h-[40px] flex items-center justify-center rounded-full md:rounded-[16px] bg-text text-bg hover:scale-105 transition-transform duration-300 shadow-md disabled:opacity-50 disabled:hover:scale-100"
             aria-label="Send message"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[-1px]">
