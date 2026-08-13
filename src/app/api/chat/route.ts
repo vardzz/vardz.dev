@@ -47,8 +47,9 @@ export async function POST(req: Request) {
     const normalized = input.toLowerCase();
 
     if (
-      /\b(projects?|horizon ai|lunas|gridworks|gabaysr|ghostnet|dentara)\b/.test(normalized) &&
-      /(dive|deep|details|detail|architecture|implementation|feature|compare|how it works|more about|learn more|show me|tell me more)/.test(normalized)
+      /\b(horizon ai|lunas|gridworks|gabaysr|ghostnet|dentara)\b/.test(normalized) ||
+      (/\b(projects?|project)\b/.test(normalized) &&
+        /(dive|deep|details|detail|architecture|implementation|feature|compare|how it works|more about|learn more|show me|tell me more|what is|what are|explain|tell me about)/.test(normalized))
     ) {
       return '/projects';
     }
