@@ -155,6 +155,23 @@ export default function ChatInterface() {
   const displayPlaceholder = isChatActive ? "Communicate..." : placeholder;
   const isGeneratingAnswer = status === 'submitted' || status === 'streaming';
 
+  const getPrimaryHighlightText = (input: string): string | null => {
+    const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    const projectNames = ['Horizon AI', 'Lunas', 'Gridworks', 'GabaySr', 'GhostNet AI', 'Dentara'];
+    const personalNames = ['Jericho', 'Vardz'];
+
+    const orderedNames = [...projectNames, ...personalNames];
+
+    for (const name of orderedNames) {
+      if (new RegExp(`\\b${escapeRegExp(name)}\\b`, 'i').test(input)) {
+        return name;
+      }
+    }
+
+    return null;
+  };
+
   const renderFormattedAssistantText = (text: string) => {
     const sanitizedText = text
       .replace(/\*\*(.*?)\*\*/g, '$1')
@@ -186,39 +203,53 @@ export default function ChatInterface() {
       });
 
     return sentenceBlocks.map((paragraph, paragraphIndex) => {
-      const highlightMatch = paragraph.match(/\b(Horizon AI|Lunas|Gridworks|GabaySr|GhostNet AI|Dentara|Jericho|Vardz|AI|Next\.js|React|Tailwind CSS)\b/i);
-      const highlightText = highlightMatch ? highlightMatch[0] : null;
       const segments = paragraph.split(/(https?:\/\/[^\s]+)/g).filter(Boolean);
+      const textOnlyContent = segments
+        .filter((segment) => !/^https?:\/\//.test(segment))
+        .join(' ');
+      const highlightText = getPrimaryHighlightText(textOnlyContent);
 
-      const renderedContent = highlightText
-        ? paragraph.split(new RegExp(`(${highlightText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i')).map((part, index) => {
-            if (part.toLowerCase() === highlightText.toLowerCase()) {
-              return (
-                <span key={`${paragraphIndex}-${index}`} className="text-text font-medium bg-accent/10 px-1 py-0.5 rounded-md border border-accent/20">
-                  {part}
-                </span>
-              );
-            }
-            return <React.Fragment key={`${paragraphIndex}-${index}`}>{part}</React.Fragment>;
-          })
-        : segments.map((segment, segmentIndex) => {
-            if (/^https?:\/\//.test(segment)) {
-              const cleanUrl = segment.replace(/[.,!?]+$/, '');
-              return (
-                <a
-                  key={`${paragraphIndex}-${segmentIndex}`}
-                  href={cleanUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-accent underline underline-offset-4 decoration-accent/60 hover:text-text transition-colors break-all"
-                >
-                  {cleanUrl}
-                </a>
-              );
-            }
+      const renderedContent = segments.map((segment, segmentIndex) => {
+        if (/^https?:\/\//.test(segment)) {
+          const cleanUrl = segment.replace(/[.,!?]+$/, '');
+          return (
+            <a
+              key={`${paragraphIndex}-${segmentIndex}`}
+              href={cleanUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent underline underline-offset-4 decoration-accent/60 hover:text-text transition-colors break-all"
+            >
+              {cleanUrl}
+            </a>
+          );
+        }
 
-            return <React.Fragment key={`${paragraphIndex}-${segmentIndex}`}>{segment}</React.Fragment>;
-          });
+        if (!highlightText) {
+          return <React.Fragment key={`${paragraphIndex}-${segmentIndex}`}>{segment}</React.Fragment>;
+        }
+
+        const pattern = new RegExp(`(${highlightText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig');
+        const parts = segment.split(pattern);
+
+        return (
+          <React.Fragment key={`${paragraphIndex}-${segmentIndex}`}>
+            {parts.map((part, partIndex) => {
+              if (part.toLowerCase() === highlightText.toLowerCase()) {
+                return (
+                  <span
+                    key={`${paragraphIndex}-${segmentIndex}-${partIndex}`}
+                    className="text-text font-medium bg-accent/10 px-1 py-0.5 rounded-md border border-accent/20"
+                  >
+                    {part}
+                  </span>
+                );
+              }
+              return <React.Fragment key={`${paragraphIndex}-${segmentIndex}-${partIndex}`}>{part}</React.Fragment>;
+            })}
+          </React.Fragment>
+        );
+      });
 
       return (
         <p key={paragraphIndex} className="leading-relaxed text-[14px] md:text-[15px] text-muted whitespace-normal">
