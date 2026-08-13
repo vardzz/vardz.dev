@@ -22,21 +22,54 @@ export default function ChatInterface() {
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = React.useRef<HTMLDivElement>(null);
 
-  const { messages, sendMessage, status } = useAIChat({
-    onToolCall: ({ toolCall }: { toolCall: any }) => {
-      if (toolCall.toolName === "navigateUI") {
-        const route = (toolCall.args as { route: string }).route;
-        if (route) {
-          router.push(route);
-          // Auto-scroll the root page to top
-          const portfolioCanvas = document.getElementById('portfolio-canvas');
-          if (portfolioCanvas) {
-            portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
+  const { messages, sendMessage, status } = useAIChat();
+  const processedToolCalls = React.useRef<Set<string>>(new Set());
+
+  // Listen to new messages to trigger UI navigation tool calls
+  useEffect(() => {
+    messages.forEach((msg: any) => {
+      // Check in toolInvocations (if populated by AI SDK)
+      msg.toolInvocations?.forEach((toolInvocation: any) => {
+        if (
+          toolInvocation.toolName === 'navigateUI' &&
+          !processedToolCalls.current.has(toolInvocation.toolCallId)
+        ) {
+          const route = toolInvocation.args?.route;
+          if (route) {
+            processedToolCalls.current.add(toolInvocation.toolCallId);
+            router.push(route);
+            // Auto-scroll the root page to top
+            const portfolioCanvas = document.getElementById('portfolio-canvas');
+            if (portfolioCanvas) {
+              portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }
         }
-      }
-    },
-  });
+      });
+
+      // Also fallback/check in parts just in case
+      msg.parts?.forEach((part: any) => {
+        if (part.type === 'tool-invocation') {
+          const toolInvocation = part.toolInvocation;
+          if (
+            toolInvocation.toolName === 'navigateUI' &&
+            !processedToolCalls.current.has(toolInvocation.toolCallId)
+          ) {
+            const route = toolInvocation.args?.route;
+            if (route) {
+              processedToolCalls.current.add(toolInvocation.toolCallId);
+              router.push(route);
+              // Auto-scroll the root page to top
+              const portfolioCanvas = document.getElementById('portfolio-canvas');
+              if (portfolioCanvas) {
+                portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }
+          }
+        }
+      });
+    });
+  }, [messages, router]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
