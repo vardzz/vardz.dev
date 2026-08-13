@@ -138,7 +138,12 @@ export default function ChatInterface() {
               <div className="text-[14px] md:text-[15px] leading-relaxed font-mono text-muted max-w-[90%] md:max-w-[85%] whitespace-pre-wrap flex flex-col gap-2">
                 {msg.parts?.map((part: any, idx: number) => {
                   if (part.type === 'text') {
-                    return <span key={idx}>{part.text}</span>;
+                    const cleanedText = part.text
+                      .replace(/<navigateUI>[\s\S]*?<\/navigateUI>/g, '')
+                      .replace(/<tool_call>[\s\S]*?<\/tool_call>/g, '')
+                      .trim();
+                    if (!cleanedText) return null;
+                    return <span key={idx}>{cleanedText}</span>;
                   }
                   if (part.type === 'reasoning') {
                     return (
@@ -147,18 +152,22 @@ export default function ChatInterface() {
                       </div>
                     );
                   }
-                  if (part.type === 'tool-navigateUI') {
-                    return (
-                      <div key={part.toolCallId} className="mt-2 text-xs font-mono text-accent opacity-70">
-                        <span className="flex items-center gap-2">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                          </svg>
-                          Navigating to {part.input?.route || part.args?.route || 'route'}...
-                        </span>
-                      </div>
-                    );
+                  if (part.type === 'tool-invocation') {
+                    const toolInvocation = part.toolInvocation;
+                    if (toolInvocation.toolName === 'navigateUI') {
+                      const route = toolInvocation.args?.route;
+                      return (
+                        <div key={toolInvocation.toolCallId} className="mt-2 text-xs font-mono text-accent opacity-70">
+                          <span className="flex items-center gap-2">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="5" y1="12" x2="19" y2="12"></line>
+                              <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                            Navigating to {route || 'route'}...
+                          </span>
+                        </div>
+                      );
+                    }
                   }
                   return null;
                 })}
