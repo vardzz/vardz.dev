@@ -163,29 +163,45 @@ export default function ChatInterface() {
       .replace(/[_~`]+/g, '')
       .replace(/[\u{1F300}-\u{1FAFF}]/gu, '')
       .replace(/\r\n/g, '\n')
+      .replace(/\n{3,}/g, '\n\n')
       .trim();
 
-    const paragraphs = sanitizedText
+    const sentenceBlocks = sanitizedText
       .split(/\n\s*\n+/)
-      .map((paragraph) => paragraph.trim())
-      .filter(Boolean);
+      .map((block) => block.trim())
+      .filter(Boolean)
+      .flatMap((block) => {
+        const sentences = block
+          .split(/(?<=[.!?])\s+(?=[A-Z0-9\"'])/)
+          .map((sentence) => sentence.trim())
+          .filter(Boolean);
 
-    return paragraphs.map((paragraph, paragraphIndex) => {
+        if (sentences.length <= 2) return [sentences.join(' ')];
+
+        const grouped: string[] = [];
+        for (let index = 0; index < sentences.length; index += 2) {
+          grouped.push(sentences.slice(index, index + 2).join(' '));
+        }
+        return grouped;
+      });
+
+    return sentenceBlocks.map((paragraph, paragraphIndex) => {
       const segments = paragraph.split(/(https?:\/\/[^\s]+)/g).filter(Boolean);
 
       return (
-        <p key={paragraphIndex} className="leading-relaxed text-[14px] md:text-[15px] text-muted">
+        <p key={paragraphIndex} className="leading-relaxed text-[14px] md:text-[15px] text-muted whitespace-normal">
           {segments.map((segment, segmentIndex) => {
             if (/^https?:\/\//.test(segment)) {
+              const cleanUrl = segment.replace(/[.,!?]+$/, '');
               return (
                 <a
                   key={`${paragraphIndex}-${segmentIndex}`}
-                  href={segment}
+                  href={cleanUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="text-accent underline underline-offset-4 decoration-accent/60 hover:text-text transition-colors break-all"
                 >
-                  {segment}
+                  {cleanUrl}
                 </a>
               );
             }
