@@ -1,5 +1,5 @@
 import { createGroq } from '@ai-sdk/groq';
-import { streamText, tool } from 'ai';
+import { streamText } from 'ai';
 import { z } from 'zod';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   const kbPath = path.join(process.cwd(), 'src/data/knowledge-base.md');
   const systemPrompt = fs.readFileSync(kbPath, 'utf-8');
 
-  const result = await streamText({
+  const result = streamText({
     model: groq('llama-3.1-8b-instant'),
     system: systemPrompt,
     messages,
@@ -29,8 +29,7 @@ export async function POST(req: Request) {
         }),
       },
     },
-    // Allows the model to use tools and text at the same time
   });
 
-  return result.toTextStreamResponse();
+  return result.toUIMessageStreamResponse();
 }
