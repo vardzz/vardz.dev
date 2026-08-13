@@ -107,6 +107,7 @@ export default function ChatInterface() {
   }, [placeholder, isDeleting, ghostIndex, isChatActive]);
 
   const displayPlaceholder = isChatActive ? "Communicate..." : placeholder;
+  const isGeneratingAnswer = status === 'submitted' || status === 'streaming';
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -208,9 +209,9 @@ export default function ChatInterface() {
             )}
           </div>
         ))}
-        {status === 'submitted' && (
+        {isGeneratingAnswer && (
           <div className="w-full flex justify-start">
-            <p className="text-[14px] md:text-[15px] font-mono text-muted opacity-50 animate-pulse">
+            <p className="thinking-indicator text-[14px] md:text-[15px] font-mono text-muted">
               thinking...
             </p>
           </div>
@@ -242,7 +243,7 @@ export default function ChatInterface() {
           />
           <button 
             type="submit" 
-            disabled={status === 'submitted'}
+            disabled={isGeneratingAnswer}
             className="shrink-0 ml-[8px] w-[36px] h-[36px] md:w-[40px] md:h-[40px] flex items-center justify-center rounded-full md:rounded-[16px] bg-text text-bg hover:scale-105 transition-transform duration-300 shadow-md disabled:opacity-50 disabled:hover:scale-100"
             aria-label="Send message"
           >
