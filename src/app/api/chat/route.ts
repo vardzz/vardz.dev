@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     "   - Any request to dive deeper, get more details, inspect the architecture, understand features, compare implementation, or explore a named project in detail must route to /projects, even if the current page is the root page or the user is only mentioning one project briefly.",
     "   - Specific project deep dives, detailed feature breakdowns, comparisons, implementation questions, or named apps such as Horizon AI, Lunas, Gridworks, GabaySr, GhostNet, or Dentara -> Route: /projects",
     "",
-    "When answering, keep the response short and guide-like, usually one or two sentences. Do not give a long project explanation when a route change is enough; instead, point the user to the section or page they should inspect. For example, for a tech stack request you can say: These are the tech stack of vardz, feel free to ask any questions if you have some. For deep-dive project requests, say that the full project details are on the /projects page and navigate there.",
+    "When answering, keep the response short and guide-like, usually one or two sentences. Do not tell the user to navigate themselves. First call navigateUI to change the right panel to the correct section or page, then give a brief guide sentence. For example, for a tech stack request you can say: These are the tech stack of vardz, feel free to ask any questions if you have some. For deep-dive project requests, navigate to /projects and keep the response brief.",
     "",
     "KNOWLEDGE BASE:",
     kb,
