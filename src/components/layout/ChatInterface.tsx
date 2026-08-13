@@ -155,6 +155,48 @@ export default function ChatInterface() {
   const displayPlaceholder = isChatActive ? "Communicate..." : placeholder;
   const isGeneratingAnswer = status === 'submitted' || status === 'streaming';
 
+  const renderFormattedAssistantText = (text: string) => {
+    const sanitizedText = text
+      .replace(/\*\*(.*?)\*\*/g, '$1')
+      .replace(/__(.*?)__/g, '$1')
+      .replace(/\*(.*?)\*/g, '$1')
+      .replace(/[_~`]+/g, '')
+      .replace(/[\u{1F300}-\u{1FAFF}]/gu, '')
+      .replace(/\r\n/g, '\n')
+      .trim();
+
+    const paragraphs = sanitizedText
+      .split(/\n\s*\n+/)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
+
+    return paragraphs.map((paragraph, paragraphIndex) => {
+      const segments = paragraph.split(/(https?:\/\/[^\s]+)/g).filter(Boolean);
+
+      return (
+        <p key={paragraphIndex} className="leading-relaxed text-[14px] md:text-[15px] text-muted">
+          {segments.map((segment, segmentIndex) => {
+            if (/^https?:\/\//.test(segment)) {
+              return (
+                <a
+                  key={`${paragraphIndex}-${segmentIndex}`}
+                  href={segment}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent underline underline-offset-4 decoration-accent/60 hover:text-text transition-colors break-all"
+                >
+                  {segment}
+                </a>
+              );
+            }
+
+            return <React.Fragment key={`${paragraphIndex}-${segmentIndex}`}>{segment}</React.Fragment>;
+          })}
+        </p>
+      );
+    });
+  };
+
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
@@ -218,7 +260,7 @@ export default function ChatInterface() {
                   .join('')}
               </h2>
             ) : (
-              <div className="text-[14px] md:text-[15px] leading-relaxed font-mono text-muted max-w-[90%] md:max-w-[85%] whitespace-pre-wrap flex flex-col gap-2">
+              <div className="font-mono max-w-[90%] md:max-w-[85%] flex flex-col gap-3">
                 {msg.parts?.map((part: any, idx: number) => {
                   if (part.type === 'text') {
                     const cleanedText = part.text
@@ -226,7 +268,11 @@ export default function ChatInterface() {
                       .replace(/<tool_call>[\s\S]*?<\/tool_call>/g, '')
                       .trim();
                     if (!cleanedText) return null;
-                    return <span key={idx}>{cleanedText}</span>;
+                    return (
+                      <div key={idx} className="text-[14px] md:text-[15px] leading-relaxed text-muted flex flex-col gap-3">
+                        {renderFormattedAssistantText(cleanedText)}
+                      </div>
+                    );
                   }
                   if (part.type === 'reasoning') {
                     return (
