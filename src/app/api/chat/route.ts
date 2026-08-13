@@ -13,6 +13,76 @@ const groq = createGroq({
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
+  const getLastUserText = (inputMessages: unknown): string => {
+    if (!Array.isArray(inputMessages)) return '';
+
+    for (let index = inputMessages.length - 1; index >= 0; index -= 1) {
+      const message = inputMessages[index] as {
+        role?: string;
+        content?: unknown;
+        parts?: Array<{ type?: string; text?: string }>;
+      };
+
+      if (message?.role !== 'user') continue;
+
+      if (typeof message.content === 'string') {
+        return message.content;
+      }
+
+      if (Array.isArray(message.parts)) {
+        const text = message.parts
+          .filter((part) => part?.type === 'text' && typeof part.text === 'string')
+          .map((part) => part.text)
+          .join(' ')
+          .trim();
+
+        if (text) return text;
+      }
+    }
+
+    return '';
+  };
+
+  const detectRoute = (input: string): '/' | '/projects' | '/experience' | '/stack' | '/certificates' | undefined => {
+    const normalized = input.toLowerCase();
+
+    if (
+      /\b(projects?|horizon ai|lunas|gridworks|gabaysr|ghostnet|dentara)\b/.test(normalized) &&
+      /(dive|deep|details|detail|architecture|implementation|feature|compare|how it works|more about|learn more|show me|tell me more)/.test(normalized)
+    ) {
+      return '/projects';
+    }
+
+    if (/\b(stack|tech stack|technologies|languages|tools|frameworks|tech)\b/.test(normalized)) {
+      return '/stack';
+    }
+
+    if (/\b(experience|work experience|internship|volunteer)\b/.test(normalized)) {
+      return '/experience';
+    }
+
+    if (/\b(certificates?|certifications?|education|academic|school|college)\b/.test(normalized)) {
+      return '/certificates';
+    }
+
+    if (/\b(bio|about|contact|general info|who are you|about you)\b/.test(normalized)) {
+      return '/';
+    }
+
+    if (/\b(dive deeper|more details|deep dive|more about|tell me more|show me more|architecture|implementation)\b/.test(normalized)) {
+      return '/projects';
+    }
+
+    if (/\b(projects?|project)\b/.test(normalized)) {
+      return '/';
+    }
+
+    return undefined;
+  };
+
+  const lastUserText = getLastUserText(messages);
+  const forcedRoute = detectRoute(lastUserText);
+
   // Read knowledge base for RAG
   const kbPath = path.join(process.cwd(), 'src/data/knowledge-base.md');
   const kb = fs.readFileSync(kbPath, 'utf-8');
@@ -49,11 +119,11 @@ export async function POST(req: Request) {
   system: systemPrompt,
   messages: await convertToModelMessages(messages),
   stopWhen: isStepCount(3),
+  toolChoice: forcedRoute ? { type: 'tool', toolName: 'navigateUI' } : 'auto',
   providerOptions: {
     groq: {
       reasoningFormat: 'hidden',   // stops the "thinking" from leaking into the chat
       reasoningEffort: 'low',      // less internal deliberation = more likely to just act
-      toolChoice: 'auto',
     },
   },
   onError: ({ error }) => {
