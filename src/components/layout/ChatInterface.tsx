@@ -159,11 +159,8 @@ export default function ChatInterface() {
     const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
     const projectNames = ['Horizon AI', 'Lunas', 'Gridworks', 'GabaySr', 'GhostNet AI', 'Dentara'];
-    const personalNames = ['Jericho', 'Vardz'];
 
-    const orderedNames = [...projectNames, ...personalNames];
-
-    for (const name of orderedNames) {
+    for (const name of projectNames) {
       if (new RegExp(`\\b${escapeRegExp(name)}\\b`, 'i').test(input)) {
         return name;
       }
@@ -237,12 +234,12 @@ export default function ChatInterface() {
             {parts.map((part, partIndex) => {
               if (part.toLowerCase() === highlightText.toLowerCase()) {
                 return (
-                  <span
+                  <strong
                     key={`${paragraphIndex}-${segmentIndex}-${partIndex}`}
-                    className="text-text font-medium bg-accent/10 px-1 py-0.5 rounded-md border border-accent/20"
+                    className="text-text font-semibold"
                   >
                     {part}
-                  </span>
+                  </strong>
                 );
               }
               return <React.Fragment key={`${paragraphIndex}-${segmentIndex}-${partIndex}`}>{part}</React.Fragment>;
