@@ -1,5 +1,5 @@
 import { createGroq } from '@ai-sdk/groq';
-import { streamText, tool, isStepCount } from 'ai';
+import { streamText, tool, isStepCount, convertToModelMessages } from 'ai';
 import { z } from 'zod';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -27,7 +27,7 @@ ${kb}`;
   const result = streamText({
     model: groq('llama-3.1-8b-instant'),
     system: systemPrompt,
-    messages,
+    messages: await convertToModelMessages(messages),
     stopWhen: isStepCount(3),
     tools: {
       navigateUI: tool({
