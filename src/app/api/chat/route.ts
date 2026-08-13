@@ -1,5 +1,5 @@
 import { createGroq } from '@ai-sdk/groq';
-import { streamText } from 'ai';
+import { streamText, tool } from 'ai';
 import { z } from 'zod';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -28,13 +28,15 @@ ${kb}`;
     model: groq('llama-3.1-8b-instant'),
     system: systemPrompt,
     messages,
+    maxSteps: 3,
     tools: {
-      navigateUI: {
+      navigateUI: tool({
         description: 'Navigate the right panel of the portfolio to a specific route based on the topic being discussed. You MUST call this tool whenever you answer a question about a specific topic (e.g. Bio, Skills, Experience, Projects).',
-        inputSchema: z.object({
+        parameters: z.object({
           route: z.enum(['/', '/projects', '/experience', '/stack', '/certificates']).describe('The exact route path to navigate to.'),
         }),
-      },
+        execute: async ({ route }) => `Navigated to ${route}`,
+      }),
     },
   });
 
