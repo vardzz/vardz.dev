@@ -22,8 +22,34 @@ export default function ChatInterface() {
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = React.useRef<HTMLDivElement>(null);
 
-  const { messages, sendMessage, status } = useAIChat();
   const processedToolCalls = React.useRef<Set<string>>(new Set());
+  const navigateToRoute = React.useCallback(
+    (route?: string, toolCallId?: string) => {
+      if (!route || (toolCallId && processedToolCalls.current.has(toolCallId))) {
+        return;
+      }
+
+      if (toolCallId) {
+        processedToolCalls.current.add(toolCallId);
+      }
+
+      router.push(route);
+
+      const portfolioCanvas = document.getElementById('portfolio-canvas');
+      if (portfolioCanvas) {
+        portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    },
+    [router]
+  );
+
+  const { messages, sendMessage, status } = useAIChat({
+    onToolCall: async ({ toolCall }) => {
+      if (toolCall.toolName === 'navigateUI') {
+        navigateToRoute((toolCall.args as { route?: string } | undefined)?.route, toolCall.toolCallId);
+      }
+    },
+  });
 
   // Listen to new messages to trigger UI navigation tool calls
   useEffect(() => {
@@ -34,16 +60,7 @@ export default function ChatInterface() {
           toolInvocation.toolName === 'navigateUI' &&
           !processedToolCalls.current.has(toolInvocation.toolCallId)
         ) {
-          const route = toolInvocation.args?.route;
-          if (route) {
-            processedToolCalls.current.add(toolInvocation.toolCallId);
-            router.push(route);
-            // Auto-scroll the root page to top
-            const portfolioCanvas = document.getElementById('portfolio-canvas');
-            if (portfolioCanvas) {
-              portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-          }
+          navigateToRoute(toolInvocation.args?.route, toolInvocation.toolCallId);
         }
       });
 
@@ -55,16 +72,7 @@ export default function ChatInterface() {
             toolInvocation.toolName === 'navigateUI' &&
             !processedToolCalls.current.has(toolInvocation.toolCallId)
           ) {
-            const route = toolInvocation.args?.route;
-            if (route) {
-              processedToolCalls.current.add(toolInvocation.toolCallId);
-              router.push(route);
-              // Auto-scroll the root page to top
-              const portfolioCanvas = document.getElementById('portfolio-canvas');
-              if (portfolioCanvas) {
-                portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }
+            navigateToRoute(toolInvocation.args?.route, toolInvocation.toolCallId);
           }
         }
       });
