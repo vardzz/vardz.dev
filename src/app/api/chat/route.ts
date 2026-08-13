@@ -13,9 +13,16 @@ const groq = createGroq({
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
-  // Read knowledge base
+  // Read knowledge base for RAG
   const kbPath = path.join(process.cwd(), 'src/data/knowledge-base.md');
-  const systemPrompt = fs.readFileSync(kbPath, 'utf-8');
+  const kb = fs.readFileSync(kbPath, 'utf-8');
+
+  const systemPrompt = `You are the AI assistant for Jericho Varde's (vardz) portfolio.
+Answer visitor questions using ONLY the knowledge base below. If the answer
+isn't in it, say so honestly and point them to contact info.
+
+KNOWLEDGE BASE:
+${kb}`;
 
   const result = streamText({
     model: groq('llama-3.1-8b-instant'),
