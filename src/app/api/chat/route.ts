@@ -39,10 +39,17 @@ KNOWLEDGE BASE:
 ${kb}`;
 
   const result = streamText({
-    model: groq('llama-3.3-70b-versatile'),
+    model: groq('openai/gpt-oss-20b'),
     system: systemPrompt,
     messages: await convertToModelMessages(messages),
     stopWhen: isStepCount(3),
+    onError: ({ error }) => {
+      const errorWithStack = error as { stack?: string; message?: string } | null | undefined;
+      fs.writeFileSync(
+        path.join(process.cwd(), 'src/error.log'),
+        errorWithStack?.stack || errorWithStack?.message || String(error)
+      );
+    },
     tools: {
       navigateUI: tool({
         description: 'Navigate the right panel of the portfolio to a specific route based on the topic being discussed. You MUST call this tool whenever you answer a question about or transition to a specific topic (e.g. Bio, Skills, Experience, Projects).',
