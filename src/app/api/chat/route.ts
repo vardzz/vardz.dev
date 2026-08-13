@@ -39,11 +39,17 @@ KNOWLEDGE BASE:
 ${kb}`;
 
   const result = streamText({
-    model: groq('openai/gpt-oss-20b'),
-    system: systemPrompt,
-    messages: await convertToModelMessages(messages),
-    stopWhen: isStepCount(3),
-    onError: ({ error }) => {
+  model: groq('openai/gpt-oss-20b'),
+  system: systemPrompt,
+  messages: await convertToModelMessages(messages),
+  stopWhen: isStepCount(3),
+  providerOptions: {
+    groq: {
+      reasoningFormat: 'hidden',   // stops the "thinking" from leaking into the chat
+      reasoningEffort: 'low',      // less internal deliberation = more likely to just act
+    },
+  },
+  onError: ({ error }) => {
       const errorWithStack = error as { stack?: string; message?: string } | null | undefined;
       fs.writeFileSync(
         path.join(process.cwd(), 'src/error.log'),
