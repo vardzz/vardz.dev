@@ -341,6 +341,15 @@ export default function CertificatesPage() {
           rotation: "rotate-1",
           translateY: "translate-y-2",
           zIndex: 2
+        },
+        {
+          title: "Data Analyst Associate",
+          provider: "DATACAMP",
+          icon: <DataCampIcon className="w-[28px] h-[28px] text-text" />,
+          verifyLink: "https://www.datacamp.com/certificate/DAA0015766640456",
+          rotation: "rotate-1",
+          translateY: "translate-y-2",
+          zIndex: 2
         }
       ]
     }
