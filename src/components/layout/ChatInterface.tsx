@@ -43,10 +43,47 @@ export default function ChatInterface() {
     [router]
   );
 
+  const detectRoute = React.useCallback((input: string): string | undefined => {
+    const normalized = input.toLowerCase();
+
+    if (
+      /\b(projects?|horizon ai|lunas|gridworks|gabaysr|ghostnet|dentara)\b/.test(normalized) &&
+      /(dive|deep|details|detail|architecture|implementation|feature|compare|how it works|more about|learn more|show me|tell me more)/.test(normalized)
+    ) {
+      return '/projects';
+    }
+
+    if (/\b(stack|tech stack|technologies|languages|tools|frameworks|tech)\b/.test(normalized)) {
+      return '/stack';
+    }
+
+    if (/\b(experience|work experience|internship|volunteer)\b/.test(normalized)) {
+      return '/experience';
+    }
+
+    if (/\b(certificates?|certifications?|education|academic|school|college)\b/.test(normalized)) {
+      return '/certificates';
+    }
+
+    if (/\b(bio|about|contact|general info|who are you|about you)\b/.test(normalized)) {
+      return '/';
+    }
+
+    if (/\b(dive deeper|more details|deep dive|more about|tell me more|show me more|architecture|implementation)\b/.test(normalized)) {
+      return '/projects';
+    }
+
+    if (/\b(projects?|project)\b/.test(normalized)) {
+      return '/';
+    }
+
+    return undefined;
+  }, []);
+
   const { messages, sendMessage, status } = useAIChat({
     onToolCall: async ({ toolCall }) => {
       if (toolCall.toolName === 'navigateUI') {
-        navigateToRoute((toolCall.args as { route?: string } | undefined)?.route, toolCall.toolCallId);
+        navigateToRoute((toolCall.input as { route?: string } | undefined)?.route, toolCall.toolCallId);
       }
     },
   });
@@ -60,7 +97,7 @@ export default function ChatInterface() {
           toolInvocation.toolName === 'navigateUI' &&
           !processedToolCalls.current.has(toolInvocation.toolCallId)
         ) {
-          navigateToRoute(toolInvocation.args?.route, toolInvocation.toolCallId);
+          navigateToRoute(toolInvocation.input?.route, toolInvocation.toolCallId);
         }
       });
 
@@ -72,7 +109,7 @@ export default function ChatInterface() {
             toolInvocation.toolName === 'navigateUI' &&
             !processedToolCalls.current.has(toolInvocation.toolCallId)
           ) {
-            navigateToRoute(toolInvocation.args?.route, toolInvocation.toolCallId);
+            navigateToRoute(toolInvocation.input?.route, toolInvocation.toolCallId);
           }
         }
       });
@@ -120,6 +157,9 @@ export default function ChatInterface() {
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
+
+    const route = detectRoute(inputValue);
+    navigateToRoute(route);
     
     if (!isChatActive) setIsChatActive(true);
     
@@ -197,7 +237,7 @@ export default function ChatInterface() {
                   if (part.type === 'tool-invocation') {
                     const toolInvocation = part.toolInvocation;
                     if (toolInvocation.toolName === 'navigateUI') {
-                      const route = toolInvocation.args?.route;
+                      const route = toolInvocation.input?.route;
                       return (
                         <div key={toolInvocation.toolCallId} className="mt-2 text-xs font-mono text-accent opacity-70">
                           <span className="flex items-center gap-2">
