@@ -33,7 +33,14 @@ export default function Hero() {
       <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
         {/* Left: Image */}
         <div className="w-full md:w-1/2 aspect-square relative bg-bg rounded-2xl overflow-hidden">
-            <Image src="/assets/vardz-image.png" alt="Jericho Varde" layout="fill" objectFit="cover" className="mix-blend-luminosity opacity-90" />
+            <Image
+              src="/assets/vardz-image.png"
+              alt="Jericho Varde"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover mix-blend-luminosity opacity-90"
+            />
         </div>
         
         {/* Right: Content */}
