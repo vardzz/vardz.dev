@@ -47,6 +47,7 @@ ${kb}`;
     groq: {
       reasoningFormat: 'hidden',   // stops the "thinking" from leaking into the chat
       reasoningEffort: 'low',      // less internal deliberation = more likely to just act
+      toolChoice: 'auto',
     },
   },
   onError: ({ error }) => {
