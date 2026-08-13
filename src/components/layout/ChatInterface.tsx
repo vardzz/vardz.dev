@@ -129,24 +129,39 @@ export default function ChatInterface() {
           >
             {msg.role === 'user' ? (
               <h2 className="text-[28px] md:text-[32px] font-bold font-mono tracking-tight text-text">
-                {msg.content}
+                {msg.parts
+                  ?.filter((part: any) => part.type === 'text')
+                  .map((part: any) => part.text)
+                  .join('')}
               </h2>
             ) : (
-              <div className="text-[14px] md:text-[15px] leading-relaxed font-mono text-muted max-w-[90%] md:max-w-[85%] whitespace-pre-wrap">
-                {msg.content}
-                {msg.toolInvocations?.map((tool: any) => (
-                  <div key={tool.toolCallId} className="mt-4 text-xs font-mono text-accent opacity-70">
-                    {tool.toolName === 'navigateUI' && (
-                      <span className="flex items-center gap-2">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                        Navigating to {(tool.args as any).route}...
-                      </span>
-                    )}
-                  </div>
-                ))}
+              <div className="text-[14px] md:text-[15px] leading-relaxed font-mono text-muted max-w-[90%] md:max-w-[85%] whitespace-pre-wrap flex flex-col gap-2">
+                {msg.parts?.map((part: any, idx: number) => {
+                  if (part.type === 'text') {
+                    return <span key={idx}>{part.text}</span>;
+                  }
+                  if (part.type === 'reasoning') {
+                    return (
+                      <div key={idx} className="text-xs italic opacity-50 border-l-2 border-line pl-2 select-none">
+                        {part.text}
+                      </div>
+                    );
+                  }
+                  if (part.type === 'tool-navigateUI') {
+                    return (
+                      <div key={part.toolCallId} className="mt-2 text-xs font-mono text-accent opacity-70">
+                        <span className="flex items-center gap-2">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                          Navigating to {part.input?.route || part.args?.route || 'route'}...
+                        </span>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
               </div>
             )}
           </div>
