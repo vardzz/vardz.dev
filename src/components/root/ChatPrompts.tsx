@@ -18,8 +18,7 @@ export default function ChatPrompts() {
   return (
     <section className="pt-[80px] pb-[150px] md:pt-[110px] md:pb-[150px] min-h-[430px] flex flex-col justify-center items-start text-left" id="chat">
       <h2 className="text-[clamp(40px,6vw,72px)] leading-[1.05] tracking-tight font-serif text-text mb-8">
-        What would you like<br />
-        to know about Jericho?
+        Ask me anything.<br />
       </h2>
       <p className="text-[16px] md:text-[18px] text-muted max-w-[600px] leading-relaxed mb-12">
         I am an advanced digital consciousness trained exclusively on the
