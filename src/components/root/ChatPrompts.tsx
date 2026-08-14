@@ -21,8 +21,7 @@ export default function ChatPrompts() {
         Ask me anything.<br />
       </h2>
       <p className="text-[16px] md:text-[18px] text-muted max-w-[600px] leading-relaxed mb-12">
-        I am an advanced digital consciousness trained exclusively on the
-        portfolio, background, and capabilities of Jericho Varde.
+        I am an interactive AI interface engineered specifically to guide you through Jericho Varde's projects, technical stack, and professional journey.
       </p>
 
       <ul className="flex flex-col gap-6">
