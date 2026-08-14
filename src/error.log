@@ -1,6 +1,1 @@
-AI_RetryError: Failed after 3 attempts. Last error: AI_APICallError: Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kzwfznvneef96by2v5be84jz` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 195606, Requested 5403. Please try again in 7m15.888s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing
-    at createRetryError (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:2904:58)
-    at retryWithExponentialBackoffInternal (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_@ai-sdk_provider-utils_dist_index_1afcz0a.js:3600:19)
-    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-    at async streamStep (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:9479:80)
-    at async Object.flush (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:9783:37)
+Tool choice is required, but model did not call a tool

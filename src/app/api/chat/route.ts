@@ -10,6 +10,9 @@ const groq = createGroq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
+const kbPath = path.join(process.cwd(), 'src/data/knowledge-base.md');
+const kb = fs.readFileSync(kbPath, 'utf-8');
+
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
@@ -84,9 +87,7 @@ export async function POST(req: Request) {
   const lastUserText = getLastUserText(messages);
   const forcedRoute = detectRoute(lastUserText);
 
-  // Read knowledge base for RAG
-  const kbPath = path.join(process.cwd(), 'src/data/knowledge-base.md');
-  const kb = fs.readFileSync(kbPath, 'utf-8');
+  // Knowledge base is read at the module level for RAG caching
 
   const systemPrompt = [
     "You are the friendly, smart, and highly engaging AI co-pilot/assistant for Jericho Varde's (vardz) portfolio.",
@@ -119,7 +120,7 @@ export async function POST(req: Request) {
   const result = streamText({
   model: groq('openai/gpt-oss-20b'),
   system: systemPrompt,
-  messages: await convertToModelMessages(messages),
+  messages: await convertToModelMessages(messages.slice(-5)),
   stopWhen: isStepCount(3),
   toolChoice: forcedRoute ? { type: 'tool', toolName: 'navigateUI' } : 'auto',
   providerOptions: {
