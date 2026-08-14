@@ -117,6 +117,28 @@ export default function ChatInterface() {
     });
   }, [messages, router]);
 
+  useEffect(() => {
+    const handleSendChatMessage = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      const text = customEvent.detail;
+      
+      const route = detectRoute(text);
+      navigateToRoute(route);
+      
+      if (!isChatActive) setIsChatActive(true);
+      
+      const portfolioCanvas = document.getElementById('portfolio-canvas');
+      if (portfolioCanvas) {
+        portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      sendMessage({ text });
+    };
+
+    window.addEventListener('sendChatMessage', handleSendChatMessage);
+    return () => window.removeEventListener('sendChatMessage', handleSendChatMessage);
+  }, [detectRoute, navigateToRoute, isChatActive, setIsChatActive, sendMessage]);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };

@@ -8,6 +8,7 @@ import Experience from "../components/root/Experience";
 import Certifications from "../components/root/Certifications";
 import Github from "../components/root/Github";
 import Stack from "../components/root/Stack";
+import ChatPrompts from "../components/root/ChatPrompts";
 
 export default function Portfolio() {
   const [hasReachedBottom, setHasReachedBottom] = useState(false);
@@ -58,14 +59,8 @@ export default function Portfolio() {
 
             <Github />
 
-            {/* 06 Chat Zone */}
-            <section className="pt-[80px] pb-[150px] md:pt-[110px] md:pb-[150px] min-h-[430px] grid place-items-center text-center" id="chat">
-              <div>
-                <div className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">your move</div>
-                <div className="text-[clamp(28px,4vw,49px)] tracking-[-.06em] font-serif text-text my-[14px] md:my-[15px]">Ask me where to go.</div>
-                <div className="text-muted text-[13px]">Try “show me the projects” or ask anything else.</div>
-              </div>
-            </section>
+            {/* 06 Chat Prompts */}
+            <ChatPrompts />
 
           </div>
         </div>
