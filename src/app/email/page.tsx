@@ -46,11 +46,6 @@ export default function EmailPage() {
       <main className="min-w-0 pb-[150px]">
         <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-[80px] md:pt-[110px]">
           
-          <Link href="/" className="text-muted hover:text-accent transition-colors font-mono text-[13px] mb-8 md:mb-12 inline-block group">
-            <span className="inline-block transition-transform duration-300 group-hover:-translate-x-[2px] mr-2">←</span> 
-            back to portfolio
-          </Link>
-
           <div className="mb-[40px] md:mb-[60px]">
             <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Send me an email.</h1>
           </div>
