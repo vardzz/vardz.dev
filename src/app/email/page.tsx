@@ -51,9 +51,8 @@ export default function EmailPage() {
             back to portfolio
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-baseline gap-[12px] md:gap-[24px] mb-[40px] md:mb-[60px]">
-            <div className="text-muted font-mono text-[11px] tracking-[.1em] uppercase shrink-0">contact</div>
-            <h2 className="text-[clamp(32px,5vw,48px)] leading-[1.1] tracking-[-.04em] font-serif text-text">Send me an email.</h2>
+          <div className="mb-[40px] md:mb-[60px]">
+            <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Send me an email.</h1>
           </div>
 
           <p className="text-soft text-[15px] leading-[1.8] max-w-[480px] mb-[40px]">
@@ -82,7 +81,7 @@ export default function EmailPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="hello@example.com"
-                className="bg-transparent border-b border-line px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30"
+                className="bg-transparent border-0 border-b border-line rounded-none px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30 focus:ring-0"
               />
             </div>
 
@@ -95,7 +94,7 @@ export default function EmailPage() {
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
                 placeholder="What's this about?"
-                className="bg-transparent border-b border-line px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30"
+                className="bg-transparent border-0 border-b border-line rounded-none px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30 focus:ring-0"
               />
             </div>
 
@@ -108,7 +107,7 @@ export default function EmailPage() {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Your message here..."
-                className="bg-transparent border-b border-line px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30 resize-none"
+                className="bg-transparent border-0 border-b border-line rounded-none px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30 resize-none focus:ring-0"
               />
             </div>
 
