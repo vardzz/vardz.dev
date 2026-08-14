@@ -48,11 +48,10 @@ export default function EmailPage() {
           
           <div className="mb-[40px] md:mb-[60px]">
             <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Email</h1>
+            <p className="text-muted text-[15px] mt-[12px] max-w-[480px]">
+              I'll get back to you as soon as possible.
+            </p>
           </div>
-
-          <p className="text-soft text-[15px] leading-[1.8] max-w-[480px] mb-[40px]">
-            I'll get back to you as soon as possible.
-          </p>
 
           {status === "success" && (
             <div className="bg-green-500/10 border border-green-500/20 text-green-400 p-4 rounded-xl mb-[40px] font-mono text-[14px]">
