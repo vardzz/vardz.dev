@@ -36,7 +36,7 @@ export default function ChatPrompts() {
           <li key={idx}>
             <button 
               onClick={() => handleOptionClick(option)}
-              className="flex items-center gap-6 text-[18px] md:text-[20px] text-muted hover:text-text transition-colors duration-300 group text-left"
+              className="flex items-center gap-6 text-[18px] md:text-[20px] text-muted hover:text-text transition-colors duration-300 group text-left cursor-pointer"
             >
               <span className="w-8 h-[1px] bg-line group-hover:bg-accent transition-colors duration-300"></span>
               {option}
