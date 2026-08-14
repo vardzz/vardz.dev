@@ -47,7 +47,7 @@ export default function EmailPage() {
         <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-[80px] md:pt-[110px]">
           
           <div className="mb-[40px] md:mb-[60px]">
-            <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Send me an email.</h1>
+            <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Email</h1>
           </div>
 
           <p className="text-soft text-[15px] leading-[1.8] max-w-[480px] mb-[40px]">
