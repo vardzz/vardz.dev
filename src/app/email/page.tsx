@@ -76,7 +76,7 @@ export default function EmailPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="hello@example.com"
-                className="bg-transparent border-0 border-b border-line rounded-none px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30 focus:ring-0"
+                className="bg-surface border border-line rounded-xl px-4 py-3 text-[15px] text-text outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50"
               />
             </div>
 
@@ -89,7 +89,7 @@ export default function EmailPage() {
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
                 placeholder="What's this about?"
-                className="bg-transparent border-0 border-b border-line rounded-none px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30 focus:ring-0"
+                className="bg-surface border border-line rounded-xl px-4 py-3 text-[15px] text-text outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50"
               />
             </div>
 
@@ -102,7 +102,7 @@ export default function EmailPage() {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Your message here..."
-                className="bg-transparent border-0 border-b border-line rounded-none px-0 py-3 text-[15px] text-text outline-none focus:border-accent transition-colors placeholder:text-muted/30 resize-none focus:ring-0"
+                className="bg-surface border border-line rounded-xl px-4 py-3 text-[15px] text-text outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50 resize-none"
               />
             </div>
 
