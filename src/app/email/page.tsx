@@ -105,16 +105,13 @@ export default function EmailPage() {
               />
             </div>
 
-            <div className="pt-4">
-              <button 
-                type="submit" 
-                disabled={status === "loading"}
-                className="group flex items-center gap-2 text-text hover:text-accent font-mono text-[13px] uppercase tracking-[.1em] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {status === "loading" ? "Sending..." : "Send Message"}
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
-              </button>
-            </div>
+          <button 
+            type="submit" 
+            disabled={status === "loading"}
+            className="mt-4 bg-text text-bg hover:bg-text/90 font-medium py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[15px] cursor-pointer"
+          >
+            {status === "loading" ? "Sending..." : "Send Message"}
+          </button>
           </form>
 
         </div>
