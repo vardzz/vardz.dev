@@ -1,1 +1,13 @@
-Tool choice is required, but model did not call a tool
+AI_APICallError: `reasoning_effort` is not supported with this model
+    at C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_@ai-sdk_provider-utils_dist_index_1afcz0a.js:3668:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async postToApi (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_@ai-sdk_provider-utils_dist_index_1afcz0a.js:3427:36)
+    at async postJsonToApi (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_@ai-sdk_provider-utils_dist_index_1afcz0a.js:3388:123)
+    at async _GroqChatLanguageModel.doStream (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_0zj0ymm._.js:556:54)
+    at async execute (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:8231:28)
+    at async runWithTracingChannelSpan (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:4312:16)
+    at async executeLanguageModelCall (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:4489:20)
+    at async streamLanguageModelCall (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:8229:64)
+    at async retryWithExponentialBackoffInternal (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_@ai-sdk_provider-utils_dist_index_1afcz0a.js:3585:16)
+    at async streamStep (C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:9479:80)
+    at async C:\Projects-Personal\vardz-portfolio\.next\dev\server\chunks\node_modules_ai_dist_index_16zsbns.js:9813:13
