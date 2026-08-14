@@ -43,8 +43,8 @@ export default function EmailPage() {
 
   return (
     <div className="min-h-screen transition-colors duration-300">
-      <main className="min-w-0 pb-[150px]">
-        <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pt-[80px] md:pt-[110px]">
+      <main className="min-w-0 pb-[100px]">
+        <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
           
           <div className="mb-[40px] md:mb-[60px]">
             <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Email</h1>
