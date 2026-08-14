@@ -3,7 +3,7 @@ import React from 'react';
 import { useChat } from '../layout/ChatProvider';
 
 export default function ChatPrompts() {
-  const { setIsChatActive } = useChat();
+  const { isChatActive, setIsChatActive } = useChat();
 
   const handleOptionClick = (text: string) => {
     window.dispatchEvent(new CustomEvent('sendChatMessage', { detail: text }));
@@ -14,6 +14,8 @@ export default function ChatPrompts() {
       portfolioCanvas.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  if (isChatActive) return null;
 
   return (
     <section className="pt-[80px] pb-[150px] md:pt-[110px] md:pb-[150px] min-h-[430px] flex flex-col justify-center items-start text-left" id="chat">
