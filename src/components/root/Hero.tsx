@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
@@ -58,9 +59,9 @@ export default function Hero() {
             <a href="https://www.linkedin.com/in/vardz/" target="_blank" className="group hover:text-accent transition-colors">
               linkedin <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
             </a>
-            <a href="mailto:vardejericho@gmail.com" className="group hover:text-accent transition-colors">
+            <Link href="/email" className="group hover:text-accent transition-colors">
               email <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
