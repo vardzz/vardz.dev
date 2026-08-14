@@ -6,6 +6,14 @@ import { useEffect, useState } from "react";
 
 export default function Hero() {
   const [commits, setCommits] = useState<string>("...");
+  const [showResumeHint, setShowResumeHint] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowResumeHint(true);
+    }, 10000); // 10 seconds
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     async function fetchCommits() {
@@ -33,16 +41,25 @@ export default function Hero() {
     <section className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 pb-[80px]">
       <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
         {/* Left: Image */}
-        <div className="w-full md:w-1/2 aspect-square relative bg-bg rounded-2xl overflow-hidden">
+        <Link href="https://www.overleaf.com/read/pzbvhvhjqnfx#c6fa02" target="_blank" className="w-full md:w-1/2 aspect-square relative bg-bg rounded-2xl overflow-hidden group block">
             <Image
               src="/assets/vardz-image.png"
               alt="Jericho Varde"
               fill
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover mix-blend-luminosity opacity-90"
+              className="object-cover mix-blend-luminosity opacity-90 transition-all duration-500 group-hover:opacity-100 group-hover:scale-[1.02]"
             />
-        </div>
+            
+            {/* View Resume Hint */}
+            <div 
+              className={`absolute bottom-[24px] right-[24px] bg-surface/90 backdrop-blur-sm border border-line px-[16px] py-[10px] rounded-full text-text font-mono text-[11px] uppercase tracking-[.1em] transition-all duration-1000 ease-out flex items-center gap-[8px]
+              ${showResumeHint ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[10px] pointer-events-none'}`}
+            >
+              View resume 
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
+            </div>
+        </Link>
         
         {/* Right: Content */}
         <div className="w-full md:w-1/2 flex flex-col justify-center mt-2 md:mt-0">
