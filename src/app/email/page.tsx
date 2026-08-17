@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { createPortal } from "react-dom";
-import RichTextEditor, { Attachment } from "../../components/email/RichTextEditor";
+import RichTextEditor from "../../components/email/RichTextEditor";
 
 export default function EmailPage() {
   const [email, setEmail] = useState("");
@@ -11,7 +11,6 @@ export default function EmailPage() {
   const [content, setContent] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export default function EmailPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, subject, content, attachments }),
+        body: JSON.stringify({ email, subject, content }),
       });
 
       const data = await res.json();
@@ -39,7 +38,6 @@ export default function EmailPage() {
         setEmail("");
         setSubject("");
         setContent("");
-        setAttachments([]);
       } else {
         setStatus("error");
         setErrorMessage(data.error || "Failed to send email.");
@@ -123,8 +121,6 @@ export default function EmailPage() {
               <RichTextEditor 
                 content={content} 
                 onChange={setContent} 
-                attachments={attachments}
-                onAttachmentsChange={setAttachments}
               />
             </div>
 
