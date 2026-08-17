@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const { email, subject, content } = await req.json();
+    const { email, subject, content, attachments = [] } = await req.json();
 
     if (!email || !subject || !content) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -24,12 +24,20 @@ export async function POST(req: Request) {
       },
     });
 
+    const mailAttachments = attachments.map((att: any) => ({
+      filename: att.name,
+      content: att.base64,
+      encoding: 'base64',
+      contentType: att.type
+    }));
+
     const mailOptions = {
       from: SMTP_EMAIL, 
       to: "vardejericho@gmail.com",
       replyTo: email, 
       subject: `Portfolio Contact: ${subject}`,
       html: `<p><strong>Message from:</strong> ${email}</p><p><strong>Subject:</strong> ${subject}</p><br/><div>${content}</div>`,
+      attachments: mailAttachments
     };
 
     await transporter.sendMail(mailOptions);
