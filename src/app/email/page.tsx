@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { createPortal } from "react-dom";
+import RichTextEditor, { Attachment } from "../../components/email/RichTextEditor";
 
 export default function EmailPage() {
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ export default function EmailPage() {
   const [content, setContent] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function EmailPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, subject, content }),
+        body: JSON.stringify({ email, subject, content, attachments }),
       });
 
       const data = await res.json();
@@ -37,6 +39,7 @@ export default function EmailPage() {
         setEmail("");
         setSubject("");
         setContent("");
+        setAttachments([]);
       } else {
         setStatus("error");
         setErrorMessage(data.error || "Failed to send email.");
@@ -117,14 +120,11 @@ export default function EmailPage() {
 
             <div className="flex flex-col gap-3">
               <label htmlFor="content" className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">Message</label>
-              <textarea 
-                id="content" 
-                required
-                rows={4}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Your message here..."
-                className="bg-surface border border-line rounded-xl px-4 py-3 text-[15px] text-text outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50 resize-none"
+              <RichTextEditor 
+                content={content} 
+                onChange={setContent} 
+                attachments={attachments}
+                onAttachmentsChange={setAttachments}
               />
             </div>
 
@@ -137,7 +137,7 @@ export default function EmailPage() {
           </button>
           
           <p className="text-center text-muted text-[13px] mt-2">
-            Note: if you want to email me personally, send me an email at <a href="mailto:vardejericho@gmail.com" className="text-text hover:underline transition-all">vardejericho@gmail.com</a>
+            Note: if you want to send me an email directly, send it at <a href="mailto:vardejericho@gmail.com" className="text-text hover:underline transition-all">vardejericho@gmail.com</a>
           </p>
           </form>
 
