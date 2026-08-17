@@ -135,6 +135,10 @@ export default function EmailPage() {
           >
             {status === "loading" ? "Sending..." : "Send Message"}
           </button>
+          
+          <p className="text-center text-muted text-[13px] mt-2">
+            Note: if you want to email me personally, send me an email at <a href="mailto:vardejericho@gmail.com" className="text-text hover:underline transition-all">vardejericho@gmail.com</a>
+          </p>
           </form>
 
         </div>
