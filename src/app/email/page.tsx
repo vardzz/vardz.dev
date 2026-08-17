@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { createPortal } from "react-dom";
 
 export default function EmailPage() {
   const [email, setEmail] = useState("");
@@ -9,6 +10,11 @@ export default function EmailPage() {
   const [content, setContent] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,8 +59,8 @@ export default function EmailPage() {
             </p>
           </div>
 
-          {status === "success" && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-bg/60 animate-page-enter">
+          {isMounted && status === "success" && createPortal(
+            <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 backdrop-blur-md bg-bg/60 animate-page-enter">
               <div className="bg-surface border border-line p-6 md:p-8 rounded-2xl shadow-xl max-w-[400px] w-full text-center flex flex-col items-center">
                 <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4 text-text">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -70,7 +76,8 @@ export default function EmailPage() {
                   Close
                 </button>
               </div>
-            </div>
+            </div>,
+            document.body
           )}
 
           {status === "error" && (
