@@ -54,8 +54,22 @@ export default function EmailPage() {
           </div>
 
           {status === "success" && (
-            <div className="bg-green-500/10 border border-green-500/20 text-green-400 p-4 rounded-xl mb-[40px] font-mono text-[14px]">
-              Message sent successfully!
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-bg/60 animate-page-enter">
+              <div className="bg-surface border border-line p-6 md:p-8 rounded-2xl shadow-xl max-w-[400px] w-full text-center flex flex-col items-center">
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4 text-text">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <h3 className="text-[20px] font-medium text-text mb-2">Message Sent</h3>
+                <p className="text-muted text-[15px] mb-6">
+                  Thank you for reaching out! I'll get back to you as soon as possible.
+                </p>
+                <button 
+                  onClick={() => setStatus("idle")}
+                  className="w-full bg-text text-bg hover:bg-text/90 font-medium py-3 rounded-xl transition-colors text-[14px] cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           )}
 
