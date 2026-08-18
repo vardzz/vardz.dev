@@ -321,7 +321,7 @@ export const ContactEmail = ({
                                   <tbody>
                                     <tr>
                                       {/* SERVICE 1 */}
-                                      <td width="32%" valign="top" className="service-column" style={{ paddingRight: "22px" }}>
+                                      <td width="33%" valign="top" className="service-column" style={{ paddingRight: "22px" }}>
                                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "30px", lineHeight: "34px", color: "#F4EDE4", marginBottom: "22px" }}>
                                           &lt;/&gt;
                                         </div>
@@ -332,10 +332,8 @@ export const ContactEmail = ({
                                           Building fast, scalable, and responsive web applications.
                                         </div>
                                       </td>
-                                      {/* DIVIDER */}
-                                      <td width="1" className="service-divider" style={{ width: "1px", minWidth: "1px", maxWidth: "1px", background: "#625D56", padding: 0 }}></td>
                                       {/* SERVICE 2 */}
-                                      <td width="32%" valign="top" className="service-column" style={{ paddingLeft: "30px", paddingRight: "22px" }}>
+                                      <td width="33%" valign="top" className="service-column" style={{ paddingLeft: "30px", paddingRight: "22px", borderLeft: "1px solid #625D56" }}>
                                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "29px", lineHeight: "34px", color: "#F4EDE4", marginBottom: "22px" }}>
                                           ◇
                                         </div>
@@ -346,10 +344,8 @@ export const ContactEmail = ({
                                           Crafting minimal, modern, and user-centered interfaces.
                                         </div>
                                       </td>
-                                      {/* DIVIDER */}
-                                      <td width="1" className="service-divider" style={{ width: "1px", minWidth: "1px", maxWidth: "1px", background: "#625D56", padding: 0 }}></td>
                                       {/* SERVICE 3 */}
-                                      <td width="32%" valign="top" className="service-column" style={{ paddingLeft: "30px" }}>
+                                      <td width="33%" valign="top" className="service-column" style={{ paddingLeft: "30px", borderLeft: "1px solid #625D56" }}>
                                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "30px", lineHeight: "34px", color: "#F4EDE4", marginBottom: "22px" }}>
                                           ✧
                                         </div>
