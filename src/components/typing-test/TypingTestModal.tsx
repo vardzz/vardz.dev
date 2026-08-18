@@ -22,12 +22,8 @@ export const TypingTestModal: React.FC = () => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-bg)] text-[var(--color-text)]">
-      {/* 
-        We use the page's background color so it acts like a full-screen modal/overlay
-        that completely hides the content beneath it, focusing only on the test. 
-      */}
-      <div className="w-full h-full p-8 flex items-center justify-center relative bg-[var(--color-bg)]/95 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-bg)]/70 backdrop-blur-lg text-[var(--color-text)]">
+      <div className="w-full h-full p-8 flex items-center justify-center relative">
         <TypingTest onClose={() => setIsOpen(false)} />
       </div>
     </div>
