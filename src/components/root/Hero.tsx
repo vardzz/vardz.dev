@@ -67,13 +67,6 @@ export default function Hero() {
           
           <div className="text-soft text-[15px] leading-[1.8] max-w-[480px] space-y-[20px]">
             <p>I'm a full-stack developer and cloud enthusiast. I design and build scalable web applications, modern cloud infrastructure, and intelligent systems. Focused on taking ideas from architectural concept to production-ready software.</p>
-            <div className="flex items-center gap-2 text-xs font-mono text-muted opacity-80 mt-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-text opacity-40"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-text opacity-70"></span>
-              </span>
-              <span>New: Try <span className="px-1.5 py-0.5 rounded bg-surface border border-line">Alt</span> + <span className="px-1.5 py-0.5 rounded bg-surface border border-line">K</span> for typing test</span>
-            </div>
           </div>
           
           <div className="flex gap-[20px] mt-[36px] text-muted font-mono text-[12px]">
@@ -91,22 +84,33 @@ export default function Hero() {
       </div>
 
       {/* Stats Grid */}
-      <div className="mt-[80px] grid grid-cols-2 md:grid-cols-4 border-t border-line">
-        <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-[20px]">
-          <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">{commits}</div>
-          <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Commits</div>
+      <div className="mt-[80px] relative">
+        {/* Floating Typing Test Hint */}
+        <div className="absolute -top-[30px] right-0 flex items-center gap-2 text-[11px] font-mono text-muted opacity-80 pointer-events-none">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-text opacity-40"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-text opacity-70"></span>
+          </span>
+          <span>Try <span className="px-1.5 py-0.5 rounded bg-surface border border-line">Alt</span> + <span className="px-1.5 py-0.5 rounded bg-surface border border-line">K</span> for typing test</span>
         </div>
-        <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-l border-line">
-          <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">2+ yrs</div>
-          <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Experience</div>
-        </div>
-        <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-0 md:pl-[20px] border-t md:border-t-0 border-l-0 md:border-l border-line">
-          <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">5x</div>
-          <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Hackathons</div>
-        </div>
-        <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-t md:border-t-0 border-l border-line">
-          <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">24/7</div>
-          <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Coffee Powered</div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-line">
+          <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-[20px]">
+            <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">{commits}</div>
+            <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Commits</div>
+          </div>
+          <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-l border-line">
+            <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">2+ yrs</div>
+            <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Experience</div>
+          </div>
+          <div className="py-[30px] md:py-[40px] pr-[16px] md:pr-0 md:pl-[20px] border-t md:border-t-0 border-l-0 md:border-l border-line">
+            <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">5x</div>
+            <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Hackathons</div>
+          </div>
+          <div className="py-[30px] md:py-[40px] pl-[16px] md:pl-[20px] border-t md:border-t-0 border-l border-line">
+            <div className="text-[20px] md:text-[24px] font-medium text-text mb-[8px]">24/7</div>
+            <div className="text-muted font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em]">Coffee Powered</div>
+          </div>
         </div>
       </div>
     </section>
