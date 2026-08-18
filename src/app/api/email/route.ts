@@ -59,7 +59,7 @@ export async function POST(req: Request) {
       from: SMTP_EMAIL, 
       to: "vardejericho@gmail.com",
       replyTo: email, 
-      subject: `From vardz.dev email: ${subject}`,
+      subject: `vardz.dev: ${subject}`,
       html: adminHtml,
       attachments: mailAttachments
     });
