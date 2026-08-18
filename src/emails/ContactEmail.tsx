@@ -333,9 +333,7 @@ export const ContactEmail = ({
                                         </div>
                                       </td>
                                       {/* DIVIDER */}
-                                      <td width="1" className="service-divider" style={{ width: "1px", background: "#625D56" }}>
-                                        &nbsp;
-                                      </td>
+                                      <td width="1" className="service-divider" style={{ width: "1px", minWidth: "1px", maxWidth: "1px", background: "#625D56", padding: 0 }}></td>
                                       {/* SERVICE 2 */}
                                       <td width="32%" valign="top" className="service-column" style={{ paddingLeft: "30px", paddingRight: "22px" }}>
                                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "29px", lineHeight: "34px", color: "#F4EDE4", marginBottom: "22px" }}>
@@ -349,9 +347,7 @@ export const ContactEmail = ({
                                         </div>
                                       </td>
                                       {/* DIVIDER */}
-                                      <td width="1" className="service-divider" style={{ width: "1px", background: "#625D56" }}>
-                                        &nbsp;
-                                      </td>
+                                      <td width="1" className="service-divider" style={{ width: "1px", minWidth: "1px", maxWidth: "1px", background: "#625D56", padding: 0 }}></td>
                                       {/* SERVICE 3 */}
                                       <td width="32%" valign="top" className="service-column" style={{ paddingLeft: "30px" }}>
                                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "30px", lineHeight: "34px", color: "#F4EDE4", marginBottom: "22px" }}>
