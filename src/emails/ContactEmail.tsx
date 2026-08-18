@@ -1,18 +1,4 @@
-import {
-  Body,
-  Container,
-  Head,
-  Heading,
-  Hr,
-  Html,
-  Link,
-  Preview,
-  Section,
-  Text,
-  Row,
-  Column,
-  Img,
-} from "@react-email/components";
+import { Html, Head, Preview } from "@react-email/components";
 import * as React from "react";
 
 interface ContactEmailProps {
@@ -29,359 +15,502 @@ export const ContactEmail = ({
   type,
 }: ContactEmailProps) => {
   const isClient = type === "client";
-  
   const previewText = isClient
-    ? `Thank you for reaching out to Jericho Varde`
+    ? `Thank you for reaching out. I'm Jericho Varde.`
     : `New message from ${email}`;
 
+  const styles = `
+    html,
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      background-color: #f4ede4;
+    }
+    body {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    table {
+      border-spacing: 0;
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+    td {
+      padding: 0;
+    }
+    img {
+      border: 0;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+      display: block;
+    }
+    a {
+      text-decoration: none;
+    }
+    @media screen and (max-width: 700px) {
+      .email-wrapper {
+        width: 100% !important;
+      }
+      .outer-padding {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      .card {
+        width: 100% !important;
+      }
+      .card-padding {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+      .hero-title {
+        font-size: 40px !important;
+        line-height: 46px !important;
+      }
+      .intro-text {
+        font-size: 16px !important;
+        line-height: 26px !important;
+      }
+      .service-column {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 0 30px 0 !important;
+      }
+      .service-divider {
+        display: none !important;
+      }
+      .footer-column {
+        display: block !important;
+        width: 100% !important;
+        padding-bottom: 25px !important;
+      }
+    }
+  `;
+
   return (
-    <Html>
-      <Head />
+    <Html lang="en">
+      <Head>
+        <title>Jericho Varde — Design & Development</title>
+        <style dangerouslySetInnerHTML={{ __html: styles }} />
+      </Head>
       <Preview>{previewText}</Preview>
-      <Body style={main}>
-        <Container style={container}>
-          <Section style={header}>
-            <div style={logoContainer}>
-              <Img src="https://vardz.dev/assets/vardz-logo-white.png" width="40" height="40" alt="JV Logo" style={logoImage} />
-            </div>
-            <Heading style={headerTitle}>JERICHO VARDE</Heading>
-            <Text style={headerSubtitle}>DESIGN & DEVELOPMENT</Text>
-          </Section>
+      <body style={{ backgroundColor: "#F4EDE4" }}>
+        <table
+          role="presentation"
+          width="100%"
+          border={0}
+          cellSpacing="0"
+          cellPadding="0"
+          bgcolor="#F4EDE4"
+        >
+          <tbody>
+            <tr>
+              <td
+                align="center"
+                className="outer-padding"
+                style={{
+                  padding: "60px 20px 40px 20px",
+                  backgroundColor: "#F4EDE4",
+                }}
+              >
+                <table
+                  role="presentation"
+                  width="760"
+                  border={0}
+                  cellSpacing="0"
+                  cellPadding="0"
+                  className="email-wrapper"
+                  style={{ width: "760px", maxWidth: "760px" }}
+                >
+                  <tbody>
+                    {/* BRAND HEADER */}
+                    <tr>
+                      <td align="center" style={{ padding: "0 0 48px 0" }}>
+                        <img
+                          src="https://vardz.dev/assets/vardz-logo-white.png"
+                          width="110"
+                          height="110"
+                          alt="JV Logo"
+                          style={{
+                            width: "110px",
+                            height: "110px",
+                            margin: "0 auto",
+                            display: "block",
+                          }}
+                        />
+                        <div
+                          style={{
+                            marginTop: "20px",
+                            fontFamily: "Arial, Helvetica, sans-serif",
+                            fontSize: "14px",
+                            lineHeight: "20px",
+                            letterSpacing: "6px",
+                            textTransform: "uppercase",
+                            color: "#0F0E0D",
+                            fontWeight: 500,
+                          }}
+                        >
+                          JERICHO VARDE
+                        </div>
+                        <div
+                          style={{
+                            marginTop: "8px",
+                            fontFamily: "Arial, Helvetica, sans-serif",
+                            fontSize: "12px",
+                            lineHeight: "18px",
+                            letterSpacing: "4px",
+                            textTransform: "uppercase",
+                            color: "#0F0E0D",
+                            fontWeight: 400,
+                          }}
+                        >
+                          DESIGN & DEVELOPMENT
+                        </div>
+                      </td>
+                    </tr>
 
-          <Section style={card}>
-            <Heading style={greeting}>Hello,</Heading>
-            
-            {isClient ? (
-              <Row>
-                <Column style={introTextColumn}>
-                  <Text style={paragraph}>
-                    Thank you for reaching out. I'm Jericho Varde, a passionate developer and designer who creates clean, purposeful digital experiences that blend creativity with functionality.
-                  </Text>
-                  <Text style={paragraph}>
-                    I appreciate your interest in my work and I'd love to connect. I will review your message and get back to you shortly.
-                  </Text>
-                </Column>
-                <Column style={introLogoColumn}>
-                  <Img src="https://vardz.dev/assets/vardz-logo-white.png" width="160" alt="" style={watermarkImage} />
-                </Column>
-              </Row>
-            ) : (
-              <Row>
-                <Column style={introTextColumn}>
-                  <Text style={paragraph}>
-                    You have received a new message from your portfolio website.
-                  </Text>
-                  <div style={messageContainer}>
-                    <Text style={messageHeader}><strong>From:</strong> {email}</Text>
-                    <Text style={messageHeader}><strong>Subject:</strong> {subject}</Text>
-                    <Text style={messageContent}>{content}</Text>
-                  </div>
-                </Column>
-                <Column style={introLogoColumn}>
-                  <Img src="https://vardz.dev/assets/vardz-logo-white.png" width="160" alt="" style={watermarkImage} />
-                </Column>
-              </Row>
-            )}
+                    {/* MAIN DARK CARD */}
+                    <tr>
+                      <td>
+                        <table
+                          role="presentation"
+                          width="100%"
+                          border={0}
+                          cellSpacing="0"
+                          cellPadding="0"
+                          className="card"
+                          bgcolor="#0F0E0D"
+                          style={{
+                            background: "#0F0E0D",
+                            borderRadius: "24px",
+                            overflow: "hidden",
+                          }}
+                        >
+                          <tbody>
+                            {/* INTRO SECTION */}
+                            <tr>
+                              <td
+                                className="card-padding"
+                                style={{ padding: "58px 60px 52px 60px" }}
+                              >
+                                <table
+                                  role="presentation"
+                                  width="100%"
+                                  border={0}
+                                  cellSpacing="0"
+                                  cellPadding="0"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td width="62%" valign="top" style={{ paddingRight: "25px" }}>
+                                        <div
+                                          className="hero-title"
+                                          style={{
+                                            fontFamily: "Georgia, 'Times New Roman', serif",
+                                            fontSize: "44px",
+                                            lineHeight: "52px",
+                                            fontWeight: 400,
+                                            color: "#F4EDE4",
+                                            margin: "0 0 24px 0",
+                                          }}
+                                        >
+                                          Hello,
+                                        </div>
+                                        {isClient ? (
+                                          <>
+                                            <div
+                                              className="intro-text"
+                                              style={{
+                                                fontFamily: "Arial, Helvetica, sans-serif",
+                                                fontSize: "16px",
+                                                lineHeight: "26px",
+                                                fontWeight: 400,
+                                                color: "#F4EDE4",
+                                                margin: "0 0 25px 0",
+                                              }}
+                                            >
+                                              Thank you for reaching out. I'm Jericho Varde,
+                                              a passionate developer and designer who creates
+                                              clean, purposeful digital experiences that blend
+                                              creativity with functionality.
+                                            </div>
+                                            <div
+                                              className="intro-text"
+                                              style={{
+                                                fontFamily: "Arial, Helvetica, sans-serif",
+                                                fontSize: "16px",
+                                                lineHeight: "26px",
+                                                fontWeight: 400,
+                                                color: "#F4EDE4",
+                                              }}
+                                            >
+                                              I appreciate your interest in my work and I'd
+                                              love to connect.
+                                            </div>
+                                          </>
+                                        ) : (
+                                          <>
+                                            <div
+                                              className="intro-text"
+                                              style={{
+                                                fontFamily: "Arial, Helvetica, sans-serif",
+                                                fontSize: "16px",
+                                                lineHeight: "26px",
+                                                fontWeight: 400,
+                                                color: "#F4EDE4",
+                                                margin: "0 0 25px 0",
+                                              }}
+                                            >
+                                              You have received a new message from your portfolio website.
+                                            </div>
+                                            <div
+                                              style={{
+                                                backgroundColor: "rgba(244, 237, 228, 0.05)",
+                                                padding: "20px",
+                                                borderRadius: "8px",
+                                              }}
+                                            >
+                                              <div style={{ color: "rgba(244, 237, 228, 0.9)", marginBottom: "8px", fontSize: "14px", fontFamily: "Arial, Helvetica, sans-serif" }}>
+                                                <strong>From:</strong> {email}
+                                              </div>
+                                              <div style={{ color: "rgba(244, 237, 228, 0.9)", fontSize: "14px", fontFamily: "Arial, Helvetica, sans-serif" }}>
+                                                <strong>Subject:</strong> {subject}
+                                              </div>
+                                              <div style={{ color: "rgba(244, 237, 228, 0.8)", fontSize: "15px", lineHeight: "1.6", marginTop: "16px", whiteSpace: "pre-wrap", fontFamily: "Arial, Helvetica, sans-serif" }}>
+                                                {content}
+                                              </div>
+                                            </div>
+                                          </>
+                                        )}
+                                      </td>
+                                      <td width="38%" valign="middle" align="center">
+                                        <img
+                                          src="https://vardz.dev/assets/vardz-logo-white.png"
+                                          width="220"
+                                          alt=""
+                                          style={{
+                                            width: "220px",
+                                            maxWidth: "100%",
+                                            opacity: 0.13,
+                                          }}
+                                        />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
 
-            <Hr style={divider} />
+                            {/* DIVIDER */}
+                            <tr>
+                              <td className="card-padding" style={{ padding: "0 60px" }}>
+                                <div style={{ height: "1px", background: "#6B655D", lineHeight: "1px", fontSize: "1px", opacity: 0.7 }}>
+                                  &nbsp;
+                                </div>
+                              </td>
+                            </tr>
 
-            <Section>
-              <Text style={sectionTitle}>WHAT I DO</Text>
-              <Row>
-                <Column style={column}>
-                  <Text style={icon}>{"</>"}</Text>
-                  <Text style={columnTitle}>DEVELOPMENT</Text>
-                  <Text style={columnText}>
-                    Building fast, scalable, and responsive web applications.
-                  </Text>
-                </Column>
-                <Column style={column}>
-                  <Text style={icon}>✎</Text>
-                  <Text style={columnTitle}>DESIGN</Text>
-                  <Text style={columnText}>
-                    Crafting minimal, modern, and user-centered interfaces.
-                  </Text>
-                </Column>
-                <Column style={columnLast}>
-                  <Text style={icon}>✧</Text>
-                  <Text style={columnTitle}>EXPERIENCE</Text>
-                  <Text style={columnText}>
-                    Bringing ideas to life with attention to detail and performance.
-                  </Text>
-                </Column>
-              </Row>
-            </Section>
+                            {/* SERVICES */}
+                            <tr>
+                              <td className="card-padding" style={{ padding: "42px 60px 40px 60px" }}>
+                                <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "18px", letterSpacing: "4px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "30px" }}>
+                                  WHAT I DO
+                                </div>
+                                <table role="presentation" width="100%" border={0} cellSpacing="0" cellPadding="0">
+                                  <tbody>
+                                    <tr>
+                                      {/* SERVICE 1 */}
+                                      <td width="32%" valign="top" className="service-column" style={{ paddingRight: "22px" }}>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "30px", lineHeight: "34px", color: "#F4EDE4", marginBottom: "22px" }}>
+                                          &lt;/&gt;
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "13px", lineHeight: "18px", letterSpacing: "3px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "14px" }}>
+                                          DEVELOPMENT
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "15px", lineHeight: "24px", color: "#D9D2C9" }}>
+                                          Building fast, scalable, and responsive web applications.
+                                        </div>
+                                      </td>
+                                      {/* DIVIDER */}
+                                      <td width="1" className="service-divider" style={{ width: "1px", background: "#625D56" }}>
+                                        &nbsp;
+                                      </td>
+                                      {/* SERVICE 2 */}
+                                      <td width="32%" valign="top" className="service-column" style={{ paddingLeft: "30px", paddingRight: "22px" }}>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "29px", lineHeight: "34px", color: "#F4EDE4", marginBottom: "22px" }}>
+                                          ◇
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "13px", lineHeight: "18px", letterSpacing: "3px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "14px" }}>
+                                          DESIGN
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "15px", lineHeight: "24px", color: "#D9D2C9" }}>
+                                          Crafting minimal, modern, and user-centered interfaces.
+                                        </div>
+                                      </td>
+                                      {/* DIVIDER */}
+                                      <td width="1" className="service-divider" style={{ width: "1px", background: "#625D56" }}>
+                                        &nbsp;
+                                      </td>
+                                      {/* SERVICE 3 */}
+                                      <td width="32%" valign="top" className="service-column" style={{ paddingLeft: "30px" }}>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "30px", lineHeight: "34px", color: "#F4EDE4", marginBottom: "22px" }}>
+                                          ✧
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "13px", lineHeight: "18px", letterSpacing: "3px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "14px" }}>
+                                          EXPERIENCE
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "15px", lineHeight: "24px", color: "#D9D2C9" }}>
+                                          Bringing ideas to life with attention to detail and performance.
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
 
-            <Hr style={divider} />
+                            {/* DIVIDER */}
+                            <tr>
+                              <td className="card-padding" style={{ padding: "0 60px" }}>
+                                <div style={{ height: "1px", background: "#6B655D", lineHeight: "1px", fontSize: "1px", opacity: 0.7 }}>
+                                  &nbsp;
+                                </div>
+                              </td>
+                            </tr>
 
-            <Section>
-              <Text style={sectionTitle}>LET'S WORK TOGETHER</Text>
-              <Text style={paragraph}>
-                I'm always open to new opportunities and exciting projects.
-              </Text>
-              {isClient ? (
-                <Link href="mailto:vardejericho@gmail.com" style={button}>
-                  REPLY TO THIS EMAIL
-                </Link>
-              ) : (
-                <Link href={`mailto:${email}`} style={button}>
-                  REPLY TO CLIENT
-                </Link>
-              )}
-            </Section>
+                            {/* CTA */}
+                            <tr>
+                              <td className="card-padding" style={{ padding: "42px 60px 48px 60px" }}>
+                                <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "18px", letterSpacing: "4px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "24px" }}>
+                                  LET'S WORK TOGETHER
+                                </div>
+                                <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "16px", lineHeight: "26px", color: "#F4EDE4", marginBottom: "28px" }}>
+                                  I'm always open to new opportunities and exciting projects.
+                                </div>
+                                <table role="presentation" border={0} cellSpacing="0" cellPadding="0">
+                                  <tbody>
+                                    <tr>
+                                      <td bgcolor="#F4EDE4" style={{ borderRadius: "2px" }}>
+                                        <a
+                                          href={isClient ? "mailto:vardejericho@gmail.com" : `mailto:${email}`}
+                                          style={{
+                                            display: "inline-block",
+                                            padding: "16px 30px",
+                                            fontFamily: "Arial, Helvetica, sans-serif",
+                                            fontSize: "12px",
+                                            lineHeight: "18px",
+                                            letterSpacing: "2px",
+                                            textTransform: "uppercase",
+                                            color: "#0F0E0D",
+                                            background: "#F4EDE4",
+                                            border: "1px solid #F4EDE4",
+                                            textDecoration: "none",
+                                          }}
+                                        >
+                                          {isClient ? "REPLY TO THIS EMAIL" : "REPLY TO CLIENT"}
+                                        </a>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
 
-            <Hr style={divider} />
+                            {/* DIVIDER */}
+                            <tr>
+                              <td className="card-padding" style={{ padding: "0 60px" }}>
+                                <div style={{ height: "1px", background: "#6B655D", lineHeight: "1px", fontSize: "1px", opacity: 0.7 }}>
+                                  &nbsp;
+                                </div>
+                              </td>
+                            </tr>
 
-            <Section>
-              <Row>
-                <Column>
-                  <Text style={sectionTitle}>CONNECT</Text>
-                  <Row style={socials}>
-                    <Column style={socialIcon}>
-                      <Link href="https://linkedin.com/in/jerichovarde" style={socialLink}>
-                        <Img src="https://img.icons8.com/ios-glyphs/30/F4EDE4/linkedin.png" width="20" height="20" alt="LinkedIn" />
-                      </Link>
-                    </Column>
-                    <Column style={socialIcon}>
-                      <Link href="https://github.com/jerichovarde" style={socialLink}>
-                        <Img src="https://img.icons8.com/ios-glyphs/30/F4EDE4/github.png" width="20" height="20" alt="GitHub" />
-                      </Link>
-                    </Column>
-                    <Column style={socialIcon}>
-                      <Link href="https://vardz.dev" style={socialLink}>
-                        <Img src="https://img.icons8.com/ios-glyphs/30/F4EDE4/domain.png" width="20" height="20" alt="Website" />
-                      </Link>
-                    </Column>
-                    <Column style={socialIcon}>
-                      <Link href="mailto:hello@jerichovarde.dev" style={socialLink}>
-                        <Img src="https://img.icons8.com/ios-glyphs/30/F4EDE4/new-post.png" width="20" height="20" alt="Email" />
-                      </Link>
-                    </Column>
-                  </Row>
-                </Column>
-                <Column style={{ paddingLeft: '20px' }}>
-                  <Text style={sectionTitle}>EMAIL</Text>
-                  <Link href="mailto:hello@jerichovarde.dev" style={footerEmailLink}>hello@jerichovarde.dev</Link>
-                  <Text style={{...sectionTitle, marginTop: '16px'}}>LOCATION</Text>
-                  <Text style={footerText}>Philippines</Text>
-                </Column>
-              </Row>
-            </Section>
-          </Section>
+                            {/* FOOTER INSIDE CARD */}
+                            <tr>
+                              <td className="card-padding" style={{ padding: "38px 60px 54px 60px" }}>
+                                <table role="presentation" width="100%" border={0} cellSpacing="0" cellPadding="0">
+                                  <tbody>
+                                    <tr>
+                                      {/* SOCIAL */}
+                                      <td width="60%" valign="top" className="footer-column">
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "18px", letterSpacing: "4px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "24px" }}>
+                                          CONNECT
+                                        </div>
+                                        <table role="presentation" border={0} cellSpacing="0" cellPadding="0">
+                                          <tbody>
+                                            <tr>
+                                              <td style={{ paddingRight: "25px" }}>
+                                                <a href="https://linkedin.com/in/jerichovarde" target="_blank" rel="noreferrer" style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "21px", color: "#F4EDE4", textDecoration: "none" }}>
+                                                  in
+                                                </a>
+                                              </td>
+                                              <td style={{ paddingRight: "25px" }}>
+                                                <a href="https://github.com/jerichovarde" target="_blank" rel="noreferrer" style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "20px", color: "#F4EDE4", textDecoration: "none" }}>
+                                                  ◉
+                                                </a>
+                                              </td>
+                                              <td style={{ paddingRight: "25px" }}>
+                                                <a href="https://vardz.dev" style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "21px", color: "#F4EDE4", textDecoration: "none" }}>
+                                                  ◯
+                                                </a>
+                                              </td>
+                                              <td>
+                                                <a href="mailto:hello@jerichovarde.dev" style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "21px", color: "#F4EDE4", textDecoration: "none" }}>
+                                                  ✉
+                                                </a>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                      {/* CONTACT INFORMATION */}
+                                      <td width="40%" valign="top" className="footer-column">
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "18px", letterSpacing: "4px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "8px" }}>
+                                          EMAIL
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "15px", lineHeight: "24px", color: "#D9D2C9", marginBottom: "25px" }}>
+                                          hello@jerichovarde.dev
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "18px", letterSpacing: "4px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "8px" }}>
+                                          LOCATION
+                                        </div>
+                                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "15px", lineHeight: "24px", color: "#D9D2C9" }}>
+                                          Philippines
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
 
-          <Section style={footer}>
-            <Text style={footerBottomText}>
-              © 2026 Jericho Varde. All rights reserved.<br />
-              You're receiving this email because you contacted me through my portfolio.
-            </Text>
-          </Section>
-        </Container>
-      </Body>
+                    {/* OUTSIDE FOOTER */}
+                    <tr>
+                      <td align="center" style={{ padding: "38px 20px 10px 20px" }}>
+                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "13px", lineHeight: "20px", color: "#746D64", marginBottom: "6px" }}>
+                          © 2026 Jericho Varde. All rights reserved.
+                        </div>
+                        <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "20px", color: "#746D64" }}>
+                          You're receiving this email because you contacted me through my portfolio.
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </body>
     </Html>
   );
 };
 
 export default ContactEmail;
-
-const main = {
-  backgroundColor: "#F4EDE4",
-  fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
-  padding: "40px 0",
-};
-
-const container = {
-  margin: "0 auto",
-  maxWidth: "600px",
-  width: "100%",
-};
-
-const header = {
-  textAlign: "center" as const,
-  marginBottom: "30px",
-};
-
-const logoContainer = {
-  width: "64px",
-  height: "64px",
-  borderRadius: "50%",
-  backgroundColor: "#0F0E0D",
-  margin: "0 auto 16px",
-  display: "inline-block", // Fix for centering div in email
-};
-
-const logoImage = {
-  display: "block",
-  margin: "12px auto",
-};
-
-const introTextColumn = {
-  width: "65%",
-  verticalAlign: "top",
-  paddingRight: "20px",
-};
-
-const introLogoColumn = {
-  width: "35%",
-  verticalAlign: "top",
-  textAlign: "right" as const,
-};
-
-const watermarkImage = {
-  display: "inline-block",
-  opacity: 0.15,
-  maxWidth: "100%",
-};
-
-const headerTitle = {
-  fontSize: "18px",
-  letterSpacing: "4px",
-  margin: "0",
-  fontWeight: "600",
-  color: "#0F0E0D",
-};
-
-const headerSubtitle = {
-  fontSize: "12px",
-  letterSpacing: "2px",
-  margin: "8px 0 0",
-  color: "#666",
-};
-
-const card = {
-  backgroundColor: "#0F0E0D",
-  borderRadius: "16px",
-  padding: "40px",
-  color: "#F4EDE4",
-};
-
-const greeting = {
-  fontSize: "32px",
-  fontWeight: "400",
-  fontFamily: "Georgia, serif",
-  margin: "0 0 24px",
-  color: "#F4EDE4",
-};
-
-const paragraph = {
-  fontSize: "15px",
-  lineHeight: "1.6",
-  color: "rgba(244, 237, 228, 0.8)",
-  margin: "0 0 20px",
-};
-
-const messageContainer = {
-  backgroundColor: "rgba(244, 237, 228, 0.05)",
-  padding: "20px",
-  borderRadius: "8px",
-  marginBottom: "20px",
-};
-
-const messageHeader = {
-  fontSize: "14px",
-  margin: "0 0 8px",
-  color: "rgba(244, 237, 228, 0.9)",
-};
-
-const messageContent = {
-  fontSize: "15px",
-  lineHeight: "1.6",
-  color: "rgba(244, 237, 228, 0.8)",
-  marginTop: "16px",
-  whiteSpace: "pre-wrap",
-};
-
-const divider = {
-  borderColor: "rgba(244, 237, 228, 0.15)",
-  margin: "32px 0",
-};
-
-const sectionTitle = {
-  fontSize: "11px",
-  letterSpacing: "2px",
-  color: "rgba(244, 237, 228, 0.5)",
-  margin: "0 0 16px",
-  fontWeight: "600",
-};
-
-const column = {
-  width: "33.33%",
-  paddingRight: "16px",
-  verticalAlign: "top",
-};
-
-const columnLast = {
-  width: "33.33%",
-  verticalAlign: "top",
-};
-
-const icon = {
-  fontSize: "20px",
-  margin: "0 0 12px",
-  color: "#F4EDE4",
-};
-
-const columnTitle = {
-  fontSize: "12px",
-  letterSpacing: "1px",
-  margin: "0 0 8px",
-  color: "#F4EDE4",
-  fontWeight: "600",
-};
-
-const columnText = {
-  fontSize: "13px",
-  lineHeight: "1.5",
-  color: "rgba(244, 237, 228, 0.6)",
-  margin: "0",
-};
-
-const button = {
-  backgroundColor: "#F4EDE4",
-  color: "#0F0E0D",
-  padding: "12px 24px",
-  fontSize: "12px",
-  fontWeight: "600",
-  letterSpacing: "1px",
-  textDecoration: "none",
-  display: "inline-block",
-  marginTop: "16px",
-};
-
-const socials = {
-  width: "100%",
-};
-
-const socialIcon = {
-  width: "32px",
-  paddingRight: "16px",
-};
-
-const socialLink = {
-  display: "inline-block",
-};
-
-const footerEmailLink = {
-  fontSize: "13px",
-  color: "rgba(244, 237, 228, 0.8)",
-  textDecoration: "none",
-  margin: "0",
-};
-
-const footerText = {
-  fontSize: "13px",
-  color: "rgba(244, 237, 228, 0.8)",
-  margin: "0",
-};
-
-const footer = {
-  textAlign: "center" as const,
-  marginTop: "32px",
-};
-
-const footerBottomText = {
-  fontSize: "11px",
-  color: "rgba(15, 14, 13, 0.5)",
-  lineHeight: "1.6",
-  margin: "0",
-};
