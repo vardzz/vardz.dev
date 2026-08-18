@@ -35,7 +35,7 @@ export async function POST(req: Request) {
       from: SMTP_EMAIL, 
       to: "vardejericho@gmail.com",
       replyTo: email, 
-      subject: `Portfolio Contact: ${subject}`,
+      subject: `From vardz.dev email: ${subject}`,
       html: `<p><strong>Message from:</strong> ${email}</p><p><strong>Subject:</strong> ${subject}</p><br/><div>${content}</div>`,
       attachments: mailAttachments
     };
