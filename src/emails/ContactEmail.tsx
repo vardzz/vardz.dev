@@ -104,7 +104,6 @@ export const ContactEmail = ({
           border={0}
           cellSpacing="0"
           cellPadding="0"
-          bgcolor="#F4EDE4"
         >
           <tbody>
             <tr>
@@ -182,7 +181,6 @@ export const ContactEmail = ({
                           cellSpacing="0"
                           cellPadding="0"
                           className="card"
-                          bgcolor="#0F0E0D"
                           style={{
                             background: "#0F0E0D",
                             borderRadius: "24px",
@@ -393,7 +391,7 @@ export const ContactEmail = ({
                                 <table role="presentation" border={0} cellSpacing="0" cellPadding="0">
                                   <tbody>
                                     <tr>
-                                      <td bgcolor="#F4EDE4" style={{ borderRadius: "2px" }}>
+                                      <td style={{ backgroundColor: "#F4EDE4", borderRadius: "2px" }}>
                                         <a
                                           href={isClient ? "mailto:vardejericho@gmail.com" : `mailto:${email}`}
                                           style={{
