@@ -103,7 +103,7 @@ export default function ProjectsPage() {
             {/* Other Projects (Simple Cards) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] mt-[40px]">
               {/* Dentara */}
-              <a href="#" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
+              <a href="https://dentara.vercel.app/" target="_blank" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
                 <div className="flex justify-between items-start mb-[16px]">
                   <div className="text-accent font-mono text-[10px]">WEB APP / DENTAL</div>
                   <span className="text-muted group-hover:text-accent transition-colors font-mono text-[12px]">↗</span>
@@ -113,7 +113,7 @@ export default function ProjectsPage() {
               </a>
 
               {/* Ghostnet AI */}
-              <a href="#" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
+              <a href="https://ghostnet-ai.vercel.app/" target="_blank" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
                 <div className="flex justify-between items-start mb-[16px]">
                   <div className="text-accent font-mono text-[10px]">AI / SYSTEM</div>
                   <span className="text-muted group-hover:text-accent transition-colors font-mono text-[12px]">↗</span>
