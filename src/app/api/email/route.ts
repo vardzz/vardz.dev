@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { render } from "@react-email/render";
+import { ContactEmail } from "../../../../emails/ContactEmail";
+import * as React from "react";
 
 export async function POST(req: Request) {
   try {
@@ -31,16 +34,43 @@ export async function POST(req: Request) {
       contentType: att.type
     }));
 
-    const mailOptions = {
+    // 1. Generate HTML for Admin Notification
+    const adminHtml = await render(
+      React.createElement(ContactEmail, {
+        email,
+        subject,
+        content,
+        type: "admin"
+      })
+    );
+
+    // 2. Generate HTML for Client Auto-Reply
+    const clientHtml = await render(
+      React.createElement(ContactEmail, {
+        email,
+        subject,
+        content,
+        type: "client"
+      })
+    );
+
+    // Send email to Admin
+    await transporter.sendMail({
       from: SMTP_EMAIL, 
       to: "vardejericho@gmail.com",
       replyTo: email, 
       subject: `From vardz.dev email: ${subject}`,
-      html: `<p><strong>Message from:</strong> ${email}</p><p><strong>Subject:</strong> ${subject}</p><br/><div>${content}</div>`,
+      html: adminHtml,
       attachments: mailAttachments
-    };
+    });
 
-    await transporter.sendMail(mailOptions);
+    // Send auto-reply to Client
+    await transporter.sendMail({
+      from: SMTP_EMAIL, 
+      to: email,
+      subject: `Thank you for reaching out - Jericho Varde`,
+      html: clientHtml,
+    });
 
     return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
   } catch (error) {

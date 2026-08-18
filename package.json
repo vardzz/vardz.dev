@@ -11,6 +11,8 @@
   "dependencies": {
     "@ai-sdk/groq": "^4.0.28",
     "@ai-sdk/react": "^4.0.67",
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.1.0",
     "@tiptap/extension-link": "^3.30.1",
     "@tiptap/extension-placeholder": "^3.30.1",
     "@tiptap/extension-underline": "^3.30.1",
