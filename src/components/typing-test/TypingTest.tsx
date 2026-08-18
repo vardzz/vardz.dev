@@ -115,6 +115,11 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
         return;
       }
 
+      // Prevent Space bar from triggering other page elements (like theme toggler or scroll) globally while in the typing test view
+      if (e.key === ' ') {
+        e.preventDefault();
+      }
+
       if (status === 'finished') return;
 
       if (e.key === 'Backspace') {
@@ -123,8 +128,6 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
       }
 
       if (e.key === ' ') {
-        e.preventDefault(); // Prevent Space bar from triggering other page elements (like theme toggler)
-
         if (status === 'idle') {
           setStatus('typing');
           setStartTime(Date.now());
