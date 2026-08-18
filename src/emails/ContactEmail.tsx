@@ -230,7 +230,7 @@ export const ContactEmail = ({
                                                 margin: "0 0 25px 0",
                                               }}
                                             >
-                                              Thank you for reaching out. I'm Jericho Varde,
+                                              Thank you for reaching out. I&apos;m Jericho Varde,
                                               a passionate developer and designer who creates
                                               clean, purposeful digital experiences that blend
                                               creativity with functionality.
@@ -245,7 +245,7 @@ export const ContactEmail = ({
                                                 color: "#F4EDE4",
                                               }}
                                             >
-                                              I appreciate your interest in my work and I'd
+                                              I appreciate your interest in my work and I&apos;d
                                               love to connect.
                                             </div>
                                           </>
@@ -383,10 +383,10 @@ export const ContactEmail = ({
                             <tr>
                               <td className="card-padding" style={{ padding: "42px 60px 48px 60px" }}>
                                 <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "18px", letterSpacing: "4px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "24px" }}>
-                                  LET'S WORK TOGETHER
+                                  LET&apos;S WORK TOGETHER
                                 </div>
                                 <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "16px", lineHeight: "26px", color: "#F4EDE4", marginBottom: "28px" }}>
-                                  I'm always open to new opportunities and exciting projects.
+                                  I&apos;m always open to new opportunities and exciting projects.
                                 </div>
                                 <table role="presentation" border={0} cellSpacing="0" cellPadding="0">
                                   <tbody>
@@ -496,7 +496,7 @@ export const ContactEmail = ({
                           © 2026 Jericho Varde. All rights reserved.
                         </div>
                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "20px", color: "#746D64" }}>
-                          You're receiving this email because you contacted me through my portfolio.
+                          You&apos;re receiving this email because you contacted me through my portfolio.
                         </div>
                       </td>
                     </tr>
