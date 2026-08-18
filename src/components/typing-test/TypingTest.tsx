@@ -173,7 +173,7 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
     return (
       <div 
         ref={containerRef}
-        className="flex flex-col items-center justify-center min-h-[60vh] w-full animate-page-enter"
+        className="flex flex-col items-center justify-center min-h-[60vh] w-full animate-page-enter outline-none"
         tabIndex={0}
       >
         <div className="flex justify-center gap-4 mb-16 text-xs font-mono text-[var(--color-muted)]">
@@ -223,7 +223,7 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
   return (
     <div 
       ref={containerRef}
-      className="flex flex-col items-center justify-center min-h-[60vh] w-full animate-page-enter"
+      className="flex flex-col items-center justify-center min-h-[60vh] w-full animate-page-enter outline-none"
       tabIndex={0} // Allows capturing focus if needed, though we listen globally here
     >
       <StatsBar 
