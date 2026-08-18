@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import { ChatProvider } from "../components/layout/ChatProvider";
 import ClientLayoutWrapper from "../components/layout/ClientLayoutWrapper";
+import { TypingTestModal } from "../components/typing-test/TypingTestModal";
 
 export const metadata: Metadata = {
   title: "Vardz — Cloud & Software Engineer",
@@ -24,6 +25,7 @@ export default function RootLayout({
               <div className="pt-6 w-full">
                 {children}
               </div>
+              <TypingTestModal />
             </div>
           </ClientLayoutWrapper>
         </ChatProvider>
