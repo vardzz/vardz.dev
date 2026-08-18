@@ -65,13 +65,15 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
       const targetWord = words[i];
       if (!targetWord) break;
 
-      // We only count characters typed
-      for (let j = 0; j < typedWord.length; j++) {
+      const maxLen = Math.max(typedWord.length, targetWord.length);
+
+      for (let j = 0; j < maxLen; j++) {
         totalTypedChars++;
         if (typedWord[j] === targetWord[j]) {
           correctChars++;
         }
       }
+      
       if (i < typedWords.length - 1) {
         // Count space as character typed
         totalTypedChars++;
