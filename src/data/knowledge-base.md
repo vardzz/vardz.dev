@@ -53,13 +53,17 @@ Jericho is an active hackathon competitor with a track record across 5+ regional
 
 ---
 
-## 3. Education & Academic Background
+## 3. Education & Certifications
 
+### Academic Background
 Jericho Varde is currently a **3rd-year BSCS (Bachelor of Science in Computer Science) student at Pamantasan ng Cabuyao (University of Cabuyao)**, enrolled from 2023 with an expected graduation date of **2027**.
 
 - **Cumulative GWA:** 1.479
 - **Honors:** Dean's Lister, 1st Semester, Academic Year 2023–2024
 - **Academic focus:** software architecture, data structures and algorithms, multi-agent systems, and scalable web engineering.
+
+### Professional Certifications
+- **Data Analyst Associate** — DataCamp (August 13, 2026)
 
 ---
 
@@ -212,6 +216,9 @@ A: Jericho is currently interning as a Frontend AI Engineer at Flyrank AI, volun
 
 **Q: What is Jericho's academic background?**
 A: Jericho is a BSCS student at Pamantasan ng Cabuyao (University of Cabuyao), enrolled since 2023 with an expected graduation of 2027. He holds a cumulative GWA of 1.479 and was a Dean's Lister in his first semester.
+
+**Q: Does Jericho hold any professional certifications?**
+A: Yes, Jericho earned the **Data Analyst Associate** certification from DataCamp on August 13, 2026.
 
 **Q: What are Jericho's achievements in hackathons or competitions?**
 A: Jericho's biggest achievement to date is placing in the National Top 8 out of nearly 100 teams at the SIKAPTala 2026 national competition with his project Lunas. While he did not secure an award during the LABLAB.AI Global Hackathon or other past events, he continues to actively compete and hopes to secure a championship in the future.
