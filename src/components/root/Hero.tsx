@@ -17,10 +17,10 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTypingTestHint(true);
+    const interval = setInterval(() => {
+      setShowTypingTestHint((prev) => !prev);
     }, 60000); // 60 seconds
-    return () => clearTimeout(timer);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
