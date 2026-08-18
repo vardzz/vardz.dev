@@ -8,7 +8,7 @@ interface StatsBarProps {
 
 export const StatsBar: React.FC<StatsBarProps> = ({ wpm, accuracy, timeElapsed }) => {
   return (
-    <div className="flex justify-center gap-12 mb-8 font-mono text-[var(--color-text)]">
+    <div className="flex justify-center gap-12 mb-4 font-mono text-[var(--color-text)]">
       <div className="flex flex-col items-center">
         <span className="text-4xl font-bold">{wpm}</span>
         <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">WPM</span>

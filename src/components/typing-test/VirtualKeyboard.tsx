@@ -41,7 +41,7 @@ export const VirtualKeyboard: React.FC<VirtualKeyboardProps> = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-2 mt-12">
+    <div className="flex flex-col items-center gap-2 mt-6">
       {ROWS.map((row, i) => (
         <div key={i} className="flex justify-center gap-2">
           {row.map((key) => {

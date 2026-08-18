@@ -232,7 +232,7 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
         timeElapsed={timeElapsed} 
       />
       
-      <div className="my-12 px-8 w-full max-w-5xl overflow-hidden">
+      <div className="my-6 px-8 w-full max-w-4xl overflow-hidden">
         <WordDisplay words={words} typedText={typedText} />
       </div>
 
