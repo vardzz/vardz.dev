@@ -213,8 +213,8 @@ A: Jericho is currently interning as a Frontend AI Engineer at Flyrank AI, volun
 **Q: What is Jericho's academic background?**
 A: Jericho is a BSCS student at Pamantasan ng Cabuyao (University of Cabuyao), enrolled since 2023 with an expected graduation of 2027. He holds a cumulative GWA of 1.479 and was a Dean's Lister in his first semester.
 
-**Q: Has Jericho won any hackathons or competitions?**
-A: Yes. His project Lunas placed in the National Top 8 out of nearly 100 teams at the SIKAPTala 2026 national competition. He also led teams at the LABLAB.AI Global Hackathon (2,500+ global participants) and SparkFest 2026, and participated in the ACM TechSprint Hackathon and NextGen Startup Challenge.
+**Q: What are Jericho's achievements in hackathons or competitions?**
+A: Jericho's biggest achievement to date is placing in the National Top 8 out of nearly 100 teams at the SIKAPTala 2026 national competition with his project Lunas. While he did not secure an award during the LABLAB.AI Global Hackathon or other past events, he continues to actively compete and hopes to secure a championship in the future.
 
 **Q: What programming languages does Jericho know?**
 A: TypeScript, JavaScript, Python, Java, Dart, HTML5, and CSS3.
