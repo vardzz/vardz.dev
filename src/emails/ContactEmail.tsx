@@ -441,23 +441,23 @@ export const ContactEmail = ({
                                           <tbody>
                                             <tr>
                                               <td style={{ paddingRight: "25px" }}>
-                                                <a href="https://linkedin.com/in/jerichovarde" target="_blank" rel="noreferrer" style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "21px", color: "#F4EDE4", textDecoration: "none" }}>
-                                                  in
+                                                <a href="https://linkedin.com/in/jerichovarde" target="_blank" rel="noreferrer" style={{ display: "inline-block" }}>
+                                                  <img src="https://img.icons8.com/ios/50/F4EDE4/linkedin.png" width="22" height="22" alt="LinkedIn" style={{ display: "block", border: "none" }} />
                                                 </a>
                                               </td>
                                               <td style={{ paddingRight: "25px" }}>
-                                                <a href="https://github.com/jerichovarde" target="_blank" rel="noreferrer" style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "20px", color: "#F4EDE4", textDecoration: "none" }}>
-                                                  ◉
+                                                <a href="https://github.com/jerichovarde" target="_blank" rel="noreferrer" style={{ display: "inline-block" }}>
+                                                  <img src="https://img.icons8.com/ios/50/F4EDE4/github.png" width="22" height="22" alt="GitHub" style={{ display: "block", border: "none" }} />
                                                 </a>
                                               </td>
                                               <td style={{ paddingRight: "25px" }}>
-                                                <a href="https://vardz.dev" style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "21px", color: "#F4EDE4", textDecoration: "none" }}>
-                                                  ◯
+                                                <a href="https://vardz.dev" style={{ display: "inline-block" }}>
+                                                  <img src="https://img.icons8.com/ios/50/F4EDE4/dribbble.png" width="22" height="22" alt="Dribbble" style={{ display: "block", border: "none" }} />
                                                 </a>
                                               </td>
                                               <td>
-                                                <a href="mailto:hello@jerichovarde.dev" style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "21px", color: "#F4EDE4", textDecoration: "none" }}>
-                                                  ✉
+                                                <a href="mailto:hello@jerichovarde.dev" style={{ display: "inline-block" }}>
+                                                  <img src="https://img.icons8.com/ios/50/F4EDE4/new-post.png" width="22" height="22" alt="Email" style={{ display: "block", border: "none" }} />
                                                 </a>
                                               </td>
                                             </tr>
@@ -470,7 +470,9 @@ export const ContactEmail = ({
                                           EMAIL
                                         </div>
                                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "15px", lineHeight: "24px", color: "#D9D2C9", marginBottom: "25px" }}>
-                                          hello@jerichovarde.dev
+                                          <a href="mailto:hello@jerichovarde.dev" style={{ color: "#D9D2C9", textDecoration: "none" }}>
+                                            hello@jerichovarde.dev
+                                          </a>
                                         </div>
                                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "18px", letterSpacing: "4px", textTransform: "uppercase", color: "#F4EDE4", marginBottom: "8px" }}>
                                           LOCATION
