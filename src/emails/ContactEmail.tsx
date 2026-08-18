@@ -137,14 +137,31 @@ export const ContactEmail = ({
                 <Column>
                   <Text style={sectionTitle}>CONNECT</Text>
                   <Row style={socials}>
-                    <Column style={socialIcon}><Link href="https://linkedin.com/in/jerichovarde" style={socialLink}>in</Link></Column>
-                    <Column style={socialIcon}><Link href="https://github.com/jerichovarde" style={socialLink}>gh</Link></Column>
-                    <Column style={socialIcon}><Link href="https://vardz.dev" style={socialLink}>web</Link></Column>
+                    <Column style={socialIcon}>
+                      <Link href="https://linkedin.com/in/jerichovarde" style={socialLink}>
+                        <Img src="https://img.icons8.com/ios-glyphs/30/F4EDE4/linkedin.png" width="20" height="20" alt="LinkedIn" />
+                      </Link>
+                    </Column>
+                    <Column style={socialIcon}>
+                      <Link href="https://github.com/jerichovarde" style={socialLink}>
+                        <Img src="https://img.icons8.com/ios-glyphs/30/F4EDE4/github.png" width="20" height="20" alt="GitHub" />
+                      </Link>
+                    </Column>
+                    <Column style={socialIcon}>
+                      <Link href="https://vardz.dev" style={socialLink}>
+                        <Img src="https://img.icons8.com/ios-glyphs/30/F4EDE4/domain.png" width="20" height="20" alt="Website" />
+                      </Link>
+                    </Column>
+                    <Column style={socialIcon}>
+                      <Link href="mailto:hello@jerichovarde.dev" style={socialLink}>
+                        <Img src="https://img.icons8.com/ios-glyphs/30/F4EDE4/new-post.png" width="20" height="20" alt="Email" />
+                      </Link>
+                    </Column>
                   </Row>
                 </Column>
                 <Column style={{ paddingLeft: '20px' }}>
                   <Text style={sectionTitle}>EMAIL</Text>
-                  <Text style={footerText}>vardejericho@gmail.com</Text>
+                  <Link href="mailto:hello@jerichovarde.dev" style={footerEmailLink}>hello@jerichovarde.dev</Link>
                   <Text style={{...sectionTitle, marginTop: '16px'}}>LOCATION</Text>
                   <Text style={footerText}>Philippines</Text>
                 </Column>
@@ -336,17 +353,19 @@ const socials = {
 };
 
 const socialIcon = {
-  width: "30px",
-  paddingRight: "12px",
+  width: "32px",
+  paddingRight: "16px",
 };
 
 const socialLink = {
-  color: "#F4EDE4",
-  textDecoration: "none",
-  border: "1px solid rgba(244, 237, 228, 0.3)",
-  padding: "6px 8px",
-  fontSize: "12px",
   display: "inline-block",
+};
+
+const footerEmailLink = {
+  fontSize: "13px",
+  color: "rgba(244, 237, 228, 0.8)",
+  textDecoration: "none",
+  margin: "0",
 };
 
 const footerText = {
