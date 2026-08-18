@@ -11,6 +11,7 @@ import {
   Text,
   Row,
   Column,
+  Img,
 } from "@react-email/components";
 import * as React from "react";
 
@@ -41,7 +42,7 @@ export const ContactEmail = ({
         <Container style={container}>
           <Section style={header}>
             <div style={logoContainer}>
-              <Text style={logoText}>JV</Text>
+              <Img src="https://vardz.dev/assets/vardz-logo-white.png" width="40" height="40" alt="JV Logo" style={logoImage} />
             </div>
             <Heading style={headerTitle}>JERICHO VARDE</Heading>
             <Text style={headerSubtitle}>DESIGN & DEVELOPMENT</Text>
@@ -51,25 +52,35 @@ export const ContactEmail = ({
             <Heading style={greeting}>Hello,</Heading>
             
             {isClient ? (
-              <>
-                <Text style={paragraph}>
-                  Thank you for reaching out. I'm Jericho Varde, a passionate developer and designer who creates clean, purposeful digital experiences that blend creativity with functionality.
-                </Text>
-                <Text style={paragraph}>
-                  I appreciate your interest in my work and I'd love to connect. I will review your message and get back to you shortly.
-                </Text>
-              </>
+              <Row>
+                <Column style={introTextColumn}>
+                  <Text style={paragraph}>
+                    Thank you for reaching out. I'm Jericho Varde, a passionate developer and designer who creates clean, purposeful digital experiences that blend creativity with functionality.
+                  </Text>
+                  <Text style={paragraph}>
+                    I appreciate your interest in my work and I'd love to connect. I will review your message and get back to you shortly.
+                  </Text>
+                </Column>
+                <Column style={introLogoColumn}>
+                  <Img src="https://vardz.dev/assets/vardz-logo-white.png" width="160" alt="" style={watermarkImage} />
+                </Column>
+              </Row>
             ) : (
-              <>
-                <Text style={paragraph}>
-                  You have received a new message from your portfolio website.
-                </Text>
-                <div style={messageContainer}>
-                  <Text style={messageHeader}><strong>From:</strong> {email}</Text>
-                  <Text style={messageHeader}><strong>Subject:</strong> {subject}</Text>
-                  <Text style={messageContent}>{content}</Text>
-                </div>
-              </>
+              <Row>
+                <Column style={introTextColumn}>
+                  <Text style={paragraph}>
+                    You have received a new message from your portfolio website.
+                  </Text>
+                  <div style={messageContainer}>
+                    <Text style={messageHeader}><strong>From:</strong> {email}</Text>
+                    <Text style={messageHeader}><strong>Subject:</strong> {subject}</Text>
+                    <Text style={messageContent}>{content}</Text>
+                  </div>
+                </Column>
+                <Column style={introLogoColumn}>
+                  <Img src="https://vardz.dev/assets/vardz-logo-white.png" width="160" alt="" style={watermarkImage} />
+                </Column>
+              </Row>
             )}
 
             <Hr style={divider} />
@@ -182,13 +193,27 @@ const logoContainer = {
   display: "inline-block", // Fix for centering div in email
 };
 
-const logoText = {
-  color: "#F4EDE4",
-  fontSize: "24px",
-  fontWeight: "bold",
-  margin: "0",
-  lineHeight: "64px",
-  textAlign: "center" as const,
+const logoImage = {
+  display: "block",
+  margin: "12px auto",
+};
+
+const introTextColumn = {
+  width: "65%",
+  verticalAlign: "top",
+  paddingRight: "20px",
+};
+
+const introLogoColumn = {
+  width: "35%",
+  verticalAlign: "top",
+  textAlign: "right" as const,
+};
+
+const watermarkImage = {
+  display: "inline-block",
+  opacity: 0.15,
+  maxWidth: "100%",
 };
 
 const headerTitle = {
