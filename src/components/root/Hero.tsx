@@ -86,7 +86,7 @@ export default function Hero() {
       {/* Stats Grid */}
       <div className="mt-[80px] relative">
         {/* Floating Typing Test Hint */}
-        <div className="absolute -top-[30px] right-0 flex items-center gap-2 text-[11px] font-mono text-muted opacity-80 pointer-events-none">
+        <div className="absolute -top-[30px] left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 text-[11px] font-mono text-muted opacity-80 pointer-events-none whitespace-nowrap">
           <span className="relative flex h-1.5 w-1.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-text opacity-40"></span>
             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-text opacity-70"></span>
