@@ -17,10 +17,22 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setShowTypingTestHint((prev) => !prev);
-    }, 60000); // 60 seconds
-    return () => clearInterval(interval);
+    let timeout: NodeJS.Timeout;
+    
+    const runCycle = () => {
+      timeout = setTimeout(() => {
+        setShowTypingTestHint(true);
+        
+        timeout = setTimeout(() => {
+          setShowTypingTestHint(false);
+          runCycle();
+        }, 10000); // Show for 10 seconds
+      }, 60000); // Hide for 60 seconds
+    };
+
+    runCycle();
+    
+    return () => clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
