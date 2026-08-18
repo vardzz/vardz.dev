@@ -494,7 +494,7 @@ export const ContactEmail = ({
                           © 2026 Jericho Varde. All rights reserved.
                         </div>
                         <div style={{ fontFamily: "Arial, Helvetica, sans-serif", fontSize: "12px", lineHeight: "20px", color: "#746D64" }}>
-                          You&apos;re receiving this email because you contacted me through my portfolio.
+                          You&apos;re receiving this email because you contacted me through my website.
                         </div>
                       </td>
                     </tr>
