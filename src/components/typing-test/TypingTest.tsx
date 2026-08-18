@@ -205,8 +205,8 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 text-sm font-mono text-[var(--color-muted)] mb-8">
-          <span className="text-red-500">×</span> you didn't beat vardz · 140 wpm
+        <div className="flex items-center justify-center text-sm font-mono text-[var(--color-muted)] mb-8">
+          you didn't beat vardz · 140 wpm
         </div>
 
         <button 
