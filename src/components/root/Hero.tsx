@@ -67,6 +67,13 @@ export default function Hero() {
           
           <div className="text-soft text-[15px] leading-[1.8] max-w-[480px] space-y-[20px]">
             <p>I'm a full-stack developer and cloud enthusiast. I design and build scalable web applications, modern cloud infrastructure, and intelligent systems. Focused on taking ideas from architectural concept to production-ready software.</p>
+            <div className="flex items-center gap-2 text-xs font-mono text-muted opacity-80 mt-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-text opacity-40"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-text opacity-70"></span>
+              </span>
+              <span>New: Try <span className="px-1.5 py-0.5 rounded bg-surface border border-line">Alt</span> + <span className="px-1.5 py-0.5 rounded bg-surface border border-line">K</span> for typing test</span>
+            </div>
           </div>
           
           <div className="flex gap-[20px] mt-[36px] text-muted font-mono text-[12px]">
