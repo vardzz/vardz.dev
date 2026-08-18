@@ -106,7 +106,7 @@ export default function Hero() {
       {/* Stats Grid */}
       <div className="mt-[80px] relative">
         {/* Floating Typing Test Hint */}
-        <div className={`absolute -top-[30px] left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 text-[11px] font-mono text-muted pointer-events-none whitespace-nowrap transition-all duration-1000 ${showTypingTestHint ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+        <div className={`absolute -top-[30px] left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center gap-2 text-[11px] font-mono text-muted pointer-events-none whitespace-nowrap transition-all duration-1000 ${showTypingTestHint ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-2'}`}>
           <span className="relative flex h-1.5 w-1.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-text opacity-40"></span>
             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-text opacity-70"></span>
