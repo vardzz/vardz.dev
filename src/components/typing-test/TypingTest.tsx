@@ -123,6 +123,8 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
       }
 
       if (e.key === ' ') {
+        e.preventDefault(); // Prevent Space bar from triggering other page elements (like theme toggler)
+
         if (status === 'idle') {
           setStatus('typing');
           setStartTime(Date.now());
