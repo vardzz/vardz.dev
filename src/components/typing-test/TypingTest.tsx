@@ -122,21 +122,43 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onClose }) => {
         return;
       }
 
+      if (e.key === ' ') {
+        if (status === 'idle') {
+          setStatus('typing');
+          setStartTime(Date.now());
+        }
+        
+        const currentWordIndex = typedText.split(' ').length - 1;
+        if (currentWordIndex >= words.length - 1) {
+          setStatus('finished');
+          return;
+        }
+
+        setTypedText((prev) => prev + e.key);
+        return;
+      }
+
       if (e.key.length === 1) { // Normal character
         if (status === 'idle') {
           setStatus('typing');
           setStartTime(Date.now());
         }
         
-        // Prevent typing beyond the last word
-        const currentWordIndex = typedText.split(' ').length - 1;
-        if (currentWordIndex >= words.length - 1 && e.key === ' ') {
-          setTypedText((prev) => prev + e.key);
-          setStatus('finished');
-          return;
-        }
+        const newTypedText = typedText + e.key;
+        setTypedText(newTypedText);
 
-        setTypedText((prev) => prev + e.key);
+        // Check if finished immediately on the last character
+        const newTypedWords = newTypedText.split(' ');
+        const newCurrentWordIndex = newTypedWords.length - 1;
+        
+        if (newCurrentWordIndex >= words.length - 1) {
+          const lastWordTyped = newTypedWords[newCurrentWordIndex];
+          const lastWordTarget = words[words.length - 1];
+          
+          if (lastWordTyped === lastWordTarget) {
+            setStatus('finished');
+          }
+        }
       }
     };
 
