@@ -46,8 +46,8 @@ export default function Navbar() {
     }
 
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
+    const x = e.clientX || rect.left + rect.width / 2;
+    const y = e.clientY || rect.top + rect.height / 2;
 
     const radius = Math.hypot(
       Math.max(x, window.innerWidth - x),
