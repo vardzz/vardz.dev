@@ -4,7 +4,7 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import Underline from '@tiptap/extension-underline';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Bold, Italic, Underline as UnderlineIcon, Paperclip, X } from 'lucide-react';
 
 export interface Attachment {
@@ -42,6 +42,12 @@ export default function RichTextEditor({ content, onChange, attachments, onAttac
       },
     },
   });
+
+  useEffect(() => {
+    if (editor && content === "") {
+      editor.commands.setContent("");
+    }
+  }, [content, editor]);
 
   if (!editor) {
     return null;
