@@ -277,9 +277,10 @@ export const ContactEmail = ({
                                               <div style={{ color: "rgba(244, 237, 228, 0.9)", fontSize: "14px", fontFamily: "Arial, Helvetica, sans-serif" }}>
                                                 <strong>Subject:</strong> {subject}
                                               </div>
-                                              <div style={{ color: "rgba(244, 237, 228, 0.8)", fontSize: "15px", lineHeight: "1.6", marginTop: "16px", whiteSpace: "pre-wrap", fontFamily: "Arial, Helvetica, sans-serif" }}>
-                                                {content}
-                                              </div>
+                                              <div 
+                                                style={{ color: "rgba(244, 237, 228, 0.8)", fontSize: "15px", lineHeight: "1.6", marginTop: "16px", whiteSpace: "pre-wrap", fontFamily: "Arial, Helvetica, sans-serif" }}
+                                                dangerouslySetInnerHTML={{ __html: content }}
+                                              />
                                             </div>
                                           </>
                                         )}
