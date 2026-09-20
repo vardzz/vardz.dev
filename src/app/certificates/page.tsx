@@ -64,15 +64,6 @@ export default function CertificatesPage() {
           rotation: "rotate-1",
           translateY: "translate-y-2",
           zIndex: 2
-        },
-        {
-          title: "Data Literacy Professional",
-          provider: "DATACAMP",
-          icon: <DataCampIcon className="w-[28px] h-[28px] text-text" />,
-          verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2e3174f67f220a1e145b2ed0063b28c495bb09c7",
-          rotation: "rotate-2",
-          translateY: "-translate-y-2",
-          zIndex: 1
         }
       ]
     }
