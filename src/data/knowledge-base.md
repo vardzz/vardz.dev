@@ -63,6 +63,8 @@ Jericho Varde is currently a **3rd-year BSCS (Bachelor of Science in Computer Sc
 - **Academic focus:** software architecture, data structures and algorithms, multi-agent systems, and scalable web engineering.
 
 ### Professional Certifications
+- **AWS Technical Essentials** — Amazon Web Services
+- **AWS Cloud Practitioner Essentials** — Amazon Web Services
 - **AI Engineer for Developers Associate** — DataCamp
 - **Data Analyst Associate** — DataCamp (August 13, 2026)
 

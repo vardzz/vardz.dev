@@ -30,6 +30,12 @@ export default function Certifications() {
       verifyLink: "https://drive.google.com/file/d/1uotVanXocFflbTJtAY_uxoY57Vas_ToP/view"
     },
     {
+      title: "AI Engineer for Developers Associate",
+      provider: "DataCamp",
+      icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[24px] h-[24px] object-contain" />,
+      verifyLink: "https://www.datacamp.com/certificate/AIEDA0019019720935"
+    },
+    {
       title: "Data Analyst Associate",
       provider: "DataCamp",
       icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[24px] h-[24px] object-contain" />,
@@ -46,7 +52,7 @@ export default function Certifications() {
         </Link>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[16px]">
         {certs.map((cert, i) => (
           <a key={i} href={cert.verifyLink} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center p-[32px] rounded-[16px] border border-line bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-300 cursor-pointer">
             {/* Icon Container */}
