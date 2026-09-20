@@ -15,12 +15,19 @@ export const AwsIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+export const DataCampIcon = ({ className }: { className?: string }) => (
+  <svg role="img" viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
+    <title>DataCamp</title>
+    <path d="M12.946 18.151v-5.239L21.209 8.2 19.2 7.048l-6.254 3.567V5.36c0-.356-.192-.689-.5-.866L4.922.177a1.434 1.434 0 0 0-1.455.044 1.438 1.438 0 0 0-.676 1.224v14.777A1.44 1.44 0 0 0 4.92 17.49l6.032-3.44v4.683a1 1 0 0 0 .504.867l7.73 4.4 2.01-1.152-8.25-4.697zM10.953 5.938v5.814L4.785 15.27V2.4l6.168 3.539v-.001z"/>
+  </svg>
+);
+
 export default function Certifications() {
   const certs = [
     {
       title: "AI Engineer for Developers Associate",
       provider: "DataCamp",
-      icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[24px] h-[24px] object-contain" />,
+      icon: <DataCampIcon className="w-[24px] h-[24px] text-text" />,
       verifyLink: "https://www.datacamp.com/certificate/AIEDA0019019720935"
     },
     {
@@ -32,7 +39,7 @@ export default function Certifications() {
     {
       title: "Data Literacy Professional",
       provider: "DataCamp",
-      icon: <img src="https://cdn.simpleicons.org/datacamp/03E812" alt="DataCamp" className="w-[24px] h-[24px] object-contain" />,
+      icon: <DataCampIcon className="w-[24px] h-[24px] text-text" />,
       verifyLink: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2e3174f67f220a1e145b2ed0063b28c495bb09c7"
     }
   ];
