@@ -59,6 +59,15 @@ export default function CertificatesPage() {
       title: "AI",
       certificates: [
         {
+          title: "AI Engineer for Developers Associate",
+          provider: "DATACAMP",
+          icon: <DataCampIcon className="w-[28px] h-[28px] text-text" />,
+          verifyLink: "https://www.datacamp.com/certificate/AIEDA0019019720935",
+          rotation: "-rotate-2",
+          translateY: "translate-y-2",
+          zIndex: 1
+        },
+        {
           title: "Claude with Google Cloud's Vertex AI",
           provider: "ANTHROPIC",
           icon: <AnthropicIcon className="w-[28px] h-[28px] text-text" />,
