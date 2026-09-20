@@ -67,6 +67,7 @@ Jericho Varde is currently a **3rd-year BSCS (Bachelor of Science in Computer Sc
 - **AWS Cloud Practitioner Essentials** — Amazon Web Services
 - **AI Engineer for Developers Associate** — DataCamp
 - **Data Analyst Associate** — DataCamp (August 13, 2026)
+- **Data Literacy Professional** — DataCamp
 
 ---
 
