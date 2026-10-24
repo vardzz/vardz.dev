@@ -95,7 +95,7 @@ export default function ExperiencePage() {
                     <div className="text-[15px] font-medium text-text">Frontend AI Engineer</div>
                   </div>
                   <div className="text-muted font-mono text-[11px] text-left md:text-right whitespace-nowrap uppercase mt-1 md:mt-0">
-                    Jun 2026 — Present
+                    Jun 2026 — Oct 2026
                   </div>
                 </div>
 
