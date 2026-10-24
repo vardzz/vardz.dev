@@ -135,7 +135,7 @@ function RecommendationCard({ rec }: { rec: Recommendation }) {
           <div className="text-text text-[13px] font-medium tracking-[-.02em]">
             {rec.name}
           </div>
-          <div className="text-muted font-mono text-[10px] uppercase tracking-widest truncate mt-[2px]">
+          <div className="text-muted font-mono text-[10px] uppercase tracking-widest mt-[2px]">
             {rec.title}
           </div>
           <div className="text-muted font-mono text-[10px] uppercase tracking-wider mt-[6px]">
