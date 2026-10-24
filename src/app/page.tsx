@@ -8,6 +8,7 @@ import Experience from "../components/root/Experience";
 import Certifications from "../components/root/Certifications";
 import Github from "../components/root/Github";
 import Stack from "../components/root/Stack";
+import Recommendations from "../components/root/Recommendations";
 import ChatPrompts from "../components/root/ChatPrompts";
 
 export default function Portfolio() {
@@ -56,6 +57,9 @@ export default function Portfolio() {
             <Stack />
 
             <Certifications />
+
+            {/* Recommendations */}
+            <Recommendations />
 
             <Github />
 
