@@ -24,7 +24,14 @@ interface Recommendation {
   quote: string;
   name: string;
   title: string;
-  date: string;
+  date: string; // ISO date string, e.g. "2026-09-15"
+}
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  const month = d.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+  const year = d.getFullYear();
+  return `${month}  ${year}`;
 }
 
 const recommendations: Recommendation[] = [
@@ -33,21 +40,21 @@ const recommendations: Recommendation[] = [
       "Jericho is one of the most driven developers I've worked with. His ability to quickly grasp complex concepts and turn them into polished, production-ready code is genuinely impressive.",
     name: 'Alex Rivera',
     title: 'Senior Software Engineer at TechCorp',
-    date: 'Sep 2026',
+    date: '2026-09-15',
   },
   {
     quote:
       "Working with Jericho was an absolute pleasure. He brings a rare combination of technical skill and creative problem-solving that elevates every project he touches. His work on our frontend was exceptional.",
     name: 'Maria Santos',
     title: 'Engineering Manager at Flyrank AI',
-    date: 'Oct 2026',
+    date: '2026-10-01',
   },
   {
     quote:
       "Jericho has a natural talent for building intuitive interfaces. His attention to detail and commitment to code quality set him apart. He's always eager to learn and consistently delivers beyond expectations.",
     name: 'David Chen',
     title: 'CTO at StartupLab',
-    date: 'Aug 2026',
+    date: '2026-08-10',
   },
 ];
 
@@ -94,9 +101,9 @@ export default function Recommendations() {
             </div>
 
             {/* Author */}
-            <div className="flex items-center gap-[12px] pt-[16px] border-t border-line/50">
+            <div className="flex items-start gap-[12px] pt-[16px] border-t border-line/50">
               {/* Avatar */}
-              <div className="w-[36px] h-[36px] rounded-full bg-accent/[0.08] border border-line/50 flex items-center justify-center text-muted font-mono text-[11px] font-medium shrink-0">
+              <div className="w-[36px] h-[36px] rounded-full bg-accent/[0.08] border border-line/50 flex items-center justify-center text-muted font-mono text-[11px] font-medium shrink-0 mt-[2px]">
                 {getInitials(rec.name)}
               </div>
 
@@ -104,8 +111,11 @@ export default function Recommendations() {
                 <div className="text-text text-[13px] font-medium tracking-[-.02em] truncate">
                   {rec.name}
                 </div>
-                <div className="text-muted font-mono text-[10px] uppercase tracking-widest truncate">
+                <div className="text-muted font-mono text-[10px] uppercase tracking-widest truncate mt-[2px]">
                   {rec.title}
+                </div>
+                <div className="text-muted font-mono text-[10px] uppercase tracking-wider mt-[6px]">
+                  {formatDate(rec.date)}
                 </div>
               </div>
             </div>
