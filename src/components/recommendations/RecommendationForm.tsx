@@ -47,17 +47,17 @@ export default function RecommendationForm() {
   return (
     <div className="mt-[80px]">
       {status === 'success' ? (
-        <div className="bg-surface border border-line rounded-xl p-6 text-center">
-          <p className="text-text text-[15px] mb-2 font-mono">
+        <div className="bg-surface border border-line rounded-xl p-8 text-center flex flex-col items-center">
+          <p className="text-text text-[15px] font-medium mb-2">
             Thank you! Your recommendation has been submitted.
           </p>
-          <p className="text-muted text-[13px] mb-4">
+          <p className="text-muted text-[13px] mb-6">
             It will be reviewed before appearing on the site.
           </p>
           <button
             type="button"
             onClick={() => setStatus('idle')}
-            className="text-text underline text-[13px] font-mono hover:opacity-80 transition-opacity cursor-pointer"
+            className="bg-text text-bg hover:bg-text/90 font-medium py-3 px-6 rounded-xl transition-colors text-[14px] cursor-pointer"
           >
             Send another
           </button>
