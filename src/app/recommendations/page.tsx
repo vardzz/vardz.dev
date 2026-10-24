@@ -43,7 +43,7 @@ async function getApprovedRecommendations(): Promise<Recommendation[]> {
 
 export default async function RecommendationsPage() {
   const dbApproved = await getApprovedRecommendations();
-  // Newly approved recommendations from Supabase appear at the top, followed by existing records
+  // Live approved recommendations from Supabase + any in recommendations.ts
   const allRecommendations = [...dbApproved, ...fallbackRecommendations];
 
   // Split recommendations into 3 columns for masonry layout
@@ -63,24 +63,35 @@ export default async function RecommendationsPage() {
                 Recommendations
               </h1>
               <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
-                What leaders, teammates, and mentors say about working with me — straight from LinkedIn.
+                What leaders, teammates, and mentors say about working with me.
               </p>
             </header>
 
-            {/* Masonry Grid */}
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-[16px]">
-              {columns.map((column, colIndex) => (
-                <React.Fragment key={colIndex}>
-                  {column.map((rec, i) => (
-                    <RecommendationCard
-                      key={`${colIndex}-${i}`}
-                      rec={rec}
-                      className="break-inside-avoid mb-[16px]"
-                    />
-                  ))}
-                </React.Fragment>
-              ))}
-            </div>
+            {/* Masonry Grid or Clean Empty State */}
+            {allRecommendations.length > 0 ? (
+              <div className="columns-1 md:columns-2 lg:columns-3 gap-[16px]">
+                {columns.map((column, colIndex) => (
+                  <React.Fragment key={colIndex}>
+                    {column.map((rec, i) => (
+                      <RecommendationCard
+                        key={`${colIndex}-${i}`}
+                        rec={rec}
+                        className="break-inside-avoid mb-[16px]"
+                      />
+                    ))}
+                  </React.Fragment>
+                ))}
+              </div>
+            ) : (
+              <div className="p-[32px] rounded-[16px] border border-line/60 bg-accent/[0.02] text-center my-[24px]">
+                <p className="text-soft text-[14px] mb-[6px] font-medium">
+                  No recommendations published yet.
+                </p>
+                <p className="text-muted text-[13px]">
+                  Be the first to share your experience working with Jericho below.
+                </p>
+              </div>
+            )}
 
             {/* Write a Recommendation Form at the bottom */}
             <RecommendationForm />
