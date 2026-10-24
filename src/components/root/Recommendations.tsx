@@ -5,10 +5,10 @@ import Link from 'next/link';
 import RecommendationCard, {
   Recommendation,
 } from '@/components/recommendations/RecommendationCard';
-import { recommendations as staticRecommendations } from '@/data/recommendations';
+
 
 export default function Recommendations() {
-  const [items, setItems] = useState<Recommendation[]>(staticRecommendations);
+  const [items, setItems] = useState<Recommendation[]>([]);
 
   useEffect(() => {
     fetch('/api/recommendations')

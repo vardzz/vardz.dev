@@ -4,7 +4,6 @@ import RecommendationCard, {
   Recommendation,
 } from '@/components/recommendations/RecommendationCard';
 import RecommendationForm from '@/components/recommendations/RecommendationForm';
-import { recommendations as fallbackRecommendations } from '@/data/recommendations';
 import { supabaseAdmin } from '@/lib/supabase';
 
 export const metadata: Metadata = {
@@ -42,9 +41,7 @@ async function getApprovedRecommendations(): Promise<Recommendation[]> {
 }
 
 export default async function RecommendationsPage() {
-  const dbApproved = await getApprovedRecommendations();
-  // Live approved recommendations from Supabase + any in recommendations.ts
-  const allRecommendations = [...dbApproved, ...fallbackRecommendations];
+  const allRecommendations = await getApprovedRecommendations();
 
   // Split recommendations into 3 columns for masonry layout
   const columns: Recommendation[][] = [[], [], []];

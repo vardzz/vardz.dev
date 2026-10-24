@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
-import { recommendations as staticRecommendations } from '@/data/recommendations';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,8 +24,8 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json([...dbItems, ...staticRecommendations]);
+    return NextResponse.json(dbItems);
   } catch {
-    return NextResponse.json(staticRecommendations);
+    return NextResponse.json([]);
   }
 }
