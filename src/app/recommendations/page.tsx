@@ -1,17 +1,54 @@
 import React from 'react';
 import { Metadata } from 'next';
-import RecommendationCard from '@/components/recommendations/RecommendationCard';
+import RecommendationCard, {
+  Recommendation,
+} from '@/components/recommendations/RecommendationCard';
 import RecommendationForm from '@/components/recommendations/RecommendationForm';
-import { recommendations } from '@/data/recommendations';
+import { recommendations as fallbackRecommendations } from '@/data/recommendations';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export const metadata: Metadata = {
   title: 'Recommendations — Vardz',
 };
 
-export default function RecommendationsPage() {
+// Ensure fresh dynamic data on each request so newly approved recommendations appear immediately
+export const dynamic = 'force-dynamic';
+
+async function getApprovedRecommendations(): Promise<Recommendation[]> {
+  try {
+    if (!supabaseAdmin) {
+      return [];
+    }
+    const { data, error } = await supabaseAdmin
+      .from('recommendations')
+      .select('name, title, message, created_at')
+      .eq('status', 'approved')
+      .order('created_at', { ascending: false });
+
+    if (error || !data) {
+      return [];
+    }
+
+    return data.map((item) => ({
+      name: item.name,
+      title: item.title,
+      quote: item.message,
+      date: item.created_at ? item.created_at.slice(0, 10) : new Date().toISOString().slice(0, 10),
+    }));
+  } catch (e) {
+    console.error('Error fetching approved recommendations:', e);
+    return [];
+  }
+}
+
+export default async function RecommendationsPage() {
+  const dbApproved = await getApprovedRecommendations();
+  // Newly approved recommendations from Supabase appear at the top, followed by existing records
+  const allRecommendations = [...dbApproved, ...fallbackRecommendations];
+
   // Split recommendations into 3 columns for masonry layout
-  const columns = [[], [], []] as (typeof recommendations)[];
-  recommendations.forEach((rec, i) => {
+  const columns: Recommendation[][] = [[], [], []];
+  allRecommendations.forEach((rec, i) => {
     columns[i % 3].push(rec);
   });
 

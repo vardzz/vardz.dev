@@ -7,12 +7,14 @@ export default function RecommendationForm() {
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !title.trim() || !message.trim()) return;
 
     setStatus('submitting');
+    setErrorMessage('');
 
     try {
       const res = await fetch('/api/recommendations/submit', {
@@ -21,24 +23,24 @@ export default function RecommendationForm() {
         body: JSON.stringify({
           name: name.trim(),
           title: title.trim(),
-          quote: message.trim(),
+          message: message.trim(),
         }),
       });
 
-      if (!res.ok && res.status !== 404) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Failed to submit');
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit recommendation.');
       }
 
       setStatus('success');
       setName('');
       setTitle('');
       setMessage('');
-    } catch {
-      setStatus('success');
-      setName('');
-      setTitle('');
-      setMessage('');
+    } catch (err: any) {
+      console.error('Submission error:', err);
+      setStatus('error');
+      setErrorMessage(err.message || 'Something went wrong. Please try again.');
     }
   };
 
@@ -62,6 +64,12 @@ export default function RecommendationForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-[30px]">
+          {status === 'error' && (
+            <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl font-mono text-[13px]">
+              {errorMessage}
+            </div>
+          )}
+
           <div className="flex flex-col gap-3">
             <label
               htmlFor="name"
