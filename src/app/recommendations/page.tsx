@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import RecommendationCard from '@/components/recommendations/RecommendationCard';
+import RecommendationForm from '@/components/recommendations/RecommendationForm';
 import { recommendations } from '@/data/recommendations';
 
 export const metadata: Metadata = {
@@ -43,6 +44,9 @@ export default function RecommendationsPage() {
                 </React.Fragment>
               ))}
             </div>
+
+            {/* Write a Recommendation Form at the bottom */}
+            <RecommendationForm />
           </div>
         </div>
       </main>
