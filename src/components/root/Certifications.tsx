@@ -49,7 +49,7 @@ export default function Certifications() {
       <div className="flex justify-between gap-[20px] items-baseline mb-[38px]">
         <h2 className="m-0 text-[20px] font-medium tracking-[-.04em] text-text">Certifications</h2>
         <Link href="/certificates" className="text-muted font-mono text-[11px] md:text-[12px] hover:text-accent transition-colors group flex items-center gap-[4px]">
-          all certificates <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px]">-&gt;</span>
+          all certificates <span className="inline-block transition-transform duration-300 group-hover:translate-x-[2px]">→</span>
         </Link>
       </div>
       
