@@ -1,0 +1,31 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every 3 days (well within Supabase's 7-day inactivity pause limit)
+    - cron: '0 0 */3 * *'
+
+  # Allows manual triggering from the GitHub Actions tab anytime
+  workflow_dispatch:
+
+jobs:
+  ping-supabase:
+    name: Ping Recommendations API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Live API
+        run: |
+          URL="https://www.vardz.dev/api/recommendations"
+          echo "Pinging $URL to keep Supabase database active..."
+
+          # -s (silent), -L (follow redirects), -w (print HTTP status code)
+          HTTP_STATUS=$(curl -s -L -o /dev/null -w "%{http_code}" "$URL")
+          echo "HTTP response status: $HTTP_STATUS"
+
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "::warning::API returned HTTP status $HTTP_STATUS"
+            # Exit with code 0 so workflow doesn't fail if site is temporarily redeploying
+            exit 0
+          fi
+
+          echo "Successfully triggered Supabase activity. Inactivity timer reset!"
