@@ -10,8 +10,9 @@ export const metadata: Metadata = {
   title: 'Recommendations — Vardz',
 };
 
-// Ensure fresh dynamic data on each request so newly approved recommendations appear immediately
-export const dynamic = 'force-dynamic';
+// Revalidate in the background every 60 seconds (or immediately on approval via revalidatePath)
+// This enables full route prefetching for instant, buttery-smooth page transitions
+export const revalidate = 60;
 
 async function getApprovedRecommendations(): Promise<Recommendation[]> {
   try {

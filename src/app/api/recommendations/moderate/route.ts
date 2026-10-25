@@ -1,4 +1,5 @@
 import { supabaseAdmin } from '@/lib/supabase';
+import { revalidatePath } from 'next/cache';
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -85,6 +86,13 @@ export async function GET(req: Request) {
     }
 
     const isApproved = newStatus === 'approved';
+
+    try {
+      revalidatePath('/recommendations');
+      revalidatePath('/');
+    } catch (e) {
+      console.warn('Revalidation notice:', e);
+    }
 
     return new Response(
       renderResultPage({

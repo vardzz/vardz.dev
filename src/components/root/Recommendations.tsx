@@ -35,6 +35,7 @@ export default function Recommendations() {
         </h2>
         <Link
           href="/recommendations"
+          prefetch={true}
           className="text-muted hover:text-accent transition-colors text-[11px] sm:text-[14px] font-mono whitespace-nowrap group flex items-center gap-[4px]"
         >
           all recommendations{' '}
@@ -52,6 +53,7 @@ export default function Recommendations() {
           </p>
           <Link
             href="/recommendations"
+            prefetch={true}
             className="text-muted hover:text-accent font-mono text-[12px] transition-colors inline-flex items-center gap-[4px] group"
           >
             Leave the first recommendation{' '}
