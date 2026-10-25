@@ -6,35 +6,6 @@ import RecommendationCard, {
   Recommendation,
 } from '@/components/recommendations/RecommendationCard';
 
-// ---------------------------------------------------------------------------
-// TEMPORARY DUMMY RECOMMENDATIONS
-// Added per user request to test the automatic horizontal sliding effect (>= 4 items).
-// To remove later, simply set DUMMY_RECOMMENDATIONS = [] or delete this array.
-// ---------------------------------------------------------------------------
-const DUMMY_RECOMMENDATIONS: Recommendation[] = [
-  {
-    name: 'Sarah Chen',
-    title: 'Senior Frontend Engineer at TechCorp',
-    quote:
-      'Jericho is a brilliant problem solver with a deep eye for design. His work on AI-powered developer tooling and responsive interfaces exceeded all expectations.',
-    date: '2026-10-20',
-  },
-  {
-    name: 'Marcus Vance',
-    title: 'Lead Architect at CloudScale',
-    quote:
-      'Outstanding work ethic and cloud architecture knowledge. Jericho consistently delivers performant, scalable solutions while keeping codebases pristine.',
-    date: '2026-10-18',
-  },
-  {
-    name: 'Elena Rostova',
-    title: 'Product Designer at StudioCraft',
-    quote:
-      'Collaborating with Jericho was an absolute breeze. He understands design nuance, micro-interactions, and turns complex wireframes into polished realities.',
-    date: '2026-10-15',
-  },
-];
-
 export default function Recommendations() {
   const [items, setItems] = useState<Recommendation[]>([]);
   const [isPaused, setIsPaused] = useState(false);
@@ -50,8 +21,7 @@ export default function Recommendations() {
       .catch(() => {});
   }, []);
 
-  // Combine real database items with temporary dummy items for testing
-  const allRecommendations = [...items, ...DUMMY_RECOMMENDATIONS];
+  const allRecommendations = items;
 
   // Automatic horizontal sliding is ONLY applied when there are 4 or more recommendations
   const shouldSlide = allRecommendations.length >= 4;
