@@ -107,8 +107,18 @@ export default function ProjectsPage() {
             {/* Other Projects (Simple Cards) */}
             <ScrollReveal distance={24} duration={750} delay={150}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] mt-[40px]">
+                {/* Kzelyn */}
+                <a href="https://kzelyn.vercel.app/" target="_blank" rel="noopener noreferrer" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
+                  <div className="flex justify-between items-start mb-[16px]">
+                    <div className="text-accent font-mono text-[10px]">PORTFOLIO / BRANDING</div>
+                    <span className="text-muted group-hover:text-accent transition-colors font-mono text-[12px]">↗</span>
+                  </div>
+                  <h3 className="text-[18px] font-medium tracking-[-.03em] text-text mb-[8px] group-hover:text-accent transition-colors">Kzelyn Artillo</h3>
+                  <p className="text-muted text-[13px] leading-[1.5]">A minimalist personal portfolio and brand strategy showcase built for marketing specialist Kzelyn Artillo.</p>
+                </a>
+
                 {/* Dentara */}
-                <a href="https://dentara.vercel.app/" target="_blank" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
+                <a href="https://dentara.vercel.app/" target="_blank" rel="noopener noreferrer" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
                   <div className="flex justify-between items-start mb-[16px]">
                     <div className="text-accent font-mono text-[10px]">WEB APP / DENTAL</div>
                     <span className="text-muted group-hover:text-accent transition-colors font-mono text-[12px]">↗</span>
@@ -118,7 +128,7 @@ export default function ProjectsPage() {
                 </a>
 
                 {/* Ghostnet AI */}
-                <a href="https://ghostnet-ai.vercel.app/" target="_blank" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
+                <a href="https://ghostnet-ai.vercel.app/" target="_blank" rel="noopener noreferrer" className="group block p-[24px] border border-line rounded-[16px] bg-bg hover:border-accent/50 transition-all duration-300">
                   <div className="flex justify-between items-start mb-[16px]">
                     <div className="text-accent font-mono text-[10px]">AI / SYSTEM</div>
                     <span className="text-muted group-hover:text-accent transition-colors font-mono text-[12px]">↗</span>
