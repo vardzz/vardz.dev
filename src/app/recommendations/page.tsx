@@ -4,6 +4,7 @@ import RecommendationCard, {
   Recommendation,
 } from '@/components/recommendations/RecommendationCard';
 import RecommendationForm from '@/components/recommendations/RecommendationForm';
+import ScrollReveal from '@/components/layout/ScrollReveal';
 import { supabaseAdmin } from '@/lib/supabase';
 
 export const metadata: Metadata = {
@@ -56,43 +57,51 @@ export default async function RecommendationsPage() {
         <div className="block pb-24">
           <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
             {/* Header */}
-            <header className="mb-[48px]">
-              <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[12px]">
-                Recommendations
-              </h1>
-              <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
-                What leaders, teammates, and mentors say about working with me.
-              </p>
-            </header>
+            <ScrollReveal distance={16} duration={700}>
+              <header className="mb-[48px]">
+                <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[12px]">
+                  Recommendations
+                </h1>
+                <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
+                  What leaders, teammates, and mentors say about working with me.
+                </p>
+              </header>
+            </ScrollReveal>
 
             {/* Masonry Grid or Clean Empty State */}
-            {allRecommendations.length > 0 ? (
-              <div className="columns-1 md:columns-2 lg:columns-3 gap-[16px]">
-                {columns.map((column, colIndex) => (
-                  <React.Fragment key={colIndex}>
-                    {column.map((rec, i) => (
-                      <RecommendationCard
-                        key={`${colIndex}-${i}`}
-                        rec={rec}
-                        className="break-inside-avoid mb-[16px]"
-                      />
-                    ))}
-                  </React.Fragment>
-                ))}
-              </div>
-            ) : (
-              <div className="p-[32px] rounded-[16px] border border-line/60 bg-accent/[0.02] text-center my-[24px]">
-                <p className="text-soft text-[14px] mb-[6px] font-medium">
-                  No recommendations published yet.
-                </p>
-                <p className="text-muted text-[13px]">
-                  Be the first to share your experience working with Jericho below.
-                </p>
-              </div>
-            )}
+            <ScrollReveal distance={24} duration={750} delay={100}>
+              {allRecommendations.length > 0 ? (
+                <div className="columns-1 md:columns-2 lg:columns-3 gap-[16px]">
+                  {columns.map((column, colIndex) => (
+                    <React.Fragment key={colIndex}>
+                      {column.map((rec, i) => (
+                        <RecommendationCard
+                          key={`${colIndex}-${i}`}
+                          rec={rec}
+                          className="break-inside-avoid mb-[16px]"
+                        />
+                      ))}
+                    </React.Fragment>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-[32px] rounded-[16px] border border-line/60 bg-accent/[0.02] text-center my-[24px]">
+                  <p className="text-soft text-[14px] mb-[6px] font-medium">
+                    No recommendations published yet.
+                  </p>
+                  <p className="text-muted text-[13px]">
+                    Be the first to share your experience working with Jericho below.
+                  </p>
+                </div>
+              )}
+            </ScrollReveal>
 
             {/* Write a Recommendation Form at the bottom */}
-            <RecommendationForm />
+            <ScrollReveal distance={24} duration={750} delay={150}>
+              <div className="mt-[48px]">
+                <RecommendationForm />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </main>

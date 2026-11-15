@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import Navbar from "../components/layout/Navbar";
 import Hero from "../components/root/Hero";
 import Projects from "../components/root/Projects";
 import Experience from "../components/root/Experience";
@@ -10,6 +9,7 @@ import Github from "../components/root/Github";
 import Stack from "../components/root/Stack";
 import Recommendations from "../components/root/Recommendations";
 import ChatPrompts from "../components/root/ChatPrompts";
+import ScrollReveal from "../components/layout/ScrollReveal";
 
 export default function Portfolio() {
   const [hasReachedBottom, setHasReachedBottom] = useState(false);
@@ -42,29 +42,47 @@ export default function Portfolio() {
         <div className="block">
           
           {/* Hero Section */}
-          <Hero />
+          <ScrollReveal distance={20} duration={750}>
+            <Hero />
+          </ScrollReveal>
 
           {/* Sections Wrap */}
           <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
             
             {/* 01 Projects */}
-            <Projects />
+            <ScrollReveal distance={24} duration={750}>
+              <Projects />
+            </ScrollReveal>
 
             {/* 02 Experience */}
-            <Experience />
+            <ScrollReveal distance={24} duration={750}>
+              <Experience />
+            </ScrollReveal>
 
             {/* 03 Stack */}
-            <Stack />
+            <ScrollReveal distance={24} duration={750}>
+              <Stack />
+            </ScrollReveal>
 
-            <Certifications />
+            {/* 04 Certifications */}
+            <ScrollReveal distance={24} duration={750}>
+              <Certifications />
+            </ScrollReveal>
 
-            {/* Recommendations */}
-            <Recommendations />
+            {/* 05 Recommendations */}
+            <ScrollReveal distance={24} duration={750}>
+              <Recommendations />
+            </ScrollReveal>
 
-            <Github />
+            {/* 06 Github */}
+            <ScrollReveal distance={24} duration={750}>
+              <Github />
+            </ScrollReveal>
 
-            {/* 06 Chat Prompts */}
-            <ChatPrompts />
+            {/* 07 Chat Prompts */}
+            <ScrollReveal distance={24} duration={750}>
+              <ChatPrompts />
+            </ScrollReveal>
 
           </div>
         </div>

@@ -29,7 +29,14 @@
     --color-accent-dim: rgba(15, 14, 13, 0.12);
   }
 
-  html { scroll-behavior: smooth; }
+  html { 
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  
+  [id] {
+    scroll-margin-top: 5rem;
+  }
   
   body {
     background-color: var(--color-bg);
@@ -81,6 +88,15 @@
 
 .animate-page-enter {
   animation: pageEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
 }
 
 .thinking-indicator {

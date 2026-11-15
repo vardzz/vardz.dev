@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 import RichTextEditor, { Attachment } from "../../components/email/RichTextEditor";
+import ScrollReveal from "../../components/layout/ScrollReveal";
 
 export default function EmailPage() {
   const [email, setEmail] = useState("");
@@ -55,12 +56,14 @@ export default function EmailPage() {
       <main className="min-w-0 pb-[100px]">
         <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0">
           
-          <div className="mb-[40px] md:mb-[60px]">
-            <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Email</h1>
-            <p className="text-muted text-[15px] mt-[12px] max-w-[480px]">
-              I'll get back to you as soon as possible.
-            </p>
-          </div>
+          <ScrollReveal distance={16} duration={700}>
+            <div className="mb-[40px] md:mb-[60px]">
+              <h1 className="text-[32px] md:text-[32px] font-medium tracking-[-.04em] text-text">Email</h1>
+              <p className="text-muted text-[15px] mt-[12px] max-w-[480px]">
+                I'll get back to you as soon as possible.
+              </p>
+            </div>
+          </ScrollReveal>
 
           {isMounted && status === "success" && createPortal(
             <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 backdrop-blur-md bg-bg/60 animate-page-enter">
@@ -89,57 +92,59 @@ export default function EmailPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-[30px]">
-            <div className="flex flex-col gap-3">
-              <label htmlFor="email" className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">Your Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="hello@example.com"
-                autoComplete="off"
-                className="bg-surface border border-line rounded-xl px-4 py-3 text-[15px] text-text outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50"
-              />
-            </div>
+          <ScrollReveal distance={24} duration={750} delay={100}>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-[30px]">
+              <div className="flex flex-col gap-3">
+                <label htmlFor="email" className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">Your Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="hello@example.com"
+                  autoComplete="off"
+                  className="bg-surface border border-line rounded-xl px-4 py-3 text-[15px] text-text outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50"
+                />
+              </div>
 
-            <div className="flex flex-col gap-3">
-              <label htmlFor="subject" className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">Subject</label>
-              <input 
-                type="text" 
-                id="subject" 
-                required
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                placeholder="What's this about?"
-                autoComplete="off"
-                className="bg-surface border border-line rounded-xl px-4 py-3 text-[15px] text-text outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50"
-              />
-            </div>
+              <div className="flex flex-col gap-3">
+                <label htmlFor="subject" className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">Subject</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  required
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                  placeholder="What's this about?"
+                  autoComplete="off"
+                  className="bg-surface border border-line rounded-xl px-4 py-3 text-[15px] text-text outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50"
+                />
+              </div>
 
-            <div className="flex flex-col gap-3">
-              <label htmlFor="content" className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">Message</label>
-              <RichTextEditor 
-                content={content} 
-                onChange={setContent} 
-                attachments={attachments}
-                onAttachmentsChange={setAttachments}
-              />
-            </div>
+              <div className="flex flex-col gap-3">
+                <label htmlFor="content" className="text-muted font-mono text-[11px] tracking-[.1em] uppercase">Message</label>
+                <RichTextEditor 
+                  content={content} 
+                  onChange={setContent} 
+                  attachments={attachments}
+                  onAttachmentsChange={setAttachments}
+                />
+              </div>
 
-          <button 
-            type="submit" 
-            disabled={status === "loading"}
-            className="mt-4 bg-text text-bg hover:bg-text/90 font-medium py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[15px] cursor-pointer"
-          >
-            {status === "loading" ? "Sending..." : "Send Message"}
-          </button>
-          
-          <p className="text-center text-muted text-[13px] mt-2">
-            Note: if you want to send me an email directly, send it at <a href="mailto:vardejericho@gmail.com" className="text-text hover:underline transition-all">vardejericho@gmail.com</a>
-          </p>
-          </form>
+              <button 
+                type="submit" 
+                disabled={status === "loading"}
+                className="mt-4 bg-text text-bg hover:bg-text/90 font-medium py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[15px] cursor-pointer"
+              >
+                {status === "loading" ? "Sending..." : "Send Message"}
+              </button>
+              
+              <p className="text-center text-muted text-[13px] mt-2">
+                Note: if you want to send me an email directly, send it at <a href="mailto:vardejericho@gmail.com" className="text-text hover:underline transition-all">vardejericho@gmail.com</a>
+              </p>
+            </form>
+          </ScrollReveal>
 
         </div>
       </main>

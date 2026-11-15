@@ -2,6 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import CertificateCard from '../../components/certificates/CertificateCard';
 import { AwsIcon } from '../../components/root/Certifications';
+import ScrollReveal from '../../components/layout/ScrollReveal';
 
 export const metadata: Metadata = {
   title: "Certificates — Vardz",
@@ -74,41 +75,45 @@ export default function CertificatesPage() {
       <main className="min-w-0 pb-[100px]">
         
         {/* Header Section */}
-        <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 mb-[60px]">
-          <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[16px]">Certifications</h1>
-          <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
-            Credentials across AI, cloud, engineering, and project management — each verifiable at its source.
-          </p>
-        </div>
+        <ScrollReveal distance={16} duration={700}>
+          <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 mb-[60px]">
+            <h1 className="m-0 text-[28px] md:text-[32px] font-medium tracking-[-.04em] text-text mb-[16px]">Certifications</h1>
+            <p className="text-muted text-[14px] leading-[1.6] max-w-[560px]">
+              Credentials across AI, cloud, engineering, and project management — each verifiable at its source.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Categories Section */}
         <div className="max-w-[680px] mx-auto px-[24px] md:px-[10vw] lg:px-0 flex flex-col gap-[80px]">
           {certificateCategories.map((category, idx) => (
-            <section key={idx} className="relative">
-              <h2 className="text-muted font-mono text-[11px] tracking-[.2em] uppercase mb-[40px]">
-                {category.title}
-              </h2>
-              
-              {/* Flex Container instead of negative margins for large collections */}
-              <div className="flex flex-wrap items-center justify-center gap-[20px]">
-                {category.certificates.map((cert, certIdx) => (
-                  <div 
-                    key={certIdx} 
-                    className="transition-transform duration-500 hover:z-30"
-                  >
-                    <CertificateCard
-                      title={cert.title}
-                      provider={cert.provider}
-                      icon={cert.icon}
-                      verifyLink={cert.verifyLink}
-                      rotation={cert.rotation}
-                      translateY={cert.translateY}
-                      zIndex={cert.zIndex}
-                    />
-                  </div>
-                ))}
-              </div>
-            </section>
+            <ScrollReveal key={idx} distance={24} duration={750} delay={idx * 80}>
+              <section className="relative">
+                <h2 className="text-muted font-mono text-[11px] tracking-[.2em] uppercase mb-[40px]">
+                  {category.title}
+                </h2>
+                
+                {/* Flex Container instead of negative margins for large collections */}
+                <div className="flex flex-wrap items-center justify-center gap-[20px]">
+                  {category.certificates.map((cert, certIdx) => (
+                    <div 
+                      key={certIdx} 
+                      className="transition-transform duration-500 hover:z-30"
+                    >
+                      <CertificateCard
+                        title={cert.title}
+                        provider={cert.provider}
+                        icon={cert.icon}
+                        verifyLink={cert.verifyLink}
+                        rotation={cert.rotation}
+                        translateY={cert.translateY}
+                        zIndex={cert.zIndex}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </ScrollReveal>
           ))}
         </div>
       </main>
