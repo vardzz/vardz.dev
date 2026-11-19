@@ -8,7 +8,23 @@ import ScrollReveal from '@/components/layout/ScrollReveal';
 import { supabaseAdmin } from '@/lib/supabase';
 
 export const metadata: Metadata = {
-  title: 'Recommendations — Vardz',
+  title: 'Recommendations',
+  description: 'Testimonials, endorsements, and recommendations from engineering leaders, teammates, and mentors who have collaborated with Jericho Varde.',
+  keywords: [
+    'Jericho Varde Recommendations',
+    'Peer Testimonials',
+    'Engineering Endorsements',
+    'Client Reviews',
+    'Developer References',
+  ],
+  alternates: {
+    canonical: '/recommendations',
+  },
+  openGraph: {
+    title: 'Recommendations | Vardz — Cloud & Software Engineer',
+    description: 'What leaders, teammates, and mentors say about collaborating with Jericho Varde.',
+    url: '/recommendations',
+  },
 };
 
 // Revalidate in the background every 60 seconds (or immediately on approval via revalidatePath)
