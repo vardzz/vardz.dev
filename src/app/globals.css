@@ -90,6 +90,15 @@
   animation: pageEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+.not-found-emblem {
+  mix-blend-mode: screen;
+}
+
+.light .not-found-emblem {
+  filter: invert(1);
+  mix-blend-mode: multiply;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal {
     opacity: 1 !important;
