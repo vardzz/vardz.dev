@@ -12,12 +12,12 @@ export default function NotFound() {
     <div className="min-h-[calc(100vh-160px)] flex flex-col items-center justify-center text-center px-6 select-none">
       {/* Emblem with missing piece */}
       <div className="relative mb-8 flex items-center justify-center">
-        <div className="w-[124px] h-[124px] relative flex items-center justify-center drop-shadow-[0_0_26px_rgba(255,255,255,0.18)]">
+        <div className="w-[136px] h-[136px] md:w-[148px] md:h-[148px] relative flex items-center justify-center not-found-glow">
           <Image
             src="/assets/404-piece-missing.png"
             alt="404 — Looks like a piece went missing"
-            width={124}
-            height={124}
+            width={901}
+            height={904}
             priority
             className="w-full h-auto object-contain not-found-emblem transition-all duration-300"
           />
@@ -25,7 +25,7 @@ export default function NotFound() {
       </div>
 
       {/* 404 Status Code */}
-      <h1 className="font-mono text-[17px] font-medium text-text tracking-[0.1em] mb-3">
+      <h1 className="font-mono text-[17px] md:text-[18px] font-medium text-text tracking-[0.1em] mb-3">
         404
       </h1>
 
