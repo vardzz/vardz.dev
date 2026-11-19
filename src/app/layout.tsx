@@ -5,6 +5,7 @@ import { ChatProvider } from "../components/layout/ChatProvider";
 import ClientLayoutWrapper from "../components/layout/ClientLayoutWrapper";
 import { TypingTestModal } from "../components/typing-test/TypingTestModal";
 import OnboardingAnimation from "../components/layout/OnboardingAnimation";
+import JsonLd from "../components/seo/JsonLd";
 
 const siteUrl = 'https://vardz.dev';
 
@@ -83,6 +84,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.fontshare.com" />
       </head>
       <body>
+        <JsonLd />
         <OnboardingAnimation />
         <ChatProvider>
           <ClientLayoutWrapper>
