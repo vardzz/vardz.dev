@@ -3,7 +3,27 @@ import Link from "next/link";
 import ScrollReveal from "../../components/layout/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Projects — Vardz",
+  title: "Projects",
+  description: "A showcase of engineering work across AI systems, full-stack web applications, cloud utilities, and developer tools built by Jericho Varde.",
+  keywords: [
+    "Jericho Varde Projects",
+    "Horizon AI",
+    "Gridworks",
+    "Lunas Medical Passport",
+    "Kzelyn Artillo Portfolio",
+    "Dentara",
+    "Ghostnet AI",
+    "Full-Stack Web Development",
+    "AI Agent Systems",
+  ],
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Projects | Vardz — Cloud & Software Engineer",
+    description: "A showcase of engineering work across AI systems, full-stack web applications, and cloud utilities built by Jericho Varde.",
+    url: "/projects",
+  },
 };
 
 export default function ProjectsPage() {
