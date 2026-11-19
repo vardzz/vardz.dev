@@ -6,9 +6,46 @@ import ClientLayoutWrapper from "../components/layout/ClientLayoutWrapper";
 import { TypingTestModal } from "../components/typing-test/TypingTestModal";
 import OnboardingAnimation from "../components/layout/OnboardingAnimation";
 
+const siteUrl = 'https://vardz.dev';
+
 export const metadata: Metadata = {
-  title: "Vardz — Cloud & Software Engineer",
-  description: "Portfolio of Jericho Varde, a passionate Software Engineer & Cloud Enthusiast.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Vardz — Cloud & Software Engineer",
+    template: "%s | Vardz",
+  },
+  description: "Portfolio of Jericho Varde, a passionate Software Engineer & Cloud Enthusiast specializing in full-stack web applications, cloud architecture, and AI systems.",
+  applicationName: "Vardz Portfolio",
+  authors: [{ name: "Jericho Varde", url: siteUrl }],
+  creator: "Jericho Varde",
+  publisher: "Jericho Varde",
+  keywords: [
+    "Jericho Varde",
+    "Vardz",
+    "Software Engineer",
+    "Cloud Engineer",
+    "Full-Stack Developer",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "AWS",
+    "AI Systems",
+    "Web Developer Philippines",
+  ],
+  alternates: {
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
