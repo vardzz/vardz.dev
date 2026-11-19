@@ -5,7 +5,24 @@ import { AwsIcon } from '../../components/root/Certifications';
 import ScrollReveal from '../../components/layout/ScrollReveal';
 
 export const metadata: Metadata = {
-  title: "Certificates — Vardz",
+  title: "Certificates",
+  description: "Verifiable professional certifications earned by Jericho Varde across cloud infrastructure (AWS), artificial intelligence, and data analytics.",
+  keywords: [
+    "Jericho Varde Certificates",
+    "AWS Certified",
+    "AWS Technical Essentials",
+    "AWS Cloud Practitioner",
+    "AI Engineer Associate DataCamp",
+    "Data Analyst Associate",
+  ],
+  alternates: {
+    canonical: "/certificates",
+  },
+  openGraph: {
+    title: "Certificates | Vardz — Cloud & Software Engineer",
+    description: "Verifiable certifications across cloud engineering (AWS), artificial intelligence, and data analytics.",
+    url: "/certificates",
+  },
 };
 
 const DataCampIcon = ({ className }: { className?: string }) => (
