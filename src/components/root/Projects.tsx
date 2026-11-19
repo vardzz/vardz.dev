@@ -14,7 +14,7 @@ export default function Projects() {
           
           {/* Horizon Logo Background */}
           <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
-            <img src="/projects/horizon-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
+            <img src="/projects/horizon-logo.png" alt="Horizon AI Logo" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
 
           {/* Protective Gradient for Text on Hover */}
@@ -38,7 +38,7 @@ export default function Projects() {
         <a href="https://gridworks.vercel.app/" target="_blank" className="group relative block aspect-square md:aspect-[4/3] rounded-[16px] overflow-hidden border border-line bg-transparent hover:border-accent/50 transition-all duration-300">
           <div className="absolute inset-0 bg-gradient-to-tr from-text/5 to-transparent z-10"></div>
           <div className="absolute inset-y-0 right-0 w-3/4 md:w-1/2 z-0 opacity-10 group-hover:opacity-100 transition-all duration-500 flex items-center justify-end p-[24px] md:p-[40px] pointer-events-none">
-            <img src="/projects/gridworks-logo.png" alt="" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
+            <img src="/projects/gridworks-logo.png" alt="Gridworks Logo" className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
           
           {/* Protective Gradient for Text on Hover */}
