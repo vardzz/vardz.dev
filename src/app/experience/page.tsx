@@ -3,7 +3,25 @@ import { Metadata } from 'next';
 import ScrollReveal from '../../components/layout/ScrollReveal';
 
 export const metadata: Metadata = {
-  title: "Experience — Vardz",
+  title: "Experience",
+  description: "Career journey and engineering experience of Jericho Varde across AI engineering, frontend architecture, and community data analytics.",
+  keywords: [
+    "Jericho Varde Experience",
+    "STEQ Technological Solutions",
+    "Flyrank AI",
+    "DEVCON Laguna",
+    "Frontend AI Engineer",
+    "Software Engineer Career",
+    "Data Analyst",
+  ],
+  alternates: {
+    canonical: "/experience",
+  },
+  openGraph: {
+    title: "Experience | Vardz — Cloud & Software Engineer",
+    description: "Career journey and engineering experience of Jericho Varde across AI engineering, frontend architecture, and data analytics.",
+    url: "/experience",
+  },
 };
 export default function ExperiencePage() {
   return (
