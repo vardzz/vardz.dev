@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 
@@ -30,20 +29,9 @@ export default function NotFound() {
       </h1>
 
       {/* Message */}
-      <p className="font-mono text-[14px] text-muted tracking-normal mb-10 max-w-[360px]">
+      <p className="font-mono text-[14px] text-muted tracking-normal max-w-[360px]">
         Looks like a piece went missing.
       </p>
-
-      {/* Back to Home Link */}
-      <Link
-        href="/"
-        className="group inline-flex items-center gap-2 font-mono text-[13px] text-muted hover:text-text transition-colors"
-      >
-        <span className="inline-block transition-transform duration-200 group-hover:-translate-x-1">
-          ←
-        </span>
-        <span>Back home</span>
-      </Link>
     </div>
   );
 }
