@@ -3,7 +3,25 @@ import { Metadata } from 'next';
 import ScrollReveal from '../../components/layout/ScrollReveal';
 
 export const metadata: Metadata = {
-  title: "Tech Stack — Vardz",
+  title: "Tech Stack",
+  description: "Comprehensive breakdown of technical capabilities, programming languages, cloud platforms, and developer tooling utilized by Jericho Varde.",
+  keywords: [
+    "Jericho Varde Tech Stack",
+    "Frontend Skills",
+    "Backend Skills",
+    "Cloud Architecture AWS GCP",
+    "Database Systems PostgreSQL",
+    "AI Frameworks Claude OpenAI",
+    "DevOps Docker",
+  ],
+  alternates: {
+    canonical: "/stack",
+  },
+  openGraph: {
+    title: "Tech Stack | Vardz — Cloud & Software Engineer",
+    description: "Technical capabilities across full-stack development, cloud infrastructure, databases, and AI tooling.",
+    url: "/stack",
+  },
 };
 
 export default function StackPage() {
