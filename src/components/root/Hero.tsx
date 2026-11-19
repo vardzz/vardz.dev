@@ -64,7 +64,8 @@ export default function Hero() {
         <Link href="https://www.overleaf.com/read/pzbvhvhjqnfx#c6fa02" target="_blank" className="w-full md:w-1/2 aspect-square relative bg-bg rounded-2xl overflow-hidden group block">
             <Image
               src="/assets/vardz-image.png"
-              alt="Jericho Varde"
+              alt="Jericho Varde — Cloud & Full-Stack Software Engineer"
+              title="Jericho Varde (Vardz)"
               fill
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
